@@ -1,0 +1,34 @@
+package by.isysoi.Model.Exception;
+
+public class DAOException extends Exception {
+
+    /**
+     * Constructor with specified string
+     *
+     * @param message string
+     */
+    public DAOException(String message) {
+        super(message);
+    }
+
+    /**
+     * Constructor with specified string and Exception
+     *
+     * @param message string
+     * @param e       error covered
+     */
+    public DAOException(String message, Throwable e) {
+        super(message, e);
+    }
+
+    @Override
+    public String getMessage() {
+        return super.getMessage();
+    }
+
+    @Override
+    public void printStackTrace() {
+        super.printStackTrace();
+    }
+
+}
