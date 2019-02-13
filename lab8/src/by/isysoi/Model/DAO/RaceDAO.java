@@ -1,7 +1,6 @@
 package by.isysoi.Model.DAO;
 
 import by.isysoi.Model.Entity.Race;
-import by.isysoi.Model.Entity.Race;
 import by.isysoi.Model.Exception.DAOException;
 import by.isysoi.Model.Exception.DBConnectionException;
 
