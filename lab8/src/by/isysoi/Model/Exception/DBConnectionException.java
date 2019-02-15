@@ -1,9 +1,9 @@
 package by.isysoi.Model.Exception;
 
 /**
- * Class representing parsing Exception
- *
+ * database connector exception
  * @author Ilya Sysoi
+ * @version 1.0.0
  */
 public class DBConnectionException extends Exception {
 

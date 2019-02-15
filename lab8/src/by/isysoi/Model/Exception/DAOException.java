@@ -1,5 +1,10 @@
 package by.isysoi.Model.Exception;
 
+/**
+ * dao object exception
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class DAOException extends Exception {
 
     /**

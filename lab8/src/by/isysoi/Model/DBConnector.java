@@ -9,7 +9,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-//
+/**
+ * database connector class
+ *
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class DBConnector {
 
     private final String DB_PROPERTIES = "database/database.properties";
@@ -19,12 +24,17 @@ public class DBConnector {
     private final String password;
     private Connection connection;
 
+    /**
+     * Constructor that init form properties file constant to database
+     *
+     * @throws DBConnectionException if properties file loading error
+     */
     public DBConnector() throws DBConnectionException {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(DB_PROPERTIES));
         } catch (IOException e) {
-            throw new DBConnectionException("Конфиг");
+            throw new DBConnectionException("properties file not loaded");
         }
         driver = properties.getProperty("driver");
         DB_URL = properties.getProperty("url");
@@ -32,18 +42,25 @@ public class DBConnector {
         password = properties.getProperty("password");
     }
 
+    /**
+     * configure connection and return it
+     *
+     * @throws DBConnectionException if somthing goes wrong with creating connection
+     * @return connection to database
+     */
     public Connection getConnection() throws DBConnectionException {
         if (connection != null) {
             return connection;
         }
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(DB_URL, user, password);
         } catch (ClassNotFoundException e) {
-            throw new DBConnectionException("Драйвер не загружен!");
+            throw new DBConnectionException("Error loading driver!");
+        }
+        try {
+            connection = DriverManager.getConnection(DB_URL, user, password);
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DBConnectionException("Соединение");
+            throw new DBConnectionException("Failed to establish connection");
         }
         if (connection == null) {
             throw new DBConnectionException("Driver type is not correct in URL " + DB_URL + ".");
@@ -52,6 +69,11 @@ public class DBConnector {
         return connection;
     }
 
+    /**
+     * closing connection to datbase
+     *
+     * @throws DBConnectionException if somthing goes wrong with closing connection
+     */
     public void close() throws DBConnectionException {
         if (connection != null) {
             try {
