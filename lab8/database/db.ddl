@@ -66,34 +66,30 @@ ALTER TABLE race_info
         REFERENCES race ( id );
 
 
-/*
 CREATE OR REPLACE TRIGGER horse_in_race_repeat
-AFTER INSERT
-   ON RACE_INFO FOR EACH ROW
+BEFORE INSERT
+  ON RACE_INFO FOR EACH ROW
 DECLARE
-   TOTAL_HORSE NUMBER;
+  TOTAL_HORSE NUMBER;
+  NEW_RACE_DATE DATE;
 BEGIN
 
-    SELECT COUNT(*) INTO TOTAL_HORSE
-    FROM RACE_INFO ri
-    JOIN race r
-    ON r.id = race_id
-    WHERE HORSE_ID = :new.horse_id and trunc(r.race_date) IN (
-          SELECT trunc(race_date)
-          FROM RACE_INFO
-          JOIN race
-          ON id = race_id
-          where horse_id = ri.horse_id and ri.race_id != race_id);
+  SELECT trunc(race_date) INTO NEW_RACE_DATE
+  from race
+  where id = :new.race_id;
+
+  SELECT COUNT(*) INTO TOTAL_HORSE
+  FROM race r
+  JOIN RACE_INFO ri
+    ON r.id = ri.race_id
+  WHERE ri.HORSE_ID = :new.horse_id and NEW_RACE_DATE  = trunc(r.race_date);
 
 
   IF TOTAL_HORSE > 0
-       DELETE FROM race_info
-       where horse_id = :new.horse_id and race_id = :new.race_id;
-       THEN RAISE_APPLICATION_ERROR(-20001,'Error: can not added horse');
+    THEN RAISE_APPLICATION_ERROR(-20001, 'Error: can not added horse. It has already race in that date');
   END IF;
 
 END horse_in_race_repeat;
-*/
 
 INSERT INTO CLIENT VALUES (1, 'TEST1');
 INSERT INTO CLIENT VALUES (2, 'TEST2');
