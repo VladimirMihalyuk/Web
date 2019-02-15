@@ -11,9 +11,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * client dao class
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class ClientDAO extends DAO {
 
-    private static final String INSERT_CLIENT_SQL = "insert into client (FIO) values(?)";
+    private static final String INSERT_CLIENT_SQL = "insert into client (id, FIO) values(?, ?)";
 
     private static final String DELETE_CLIENT_SQL = "delete from client where id = ?";
 
@@ -21,11 +26,20 @@ public class ClientDAO extends DAO {
 
     private static final String SELECT_CLIENT_BY_ID_SQL = "select * from client where id = ?";
 
+    /**
+     * constructor
+     * @throws DAOException if Can't create connection
+     */
     public ClientDAO() throws DAOException {
         super();
     }
 
-    public List<Client> selectClients() throws DAOException {
+    /**
+     * read clients
+     * @throws DAOException if Can't execute query or problems with connection
+     * @return list of clients
+     */
+    public List<Client> readClients() throws DAOException {
         List<Client> clients = new ArrayList<Client>();
         try {
             Connection connection = getDBConnector().getConnection();
@@ -38,16 +52,21 @@ public class ClientDAO extends DAO {
                 Client client = new Client(id, FIO);
                 clients.add(client);
             }
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
         return clients;
     }
 
-    public Client selectClientById(int id) throws DAOException {
+    /**
+     * read client by id
+     * @throws DAOException if Can't execute query or problems with connection
+     * @return client
+     */
+    public Client readClientById(int id) throws DAOException {
         Client client = null;
         try {
             Connection connection = getDBConnector().getConnection();
@@ -59,32 +78,41 @@ public class ClientDAO extends DAO {
                 String FIO = rs.getString(2);
                 client = new Client(id, FIO);
             }
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
         return client;
     }
 
+    /**
+     * insert client
+     * @throws DAOException if Can't execute query or problems with connection
+     */
     public void insertClient(Client client) throws DAOException {
         try {
             Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(INSERT_CLIENT_SQL);
-            stmt.setString(1, client.getFIO());
+            stmt.setInt(1, client.getId());
+            stmt.setString(2, client.getFIO());
             stmt.execute();
 
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert client exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
 
     }
 
+    /**
+     * deleter client
+     * @throws DAOException if Can't execute query or problems with connection
+     */
     public void deleteClient(Client client) throws DAOException {
         try {
             Connection connection = getDBConnector().getConnection();
@@ -93,11 +121,11 @@ public class ClientDAO extends DAO {
             stmt.setInt(1, client.getId());
             stmt.execute();
 
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
 
     }
