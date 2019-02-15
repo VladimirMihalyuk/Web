@@ -4,10 +4,23 @@ import by.isysoi.Model.DBConnector;
 import by.isysoi.Model.Exception.DAOException;
 import by.isysoi.Model.Exception.DBConnectionException;
 
-public class DAO {
+/**
+ * DAO abstract class
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
+abstract class DAO {
 
-    protected DBConnector dbc;
+    private DBConnector dbc;
 
+    public DBConnector getDBConnector() {
+        return dbc;
+    }
+
+    /**
+     * constructor
+     * @throws DAOException if Can't create connection
+     */
     public DAO() throws DAOException {
         try {
             dbc = new DBConnector();
@@ -16,7 +29,4 @@ public class DAO {
         }
     }
 
-    public DBConnector getDBConnector() {
-        return dbc;
-    }
 }
