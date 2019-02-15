@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             ClientDAO tmp = new ClientDAO();
-            tmp.insertClient(new Client("test1233"));
+            tmp.insertClient(new Client(4,"test1233"));
         } catch (DAOException e) {
             e.printStackTrace();
 
