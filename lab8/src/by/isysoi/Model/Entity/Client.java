@@ -1,14 +1,27 @@
 package by.isysoi.Model.Entity;
 
+/**
+ * class that represent client entity
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class Client {
 
+    /**
+     * id of client
+     */
     private int id;
+
+    /**
+     * FIO of client
+     */
     private String FIO;
 
-    public Client(String FIO) {
-        setFIO(FIO);
-    }
-
+    /**
+     * constructor to create client
+     * @param id id of client
+     * @param FIO FIO of client
+     */
     public Client(int id, String FIO) {
         setId(id);
         setFIO(FIO);
