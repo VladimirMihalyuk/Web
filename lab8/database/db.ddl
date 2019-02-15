@@ -4,9 +4,10 @@ DROP TABLE client;
 DROP TABLE horse;
 DROP TABLE race;
 
+
 CREATE TABLE bet (
     id          INTEGER NOT NULL,
-    amount      NUMBER NOT NULL,
+    amount      DECIMAL NOT NULL,
     client_id   INTEGER NOT NULL,
     horse_id    INTEGER NOT NULL,
     race_id     INTEGER NOT NULL
@@ -16,21 +17,21 @@ ALTER TABLE bet ADD CONSTRAINT bet_pk PRIMARY KEY ( id );
 
 CREATE TABLE client (
     id    INTEGER NOT NULL,
-    fio   VARCHAR2(50) NOT NULL
+    fio   VARCHAR(50) NOT NULL
 );
 
 ALTER TABLE client ADD CONSTRAINT client_pk PRIMARY KEY ( id );
 
 CREATE TABLE horse (
     id        INTEGER NOT NULL,
-    nikname   VARCHAR2(50) NOT NULL
+    nikname   VARCHAR(50) NOT NULL
 );
 
 ALTER TABLE horse ADD CONSTRAINT horse_pk PRIMARY KEY ( id );
 
 CREATE TABLE race (
     id          INTEGER NOT NULL,
-    distance    NUMBER NOT NULL,
+    distance    DOUBLE NOT NULL,
     race_date   DATE NOT NULL
 );
 
@@ -66,31 +67,6 @@ ALTER TABLE race_info
         REFERENCES race ( id );
 
 
-CREATE OR REPLACE TRIGGER horse_in_race_repeat
-BEFORE INSERT
-  ON RACE_INFO FOR EACH ROW
-DECLARE
-  TOTAL_HORSE NUMBER;
-  NEW_RACE_DATE DATE;
-BEGIN
-
-  SELECT trunc(race_date) INTO NEW_RACE_DATE
-  from race
-  where id = :new.race_id;
-
-  SELECT COUNT(*) INTO TOTAL_HORSE
-  FROM race r
-  JOIN RACE_INFO ri
-    ON r.id = ri.race_id
-  WHERE ri.HORSE_ID = :new.horse_id and NEW_RACE_DATE  = trunc(r.race_date);
-
-
-  IF TOTAL_HORSE > 0
-    THEN RAISE_APPLICATION_ERROR(-20001, 'Error: can not added horse. It has already race in that date');
-  END IF;
-
-END horse_in_race_repeat;
-
 INSERT INTO CLIENT VALUES (1, 'TEST1');
 INSERT INTO CLIENT VALUES (2, 'TEST2');
 INSERT INTO CLIENT VALUES (3, 'TEST3');
@@ -99,9 +75,9 @@ INSERT INTO HORSE VALUES (1, 'nik1');
 INSERT INTO HORSE VALUES (2, 'nik2');
 INSERT INTO HORSE VALUES (3, 'nik3');
 
-INSERT INTO RACE VALUES (1, 23.4, TO_DATE('2019/02/10', 'yyyy/mm/dd'));
-INSERT INTO RACE VALUES (2, 3.4, TO_DATE('2019/02/11', 'yyyy/mm/dd'));
-INSERT INTO RACE VALUES (3, 53.5, TO_DATE('2019/02/10', 'yyyy/mm/dd'));
+INSERT INTO RACE VALUES (1, 23.4, STR_TO_DATE('11-02-2019','%d-%m-%Y'));
+INSERT INTO RACE VALUES (2, 3.4, STR_TO_DATE('10-02-2019','%d-%m-%Y'));
+INSERT INTO RACE VALUES (3, 53.5, STR_TO_DATE('11-02-2019','%d-%m-%Y'));
 
 INSERT INTO race_info VALUES (1, 1, NULL);
 INSERT INTO race_info VALUES (1, 2, NULL);
@@ -116,19 +92,37 @@ INSERT INTO bet VALUES (5, 21.3, 1, 3, 1);
 INSERT INTO bet VALUES (6, 6.2, 2, 3, 2);
 
 
-/* 
+/*
 SELECT h.nikname, r.id FROM RACE r
 JOIN RACE_INFO r_i
-on r.id = r_i.RACE_ID
+  on r.id = r_i.RACE_ID
 JOIN HORSE h
-on h.id = r_i. HORSE_ID
+  on h.id = r_i. HORSE_ID
 
 SELECT * FROM RACE r
 JOIN RACE_INFO r_i
-on r.id = r_i.RACE_ID
+  on r.id = r_i.RACE_ID
 WHERE trunc(r_i."date") = trunc(SYSDATE)
 */
 
+CREATE DEFINER=`test`@`%` TRIGGER `horse_in_race_repeat` BEFORE INSERT ON `race_info` FOR EACH ROW BEGIN
+DECLARE HORSE_RACE_DATE DATE;
+DECLARE TOTAL_HORSE INTEGER;
+
+SET HORSE_RACE_DATE = (SELECT race_date
+from race
+where id = NEW.race_id);
+
+SET TOTAL_HORSE = (SELECT COUNT(*)
+FROM race r
+JOIN RACE_INFO ri
+  ON r.id = ri.race_id
+WHERE ri.HORSE_ID = NEW.horse_id and HORSE_RACE_DATE = r.race_date);
+
+IF (TOTAL_HORSE > 0) THEN
+SIGNAL SQLSTATE '23000' SET MESSAGE_TEXT = 'Error: can not added horse. It has already race in that date';
+END IF;
+END
 
 
 -- Oracle SQL Developer Data Modeler Summary Report: 
