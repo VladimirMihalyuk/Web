@@ -12,9 +12,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * bet dao class
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class BetDAO extends DAO {
 
-    private static final String INSERT_BET_SQL = "insert into bet (distance) values(?)";
+    private static final String INSERT_BET_SQL = "insert into bet (id, amount, client_id, horse_id, race_id) values(?, ?, ?, ?, ?)";
 
     private static final String DELETE_BET_SQL = "delete from bet where id = ?";
 
@@ -22,11 +27,20 @@ public class BetDAO extends DAO {
 
     private static final String SELECT_BET_BY_ID_SQL = "select * from bet where id = ?";
 
+    /**
+     * constructor
+     * @throws DAOException if Can't create connection
+     */
     public BetDAO() throws DAOException {
         super();
     }
 
-    public List<Bet> selectBet() throws DAOException {
+    /**
+     * read bets
+     * @throws DAOException if Can't execute query or problems with connection
+     * @return bets
+     */
+    public List<Bet> readBet() throws DAOException {
         List<Bet> bets = new ArrayList<Bet>();
         try {
             Connection connection = getDBConnector().getConnection();
@@ -39,16 +53,21 @@ public class BetDAO extends DAO {
                 Bet bet = new Bet(id, amount);
                 bets.add(bet);
             }
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
         return bets;
     }
 
-    public Bet selectBetById(int id) throws DAOException {
+    /**
+     * read bet by id
+     * @throws DAOException if Can't execute query or problems with connection
+     * @return bet
+     */
+    public Bet readBetById(int id) throws DAOException {
         Bet Bet = null;
         try {
             Connection connection = getDBConnector().getConnection();
@@ -60,15 +79,19 @@ public class BetDAO extends DAO {
                 BigDecimal amount = rs.getBigDecimal(2);
                 Bet = new Bet(id, amount);
             }
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
         return Bet;
     }
 
+    /**
+     * insety clients
+     * @throws DAOException if Can't execute query or problems with connection
+     */
     public void insertBet(Bet bet) throws DAOException {
         try {
             Connection connection = getDBConnector().getConnection();
@@ -77,15 +100,20 @@ public class BetDAO extends DAO {
             stmt.setBigDecimal(1, bet.getAmount());
             stmt.execute();
 
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert Bet exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
 
     }
 
+    /**
+     * delete clients
+     * @throws DAOException if Can't execute query or problems with connection
+     * @return list of clients
+     */
     public void deleteClient(Bet bet) throws DAOException {
         try {
             Connection connection = getDBConnector().getConnection();
@@ -94,11 +122,11 @@ public class BetDAO extends DAO {
             stmt.setInt(1, bet.getId());
             stmt.execute();
 
-            getDBConnector().close();
+            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
-            throw new DAOException("coonection", e);
+             throw new DAOException("Failed establish connection", e);
         }
 
     }
