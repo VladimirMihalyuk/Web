@@ -13,7 +13,7 @@ abstract class DAO {
 
     private DBConnector dbc;
 
-    public DBConnector getDBConnector() {
+    protected DBConnector getDBConnector() {
         return dbc;
     }
 
@@ -21,7 +21,7 @@ abstract class DAO {
      * constructor
      * @throws DAOException if Can't create connection
      */
-    public DAO() throws DAOException {
+    protected DAO() throws DAOException {
         try {
             dbc = new DBConnector();
         } catch (DBConnectionException e) {
