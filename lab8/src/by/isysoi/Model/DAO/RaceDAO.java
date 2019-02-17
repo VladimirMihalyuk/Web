@@ -33,6 +33,10 @@ public class RaceDAO extends DAO {
 
     private static final String SELECT_RACE_BY_DATE_SQL = "select * from race where race_date = ?";
 
+    private static final String ADD_HORSE_TO_RACE_SQL = "insert into race_info (horse_id, race_id) values(?, ?)";
+
+    private static final String UPDATE_HORSE_POSITION_IN_RACE_SQL = "update race_info set position = ? where race_id = ? and horse_id = ?";
+
     /**
      * constructor
      * @throws DAOException if Can't create connection
@@ -222,6 +226,49 @@ public class RaceDAO extends DAO {
             }
         }
         return races;
+    }
+
+    public void addHorseToRace(int horseId, int raceId) throws DAOException {
+        try {
+            Connection connection = getDBConnector().getConnection();
+
+            PreparedStatement stmt = connection.prepareStatement(ADD_HORSE_TO_RACE_SQL);
+            stmt.setInt(1, horseId);
+            stmt.setInt(2, raceId);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
+        }
+    }
+
+    public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
+        try {
+            Connection connection = getDBConnector().getConnection();
+
+            PreparedStatement stmt = connection.prepareStatement(UPDATE_HORSE_POSITION_IN_RACE_SQL);
+            stmt.setInt(1, position);
+            stmt.setInt(2, raceId);
+            stmt.setInt(3, horseId);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
+        }
     }
 
 }
