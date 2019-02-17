@@ -178,8 +178,8 @@ public class BetDAO extends DAO {
                 String fio = rs.getString(2);
                 Client client = new Client(clientId, fio);
 
-                int betId = rs.getInt(1);
-                BigDecimal amount = rs.getBigDecimal(2);
+                int betId = rs.getInt(3);
+                BigDecimal amount = rs.getBigDecimal(4);
                 Bet bet = new Bet(betId,amount);
 
                 clientsWithBet.add(new AbstractMap.SimpleImmutableEntry<>(client, bet));
