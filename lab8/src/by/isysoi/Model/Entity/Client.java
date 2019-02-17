@@ -43,4 +43,9 @@ public class Client {
         this.FIO = FIO;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Client:\n\tid - %d\n\tfio - %s", id, FIO);
+    }
+
 }

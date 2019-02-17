@@ -42,4 +42,11 @@ public class Horse {
     public void setNikname(String nikname) {
         this.nikname = nikname;
     }
+
+
+    @Override
+    public String toString() {
+        return String.format("Horse:\n\tid - %d\n\tnikname - %s", id, nikname);
+    }
+
 }

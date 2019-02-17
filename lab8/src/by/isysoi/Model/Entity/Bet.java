@@ -48,5 +48,8 @@ public class Bet {
         setAmount(amount);
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Bet:\n\tid - %d\n\tamount - %.2f", id, amount);
+    }
 }

@@ -61,4 +61,9 @@ public class Race {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format("Race:\n\tid - %d\n\tdistance - %.2f\n\tdate - %s", id, distance, raceDate.toString());
+    }
+
 }
