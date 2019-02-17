@@ -1,5 +1,6 @@
 package by.isysoi.Model.DAO;
 
+import by.isysoi.Model.Entity.Horse;
 import by.isysoi.Model.Entity.Race;
 import by.isysoi.Model.Exception.DAOException;
 import by.isysoi.Model.Exception.DBConnectionException;
@@ -27,6 +28,8 @@ public class RaceDAO extends DAO {
     private static final String SELECT_ALL_RACES_SQL = "select * from race";
 
     private static final String SELECT_RACE_BY_ID_SQL = "select * from race where id = ?";
+
+    private static final String SELECT_HORSES_IN_RACE_SQL = "select h.id, h.nikname from race r join race_info on race_id = r.id join horse h on horse_id = h.id where r.id = ?";
 
     /**
      * constructor
@@ -152,5 +155,36 @@ public class RaceDAO extends DAO {
         }
     }
 
+    /**
+     * read horses in race
+     * @throws DAOException if Can't execute query or problems with connection
+     */
+    public List<Horse> readHorcesInRace(int raceId) throws DAOException {
+        List<Horse> horses = new ArrayList<Horse>();
+        try {
+            Connection connection = getDBConnector().getConnection();
+
+            PreparedStatement stmt = connection.prepareStatement(SELECT_HORSES_IN_RACE_SQL);
+            stmt.setInt(1,raceId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int horseId = rs.getInt(1);
+                String horseNikname = rs.getString(2);
+                Horse horse = new Horse(horseId, horseNikname);
+                horses.add(horse);
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
+        }
+        return horses;
+    }
 
 }
