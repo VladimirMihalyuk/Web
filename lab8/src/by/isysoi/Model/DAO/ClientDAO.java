@@ -52,11 +52,16 @@ public class ClientDAO extends DAO {
                 Client client = new Client(id, FIO);
                 clients.add(client);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return clients;
     }
@@ -78,11 +83,16 @@ public class ClientDAO extends DAO {
                 String FIO = rs.getString(2);
                 client = new Client(id, FIO);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return client;
     }
@@ -99,14 +109,17 @@ public class ClientDAO extends DAO {
             stmt.setInt(1, client.getId());
             stmt.setString(2, client.getFIO());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert client exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
-
     }
 
     /**
@@ -120,14 +133,17 @@ public class ClientDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_CLIENT_SQL);
             stmt.setInt(1, client.getId());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
-
     }
 
 }

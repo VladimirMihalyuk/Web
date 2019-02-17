@@ -52,11 +52,16 @@ public class HorseDAO extends DAO {
                 Horse horse = new Horse(id, nikname);
                 clients.add(horse);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return clients;
     }
@@ -78,11 +83,16 @@ public class HorseDAO extends DAO {
                 String niknmame = rs.getString(2);
                 horse = new Horse(id, niknmame);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return horse;
     }
@@ -99,12 +109,16 @@ public class HorseDAO extends DAO {
             stmt.setInt(1, horse.getId());
             stmt.setString(2, horse.getNikname());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert horse exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
 
     }
@@ -120,12 +134,16 @@ public class HorseDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_HORSE_SQL);
             stmt.setInt(1, horse.getId());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
 
     }

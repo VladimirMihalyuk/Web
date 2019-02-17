@@ -55,11 +55,16 @@ public class RaceDAO extends DAO {
                 Race race = new Race(id, distance, raceDate);
                 races.add(race);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
             throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return races;
     }
@@ -82,11 +87,16 @@ public class RaceDAO extends DAO {
                 Date raceDate = rs.getDate(3);
                 Race = new Race(id, distance, raceDate);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
             throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return Race;
     }
@@ -105,14 +115,17 @@ public class RaceDAO extends DAO {
             java.sql.Date sqlDate = java.sql.Date.valueOf(Race.getRaceDate().toString());
             stmt.setDate(3, sqlDate);
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert Race exception ", e);
         } catch (DBConnectionException e) {
             throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
-
     }
 
     /**
@@ -126,14 +139,17 @@ public class RaceDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_RACE_SQL);
             stmt.setInt(1, Race.getId());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
-
     }
 
 

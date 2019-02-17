@@ -53,11 +53,16 @@ public class BetDAO extends DAO {
                 Bet bet = new Bet(id, amount);
                 bets.add(bet);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return bets;
     }
@@ -79,11 +84,16 @@ public class BetDAO extends DAO {
                 BigDecimal amount = rs.getBigDecimal(2);
                 Bet = new Bet(id, amount);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
         return Bet;
     }
@@ -99,12 +109,16 @@ public class BetDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(INSERT_BET_SQL);
             stmt.setBigDecimal(1, bet.getAmount());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Insert Bet exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
 
     }
@@ -121,12 +135,16 @@ public class BetDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_BET_SQL);
             stmt.setInt(1, bet.getId());
             stmt.execute();
-
-            connection.close();
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
              throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
         }
 
     }
