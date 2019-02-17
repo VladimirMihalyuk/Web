@@ -31,6 +31,8 @@ public class RaceDAO extends DAO {
 
     private static final String SELECT_HORSES_IN_RACE_SQL = "select h.id, h.nikname from race r join race_info on race_id = r.id join horse h on horse_id = h.id where r.id = ?";
 
+    private static final String SELECT_RACE_BY_DATE_SQL = "select * from race where race_date = ?";
+
     /**
      * constructor
      * @throws DAOException if Can't create connection
@@ -185,6 +187,41 @@ public class RaceDAO extends DAO {
             }
         }
         return horses;
+    }
+
+    /**
+     * read races by date
+     * @throws DAOException if Can't execute query or problems with connection
+     */
+    //TODO: has a bug with day, ask about it
+    public List<Race> readRacesByDate(Date date) throws DAOException {
+        List<Race> races = new ArrayList<Race>();
+        try {
+            Connection connection = getDBConnector().getConnection();
+
+            PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_DATE_SQL);
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            stmt.setDate(1, sqlDate);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                double distance = rs.getDouble(2);
+                Date raceDate = rs.getDate(3);
+                Race race = new Race(id, distance, raceDate);
+                races.add(race);
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Failed establish connection", e);
+        } finally {
+            try {
+                getDBConnector().close();
+            } catch (DBConnectionException e) {
+                throw new DAOException("Failed close connection", e);
+            }
+        }
+        return races;
     }
 
 }
