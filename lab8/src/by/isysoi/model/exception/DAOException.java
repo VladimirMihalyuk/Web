@@ -1,28 +1,28 @@
-package by.isysoi.Controller;
+package by.isysoi.model.exception;
 
 /**
- * controller exepton
+ * dao object exception
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-public class HorseRaceControllerException extends Exception {
+public class DAOException extends Exception {
 
     /**
      * Constructor with specified string
      *
      * @param message string
      */
-    public HorseRaceControllerException(String message) {
+    public DAOException(String message) {
         super(message);
     }
 
     /**
-     * Constructor with specified string and Exception
+     * Constructor with specified string and exception
      *
      * @param message string
      * @param e       error covered
      */
-    public HorseRaceControllerException(String message, Throwable e) {
+    public DAOException(String message, Throwable e) {
         super(message, e);
     }
 

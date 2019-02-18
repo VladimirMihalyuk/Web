@@ -1,28 +1,28 @@
-package by.isysoi.Model.Exception;
+package by.isysoi.model.exception;
 
 /**
- * dao object exception
+ * database connector exception
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-public class DAOException extends Exception {
+public class DBConnectionException extends Exception {
 
     /**
      * Constructor with specified string
      *
      * @param message string
      */
-    public DAOException(String message) {
+    public DBConnectionException(String message) {
         super(message);
     }
 
     /**
-     * Constructor with specified string and Exception
+     * Constructor with specified string and exception
      *
      * @param message string
      * @param e       error covered
      */
-    public DAOException(String message, Throwable e) {
+    public DBConnectionException(String message, Throwable e) {
         super(message, e);
     }
 
