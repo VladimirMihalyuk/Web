@@ -1,6 +1,8 @@
-package by.isysoi.Model;
+package by.isysoi.model;
 
-import by.isysoi.Model.Exception.DBConnectionException;
+import by.isysoi.model.exception.DBConnectionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class DBConnector {
     private final String password;
     private Connection connection;
 
+    private Logger logger = LogManager.getLogger("database_layer");
+
     /**
      * Constructor that init form properties file constant to database
      *
@@ -33,6 +37,7 @@ public class DBConnector {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(DB_PROPERTIES));
+            logger.info("Properties file loaded");
         } catch (IOException e) {
             throw new DBConnectionException("properties file not loaded");
         }
@@ -54,11 +59,13 @@ public class DBConnector {
         }
         try {
             Class.forName(driver);
+            logger.info("Driver loaded");
         } catch (ClassNotFoundException e) {
             throw new DBConnectionException("Error loading driver!");
         }
         try {
             connection = DriverManager.getConnection(DB_URL, user, password);
+            logger.info("Connection esteblished");
         } catch (SQLException e) {
             throw new DBConnectionException("Failed to establish connection");
         }
@@ -78,6 +85,7 @@ public class DBConnector {
         if (connection != null) {
             try {
                 connection.close();
+                logger.info("Connection closed");
             } catch (SQLException e) {
                 throw new DBConnectionException("Can't close connection", e);
             }
