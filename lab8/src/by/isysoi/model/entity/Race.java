@@ -1,4 +1,4 @@
-package by.isysoi.Model.Entity;
+package by.isysoi.model.entity;
 
 import java.util.Date;
 
