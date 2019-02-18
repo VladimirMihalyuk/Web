@@ -1,0 +1,40 @@
+2019-02-18 18:18:20 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:20 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:22 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:23 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:23 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:23 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:26 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:26 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:26 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:26 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:31 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:31 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:31 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:31 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:34 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:35 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:20:16 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:16 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:20:19 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:19 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:20:22 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:20:22 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:20:22 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:22 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:27 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:27 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:30 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:30 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:30 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:30 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:36 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:36 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:36 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:36 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:38 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:38 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:38 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:38 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:42 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:43 INFO  [database_layer.close]: Connection closed
