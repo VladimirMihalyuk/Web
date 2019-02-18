@@ -1,7 +1,4 @@
-package by.isysoi;
-
-import by.isysoi.Model.Entity.Bet;
-import by.isysoi.Model.Entity.Client;
+package by.isysoi.util;
 
 import java.util.Map;
 

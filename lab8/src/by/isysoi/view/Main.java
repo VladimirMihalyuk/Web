@@ -1,13 +1,17 @@
-package by.isysoi.View;
+package by.isysoi.view;
 
-import by.isysoi.Controller.HorseRaceController;
-import by.isysoi.Controller.HorseRaceControllerException;
-import by.isysoi.Utils;
+import by.isysoi.controller.HorseRaceController;
+import by.isysoi.model.exception.HorseRaceControllerException;
+import by.isysoi.util.Utils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Main {
+
+    private static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         var controller = new HorseRaceController();
@@ -22,7 +26,10 @@ public class Main {
             var winners = controller.getWinnersByRaceId(2);
             Utils.printListOfTuples(winners);
 
+            controller.updateResultForRace(1, 1, 3);
+
         } catch (HorseRaceControllerException | ParseException e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
 
