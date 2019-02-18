@@ -1,9 +1,9 @@
-package by.isysoi.Model.DAO;
+package by.isysoi.model.dao;
 
-import by.isysoi.Model.Entity.Bet;
-import by.isysoi.Model.Entity.Client;
-import by.isysoi.Model.Exception.DAOException;
-import by.isysoi.Model.Exception.DBConnectionException;
+import by.isysoi.model.entity.Bet;
+import by.isysoi.model.entity.Client;
+import by.isysoi.model.exception.DAOException;
+import by.isysoi.model.exception.DBConnectionException;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -31,7 +31,7 @@ public class BetDAO extends DAO {
 
     private static final String SELECT_BET_BY_ID_SQL = "select * from bet where id = ?";
 
-    private static final String SELECT_WINNERS_BY_RACE_SQL = "select c.id, c.fio, b.id, b.amount from client c join bet b on b.client_id = c.id join race r on b.race_id = r.id join race_info ri on ri.race_id = r.id where b.race_id = ? and ri.position = 1";
+    private static final String SELECT_WINNERS_BY_RACE_SQL = "select c.id, c.fio, b.id, b.amount, b.client_id, b.horse_id, b.race_id from client c join bet b on b.client_id = c.id join race r on b.race_id = r.id join race_info ri on ri.race_id = r.id where b.race_id = ? and ri.position = 1";
 
     /**
      * constructor
@@ -58,9 +58,13 @@ public class BetDAO extends DAO {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 BigDecimal amount = rs.getBigDecimal(2);
-                Bet bet = new Bet(id, amount);
+                int clientId = rs.getInt(3);
+                int raceId = rs.getInt(5);
+                int horseId = rs.getInt(4);
+                Bet bet = new Bet(id, amount, raceId, horseId, clientId);
                 bets.add(bet);
             }
+            logger.info("read bets");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
@@ -82,7 +86,7 @@ public class BetDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public Bet readBetById(int id) throws DAOException {
-        Bet Bet = null;
+        Bet bet = null;
         try {
             Connection connection = getDBConnector().getConnection();
 
@@ -91,8 +95,12 @@ public class BetDAO extends DAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 BigDecimal amount = rs.getBigDecimal(2);
-                Bet = new Bet(id, amount);
+                int clientId = rs.getInt(3);
+                int raceId = rs.getInt(5);
+                int horseId = rs.getInt(4);
+                bet = new Bet(id, amount, raceId, horseId, clientId);
             }
+            logger.info("read bet by id");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
@@ -104,7 +112,7 @@ public class BetDAO extends DAO {
                 throw new DAOException("Failed close connection", e);
             }
         }
-        return Bet;
+        return bet;
     }
 
     /**
@@ -117,8 +125,13 @@ public class BetDAO extends DAO {
             Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(INSERT_BET_SQL);
-            stmt.setBigDecimal(1, bet.getAmount());
+            stmt.setInt(1, bet.getId());
+            stmt.setBigDecimal(2, bet.getAmount());
+            stmt.setInt(3, bet.getClientId());
+            stmt.setInt(4, bet.getHorseId());
+            stmt.setInt(6, bet.getRaceId());
             stmt.execute();
+            logger.info("inserted bet");
         } catch (SQLException e) {
             throw new DAOException("Insert Bet exception ", e);
         } catch (DBConnectionException e) {
@@ -145,6 +158,7 @@ public class BetDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_BET_SQL);
             stmt.setInt(1, bet.getId());
             stmt.execute();
+            logger.info("deleted bet");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {
@@ -180,10 +194,14 @@ public class BetDAO extends DAO {
 
                 int betId = rs.getInt(3);
                 BigDecimal amount = rs.getBigDecimal(4);
-                Bet bet = new Bet(betId,amount);
+                int clientIdBet = rs.getInt(5);
+                int raceIdBet = rs.getInt(7);
+                int horseId = rs.getInt(6);
+                Bet bet = new Bet(betId, amount, raceIdBet, horseId, clientIdBet);
 
                 clientsWithBet.add(new AbstractMap.SimpleImmutableEntry<>(client, bet));
             }
+            logger.info("read winners");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
         } catch (DBConnectionException e) {

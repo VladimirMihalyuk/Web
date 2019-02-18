@@ -1,16 +1,16 @@
-package by.isysoi.Model.DAO;
+package by.isysoi.model.dao;
 
-import by.isysoi.Model.Entity.Horse;
-import by.isysoi.Model.Entity.Race;
-import by.isysoi.Model.Exception.DAOException;
-import by.isysoi.Model.Exception.DBConnectionException;
+import by.isysoi.model.entity.Horse;
+import by.isysoi.model.entity.Race;
+import by.isysoi.model.exception.DAOException;
+import by.isysoi.model.exception.DBConnectionException;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -64,6 +64,7 @@ public class RaceDAO extends DAO {
                 Race race = new Race(id, distance, raceDate);
                 races.add(race);
             }
+            logger.info("read races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
@@ -96,6 +97,7 @@ public class RaceDAO extends DAO {
                 Date raceDate = rs.getDate(3);
                 Race = new Race(id, distance, raceDate);
             }
+            logger.info("read race by id");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
@@ -124,6 +126,7 @@ public class RaceDAO extends DAO {
             java.sql.Date sqlDate = java.sql.Date.valueOf(Race.getRaceDate().toString());
             stmt.setDate(3, sqlDate);
             stmt.execute();
+            logger.info("inserted race");
         } catch (SQLException e) {
             throw new DAOException("Insert Race exception ", e);
         } catch (DBConnectionException e) {
@@ -148,10 +151,11 @@ public class RaceDAO extends DAO {
             PreparedStatement stmt = connection.prepareStatement(DELETE_RACE_SQL);
             stmt.setInt(1, Race.getId());
             stmt.execute();
+            logger.info("deleted races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
-             throw new DAOException("Failed establish connection", e);
+            throw new DAOException("Failed establish connection", e);
         } finally {
             try {
                 getDBConnector().close();
@@ -179,6 +183,7 @@ public class RaceDAO extends DAO {
                 Horse horse = new Horse(horseId, horseNikname);
                 horses.add(horse);
             }
+            logger.info("read horces in race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
@@ -197,14 +202,16 @@ public class RaceDAO extends DAO {
      * read races by date
      * @throws DAOException if Can't execute query or problems with connection
      */
-    //TODO: has a bug with day, ask about it
     public List<Race> readRacesByDate(Date date) throws DAOException {
         List<Race> races = new ArrayList<Race>();
         try {
             Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_DATE_SQL);
-            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR_OF_DAY, 3);
+            java.sql.Date sqlDate = new java.sql.Date(cal.getTime().getTime());
             stmt.setDate(1, sqlDate);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -214,6 +221,7 @@ public class RaceDAO extends DAO {
                 Race race = new Race(id, distance, raceDate);
                 races.add(race);
             }
+            logger.info("read races by date");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
@@ -236,6 +244,7 @@ public class RaceDAO extends DAO {
             stmt.setInt(1, horseId);
             stmt.setInt(2, raceId);
             stmt.execute();
+            logger.info("add horse to race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
@@ -258,6 +267,7 @@ public class RaceDAO extends DAO {
             stmt.setInt(2, raceId);
             stmt.setInt(3, horseId);
             stmt.execute();
+            logger.info("set horse in race result races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
         } catch (DBConnectionException e) {
