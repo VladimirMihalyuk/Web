@@ -11,5 +11,5 @@
 * [lab5_3](lab5_3) - [Создание сетевого приложения (фреймворк Netty)](https://drive.google.com/open?id=1I8Dcw4vhAG4tVOSUvk63_MKRTg06WEGH)
 * [lab6](lab6(lab2)) - [Разработка клиент-серверного приложения с использованием технологии RMI](https://drive.google.com/open?id=12K0CxLDegnaZE_sZKA4KwthCmPKWRKEj)
 * [lab7](lab7(lab2)) - [Работа с XML](https://drive.google.com/open?id=1g0x0G7m2uGynlSi3PAH8MIJF0bSw4_HX)
-
+* [lab8](lab8)) - [Работа с базами данных, использование API JDBC](https://drive.google.com/open?id=1xRbuk6qESC8IuFeUE0z3LqltDTeEkvpT)
 
