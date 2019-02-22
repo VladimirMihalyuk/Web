@@ -38,7 +38,7 @@ Caused by: by.isysoi.model.exception.DAOException: Failed establish connection
 	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:33) ~[lab8/:?]
 	... 1 more
 Caused by: by.isysoi.model.exception.DBConnectionException: Error loading driver!
-	at by.isysoi.model.DBConnector.getConnection(DBConnector.java:64) ~[lab8/:?]
+	at by.isysoi.model.DBConnectorPool.getConnection(DBConnector.java:64) ~[lab8/:?]
 	at by.isysoi.model.dao.RaceDAO.readHorcesInRace(RaceDAO.java:175) ~[lab8/:?]
 	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:33) ~[lab8/:?]
 	... 1 more
@@ -106,3 +106,19 @@ Caused by: by.isysoi.model.exception.DBConnectionException: Error loading driver
 2019-02-22 21:12:27 INFO  [dao_layer.getDBConnector]: requested to db connector
 2019-02-22 21:12:27 INFO  [dao_layer.setHoresPositionInRace]: set horse in race result races
 2019-02-22 21:12:27 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.readHorcesInRace]: read horces in race
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.readRacesByDate]: read races by date
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.readWinnersByRace]: read winners
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-22 22:25:12 INFO  [dao_layer.setHoresPositionInRace]: set horse in race result races
+2019-02-22 22:25:12 INFO  [dao_layer.getDBConnector]: requested to db connector

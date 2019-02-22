@@ -3,7 +3,6 @@ package by.isysoi.model.dao;
 import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.exception.DAOException;
-import by.isysoi.model.exception.DBConnectionException;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -50,8 +49,8 @@ public class BetDAO extends DAO {
      */
     public List<Bet> readBet() throws DAOException {
         List<Bet> bets = new ArrayList<Bet>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_BETS_SQL);
             ResultSet rs = stmt.executeQuery();
@@ -67,14 +66,8 @@ public class BetDAO extends DAO {
             logger.info("read bets");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return bets;
     }
@@ -87,8 +80,8 @@ public class BetDAO extends DAO {
      */
     public Bet readBetById(int id) throws DAOException {
         Bet bet = null;
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_BET_BY_ID_SQL);
             stmt.setInt(1, id);
@@ -103,14 +96,8 @@ public class BetDAO extends DAO {
             logger.info("read bet by id");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return bet;
     }
@@ -121,8 +108,8 @@ public class BetDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertBet(Bet bet) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(INSERT_BET_SQL);
             stmt.setInt(1, bet.getId());
@@ -134,14 +121,8 @@ public class BetDAO extends DAO {
             logger.info("inserted bet");
         } catch (SQLException e) {
             throw new DAOException("Insert Bet exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
 
     }
@@ -152,8 +133,8 @@ public class BetDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteClient(Bet bet) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(DELETE_BET_SQL);
             stmt.setInt(1, bet.getId());
@@ -161,14 +142,8 @@ public class BetDAO extends DAO {
             logger.info("deleted bet");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
 
     }
@@ -179,13 +154,13 @@ public class BetDAO extends DAO {
      * @return list of clients
      * @throws DAOException if Can't execute query or problems with connection
      */
-    public List<Map.Entry<Client,Bet>> readWinnersByRace(int raceId) throws DAOException {
-        List<Map.Entry<Client,Bet>> clientsWithBet = new ArrayList<Map.Entry<Client,Bet>>();
+    public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) throws DAOException {
+        List<Map.Entry<Client, Bet>> clientsWithBet = new ArrayList<Map.Entry<Client, Bet>>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_WINNERS_BY_RACE_SQL);
-            stmt.setInt(1,raceId);
+            stmt.setInt(1, raceId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int clientId = rs.getInt(1);
@@ -204,14 +179,8 @@ public class BetDAO extends DAO {
             logger.info("read winners");
         } catch (SQLException e) {
             throw new DAOException("Delete Bet exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return clientsWithBet;
     }

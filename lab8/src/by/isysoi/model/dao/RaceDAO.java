@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * race dao class
+ *
  * @author Ilya Sysoi
  * @version 1.0.0
  */
@@ -39,6 +40,7 @@ public class RaceDAO extends DAO {
 
     /**
      * constructor
+     *
      * @throws DAOException if Can't create connection
      */
     public RaceDAO() throws DAOException {
@@ -47,13 +49,14 @@ public class RaceDAO extends DAO {
 
     /**
      * read races
-     * @throws DAOException if Can't execute query or problems with connection
+     *
      * @return list of races
+     * @throws DAOException if Can't execute query or problems with connection
      */
     public List<Race> readRace() throws DAOException {
         List<Race> races = new ArrayList<Race>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_RACES_SQL);
             ResultSet rs = stmt.executeQuery();
@@ -67,27 +70,22 @@ public class RaceDAO extends DAO {
             logger.info("read races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return races;
     }
 
     /**
      * read race by id
-     * @throws DAOException if Can't execute query or problems with connection
+     *
      * @return race
+     * @throws DAOException if Can't execute query or problems with connection
      */
     public Race selectRaceById(int id) throws DAOException {
         Race Race = null;
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_ID_SQL);
             stmt.setInt(1, id);
@@ -100,25 +98,20 @@ public class RaceDAO extends DAO {
             logger.info("read race by id");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return Race;
     }
 
     /**
      * insert race
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertRace(Race Race) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(INSERT_RACE_SQL);
             stmt.setInt(1, Race.getId());
@@ -129,24 +122,19 @@ public class RaceDAO extends DAO {
             logger.info("inserted race");
         } catch (SQLException e) {
             throw new DAOException("Insert Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
     }
 
     /**
      * delete race
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteRace(Race Race) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(DELETE_RACE_SQL);
             stmt.setInt(1, Race.getId());
@@ -154,28 +142,23 @@ public class RaceDAO extends DAO {
             logger.info("deleted races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
     }
 
     /**
      * read horses in race
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         List<Horse> horses = new ArrayList<Horse>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_HORSES_IN_RACE_SQL);
-            stmt.setInt(1,raceId);
+            stmt.setInt(1, raceId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int horseId = rs.getInt(1);
@@ -186,26 +169,21 @@ public class RaceDAO extends DAO {
             logger.info("read horces in race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return horses;
     }
 
     /**
      * read races by date
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public List<Race> readRacesByDate(Date date) throws DAOException {
         List<Race> races = new ArrayList<Race>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_DATE_SQL);
             Calendar cal = Calendar.getInstance();
@@ -224,21 +202,15 @@ public class RaceDAO extends DAO {
             logger.info("read races by date");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return races;
     }
 
     public void addHorseToRace(int horseId, int raceId) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(ADD_HORSE_TO_RACE_SQL);
             stmt.setInt(1, horseId);
@@ -247,20 +219,14 @@ public class RaceDAO extends DAO {
             logger.info("add horse to race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
     }
 
     public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(UPDATE_HORSE_POSITION_IN_RACE_SQL);
             stmt.setInt(1, position);
@@ -270,14 +236,8 @@ public class RaceDAO extends DAO {
             logger.info("set horse in race result races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
     }
 

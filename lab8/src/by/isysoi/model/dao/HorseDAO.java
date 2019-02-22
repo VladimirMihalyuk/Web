@@ -2,7 +2,6 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.exception.DAOException;
-import by.isysoi.model.exception.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +12,7 @@ import java.util.List;
 
 /**
  * horse dao class
+ *
  * @author Ilya Sysoi
  * @version 1.0.0
  */
@@ -28,6 +28,7 @@ public class HorseDAO extends DAO {
 
     /**
      * constructor
+     *
      * @throws DAOException if Can't create connection
      */
     public HorseDAO() throws DAOException {
@@ -36,13 +37,14 @@ public class HorseDAO extends DAO {
 
     /**
      * read horses
-     * @throws DAOException if Can't execute query or problems with connection
+     *
      * @return list of horses
+     * @throws DAOException if Can't execute query or problems with connection
      */
     public List<Horse> readHorse() throws DAOException {
         List<Horse> clients = new ArrayList<Horse>();
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_HORSE_SQL);
             ResultSet rs = stmt.executeQuery();
@@ -55,27 +57,22 @@ public class HorseDAO extends DAO {
             logger.info("read horsed");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return clients;
     }
 
     /**
      * read horse by id
-     * @throws DAOException if Can't execute query or problems with connection
+     *
      * @return horse
+     * @throws DAOException if Can't execute query or problems with connection
      */
     public Horse readHorseById(int id) throws DAOException {
         Horse horse = null;
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(SELECT_HORSE_BY_ID_SQL);
             stmt.setInt(1, id);
@@ -87,25 +84,20 @@ public class HorseDAO extends DAO {
             logger.info("read horse by id");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
         return horse;
     }
 
     /**
      * insert horse
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertHorse(Horse horse) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(INSERT_HORSE_SQL);
             stmt.setInt(1, horse.getId());
@@ -114,25 +106,20 @@ public class HorseDAO extends DAO {
             logger.info("inserted horse");
         } catch (SQLException e) {
             throw new DAOException("Insert horse exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
 
     }
 
     /**
      * delete horse
+     *
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteHorse(Horse horse) throws DAOException {
+        Connection connection = getDBConnector().getConnection();
         try {
-            Connection connection = getDBConnector().getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(DELETE_HORSE_SQL);
             stmt.setInt(1, horse.getId());
@@ -140,14 +127,8 @@ public class HorseDAO extends DAO {
             logger.info("deleted horse");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
-        } catch (DBConnectionException e) {
-            throw new DAOException("Failed establish connection", e);
         } finally {
-            try {
-                getDBConnector().close();
-            } catch (DBConnectionException e) {
-                throw new DAOException("Failed close connection", e);
-            }
+            getDBConnector().releaseConnection(connection);
         }
 
     }
