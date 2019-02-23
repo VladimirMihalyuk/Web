@@ -14,7 +14,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 /**
- * database connector class
+ * database connector singleton class
  *
  * @author Ilya Sysoi
  * @version 1.0.0
@@ -22,18 +22,20 @@ import java.util.concurrent.BlockingQueue;
 public class DBConnectorPool {
 
     private static final String DB_PROPERTIES = "database/database.properties";
-
-    private static BlockingQueue<Connection> connections;
-
+    private static DBConnectorPool instance;
     private static Logger logger = LogManager.getLogger("database_layer");
+    private final int initConnectionsCount = 5;
+    private BlockingQueue<Connection> connections;
 
     /**
      * init form properties file database pool of connections
      *
-     * @param initConnectionsCount initial value of connection to database
      * @throws DBConnectionException if properties file loading error
      */
-    public DBConnectorPool(int initConnectionsCount) throws DBConnectionException {
+    private DBConnectorPool() throws DBConnectionException {
+        if (instance != null) {
+            return;
+        }
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(DB_PROPERTIES));
@@ -71,6 +73,18 @@ public class DBConnectorPool {
     }
 
     /**
+     * return instance DBConnectorPool or create it
+     *
+     * @return instance of Singleton
+     */
+    public static synchronized DBConnectorPool getInstance() throws DBConnectionException {
+        if (instance == null) {
+            instance = new DBConnectorPool();
+        }
+        return instance;
+    }
+
+    /**
      * deinit database pool of connections
      *
      * @throws DBConnectionException if properties file loading error
@@ -90,7 +104,7 @@ public class DBConnectorPool {
 
 
     /**
-     * Peek connection from pool. The connection must be returned!!!
+     * take connection from pool
      *
      * @return connection
      */
@@ -104,12 +118,12 @@ public class DBConnectorPool {
     }
 
     /**
-     * Return the connection to pool
+     * return the connection to pool
      *
-     * @param conn to return
+     * @param connection to add back to pool
      */
-    public synchronized void releaseConnection(Connection conn) {
-        connections.add(conn);
+    public synchronized void releaseConnection(Connection connection) {
+        connections.add(connection);
     }
 
 }

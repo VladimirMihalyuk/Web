@@ -28,7 +28,7 @@ abstract class DAO {
      */
     protected DAO() throws DAOException {
         try {
-            dbc = new DBConnectorPool(5);
+            dbc = DBConnectorPool.getInstance();
             logger.info("Connection to database from dao inited");
         } catch (DBConnectionException e) {
             throw new DAOException("Can't create DBConnectorPool ", e);

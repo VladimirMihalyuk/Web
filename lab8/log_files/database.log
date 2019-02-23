@@ -135,3 +135,11 @@
 2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 3 esteblished
 2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 4 esteblished
 2019-02-22 22:25:12 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Driver loaded
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: DB pool of connections inited
