@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f210bd5-6d23-4ace-9402-c406dfc02b02" name="Default Changelist" comment="lab8: placed libs to project, updated config">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log_files/controller.log" beforeDir="false" afterPath="$PROJECT_DIR$/log_files/controller.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log_files/database.log" beforeDir="false" afterPath="$PROJECT_DIR$/log_files/database.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log_files/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/log_files/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by/isysoi/model/dao/BetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/model/dao/BetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by/isysoi/model/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/model/dao/ClientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by/isysoi/model/dao/HorseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/model/dao/HorseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by/isysoi/model/dao/RaceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/model/dao/RaceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/database.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="6" />
+            <state relative-caret-position="119">
+              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -112,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/model/DBConnectorPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
+            <state relative-caret-position="239">
+              <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -265,7 +258,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551011856165" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551011856759" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.15.jar!/" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -862,13 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/model/DBConnectorPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/model/dao/HorseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -933,10 +919,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/model/DBConnectorPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/database.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="6" />
+        <state relative-caret-position="119">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
