@@ -28,6 +28,8 @@ public class Main {
 
             controller.updateResultForRace(1, 1, 3);
 
+            controller.addHorceToRace(3, 1);
+
         } catch (HorseRaceControllerException | ParseException e) {
             logger.error(e.getMessage(), e);
             e.printStackTrace();

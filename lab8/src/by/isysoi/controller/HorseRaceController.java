@@ -72,4 +72,14 @@ public class HorseRaceController {
         }
     }
 
+    public void addHorceToRace(int raceId, int horseId) throws HorseRaceControllerException {
+        try {
+            RaceDAO tmp = new RaceDAO();
+            tmp.addHorseToRace(horseId, raceId);
+            logger.info("added horse tp race");
+        } catch (DAOException e) {
+            throw new HorseRaceControllerException("Failed add horse", e);
+        }
+    }
+
 }
