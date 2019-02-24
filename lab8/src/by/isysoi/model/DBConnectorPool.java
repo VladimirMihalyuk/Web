@@ -107,13 +107,14 @@ public class DBConnectorPool {
      * take connection from pool
      *
      * @return connection
+     * @throws DBConnectionException if something goes wrong
      */
-    public synchronized Connection getConnection() {
+    public synchronized Connection getConnection() throws DBConnectionException {
         try {
+            logger.info("got connection from the pool");
             return connections.take();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-            return null;
+            throw new DBConnectionException("Failed to get connection from pool", e);
         }
     }
 
@@ -124,6 +125,7 @@ public class DBConnectorPool {
      */
     public synchronized void releaseConnection(Connection connection) {
         connections.add(connection);
+        logger.info("returned connection to the pool");
     }
 
 }
