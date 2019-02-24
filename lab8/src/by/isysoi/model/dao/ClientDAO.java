@@ -2,6 +2,7 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.exception.DAOException;
+import by.isysoi.model.exception.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,8 +44,9 @@ public class ClientDAO extends DAO {
      */
     public List<Client> readClients() throws DAOException {
         List<Client> clients = new ArrayList<Client>();
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_CLIENTS_SQL);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -56,8 +58,11 @@ public class ClientDAO extends DAO {
             logger.info("read clients");
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return clients;
     }
@@ -70,9 +75,9 @@ public class ClientDAO extends DAO {
      */
     public Client readClientById(int id) throws DAOException {
         Client client = null;
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_CLIENT_BY_ID_SQL);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -83,8 +88,11 @@ public class ClientDAO extends DAO {
             logger.info("read client by id");
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return client;
     }
@@ -95,9 +103,9 @@ public class ClientDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertClient(Client client) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(INSERT_CLIENT_SQL);
             stmt.setInt(1, client.getId());
             stmt.setString(2, client.getFIO());
@@ -105,8 +113,11 @@ public class ClientDAO extends DAO {
             logger.info("inserted client");
         } catch (SQLException e) {
             throw new DAOException("Insert client exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 
@@ -116,17 +127,20 @@ public class ClientDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteClient(Client client) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(DELETE_CLIENT_SQL);
             stmt.setInt(1, client.getId());
             stmt.execute();
             logger.info("deleted client");
         } catch (SQLException e) {
             throw new DAOException("Delete client exception ", e);
+        }  catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 

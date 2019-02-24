@@ -31,3 +31,7 @@
 2019-02-23 19:42:51 INFO  [controller_layer.getRacesByDate]: read races by date
 2019-02-23 19:42:51 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
 2019-02-23 19:42:51 INFO  [controller_layer.updateResultForRace]: update race result
+2019-02-24 15:35:37 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-02-24 15:35:37 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-02-24 15:35:37 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-02-24 15:35:37 INFO  [controller_layer.updateResultForRace]: update race result

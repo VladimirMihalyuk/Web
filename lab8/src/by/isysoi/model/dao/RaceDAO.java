@@ -55,9 +55,9 @@ public class RaceDAO extends DAO {
      */
     public List<Race> readRace() throws DAOException {
         List<Race> races = new ArrayList<Race>();
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_RACES_SQL);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -70,8 +70,11 @@ public class RaceDAO extends DAO {
             logger.info("read races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return races;
     }
@@ -84,9 +87,9 @@ public class RaceDAO extends DAO {
      */
     public Race selectRaceById(int id) throws DAOException {
         Race Race = null;
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_ID_SQL);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -98,8 +101,11 @@ public class RaceDAO extends DAO {
             logger.info("read race by id");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return Race;
     }
@@ -110,9 +116,9 @@ public class RaceDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertRace(Race Race) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(INSERT_RACE_SQL);
             stmt.setInt(1, Race.getId());
             stmt.setDouble(2, Race.getDistance());
@@ -122,8 +128,11 @@ public class RaceDAO extends DAO {
             logger.info("inserted race");
         } catch (SQLException e) {
             throw new DAOException("Insert Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 
@@ -133,17 +142,20 @@ public class RaceDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteRace(Race Race) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(DELETE_RACE_SQL);
             stmt.setInt(1, Race.getId());
             stmt.execute();
             logger.info("deleted races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 
@@ -154,9 +166,9 @@ public class RaceDAO extends DAO {
      */
     public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         List<Horse> horses = new ArrayList<Horse>();
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_HORSES_IN_RACE_SQL);
             stmt.setInt(1, raceId);
             ResultSet rs = stmt.executeQuery();
@@ -169,8 +181,11 @@ public class RaceDAO extends DAO {
             logger.info("read horces in race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return horses;
     }
@@ -182,9 +197,9 @@ public class RaceDAO extends DAO {
      */
     public List<Race> readRacesByDate(Date date) throws DAOException {
         List<Race> races = new ArrayList<Race>();
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_RACE_BY_DATE_SQL);
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
@@ -202,16 +217,19 @@ public class RaceDAO extends DAO {
             logger.info("read races by date");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return races;
     }
 
     public void addHorseToRace(int horseId, int raceId) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(ADD_HORSE_TO_RACE_SQL);
             stmt.setInt(1, horseId);
             stmt.setInt(2, raceId);
@@ -219,15 +237,18 @@ public class RaceDAO extends DAO {
             logger.info("add horse to race");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 
     public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+         Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(UPDATE_HORSE_POSITION_IN_RACE_SQL);
             stmt.setInt(1, position);
             stmt.setInt(2, raceId);
@@ -236,8 +257,11 @@ public class RaceDAO extends DAO {
             logger.info("set horse in race result races");
         } catch (SQLException e) {
             throw new DAOException("Delete Race exception ", e);
+        } catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
     }
 

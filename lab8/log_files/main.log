@@ -138,3 +138,51 @@ Caused by: by.isysoi.model.exception.DBConnectionException: Error loading driver
 2019-02-23 19:42:51 INFO  [dao_layer.getDBConnector]: requested to db connector
 2019-02-23 19:42:51 INFO  [dao_layer.setHoresPositionInRace]: set horse in race result races
 2019-02-23 19:42:51 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:06 ERROR [by.isysoi.view.Main.main]: Failed to get horses by race id
+by.isysoi.model.exception.HorseRaceControllerException: Failed to get horses by race id
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:36) ~[lab8/:?]
+	at by.isysoi.view.Main.main(Main.java:19) [lab8/:?]
+Caused by: by.isysoi.model.exception.DAOException: Can't create DBConnectorPool 
+	at by.isysoi.model.dao.DAO.<init>(DAO.java:34) ~[lab8/:?]
+	at by.isysoi.model.dao.RaceDAO.<init>(RaceDAO.java:47) ~[lab8/:?]
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:32) ~[lab8/:?]
+	... 1 more
+Caused by: by.isysoi.model.exception.DBConnectionException: Failed to establish connection
+	at by.isysoi.model.DBConnectorPool.<init>(DBConnectorPool.java:70) ~[lab8/:?]
+	at by.isysoi.model.DBConnectorPool.getInstance(DBConnectorPool.java:82) ~[lab8/:?]
+	at by.isysoi.model.dao.DAO.<init>(DAO.java:31) ~[lab8/:?]
+	at by.isysoi.model.dao.RaceDAO.<init>(RaceDAO.java:47) ~[lab8/:?]
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:32) ~[lab8/:?]
+	... 1 more
+2019-02-24 15:35:37 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.readHorcesInRace]: read horces in race
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.readRacesByDate]: read races by date
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.readWinnersByRace]: read winners
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.<init>]: Connection to database from dao inited
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:35:37 INFO  [dao_layer.setHoresPositionInRace]: set horse in race result races
+2019-02-24 15:35:37 INFO  [dao_layer.getDBConnector]: requested to db connector
+2019-02-24 15:36:12 ERROR [by.isysoi.view.Main.main]: Failed to get horses by race id
+by.isysoi.model.exception.HorseRaceControllerException: Failed to get horses by race id
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:36) ~[lab8/:?]
+	at by.isysoi.view.Main.main(Main.java:19) [lab8/:?]
+Caused by: by.isysoi.model.exception.DAOException: Can't create DBConnectorPool 
+	at by.isysoi.model.dao.DAO.<init>(DAO.java:34) ~[lab8/:?]
+	at by.isysoi.model.dao.RaceDAO.<init>(RaceDAO.java:47) ~[lab8/:?]
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:32) ~[lab8/:?]
+	... 1 more
+Caused by: by.isysoi.model.exception.DBConnectionException: Failed to establish connection
+	at by.isysoi.model.DBConnectorPool.<init>(DBConnectorPool.java:70) ~[lab8/:?]
+	at by.isysoi.model.DBConnectorPool.getInstance(DBConnectorPool.java:82) ~[lab8/:?]
+	at by.isysoi.model.dao.DAO.<init>(DAO.java:31) ~[lab8/:?]
+	at by.isysoi.model.dao.RaceDAO.<init>(RaceDAO.java:47) ~[lab8/:?]
+	at by.isysoi.controller.HorseRaceController.getHorsesByRaceId(HorseRaceController.java:32) ~[lab8/:?]
+	... 1 more

@@ -2,6 +2,7 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.exception.DAOException;
+import by.isysoi.model.exception.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,9 +44,9 @@ public class HorseDAO extends DAO {
      */
     public List<Horse> readHorse() throws DAOException {
         List<Horse> clients = new ArrayList<Horse>();
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_ALL_HORSE_SQL);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -57,8 +58,11 @@ public class HorseDAO extends DAO {
             logger.info("read horsed");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
+        }  catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return clients;
     }
@@ -71,9 +75,9 @@ public class HorseDAO extends DAO {
      */
     public Horse readHorseById(int id) throws DAOException {
         Horse horse = null;
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(SELECT_HORSE_BY_ID_SQL);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -84,8 +88,11 @@ public class HorseDAO extends DAO {
             logger.info("read horse by id");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
+        }  catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
         return horse;
     }
@@ -96,9 +103,9 @@ public class HorseDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void insertHorse(Horse horse) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(INSERT_HORSE_SQL);
             stmt.setInt(1, horse.getId());
             stmt.setString(2, horse.getNikname());
@@ -106,8 +113,11 @@ public class HorseDAO extends DAO {
             logger.info("inserted horse");
         } catch (SQLException e) {
             throw new DAOException("Insert horse exception ", e);
+        }  catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
 
     }
@@ -118,17 +128,20 @@ public class HorseDAO extends DAO {
      * @throws DAOException if Can't execute query or problems with connection
      */
     public void deleteHorse(Horse horse) throws DAOException {
-        Connection connection = getDBConnector().getConnection();
+        Connection connection = null;
         try {
-
+            connection = getDBConnector().getConnection();
             PreparedStatement stmt = connection.prepareStatement(DELETE_HORSE_SQL);
             stmt.setInt(1, horse.getId());
             stmt.execute();
             logger.info("deleted horse");
         } catch (SQLException e) {
             throw new DAOException("Delete horse exception ", e);
+        }  catch (DBConnectionException e) {
+            throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            getDBConnector().releaseConnection(connection);
+            if (connection != null)
+                getDBConnector().releaseConnection(connection);
         }
 
     }
