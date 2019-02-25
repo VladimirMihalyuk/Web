@@ -25,6 +25,10 @@ public class DBConnectorPool {
     private static DBConnectorPool instance;
     private static Logger logger = LogManager.getLogger("database_layer");
     private final int initConnectionsCount = 5;
+    private static String driver;
+    private static String DB_URL;
+    private static String user;
+    private static String password;
     private BlockingQueue<Connection> connections;
 
     /**
@@ -43,10 +47,10 @@ public class DBConnectorPool {
         } catch (IOException e) {
             throw new DBConnectionException("properties file not loaded");
         }
-        String driver = properties.getProperty("driver");
-        String DB_URL = properties.getProperty("url");
-        String user = properties.getProperty("user");
-        String password = properties.getProperty("password");
+        driver = properties.getProperty("driver");
+        DB_URL = properties.getProperty("url");
+        user = properties.getProperty("user");
+        password = properties.getProperty("password");
 
 
         try {
@@ -106,8 +110,20 @@ public class DBConnectorPool {
      * @param connection to add back to pool
      */
     public synchronized void releaseConnection(Connection connection) {
-        connections.add(connection);
-        logger.info("returned connection to the pool");
+        try {
+            if (connection.isClosed()) {
+                logger.info("connection was closed");
+                logger.info("created new connection");
+                Connection newConnection = DriverManager.getConnection(DB_URL, user, password);
+                connections.add(newConnection);
+            } else {
+                connections.add(connection);
+                logger.info("returned connection to the pool");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
