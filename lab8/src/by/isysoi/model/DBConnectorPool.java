@@ -88,6 +88,24 @@ public class DBConnectorPool {
         return instance;
     }
 
+    /**
+     * deinit database pool of connections
+     *
+     * @throws DBConnectionException if properties file loading error
+     */
+    public synchronized void deinitDBConnector() throws DBConnectionException {
+        try {
+            while (connections.size() > 0) {
+                connections.take().close();
+            }
+        } catch (SQLException e) {
+            throw new DBConnectionException("Could not close database connection ", e);
+        } catch (InterruptedException e) {
+            throw new DBConnectionException("Problem with concurrent queue", e);
+        }
+        logger.info("DB pool of connections deinited");
+    }
+
 
     /**
      * take connection from pool
