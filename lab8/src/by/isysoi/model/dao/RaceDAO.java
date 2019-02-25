@@ -73,8 +73,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
         return races;
     }
@@ -104,8 +109,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
         return Race;
     }
@@ -131,8 +141,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
     }
 
@@ -154,8 +169,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
     }
 
@@ -184,8 +204,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
         return horses;
     }
@@ -220,8 +245,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
         return races;
     }
@@ -240,8 +270,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
     }
 
@@ -260,8 +295,13 @@ public class RaceDAO extends DAO {
         } catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
     }
 

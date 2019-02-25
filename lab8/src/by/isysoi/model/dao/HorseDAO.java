@@ -61,8 +61,13 @@ public class HorseDAO extends DAO {
         }  catch (DBConnectionException e) {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
-            if (connection != null)
-                getDBConnector().releaseConnection(connection);
+            if (connection != null) {
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
+            }
         }
         return clients;
     }
@@ -92,7 +97,11 @@ public class HorseDAO extends DAO {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
             if (connection != null)
-                getDBConnector().releaseConnection(connection);
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
         }
         return horse;
     }
@@ -117,7 +126,11 @@ public class HorseDAO extends DAO {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
             if (connection != null)
-                getDBConnector().releaseConnection(connection);
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
         }
 
     }
@@ -141,7 +154,11 @@ public class HorseDAO extends DAO {
             throw new DAOException("Faild to get connection from db connector ", e);
         } finally {
             if (connection != null)
-                getDBConnector().releaseConnection(connection);
+                try {
+                    getDBConnector().releaseConnection(connection);
+                } catch (DBConnectionException e) {
+                    throw new DAOException("Failed to return connection to db connector ", e);
+                }
         }
 
     }

@@ -57,7 +57,7 @@ public class DBConnectorPool {
             Class.forName(driver);
             logger.info("Driver loaded");
         } catch (ClassNotFoundException e) {
-            throw new DBConnectionException("Error loading driver!");
+            throw new DBConnectionException("Error loading driver!", e);
         }
 
         connections = new ArrayBlockingQueue<>(initConnectionsCount);
@@ -71,7 +71,7 @@ public class DBConnectorPool {
                 logger.info("Connection " + i + " esteblished");
             }
         } catch (SQLException e) {
-            throw new DBConnectionException("Failed to establish connection");
+            throw new DBConnectionException("Failed to establish connection", e);
         }
         logger.info("DB pool of connections inited");
     }
@@ -127,7 +127,7 @@ public class DBConnectorPool {
      *
      * @param connection to add back to pool
      */
-    public synchronized void releaseConnection(Connection connection) {
+    public synchronized void releaseConnection(Connection connection) throws DBConnectionException {
         try {
             if (connection.isClosed()) {
                 logger.info("connection was closed");
@@ -139,7 +139,7 @@ public class DBConnectorPool {
                 logger.info("returned connection to the pool");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DBConnectionException("Failed to establish connection", e);
         }
 
     }
