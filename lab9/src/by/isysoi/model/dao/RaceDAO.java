@@ -113,13 +113,13 @@ public class RaceDAO extends DAO {
         return races;
     }
 
-    public void addHorseToRace(int horseId, int raceId) {
-        EntityManager em = getEntityManager();
-        em.createNamedQuery("addHorseToRace")
-                .setParameter("horseId", horseId)
-                .setParameter("raceId", raceId)
-                .executeUpdate();
-    }
+//    public void addHorseToRace(int horseId, int raceId) {
+//        EntityManager em = getEntityManager();
+//        em.createNamedQuery("addHorseToRace")
+//                .setParameter("horseId", horseId)
+//                .setParameter("raceId", raceId)
+//                .executeUpdate();
+//    }
 
     public void setHoresPositionInRace(int horseId, int raceId, int position) {
         EntityManager em = getEntityManager();

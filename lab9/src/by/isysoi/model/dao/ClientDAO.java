@@ -39,7 +39,7 @@ public class ClientDAO extends DAO {
      */
     public Client readClientById(int id) {
         EntityManager em = getEntityManager();
-        Client clients = em.createNamedQuery("readClients", Client.class)
+        Client clients = em.createNamedQuery("readClient", Client.class)
                 .setParameter("id", id)
                 .getSingleResult();
         return clients;

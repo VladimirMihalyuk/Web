@@ -55,9 +55,9 @@ public class HorseRaceController {
     }
 
     public void addHorceToRace(int raceId, int horseId) {
-        RaceDAO tmp = new RaceDAO();
-        tmp.addHorseToRace(horseId, raceId);
-        logger.info("added horse tp race");
+//        RaceDAO tmp = new RaceDAO();
+//        tmp.addHorseToRace(horseId, raceId);
+//        logger.info("added horse tp race");
     }
 
 }

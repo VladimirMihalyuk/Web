@@ -40,7 +40,8 @@ public class HorseDAO extends DAO {
      */
     public Horse readHorseById(int id) {
         EntityManager em = getEntityManager();
-        Horse Horses = em.createNamedQuery("readHorses", Horse.class)
+
+        Horse Horses = em.createNamedQuery("readHorse", Horse.class)
                 .setParameter("id", id)
                 .getSingleResult();
         return Horses;

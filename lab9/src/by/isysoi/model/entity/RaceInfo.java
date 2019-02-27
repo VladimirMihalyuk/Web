@@ -1,14 +1,17 @@
 package by.isysoi.model.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-@NamedQueries({
-        @NamedQuery(
-                name = "updateHorsePosition",
-                query = "update RaceInfo set position = :position where raceId = :raceId and horseId = :horseId"
-        )
-})
+//@NamedQueries({
+//        @NamedQuery(
+//                name = "updateHorsePosition",
+//                query = "update RaceInfo set position = :position where raceId = :raceId and horseId = :horseId"
+//        )
+//})
 @Entity(name = "RaceInfo")
 @Table(name = RaceInfo.tableName)
 public class RaceInfo implements Serializable {

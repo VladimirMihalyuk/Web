@@ -2,6 +2,7 @@ package by.isysoi.view;
 
 import by.isysoi.controller.HorseRaceController;
 import by.isysoi.model.dao.ClientDAO;
+import by.isysoi.model.dao.HorseDAO;
 import by.isysoi.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,6 +39,11 @@ public class Main {
 
         var tmp = new ClientDAO();
         Utils.printList(tmp.readClients());
+        System.out.println(tmp.readClientById(1));
+
+        var tmp1 = new HorseDAO();
+        Utils.printList(tmp1.readHorses());
+        System.out.println(tmp1.readHorseById(1));
 
     }
 
