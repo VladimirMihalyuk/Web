@@ -10,11 +10,11 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "deleteHorses",
-                query = "delete from Horse "
+                query = "delete from Horse"
         ),
         @NamedQuery(
                 name = "deleteHorse",
-                query = "delete from Horse where id = :id"
+                query = "delete from Horse h where h.id = :id"
         ),
         @NamedQuery(
                 name = "readHorses",

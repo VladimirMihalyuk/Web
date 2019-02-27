@@ -16,7 +16,7 @@ import javax.persistence.*;
         ),
         @NamedQuery(
                 name = "deleteClient",
-                query = "delete from Client where id = :id"
+                query = "delete from Client c where c.id = :id"
         ),
         @NamedQuery(
                 name = "readClients",
