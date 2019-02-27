@@ -9,6 +9,7 @@
         <class>by.isysoi.model.entity.Client</class>
         <class>by.isysoi.model.entity.Horse</class>
         <class>by.isysoi.model.entity.Race</class>
+        <class>by.isysoi.model.entity.RaceInfo</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
@@ -18,10 +19,10 @@
             <property name="javax.persistence.jdbc.password" value=""/> <!-- DB Password -->
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / create-drop / update -->
 
-            <!--<property name="hibernate.show_sql" value="true" /> -->
+            <property name="hibernate.show_sql" value="false"/>
             <!-- Show SQL in console -->
 
-            <!--<property name="hibernate.format_sql" value="true" /> -->
+            <property name="hibernate.format_sql" value="false"/>
             <!-- Show SQL formatted -->
         </properties>
     </persistence-unit>
@@ -31,6 +32,7 @@
         <class>by.isysoi.model.entity.Client</class>
         <class>by.isysoi.model.entity.Horse</class>
         <class>by.isysoi.model.entity.Race</class>
+        <class>by.isysoi.model.entity.RaceInfo</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->

@@ -9,32 +9,35 @@ import java.util.Date;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-//@NamedQueries({
-//        @NamedQuery(
-//                name = "deleteRaces",
-//                query = "delete from Race"
-//        ),
-//        @NamedQuery(
-//                name = "deleteRace",
-//                query = "delete from Race where id = :id"
-//        ),
-//        @NamedQuery(
-//                name = "readRaces",
-//                query = "select r from Race r"
-//        ),
-//        @NamedQuery(
-//                name = "readRace",
-//                query = "select r from Race r where r.id = :id"
-//        ),
+@NamedQueries({
+        @NamedQuery(
+                name = "deleteRaces",
+                query = "delete from Race"
+        ),
+        @NamedQuery(
+                name = "deleteRace",
+                query = "delete from Race where id = :id"
+        ),
+        @NamedQuery(
+                name = "readRaces",
+                query = "select r from Race r"
+        ),
+        @NamedQuery(
+                name = "readRace",
+                query = "select r from Race r where r.id = :id"
+        ),
 //        @NamedQuery(
 //                name = "readHorsesInRace",
-//                query = "select h.id, h.nikname from Race r join RaceInfo ri on ri.raceId = r.id join Horse h on ri.horseId = h.id where r.id = :id"
+//                query = "select h from Race r " +
+//                        "join RaceInfo ri on ri.raceId = r.id " +
+//                        "join Horse h on ri.horseId = h.id " +
+//                        "where r.id = :id"
 //        ),
-//        @NamedQuery(
-//                name = "readRaceByDate",
-//                query = "select r from Race r where r.raceDate = :raceDate"
-//        ),
-//})
+        @NamedQuery(
+                name = "readRaceByDate",
+                query = "select r from Race r where r.raceDate = :raceDate"
+        ),
+})
 @Entity(name = "Race")
 @Table(name = Race.tableName)
 public class Race {

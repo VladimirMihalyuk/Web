@@ -11,23 +11,27 @@ import java.math.BigDecimal;
 
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
-//@NamedQueries({
-//        @NamedQuery(
-//                name = "deleteBets",
-//                query = "delete from Bet"),
-//        @NamedQuery(
-//                name = "deleteBet",
-//                query = "delete from Bet where id = :id"),
-//        @NamedQuery(
-//                name = "readBets",
-//                query = "select b from Bet b"),
-//        @NamedQuery(
-//                name = "readBet",
-//                query = "select b from Bet b where b.id = :id"),
+@NamedQueries({
+        @NamedQuery(
+                name = "deleteBets",
+                query = "delete from Bet"),
+        @NamedQuery(
+                name = "deleteBet",
+                query = "delete from Bet where id = :id"),
+        @NamedQuery(
+                name = "readBets",
+                query = "select b from Bet b"),
+        @NamedQuery(
+                name = "readBet",
+                query = "select b from Bet b where b.id = :id"),
 //        @NamedQuery(
 //                name = "readWinners",
-//                query = "select c.id, c.FIO, b.id, b.amount, b.clientId, b.horseId, b.raceId from Client c join Bet b on b.clientId = c.id join Race r on b.raceId = r.id join RaceInfo ri on ri.race_id = r.id where b.raceId = :raceId and ri.position = 1")
-//})
+//                query = "select c.id, c.FIO, b.id, b.amount, b.clientId, b.horseId, b.raceId from Client c " +
+//                        "join Bet b on b.clientId = c.id " +
+//                        "join Race r on b.raceId = r.id " +
+//                        "join RaceInfo ri on ri.raceId = r.id " +
+//                        "where b.raceId = :raceId and ri.position = 1")
+})
 public class Bet {
 
     public static final String tableName = "bet";

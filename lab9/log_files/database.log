@@ -198,3 +198,21 @@
 2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
 2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
 2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:57 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-26 20:59:57 INFO  [database_layer.<init>]: Driver loaded
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-26 20:59:58 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool

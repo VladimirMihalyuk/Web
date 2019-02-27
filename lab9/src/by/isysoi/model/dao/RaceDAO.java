@@ -30,7 +30,7 @@ public class RaceDAO extends DAO {
      *
      * @return list of races
      */
-    public List<Race> readRace() {
+    public List<Race> readRaces() {
         EntityManager em = getEntityManager();
         List races = em.createNamedQuery("readRaces").getResultList();
         return races;
@@ -41,7 +41,7 @@ public class RaceDAO extends DAO {
      *
      * @return race
      */
-    public Race selectRaceById(int id) {
+    public Race readRaceById(int id) {
         EntityManager em = getEntityManager();
         Race race = em.createNamedQuery("readRace", Race.class)
                 .setParameter("id", id)
@@ -107,7 +107,7 @@ public class RaceDAO extends DAO {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         List races = em.createNamedQuery("readRaceByDate")
-                .setParameter("raceDate", cal)
+                .setParameter("raceDate", cal.getTime())
                 .getResultList();
 
         return races;
