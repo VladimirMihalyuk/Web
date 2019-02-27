@@ -86,7 +86,7 @@ public class BetDAO extends DAO {
      */
     public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) {
         EntityManager em = getEntityManager();
-        List<Map.Entry<Client, Bet>> clientsWithBet = em.createNamedQuery("readWinners")
+        List clientsWithBet = em.createNamedQuery("readWinners")
                 .setParameter("raceId", raceId)
                 .getResultList();
         return clientsWithBet;

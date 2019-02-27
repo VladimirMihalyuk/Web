@@ -22,7 +22,7 @@ abstract class DAO {
      * constructor
      */
     protected DAO() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TestSystem");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Test_Local");
         entityManager = entityManagerFactory.createEntityManager();
     }
 

@@ -12,24 +12,27 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "deleteClients",
-                query = "delete from client"
+                query = "delete from Client"
         ),
         @NamedQuery(
                 name = "deleteClient",
-                query = "delete from client where id = :id"
+                query = "delete from Client where id = :id"
         ),
         @NamedQuery(
                 name = "readClients",
-                query = "select * from client"
+                query = "select c from Client c"
         ),
         @NamedQuery(
                 name = "readClient",
-                query = "select * from client where id = :id"
+                query = "select c from Client c where c.id = :id"
         )
 })
 @Entity(name = "Client")
-@Table(name = "client")
+@Table(name = Client.tableName)
 public class Client {
+
+    public static final String tableName = "client";
+    private static final String fioColumnName = "fio";
 
     /**
      * id of client
@@ -41,18 +44,8 @@ public class Client {
     /**
      * FIO of client
      */
+    @Column(name = Client.fioColumnName)
     private String FIO;
-
-    /**
-     * constructor to create client
-     *
-     * @param id  id of client
-     * @param FIO FIO of client
-     */
-    public Client(int id, String FIO) {
-        setId(id);
-        setFIO(FIO);
-    }
 
     public int getId() {
         return id;

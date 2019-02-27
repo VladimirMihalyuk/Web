@@ -10,24 +10,26 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "deleteHorses",
-                query = "delete from horse"
+                query = "delete from Horse "
         ),
         @NamedQuery(
                 name = "deleteHorse",
-                query = "delete from horse where id = :id"
+                query = "delete from Horse where id = :id"
         ),
         @NamedQuery(
                 name = "readHorses",
-                query = "select * from horse"
+                query = "select h from Horse h"
         ),
         @NamedQuery(
                 name = "readHorse",
-                query = "select * from horse where id = :id"
+                query = "select h from Horse h where h.id = :id"
         )
 })
 @Entity(name = "Horse")
-@Table(name = "horse")
+@Table(name = Horse.tableName)
 public class Horse {
+
+    public static final String tableName = "horse";
 
     /**
      * id of horse
@@ -40,16 +42,6 @@ public class Horse {
      * nikname of horse
      */
     private String nikname;
-
-    /**
-     * constructor to create horse
-     * @param id id of horse
-     * @param nikname nikname of horse
-     */
-    public Horse(int id, String nikname) {
-        setId(id);
-        setNikname(nikname);
-    }
 
     public int getId() {
         return id;

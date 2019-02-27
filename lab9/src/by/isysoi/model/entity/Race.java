@@ -12,40 +12,35 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(
                 name = "deleteRaces",
-                query = "delete from race"
+                query = "delete from Race"
         ),
         @NamedQuery(
                 name = "deleteRace",
-                query = "delete from race where id = :id"
+                query = "delete from Race where id = :id"
         ),
         @NamedQuery(
                 name = "readRaces",
-                query = "select * from race"
+                query = "select r from Race r"
         ),
         @NamedQuery(
                 name = "readRace",
-                query = "select * from race where id = :id"
+                query = "select r from Race r where r.id = :id"
         ),
         @NamedQuery(
                 name = "readHorsesInRace",
-                query = "select h.id, h.nikname from race r join race_info on race_id = r.id join horse h on horse_id = h.id where r.id = :id"
+                query = "select h.id, h.nikname from Race r join RaceInfo ri on ri.raceId = r.id join Horse h on ri.horseId = h.id where r.id = :id"
         ),
         @NamedQuery(
                 name = "readRaceByDate",
-                query = "select * from race where race_date = :raceDate"
+                query = "select r from Race r where r.raceDate = :raceDate"
         ),
-        @NamedQuery(
-                name = "addHorseToRace",
-                query = "insert into race_info (horse_id, race_id) values(:horseId, :raceId)"
-        ),
-        @NamedQuery(
-                name = "updateHorsePosition",
-                query = "update race_info set position = :position where race_id = :raceId and horse_id = :horseId"
-        )
 })
 @Entity(name = "Race")
-@Table(name = "race")
+@Table(name = Race.tableName)
 public class Race {
+
+    public static final String tableName = "race";
+    private static final String dateColumnName = "race_date";
 
     /**
      * id of race
@@ -62,20 +57,8 @@ public class Race {
     /**
      * date of race
      */
+    @Column(name = Race.dateColumnName)
     private Date raceDate;
-
-    /**
-     * constructor to create race
-     *
-     * @param id       id of race
-     * @param distance distance of race
-     * @param raceDate date of race
-     */
-    public Race(int id, double distance, Date raceDate) {
-        setId(id);
-        setDistance(distance);
-        setRaceDate(raceDate);
-    }
 
     public Date getRaceDate() {
         return raceDate;

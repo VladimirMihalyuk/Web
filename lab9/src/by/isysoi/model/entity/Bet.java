@@ -8,31 +8,32 @@ import java.math.BigDecimal;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+
+@Entity(name = "Bet")
+@Table(name = Bet.tableName)
 @NamedQueries({
         @NamedQuery(
                 name = "deleteBets",
-                query = "delete from bet"
-        ),
+                query = "delete from Bet"),
         @NamedQuery(
                 name = "deleteBet",
-                query = "delete from bet where id = :id"
-        ),
+                query = "delete from Bet where id = :id"),
         @NamedQuery(
                 name = "readBets",
-                query = "select * from bet"
-        ),
+                query = "select b from Bet b"),
         @NamedQuery(
                 name = "readBet",
-                query = "select * from bet where id = :id"
-        ),
+                query = "select b from Bet b where b.id = :id"),
         @NamedQuery(
                 name = "readWinners",
-                query = "select c.id, c.fio, b.id, b.amount, b.client_id, b.horse_id, b.race_id from client c join bet b on b.client_id = c.id join race r on b.race_id = r.id join race_info ri on ri.race_id = r.id where b.race_id = :raceId and ri.position = 1"
-        )
+                query = "select c.id, c.FIO, b.id, b.amount, b.clientId, b.horseId, b.raceId from Client c join Bet b on b.clientId = c.id join Race r on b.raceId = r.id join RaceInfo ri on ri.race_id = r.id where b.raceId = :raceId and ri.position = 1")
 })
-@Entity(name = "Bet")
-@Table(name = "bet")
 public class Bet {
+
+    public static final String tableName = "bet";
+    private static final String horseColumnName = "horse_id";
+    private static final String clientColumnName = "client_id";
+    private static final String raceColumnName = "race_id";
 
     /**
      * id of bet
@@ -49,18 +50,20 @@ public class Bet {
     /**
      * id of race
      */
+    @Column(name = Bet.raceColumnName)
     private int raceId;
 
     /**
      * id of horse
      */
+    @Column(name = Bet.horseColumnName)
     private int horseId;
 
     /**
      * id of client
      */
+    @Column(name = Bet.clientColumnName)
     private int clientId;
-
 
     public int getId() {
         return id;
@@ -100,19 +103,6 @@ public class Bet {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
-    }
-
-    /**
-     * constructor to create bet
-     * @param id id of bet
-     * @param amount amount of bet
-     */
-    public Bet(int id, BigDecimal amount, int raceId, int horseId, int clientId) {
-        setId(id);
-        setAmount(amount);
-        setRaceId(raceId);
-        setHorseId(horseId);
-        setClientId(clientId);
     }
 
     @Override
