@@ -1,14 +1,14 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-             version="2.1">
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
 
-    <persistence-unit name="Test_Local" transaction-type="RESOURCE_LOCAL">
-        <class>model.entity.Bet</class>
-        <class>model.entity.Client</class>
-        <class>model.entity.Horse</class>
-        <class>model.entity.Race</class>
+    <persistence-unit name="Test_Local">
+        <class>by.isysoi.model.entity.Bet</class>
+        <class>by.isysoi.model.entity.Client</class>
+        <class>by.isysoi.model.entity.Horse</class>
+        <class>by.isysoi.model.entity.Race</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
@@ -26,11 +26,11 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="Test_Remote" transaction-type="RESOURCE_LOCAL">
-        <class>model.entity.Bet</class>
-        <class>model.entity.Client</class>
-        <class>model.entity.Horse</class>
-        <class>model.entity.Race</class>
+    <persistence-unit name="Test_Remote">
+        <class>by.isysoi.model.entity.Bet</class>
+        <class>by.isysoi.model.entity.Client</class>
+        <class>by.isysoi.model.entity.Horse</class>
+        <class>by.isysoi.model.entity.Race</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
