@@ -1,15 +1,39 @@
 package by.isysoi.model.entity;
 
+import javax.persistence.*;
+
 /**
  * class that represent horse entity
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+@NamedQueries({
+        @NamedQuery(
+                name = "deleteHorses",
+                query = "delete from horse"
+        ),
+        @NamedQuery(
+                name = "deleteHorse",
+                query = "delete from horse where id = :id"
+        ),
+        @NamedQuery(
+                name = "readHorses",
+                query = "select * from horse"
+        ),
+        @NamedQuery(
+                name = "readHorse",
+                query = "select * from horse where id = :id"
+        )
+})
+@Entity(name = "Horse")
+@Table(name = "horse")
 public class Horse {
 
     /**
      * id of horse
      */
+    @Id
+    @GeneratedValue
     private int id;
 
     /**

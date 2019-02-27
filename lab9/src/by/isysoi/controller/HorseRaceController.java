@@ -6,11 +6,8 @@ import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.entity.Race;
-import by.isysoi.model.exception.DAOException;
-import by.isysoi.model.exception.HorseRaceControllerException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.util.Date;
 import java.util.List;
@@ -26,60 +23,41 @@ public class HorseRaceController {
 
     private Logger logger = LogManager.getLogger("controller_layer");
 
-    public List<Horse> getHorsesByRaceId(int raceId) throws HorseRaceControllerException {
+    public List<Horse> getHorsesByRaceId(int raceId) {
         List<Horse> horses;
-        try {
-            RaceDAO tmp = new RaceDAO();
-            horses = tmp.readHorcesInRace(raceId);
-            logger.info("read horses by race");
-        } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed to get horses by race id", e);
-        }
+        RaceDAO tmp = new RaceDAO();
+        horses = tmp.readHorcesInRace(raceId);
+        logger.info("read horses by race");
         return horses;
     }
 
-    public List<Race> getRacesByDate(Date date) throws HorseRaceControllerException {
+    public List<Race> getRacesByDate(Date date) {
         List<Race> races;
-        try {
-            RaceDAO tmp = new RaceDAO();
-            races = tmp.readRacesByDate(date);
-            logger.info("read races by date");
-        } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed to get races by date", e);
-        }
+        RaceDAO tmp = new RaceDAO();
+        races = tmp.readRacesByDate(date);
+        logger.info("read races by date");
         return races;
     }
 
-    public List<Map.Entry<Client, Bet>> getWinnersByRaceId(int raceId) throws HorseRaceControllerException {
+    public List<Map.Entry<Client, Bet>> getWinnersByRaceId(int raceId) {
         List<Map.Entry<Client, Bet>> clientsAndBets;
-        try {
-            BetDAO tmp = new BetDAO();
-            clientsAndBets = tmp.readWinnersByRace(raceId);
-            logger.info("read winners by race");
-        } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed to get winners", e);
-        }
+        BetDAO tmp = new BetDAO();
+        clientsAndBets = tmp.readWinnersByRace(raceId);
+        logger.info("read winners by race");
         return clientsAndBets;
     }
 
-    public void updateResultForRace(int raceId, int horseId, int position) throws HorseRaceControllerException {
-        try {
-            RaceDAO tmp = new RaceDAO();
-             tmp.setHoresPositionInRace(horseId, raceId, position);
-            logger.info("update race result");
-        } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed to get winners", e);
-        }
+    public void updateResultForRace(int raceId, int horseId, int position) {
+        RaceDAO tmp = new RaceDAO();
+        tmp.setHoresPositionInRace(horseId, raceId, position);
+        logger.info("update race result");
+
     }
 
-    public void addHorceToRace(int raceId, int horseId) throws HorseRaceControllerException {
-        try {
-            RaceDAO tmp = new RaceDAO();
-            tmp.addHorseToRace(horseId, raceId);
-            logger.info("added horse tp race");
-        } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed add horse", e);
-        }
+    public void addHorceToRace(int raceId, int horseId) {
+        RaceDAO tmp = new RaceDAO();
+        tmp.addHorseToRace(horseId, raceId);
+        logger.info("added horse tp race");
     }
 
 }

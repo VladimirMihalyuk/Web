@@ -1,5 +1,6 @@
 package by.isysoi.model.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -7,11 +8,37 @@ import java.math.BigDecimal;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+@NamedQueries({
+        @NamedQuery(
+                name = "deleteBets",
+                query = "delete from bet"
+        ),
+        @NamedQuery(
+                name = "deleteBet",
+                query = "delete from bet where id = :id"
+        ),
+        @NamedQuery(
+                name = "readBets",
+                query = "select * from bet"
+        ),
+        @NamedQuery(
+                name = "readBet",
+                query = "select * from bet where id = :id"
+        ),
+        @NamedQuery(
+                name = "readWinners",
+                query = "select c.id, c.fio, b.id, b.amount, b.client_id, b.horse_id, b.race_id from client c join bet b on b.client_id = c.id join race r on b.race_id = r.id join race_info ri on ri.race_id = r.id where b.race_id = :raceId and ri.position = 1"
+        )
+})
+@Entity(name = "Bet")
+@Table(name = "bet")
 public class Bet {
 
     /**
      * id of bet
      */
+    @Id
+    @GeneratedValue
     private int id;
 
     /**
