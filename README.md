@@ -12,4 +12,4 @@
 * [lab6](lab6(lab2)) - [Разработка клиент-серверного приложения с использованием технологии RMI](https://drive.google.com/open?id=12K0CxLDegnaZE_sZKA4KwthCmPKWRKEj)
 * [lab7](lab7(lab2)) - [Работа с XML](https://drive.google.com/open?id=1g0x0G7m2uGynlSi3PAH8MIJF0bSw4_HX)
 * [lab8](lab8) - [Работа с базами данных, использование API JDBC](https://drive.google.com/open?id=1xRbuk6qESC8IuFeUE0z3LqltDTeEkvpT)
-
+* [lab9](lab9) - [Работа с базами данных, использование Java Persistence API.](https://drive.google.com/open?id=1iPJ5cqeAhkga1zHBhbikh-PCrlJ0SkTG)
