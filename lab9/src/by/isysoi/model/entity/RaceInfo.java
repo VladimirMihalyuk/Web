@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @NamedQueries({
         @NamedQuery(
@@ -10,7 +11,7 @@ import javax.persistence.*;
 })
 @Entity(name = "RaceInfo")
 @Table(name = RaceInfo.tableName)
-public class RaceInfo {
+public class RaceInfo implements Serializable {
 
     public static final String tableName = "race_info";
     private static final String raceColumnName = "race_id";
