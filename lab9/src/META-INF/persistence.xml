@@ -5,6 +5,7 @@
              version="2.0">
 
     <persistence-unit name="Test_Local">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>by.isysoi.model.entity.Bet</class>
         <class>by.isysoi.model.entity.Client</class>
         <class>by.isysoi.model.entity.Horse</class>
@@ -28,6 +29,7 @@
     </persistence-unit>
 
     <persistence-unit name="Test_Remote">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>by.isysoi.model.entity.Bet</class>
         <class>by.isysoi.model.entity.Client</class>
         <class>by.isysoi.model.entity.Horse</class>
