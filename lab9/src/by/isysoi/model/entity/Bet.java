@@ -35,9 +35,9 @@ import java.math.BigDecimal;
 public class Bet {
 
     public static final String tableName = "bet";
-    private static final String horseColumnName = "horse_id";
-    private static final String clientColumnName = "client_id";
-    private static final String raceColumnName = "race_id";
+    public static final String horseColumnName = "horse_id";
+    public static final String clientColumnName = "client_id";
+    public static final String raceColumnName = "race_id";
 
     /**
      * id of bet
@@ -54,20 +54,23 @@ public class Bet {
     /**
      * id of race
      */
-    @Column(name = Bet.raceColumnName)
-    private int raceId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = raceColumnName)
+    private Race race;
 
     /**
      * id of horse
      */
-    @Column(name = Bet.horseColumnName)
-    private int horseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = horseColumnName)
+    private Horse horse;
 
     /**
      * id of client
      */
-    @Column(name = Bet.clientColumnName)
-    private int clientId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = clientColumnName)
+    private Client client;
 
     public int getId() {
         return id;
@@ -85,32 +88,32 @@ public class Bet {
         this.amount = amount;
     }
 
-    public int getRaceId() {
-        return raceId;
+    public Race getRace() {
+        return race;
     }
 
-    public void setRaceId(int raceId) {
-        this.raceId = raceId;
+    public void setRaceId(Race race) {
+        this.race = race;
     }
 
-    public int getHorseId() {
-        return horseId;
+    public Horse getHorseId() {
+        return horse;
     }
 
-    public void setHorseId(int horseId) {
-        this.horseId = horseId;
+    public void setHorseId(Horse horse) {
+        this.horse = horse;
     }
 
-    public int getClientId() {
-        return clientId;
+    public Client getClientId() {
+        return client;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClientId(Client client) {
+        this.client = client;
     }
 
     @Override
     public String toString() {
-        return String.format("Bet:\n\tid - %d\n\tamount - %.2f\n\thorseId - %d\n\tclientId - %d\n\traceId - %d", id, amount, horseId, clientId, raceId);
+        return String.format("Bet:\n\tid - %d\n\tamount - %.2f\n\thorse - %s\n\tclient - %s\n\trace - %s", id, amount, horse, client, race);
     }
 }

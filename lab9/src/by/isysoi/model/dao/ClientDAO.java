@@ -59,13 +59,16 @@ public class ClientDAO extends DAO {
     /**
      * delete client
      *
-     * @param client client to delete
+     * @param id id of client to delete
      */
-    public void deleteClient(Client client) {
+    public void deleteClient(int id) {
         EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         em.createNamedQuery("deleteClient")
-                .setParameter("id", client.getId())
+                .setParameter("id", id)
                 .executeUpdate();
+        transaction.commit();
     }
 
     /**

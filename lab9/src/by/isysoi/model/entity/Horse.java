@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * class that represent horse entity
@@ -30,6 +31,7 @@ import javax.persistence.*;
 public class Horse {
 
     public static final String tableName = "horse";
+    public static final String idColumnName = "id";
 
     /**
      * id of horse
@@ -59,6 +61,11 @@ public class Horse {
         this.nikname = nikname;
     }
 
+    @ManyToMany(mappedBy = "horses")
+    public List<Race> races;
+
+    @OneToMany(mappedBy = "horse", cascade = CascadeType.ALL)
+    public List<Bet> bets;
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package by.isysoi.controller;
 
 import by.isysoi.model.dao.BetDAO;
+import by.isysoi.model.dao.HorseDAO;
 import by.isysoi.model.dao.RaceDAO;
 import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Client;
@@ -25,7 +26,7 @@ public class HorseRaceController {
 
     public List<Horse> getHorsesByRaceId(int raceId) {
         List<Horse> horses;
-        RaceDAO tmp = new RaceDAO();
+        HorseDAO tmp = new HorseDAO();
         horses = tmp.readHorcesInRace(raceId);
         logger.info("read horses by race");
         return horses;
@@ -51,13 +52,12 @@ public class HorseRaceController {
         RaceDAO tmp = new RaceDAO();
         tmp.setHoresPositionInRace(horseId, raceId, position);
         logger.info("update race result");
-
     }
 
     public void addHorceToRace(int raceId, int horseId) {
-//        RaceDAO tmp = new RaceDAO();
-//        tmp.addHorseToRace(horseId, raceId);
-//        logger.info("added horse tp race");
+        RaceDAO tmp = new RaceDAO();
+        tmp.addHorseToRace(horseId, raceId);
+        logger.info("added horse tp race");
     }
 
 }

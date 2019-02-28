@@ -2,6 +2,7 @@ package by.isysoi.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * class that represent race entity
@@ -26,16 +27,13 @@ import java.util.Date;
                 name = "readRace",
                 query = "select r from Race r where r.id = :id"
         ),
-//        @NamedQuery(
-//                name = "readHorsesInRace",
-//                query = "select h from Race r " +
-//                        "join RaceInfo ri on ri.raceId = r.id " +
-//                        "join Horse h on ri.horseId = h.id " +
-//                        "where r.id = :id"
-//        ),
         @NamedQuery(
                 name = "readRaceByDate",
                 query = "select r from Race r where r.raceDate = :raceDate"
+        ),
+        @NamedQuery(
+                name = "updateHorsePosition",
+                query = "update RaceInfo set position = :position where raceId = :raceId and horseId = :horseId"
         ),
 })
 @Entity(name = "Race")
@@ -44,6 +42,7 @@ public class Race {
 
     public static final String tableName = "race";
     private static final String dateColumnName = "race_date";
+    public static final String idColumnName = "id";
 
     /**
      * id of race
@@ -51,6 +50,18 @@ public class Race {
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = RaceInfo.tableName,
+            joinColumns = @JoinColumn(name = RaceInfo.raceColumnName),
+            inverseJoinColumns = {@JoinColumn(name = RaceInfo.horseColumnName)}
+    )
+    public List<Horse> horses;
+
+
+    @OneToMany(mappedBy = "race", cascade = CascadeType.ALL)
+    public List<Bet> bets;
 
     /**
      * distance of race

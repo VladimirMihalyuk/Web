@@ -1,7 +1,7 @@
 package by.isysoi.model.dao;
 
-import by.isysoi.model.entity.Horse;
 import by.isysoi.model.entity.Race;
+import by.isysoi.model.entity.RaceInfo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -64,11 +64,14 @@ public class RaceDAO extends DAO {
      * delete race
      *
      */
-    public void deleteRace(Race race) {
+    public void deleteRace(int id) {
         EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         em.createNamedQuery("deleteRace")
-                .setParameter("id", race.getId())
+                .setParameter("id", id)
                 .executeUpdate();
+        transaction.commit();
     }
 
     /**
@@ -80,18 +83,6 @@ public class RaceDAO extends DAO {
         transaction.begin();
         em.createNamedQuery("deleteRaces").executeUpdate();
         transaction.commit();
-    }
-
-    /**
-     * read horses in race
-     *
-     */
-    public List<Horse> readHorcesInRace(int raceId) {
-        EntityManager em = getEntityManager();
-        List<Horse> horses = em.createNamedQuery("readHorsesInRace", Horse.class)
-                .setParameter("id", raceId)
-                .getResultList();
-        return horses;
     }
 
     /**
@@ -113,21 +104,31 @@ public class RaceDAO extends DAO {
         return races;
     }
 
-//    public void addHorseToRace(int horseId, int raceId) {
-//        EntityManager em = getEntityManager();
-//        em.createNamedQuery("addHorseToRace")
-//                .setParameter("horseId", horseId)
-//                .setParameter("raceId", raceId)
-//                .executeUpdate();
-//    }
+    public void addHorseToRace(int horseId, int raceId) {
+        EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        var raceInfo = new RaceInfo();
+        raceInfo.setHorseId(horseId);
+        raceInfo.setRaceId(raceId);
+        raceInfo.setPosition(null);
+
+        transaction.begin();
+        em.persist(raceInfo);
+        transaction.commit();
+    }
+
 
     public void setHoresPositionInRace(int horseId, int raceId, int position) {
         EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
         em.createNamedQuery("updateHorsePosition")
                 .setParameter("horseId", horseId)
                 .setParameter("raceId", raceId)
                 .setParameter("position", position)
                 .executeUpdate();
+        transaction.commit();
     }
 
 }

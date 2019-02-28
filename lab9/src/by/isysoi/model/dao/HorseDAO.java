@@ -1,6 +1,7 @@
 package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
+import by.isysoi.model.entity.Race;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -63,11 +64,14 @@ public class HorseDAO extends DAO {
      * delete horse
      *
      */
-    public void deleteHorse(Horse Horse) {
+    public void deleteHorse(int id) {
         EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         em.createNamedQuery("deleteHorse")
-                .setParameter("id", Horse.getId())
+                .setParameter("id", id)
                 .executeUpdate();
+        transaction.commit();
     }
 
     /**
@@ -80,5 +84,17 @@ public class HorseDAO extends DAO {
         em.createNamedQuery("deleteHorses").executeUpdate();
         transaction.commit();
     }
+
+    /**
+     * read horses in race
+     */
+    public List<Horse> readHorcesInRace(int raceId) {
+        EntityManager em = getEntityManager();
+        List<Horse> horses = em.createNamedQuery("readRace", Race.class)
+                .setParameter("id", raceId)
+                .getSingleResult().horses;
+        return horses;
+    }
+
 
 }

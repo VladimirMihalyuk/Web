@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * class that represent client entity
@@ -46,6 +47,10 @@ public class Client {
      */
     @Column(name = Client.fioColumnName)
     private String FIO;
+
+    @OneToMany(mappedBy = "client",
+            cascade = CascadeType.ALL)
+    public List<Bet> bets;
 
     public int getId() {
         return id;
