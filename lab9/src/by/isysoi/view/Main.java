@@ -19,12 +19,12 @@ public class Main {
 
             var horses = controller.getHorsesByRaceId(1);
             Utils.printList(horses);
-//        var winners = controller.getWinnersByRaceId(2);
-//        Utils.printListOfTuples(winners);
+            var winners = controller.getWinnersByRaceId(2);
+            Utils.printListOfTuples(winners);
 
-            controller.updateResultForRace(1, 1, 2);
+            controller.updateResultForRace(1, 1, 5);
 
-            controller.addHorceToRace(2, 1);
+//            controller.addHorceToRace(2, 1);
 
 
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");

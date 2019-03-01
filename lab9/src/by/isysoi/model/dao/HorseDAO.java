@@ -30,9 +30,21 @@ public class HorseDAO extends DAO {
      * @return list of horses
      */
     public List<Horse> readHorses() throws DAOException {
-        EntityManager em = getEntityManager();
-        List Horses = em.createNamedQuery("readHorses").getResultList();
-        return Horses;
+        EntityManager entityManager = null;
+        List<Horse> horses = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            horses = entityManager.createNamedQuery("readHorses")
+                    .getResultList();
+        } catch (Exception e) {
+            throw new DAOException("failed to read horses", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
+        return horses;
     }
 
     /**
@@ -41,12 +53,21 @@ public class HorseDAO extends DAO {
      * @return horse
      */
     public Horse readHorseById(int id) throws DAOException {
-        EntityManager em = getEntityManager();
+        EntityManager entityManager = null;
+        Horse horse = null;
 
-        Horse Horses = em.createNamedQuery("readHorse", Horse.class)
-                .setParameter("id", id)
-                .getSingleResult();
-        return Horses;
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            horse = entityManager.createNamedQuery("readHorse", Horse.class)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new DAOException("failed to read horse", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
+        return horse;
     }
 
     /**
@@ -54,11 +75,24 @@ public class HorseDAO extends DAO {
      *
      */
     public void insertHorse(Horse horse) throws DAOException {
-        EntityManager em = getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.persist(horse);
-        transaction.commit();
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.persist(horse);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to insert horse", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
@@ -66,34 +100,71 @@ public class HorseDAO extends DAO {
      *
      */
     public void deleteHorse(int id) throws DAOException {
-        EntityManager em = getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.createNamedQuery("deleteHorse")
-                .setParameter("id", id)
-                .executeUpdate();
-        transaction.commit();
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.createNamedQuery("deleteHorse")
+                    .setParameter("id", id)
+                    .executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to delete horse", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
      * delete Horses
      */
     public void deleteHorses() throws DAOException {
-        EntityManager em = getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.createNamedQuery("deleteHorses").executeUpdate();
-        transaction.commit();
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.createNamedQuery("deleteHorses").executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to delete horses", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
      * read horses in race
      */
     public List<Horse> readHorcesInRace(int raceId) throws DAOException {
-        EntityManager em = getEntityManager();
-        List<Horse> horses = em.createNamedQuery("readRace", Race.class)
-                .setParameter("id", raceId)
-                .getSingleResult().horses;
+        EntityManager entityManager = null;
+        List<Horse> horses = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            horses = entityManager.createNamedQuery("readRace", Race.class)
+                    .setParameter("id", raceId)
+                    .getSingleResult().horses;
+        } catch (Exception e) {
+            throw new DAOException("failed to read horses in race", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
         return horses;
     }
 

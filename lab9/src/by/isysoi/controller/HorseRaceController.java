@@ -29,8 +29,8 @@ public class HorseRaceController {
     public List<Horse> getHorsesByRaceId(int raceId) throws HorseRaceControllerException {
         List<Horse> horses;
         try {
-            HorseDAO tmp = new HorseDAO();
-            horses = tmp.readHorcesInRace(raceId);
+            HorseDAO horseDAO = new HorseDAO();
+            horses = horseDAO.readHorcesInRace(raceId);
             logger.info("read horses by race");
         } catch (DAOException e) {
             throw new HorseRaceControllerException("Failed to get horses by race id", e);
@@ -68,7 +68,7 @@ public class HorseRaceController {
             tmp.setHoresPositionInRace(horseId, raceId, position);
             logger.info("update race result");
         } catch (DAOException e) {
-            throw new HorseRaceControllerException("Failed to get winners", e);
+            throw new HorseRaceControllerException("Failed to update race result", e);
         }
     }
 

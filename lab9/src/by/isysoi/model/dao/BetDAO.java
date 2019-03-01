@@ -30,8 +30,20 @@ public class BetDAO extends DAO {
      * @return bets
      */
     public List<Bet> readBet() throws DAOException {
-        EntityManager em = getEntityManager();
-        List bets = em.createNamedQuery("readBets").getResultList();
+        EntityManager entityManager = null;
+        List<Bet> bets = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            bets = entityManager.createNamedQuery("readBets")
+                    .getResultList();
+        } catch (Exception e) {
+            throw new DAOException("failed to insert bet", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
         return bets;
     }
 
@@ -41,10 +53,21 @@ public class BetDAO extends DAO {
      * @return bet
      */
     public Bet readBetById(int id) throws DAOException {
-        EntityManager em = getEntityManager();
-        Bet bet = em.createNamedQuery("readBet", Bet.class)
-                .setParameter("id", id)
-                .getSingleResult();
+        EntityManager entityManager = null;
+        Bet bet = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            bet = entityManager.createNamedQuery("readBet", Bet.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new DAOException("failed to insert bet", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
         return bet;
     }
 
@@ -52,32 +75,74 @@ public class BetDAO extends DAO {
      * insety clients
      */
     public void insertBet(Bet bet) throws DAOException {
-        EntityManager em = getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.persist(bet);
-        transaction.commit();
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.persist(bet);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to insert bet", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
      * delete clients
      */
-    public void deleteBet(Bet bet) throws DAOException {
-        EntityManager em = getEntityManager();
-        em.createNamedQuery("deleteBet")
-                .setParameter("id", bet.getId())
-                .executeUpdate();
+    public void deleteBet(int id) throws DAOException {
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.createNamedQuery("deleteBet")
+                    .setParameter("id", id)
+                    .executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to delete bet", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
      * delete clients
      */
     public void deleteBets() throws DAOException {
-        EntityManager em = getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.createNamedQuery("deleteBets").executeUpdate();
-        transaction.commit();
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            transaction = entityManager.getTransaction();
+
+            transaction.begin();
+            entityManager.createNamedQuery("deleteBets").executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("failed to delete bets", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
     }
 
     /**
@@ -86,10 +151,22 @@ public class BetDAO extends DAO {
      * @return list of clients
      */
     public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) throws DAOException {
-        EntityManager em = getEntityManager();
-        List clientsWithBet = em.createNamedQuery("readWinners")
-                .setParameter("raceId", raceId)
-                .getResultList();
+        EntityManager entityManager = null;
+        List clientsWithBet = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+
+            clientsWithBet = entityManager.createNamedQuery("readWinners")
+                    .setParameter("raceId", raceId)
+                    .getResultList();
+
+        } catch (Exception e) {
+            throw new DAOException("failed to read winners by race", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
         return clientsWithBet;
     }
 

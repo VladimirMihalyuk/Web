@@ -3,7 +3,6 @@ package by.isysoi.model.dao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -14,20 +13,22 @@ import javax.persistence.Persistence;
  */
 abstract class DAO {
 
+    private static String PERSISTENCE_UNIT_NAME = "Test_Local";
+
     protected Logger logger = LogManager.getLogger("dao_layer");
 
-    private EntityManager entityManager;
+    private EntityManagerFactory factory;
 
     /**
      * constructor
      */
     protected DAO() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Test_Local");
-        entityManager = entityManagerFactory.createEntityManager();
+        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        logger.info("Entity Manager Factory created " + PERSISTENCE_UNIT_NAME);
     }
 
-    protected EntityManager getEntityManager() {
-        return entityManager;
+    protected EntityManagerFactory getEntityManagerFactory() {
+        return factory;
     }
 
 }
