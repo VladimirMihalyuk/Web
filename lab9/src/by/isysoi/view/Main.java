@@ -9,6 +9,13 @@ import org.apache.logging.log4j.Logger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
+/**
+ * Main
+ *
+ * @author Ilya Sysoi
+ * @version 1.0.0
+ */
 public class Main {
 
     private static Logger logger = LogManager.getLogger();
@@ -18,16 +25,16 @@ public class Main {
         try {
 
             var horses = controller.getHorsesByRaceId(1);
-            Utils.printList(horses);
+            Utils.printList(horses, "printing horses from race with id = 1");
 
-//            var winners = controller.getWinnersByRaceId(2);
-//            Utils.printListOfTuples(winners);
+            var winners = controller.getWinnersByRaceId(1);
+            Utils.printMapWithList(winners, "print winners from race 1");
 
-            controller.updateResultForRace(1, 1, 5);
+            controller.updateResultForRace(1, 1, 1);
 
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
             var races = controller.getRacesByDate(ft.parse("11-02-2019"));
-            Utils.printList(races);
+            Utils.printList(races, "print races 11-02-2019");
 
 //            controller.addHorceToRace(2, 1);
 

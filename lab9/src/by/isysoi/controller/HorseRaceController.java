@@ -26,6 +26,13 @@ public class HorseRaceController {
 
     private Logger logger = LogManager.getLogger("controller_layer");
 
+    /**
+     * get horses from specific race
+     *
+     * @param raceId id of race
+     * @return list of horses
+     * @throws HorseRaceControllerException if DAO got some exception
+     */
     public List<Horse> getHorsesByRaceId(int raceId) throws HorseRaceControllerException {
         List<Horse> horses;
         try {
@@ -38,11 +45,18 @@ public class HorseRaceController {
         return horses;
     }
 
+    /**
+     * get races with specific date
+     *
+     * @param date some date
+     * @return list of races on specific date
+     * @throws HorseRaceControllerException if DAO got some exception
+     */
     public List<Race> getRacesByDate(Date date) throws HorseRaceControllerException {
         List<Race> races;
         try {
-            RaceDAO tmp = new RaceDAO();
-            races = tmp.readRacesByDate(date);
+            RaceDAO raceDAO = new RaceDAO();
+            races = raceDAO.readRacesByDate(date);
             logger.info("read races by date");
         } catch (DAOException e) {
             throw new HorseRaceControllerException("Failed to get races by date", e);
@@ -50,11 +64,18 @@ public class HorseRaceController {
         return races;
     }
 
-    public List<Map.Entry<Client, Bet>> getWinnersByRaceId(int raceId) throws HorseRaceControllerException {
-        List<Map.Entry<Client, Bet>> clientsAndBets;
+    /**
+     * get clients and theier bets
+     *
+     * @param raceId id of race
+     * @return map client and bets
+     * @throws HorseRaceControllerException if DAO got some exception
+     */
+    public Map<Client, List<Bet>> getWinnersByRaceId(int raceId) throws HorseRaceControllerException {
+        Map<Client, List<Bet>> clientsAndBets;
         try {
-            BetDAO tmp = new BetDAO();
-            clientsAndBets = tmp.readWinnersByRace(raceId);
+            BetDAO raceDAO = new BetDAO();
+            clientsAndBets = raceDAO.readWinnersByRace(raceId);
             logger.info("read winners by race");
         } catch (DAOException e) {
             throw new HorseRaceControllerException("Failed to get winners", e);
@@ -62,20 +83,35 @@ public class HorseRaceController {
         return clientsAndBets;
     }
 
+    /**
+     * update race info
+     *
+     * @param raceId   id of race
+     * @param horseId  horse id
+     * @param position horse position of race to set
+     * @throws HorseRaceControllerException if DAO got some exception
+     */
     public void updateResultForRace(int raceId, int horseId, int position) throws HorseRaceControllerException {
         try {
-            RaceDAO tmp = new RaceDAO();
-            tmp.setHoresPositionInRace(horseId, raceId, position);
+            RaceDAO raceDAO = new RaceDAO();
+            raceDAO.setHoresPositionInRace(horseId, raceId, position);
             logger.info("update race result");
         } catch (DAOException e) {
             throw new HorseRaceControllerException("Failed to update race result", e);
         }
     }
 
+    /**
+     *  add horse to race
+     *
+     * @param raceId race id
+     * @param horseId horse id
+     * @throws HorseRaceControllerException if DAO got some exception
+     */
     public void addHorceToRace(int raceId, int horseId) throws HorseRaceControllerException {
         try {
-            RaceDAO tmp = new RaceDAO();
-            tmp.addHorseToRace(horseId, raceId);
+            RaceDAO raceDAO = new RaceDAO();
+            raceDAO.addHorseToRace(horseId, raceId);
             logger.info("added horse tp race");
         } catch (DAOException e) {
             throw new HorseRaceControllerException("Failed add horse", e);

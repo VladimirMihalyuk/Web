@@ -13,6 +13,15 @@ public class RaceInfo implements Serializable {
     public static final String tableName = "race_info";
     public static final String raceColumnName = "race_id";
     public static final String horseColumnName = "horse_id";
+
+    @Id
+    @Column(name = RaceInfo.raceColumnName)
+    private int raceId;
+
+    @Id
+    @Column(name = RaceInfo.horseColumnName)
+    private int horseId;
+
     @Column(nullable = true)
     private Integer position;
 
@@ -36,23 +45,16 @@ public class RaceInfo implements Serializable {
         return position;
     }
 
-    /**
-     * id of race
-     */
-    @Id
-    @Column(name = RaceInfo.raceColumnName)
-    private int raceId;
-
-    @Id
-    @Column(name = RaceInfo.horseColumnName)
-    private int horseId;
-
     public void setPosition(Integer position) {
         this.position = position;
     }
 
     @Override
     public String toString() {
-        return String.format("RaceInfo:\n\thorse - %d\n\trace - %d\n\tposition - %d", horseId, raceId, position);
+        return String.format("RaceInfo:" +
+                        "\n\thorse - %d" +
+                        "\n\trace - %d" +
+                        "\n\tposition - %d",
+                horseId, raceId, position);
     }
 }

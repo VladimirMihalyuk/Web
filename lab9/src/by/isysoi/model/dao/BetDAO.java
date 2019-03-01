@@ -6,6 +6,8 @@ import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,7 @@ public class BetDAO extends DAO {
      */
     public List<Bet> readBet() throws DAOException {
         EntityManager entityManager = null;
-        List<Bet> bets = null;
+        List bets = null;
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
@@ -50,6 +52,7 @@ public class BetDAO extends DAO {
     /**
      * read bet by id
      *
+     * @param id bet id
      * @return bet
      */
     public Bet readBetById(int id) throws DAOException {
@@ -73,6 +76,9 @@ public class BetDAO extends DAO {
 
     /**
      * insety clients
+     *
+     * @param bet bet object
+     * @throws DAOException if query execution failed
      */
     public void insertBet(Bet bet) throws DAOException {
         EntityManager entityManager = null;
@@ -97,6 +103,9 @@ public class BetDAO extends DAO {
 
     /**
      * delete clients
+     *
+     * @param id id of bet
+     * @throws DAOException if query execution failed
      */
     public void deleteBet(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -123,6 +132,8 @@ public class BetDAO extends DAO {
 
     /**
      * delete clients
+     *
+     * @throws DAOException if query execution failed
      */
     public void deleteBets() throws DAOException {
         EntityManager entityManager = null;
@@ -148,18 +159,27 @@ public class BetDAO extends DAO {
     /**
      * get winners by race
      *
+     * @param raceId id of race
      * @return list of clients
+     * @throws DAOException if query execution failed
      */
-    public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) throws DAOException {
+    public Map<Client, List<Bet>> readWinnersByRace(int raceId) throws DAOException {
         EntityManager entityManager = null;
-        List clientsWithBet = null;
+        Map<Client, List<Bet>> clientsWithBet = new HashMap<>();
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            clientsWithBet = entityManager.createNamedQuery("readWinners")
+            List<Bet> bets = entityManager.createNamedQuery("readWinners", Bet.class)
                     .setParameter("raceId", raceId)
                     .getResultList();
+            for (Bet bet : bets) {
+                var client = bet.getClient();
+                if (!clientsWithBet.containsKey(client)) {
+                    clientsWithBet.put(client, new ArrayList<>());
+                }
+                clientsWithBet.get(client).add(bet);
+            }
 
         } catch (Exception e) {
             throw new DAOException("failed to read winners by race", e);

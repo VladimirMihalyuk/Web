@@ -26,10 +26,11 @@ public class ClientDAO extends DAO {
      * read clients
      *
      * @return list of clients
+     * @throws DAOException if query execution failed
      */
     public List<Client> readClients() throws DAOException {
         EntityManager entityManager = null;
-        List<Client> clients = null;
+        List clients = null;
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
@@ -48,7 +49,9 @@ public class ClientDAO extends DAO {
     /**
      * read client by id
      *
+     * @param id client id
      * @return client
+     * @throws DAOException if query execution failed
      */
     public Client readClientById(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -71,6 +74,9 @@ public class ClientDAO extends DAO {
 
     /**
      * insert client
+     *
+     * @param client client object
+     * @throws DAOException if query execution failed
      */
     public void insertClient(Client client) throws DAOException {
         EntityManager entityManager = null;
@@ -97,6 +103,7 @@ public class ClientDAO extends DAO {
      * delete client
      *
      * @param id id of client to delete
+     * @throws DAOException if query execution failed
      */
     public void deleteClient(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -123,6 +130,8 @@ public class ClientDAO extends DAO {
 
     /**
      * delete clients
+     *
+     * @throws DAOException if query execution failed
      */
     public void deleteClients() throws DAOException {
         EntityManager entityManager = null;

@@ -70,7 +70,10 @@ public class Horse {
 
     @Override
     public String toString() {
-        return String.format("Horse:\n\tid - %d\n\tnikname - %s", id, nikname);
+        return String.format("Horse:" +
+                        "\n\tid - %d" +
+                        "\n\tnikname - %s",
+                id, nikname);
     }
 
 }

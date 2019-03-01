@@ -18,7 +18,6 @@ public class HorseDAO extends DAO {
 
     /**
      * constructor
-     *
      */
     public HorseDAO() {
         super();
@@ -28,10 +27,11 @@ public class HorseDAO extends DAO {
      * read horses
      *
      * @return list of horses
+     * @throws DAOException if query execution failed
      */
     public List<Horse> readHorses() throws DAOException {
         EntityManager entityManager = null;
-        List<Horse> horses = null;
+        List horses = null;
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
@@ -50,7 +50,9 @@ public class HorseDAO extends DAO {
     /**
      * read horse by id
      *
+     * @param id id of horse
      * @return horse
+     * @throws DAOException if query execution failed
      */
     public Horse readHorseById(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -73,6 +75,8 @@ public class HorseDAO extends DAO {
     /**
      * insert horse
      *
+     * @param horse horse object
+     * @throws DAOException if query execution failed
      */
     public void insertHorse(Horse horse) throws DAOException {
         EntityManager entityManager = null;
@@ -98,6 +102,8 @@ public class HorseDAO extends DAO {
     /**
      * delete horse
      *
+     * @param id id of horse
+     * @throws DAOException if query execution failed
      */
     public void deleteHorse(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -124,6 +130,8 @@ public class HorseDAO extends DAO {
 
     /**
      * delete Horses
+     *
+     * @throws DAOException if query execution failed
      */
     public void deleteHorses() throws DAOException {
         EntityManager entityManager = null;
@@ -148,6 +156,9 @@ public class HorseDAO extends DAO {
 
     /**
      * read horses in race
+     *
+     * @param raceId id of race
+     * @throws DAOException if query execution failed
      */
     public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         EntityManager entityManager = null;

@@ -20,7 +20,7 @@ abstract class DAO {
     private EntityManagerFactory factory;
 
     /**
-     * constructor
+     * DAO constructor
      */
     protected DAO() {
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);

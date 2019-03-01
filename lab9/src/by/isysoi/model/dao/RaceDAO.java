@@ -29,10 +29,11 @@ public class RaceDAO extends DAO {
      * read races
      *
      * @return list of races
+     * @throws DAOException if query execution failed
      */
     public List<Race> readRaces() throws DAOException {
         EntityManager entityManager = null;
-        List<Race> races = null;
+        List races = null;
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
@@ -51,7 +52,9 @@ public class RaceDAO extends DAO {
     /**
      * read race by id
      *
+     * @param id id of race
      * @return race
+     * @throws DAOException if query execution failed
      */
     public Race readRaceById(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -74,6 +77,9 @@ public class RaceDAO extends DAO {
 
     /**
      * insert race
+     *
+     * @param race race object
+     * @throws DAOException if query execution failed
      */
     public void insertRace(Race race) throws DAOException {
         EntityManager entityManager = null;
@@ -98,6 +104,9 @@ public class RaceDAO extends DAO {
 
     /**
      * delete race
+     *
+     * @param id id of race
+     * @throws DAOException if query execution failed
      */
     public void deleteRace(int id) throws DAOException {
         EntityManager entityManager = null;
@@ -124,6 +133,8 @@ public class RaceDAO extends DAO {
 
     /**
      * delete races
+     *
+     * @throws DAOException if query execution failed
      */
     public void deleteRaces() throws DAOException {
         EntityManager entityManager = null;
@@ -148,6 +159,10 @@ public class RaceDAO extends DAO {
 
     /**
      * read races by date
+     *
+     * @param date date of race to select
+     * @return list of races
+     * @throws DAOException if query execution failed
      */
     public List<Race> readRacesByDate(Date date) throws DAOException {
         Calendar cal = Calendar.getInstance();
@@ -173,6 +188,13 @@ public class RaceDAO extends DAO {
         return races;
     }
 
+    /**
+     * added horse to race
+     *
+     * @param horseId id of horse
+     * @param raceId  id of race
+     * @throws DAOException if query execution failed
+     */
     public void addHorseToRace(int horseId, int raceId) throws DAOException {
         EntityManager entityManager = null;
         EntityTransaction transaction = null;
@@ -199,7 +221,14 @@ public class RaceDAO extends DAO {
         }
     }
 
-
+    /**
+     * updated horse position
+     *
+     * @param horseId  id of horse
+     * @param raceId   id of race
+     * @param position position of horse
+     * @throws DAOException if query execution failed
+     */
     public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
         EntityManager entityManager = null;
         EntityTransaction transaction = null;

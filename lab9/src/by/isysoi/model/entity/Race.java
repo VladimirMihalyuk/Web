@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -103,7 +104,12 @@ public class Race {
 
     @Override
     public String toString() {
-        return String.format("Race:\n\tid - %d\n\tdistance - %.2f\n\tdate - %s", id, distance, raceDate.toString());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        return String.format("Race:" +
+                        "\n\tid - %d" +
+                        "\n\tdistance - %.2f" +
+                        "\n\tdate - %s",
+                id, distance, formatter.format(raceDate));
     }
 
 }

@@ -71,7 +71,10 @@ public class Client {
 
     @Override
     public String toString() {
-        return String.format("Client:\n\tid - %d\n\tfio - %s", id, FIO);
+        return String.format("Client:" +
+                        "\n\tid - %d" +
+                        "\n\tfio - %s",
+                id, FIO);
     }
 
 }
