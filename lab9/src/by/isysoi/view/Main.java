@@ -1,6 +1,7 @@
 package by.isysoi.view;
 
 import by.isysoi.controller.HorseRaceController;
+import by.isysoi.model.exception.HorseRaceControllerException;
 import by.isysoi.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,17 +15,16 @@ public class Main {
 
     public static void main(String[] args) {
         var controller = new HorseRaceController();
+        try {
 
-        var horses = controller.getHorsesByRaceId(1);
-        Utils.printList(horses);
+            var horses = controller.getHorsesByRaceId(1);
+            Utils.printList(horses);
 //        var winners = controller.getWinnersByRaceId(2);
 //        Utils.printListOfTuples(winners);
 
-        controller.updateResultForRace(1, 1, 2);
+            controller.updateResultForRace(1, 1, 2);
 
-        controller.addHorceToRace(2, 1);
-
-        try {
+            controller.addHorceToRace(2, 1);
 
 
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
@@ -32,8 +32,7 @@ public class Main {
             Utils.printList(races);
 
 
-
-        } catch (ParseException e) {
+        } catch (ParseException | HorseRaceControllerException e) {
             logger.error(e.getMessage(), e);
             e.printStackTrace();
         }

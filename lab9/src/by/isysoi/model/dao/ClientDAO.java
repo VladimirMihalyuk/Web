@@ -1,6 +1,7 @@
 package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Client;
+import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -26,7 +27,7 @@ public class ClientDAO extends DAO {
      *
      * @return list of clients
      */
-    public List<Client> readClients() {
+    public List<Client> readClients() throws DAOException {
         EntityManager em = getEntityManager();
         List clients = em.createNamedQuery("readClients").getResultList();
         return clients;
@@ -37,7 +38,7 @@ public class ClientDAO extends DAO {
      *
      * @return client
      */
-    public Client readClientById(int id) {
+    public Client readClientById(int id) throws DAOException {
         EntityManager em = getEntityManager();
         Client clients = em.createNamedQuery("readClient", Client.class)
                 .setParameter("id", id)
@@ -48,7 +49,7 @@ public class ClientDAO extends DAO {
     /**
      * insert client
      */
-    public void insertClient(Client client) {
+    public void insertClient(Client client) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -61,7 +62,7 @@ public class ClientDAO extends DAO {
      *
      * @param id id of client to delete
      */
-    public void deleteClient(int id) {
+    public void deleteClient(int id) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -74,7 +75,7 @@ public class ClientDAO extends DAO {
     /**
      * delete clients
      */
-    public void deleteClients() {
+    public void deleteClients() throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();

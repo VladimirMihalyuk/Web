@@ -2,6 +2,7 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Race;
 import by.isysoi.model.entity.RaceInfo;
+import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -30,7 +31,7 @@ public class RaceDAO extends DAO {
      *
      * @return list of races
      */
-    public List<Race> readRaces() {
+    public List<Race> readRaces() throws DAOException {
         EntityManager em = getEntityManager();
         List races = em.createNamedQuery("readRaces").getResultList();
         return races;
@@ -41,7 +42,7 @@ public class RaceDAO extends DAO {
      *
      * @return race
      */
-    public Race readRaceById(int id) {
+    public Race readRaceById(int id) throws DAOException {
         EntityManager em = getEntityManager();
         Race race = em.createNamedQuery("readRace", Race.class)
                 .setParameter("id", id)
@@ -52,7 +53,7 @@ public class RaceDAO extends DAO {
     /**
      * insert race
      */
-    public void insertRace(Race Race) {
+    public void insertRace(Race Race) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -64,7 +65,7 @@ public class RaceDAO extends DAO {
      * delete race
      *
      */
-    public void deleteRace(int id) {
+    public void deleteRace(int id) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -77,7 +78,7 @@ public class RaceDAO extends DAO {
     /**
      * delete races
      */
-    public void deleteRaces() {
+    public void deleteRaces() throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -89,7 +90,7 @@ public class RaceDAO extends DAO {
      * read races by date
      *
      */
-    public List<Race> readRacesByDate(Date date) {
+    public List<Race> readRacesByDate(Date date) throws DAOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.HOUR_OF_DAY, 3);
@@ -104,7 +105,7 @@ public class RaceDAO extends DAO {
         return races;
     }
 
-    public void addHorseToRace(int horseId, int raceId) {
+    public void addHorseToRace(int horseId, int raceId) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         var raceInfo = new RaceInfo();
@@ -118,7 +119,7 @@ public class RaceDAO extends DAO {
     }
 
 
-    public void setHoresPositionInRace(int horseId, int raceId, int position) {
+    public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
 

@@ -2,6 +2,7 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.entity.Race;
+import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -28,7 +29,7 @@ public class HorseDAO extends DAO {
      *
      * @return list of horses
      */
-    public List<Horse> readHorses() {
+    public List<Horse> readHorses() throws DAOException {
         EntityManager em = getEntityManager();
         List Horses = em.createNamedQuery("readHorses").getResultList();
         return Horses;
@@ -39,7 +40,7 @@ public class HorseDAO extends DAO {
      *
      * @return horse
      */
-    public Horse readHorseById(int id) {
+    public Horse readHorseById(int id) throws DAOException {
         EntityManager em = getEntityManager();
 
         Horse Horses = em.createNamedQuery("readHorse", Horse.class)
@@ -52,7 +53,7 @@ public class HorseDAO extends DAO {
      * insert horse
      *
      */
-    public void insertHorse(Horse horse) {
+    public void insertHorse(Horse horse) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -64,7 +65,7 @@ public class HorseDAO extends DAO {
      * delete horse
      *
      */
-    public void deleteHorse(int id) {
+    public void deleteHorse(int id) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -77,7 +78,7 @@ public class HorseDAO extends DAO {
     /**
      * delete Horses
      */
-    public void deleteHorses() {
+    public void deleteHorses() throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -88,7 +89,7 @@ public class HorseDAO extends DAO {
     /**
      * read horses in race
      */
-    public List<Horse> readHorcesInRace(int raceId) {
+    public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         EntityManager em = getEntityManager();
         List<Horse> horses = em.createNamedQuery("readRace", Race.class)
                 .setParameter("id", raceId)

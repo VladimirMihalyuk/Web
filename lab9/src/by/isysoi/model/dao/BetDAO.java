@@ -2,6 +2,7 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Client;
+import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -28,7 +29,7 @@ public class BetDAO extends DAO {
      *
      * @return bets
      */
-    public List<Bet> readBet() {
+    public List<Bet> readBet() throws DAOException {
         EntityManager em = getEntityManager();
         List bets = em.createNamedQuery("readBets").getResultList();
         return bets;
@@ -39,7 +40,7 @@ public class BetDAO extends DAO {
      *
      * @return bet
      */
-    public Bet readBetById(int id) {
+    public Bet readBetById(int id) throws DAOException {
         EntityManager em = getEntityManager();
         Bet bet = em.createNamedQuery("readBet", Bet.class)
                 .setParameter("id", id)
@@ -50,7 +51,7 @@ public class BetDAO extends DAO {
     /**
      * insety clients
      */
-    public void insertBet(Bet bet) {
+    public void insertBet(Bet bet) throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -61,7 +62,7 @@ public class BetDAO extends DAO {
     /**
      * delete clients
      */
-    public void deleteBet(Bet bet) {
+    public void deleteBet(Bet bet) throws DAOException {
         EntityManager em = getEntityManager();
         em.createNamedQuery("deleteBet")
                 .setParameter("id", bet.getId())
@@ -71,7 +72,7 @@ public class BetDAO extends DAO {
     /**
      * delete clients
      */
-    public void deleteBets() {
+    public void deleteBets() throws DAOException {
         EntityManager em = getEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -84,7 +85,7 @@ public class BetDAO extends DAO {
      *
      * @return list of clients
      */
-    public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) {
+    public List<Map.Entry<Client, Bet>> readWinnersByRace(int raceId) throws DAOException {
         EntityManager em = getEntityManager();
         List clientsWithBet = em.createNamedQuery("readWinners")
                 .setParameter("raceId", raceId)
