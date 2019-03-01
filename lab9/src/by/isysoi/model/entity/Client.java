@@ -49,7 +49,8 @@ public class Client {
     private String FIO;
 
     @OneToMany(mappedBy = "client",
-            cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
     public List<Bet> bets;
 
     public int getId() {

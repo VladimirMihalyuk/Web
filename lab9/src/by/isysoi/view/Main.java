@@ -19,18 +19,17 @@ public class Main {
 
             var horses = controller.getHorsesByRaceId(1);
             Utils.printList(horses);
-            var winners = controller.getWinnersByRaceId(2);
-            Utils.printListOfTuples(winners);
+
+//            var winners = controller.getWinnersByRaceId(2);
+//            Utils.printListOfTuples(winners);
 
             controller.updateResultForRace(1, 1, 5);
-
-//            controller.addHorceToRace(2, 1);
-
 
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
             var races = controller.getRacesByDate(ft.parse("11-02-2019"));
             Utils.printList(races);
 
+//            controller.addHorceToRace(2, 1);
 
         } catch (ParseException | HorseRaceControllerException e) {
             logger.error(e.getMessage(), e);

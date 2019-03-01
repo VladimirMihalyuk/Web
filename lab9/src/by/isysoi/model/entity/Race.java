@@ -51,7 +51,8 @@ public class Race {
     @GeneratedValue
     private int id;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL},
+            fetch = FetchType.EAGER)
     @JoinTable(
             name = RaceInfo.tableName,
             joinColumns = @JoinColumn(name = RaceInfo.raceColumnName),
@@ -60,7 +61,9 @@ public class Race {
     public List<Horse> horses;
 
 
-    @OneToMany(mappedBy = "race", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "race",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     public List<Bet> bets;
 
     /**

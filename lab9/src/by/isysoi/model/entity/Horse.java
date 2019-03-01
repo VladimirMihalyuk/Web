@@ -61,10 +61,11 @@ public class Horse {
         this.nikname = nikname;
     }
 
-    @ManyToMany(mappedBy = "horses")
+    @ManyToMany(mappedBy = "horses",
+            fetch = FetchType.EAGER)
     public List<Race> races;
 
-    @OneToMany(mappedBy = "horse", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "horse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Bet> bets;
 
     @Override
