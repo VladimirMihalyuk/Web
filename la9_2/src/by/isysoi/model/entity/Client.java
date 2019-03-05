@@ -10,24 +10,6 @@ import java.util.List;
  * @version 1.0.0
  */
 
-@NamedQueries({
-        @NamedQuery(
-                name = "deleteClients",
-                query = "delete from Client"
-        ),
-        @NamedQuery(
-                name = "deleteClient",
-                query = "delete from Client c where c.id = :id"
-        ),
-        @NamedQuery(
-                name = "readClients",
-                query = "select c from Client c"
-        ),
-        @NamedQuery(
-                name = "readClient",
-                query = "select c from Client c where c.id = :id"
-        )
-})
 @Entity(name = "Client")
 @Table(name = Client.tableName)
 public class Client {

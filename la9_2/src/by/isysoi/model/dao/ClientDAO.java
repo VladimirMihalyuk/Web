@@ -1,10 +1,12 @@
 package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Client;
+import by.isysoi.model.entity.Client_;
 import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -35,7 +37,11 @@ public class ClientDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            clients = entityManager.createNamedQuery("readClients")
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Client.class);
+            Root client = criteriaQuery.from(Client.class);
+
+            clients = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to read clients", e);
@@ -60,8 +66,13 @@ public class ClientDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            client = entityManager.createNamedQuery("readClient", Client.class)
-                    .setParameter("id", id)
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Client.class);
+            Root rootClient = criteriaQuery.from(Client.class);
+            Predicate condition = criteriaBuilder.equal(rootClient.get(Client_.id), id);
+            criteriaQuery.where(condition);
+
+            client = (Client) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
             throw new DAOException("failed to read client", e);
@@ -113,9 +124,14 @@ public class ClientDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
+            Root rootClient = criteriaDelete.from(Client.class);
+            Predicate condition = criteriaBuilder.equal(rootClient.get(Client_.id), id);
+            criteriaDelete.where(condition);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteClient")
-                    .setParameter("id", id)
+            entityManager.createQuery(criteriaDelete)
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -141,8 +157,13 @@ public class ClientDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
+            Root rootClient = criteriaDelete.from(Client.class);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteClients").executeUpdate();
+            entityManager.createQuery(criteriaDelete)
+                    .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
