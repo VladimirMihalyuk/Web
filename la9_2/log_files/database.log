@@ -1,0 +1,218 @@
+2019-02-18 18:18:20 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:20 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:22 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:23 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:23 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:23 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:26 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:26 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:26 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:26 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:31 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:31 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:18:31 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:18:31 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:18:34 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:18:35 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:20:16 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:16 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:20:19 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:19 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:20:22 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:20:22 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:20:22 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:20:22 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:27 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:27 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:30 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:30 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:30 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:30 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:36 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:36 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:36 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:36 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:38 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:38 INFO  [database_layer.close]: Connection closed
+2019-02-18 18:32:38 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-18 18:32:38 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-18 18:32:42 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-18 18:32:43 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:46:33 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:47:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:47:51 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:47:53 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:47:53 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:47:53 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:47:53 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:47:54 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:47:55 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:47:55 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:47:55 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:47:56 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:47:56 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:47:56 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:47:56 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:47:57 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:47:57 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:56:50 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:56:50 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:56:50 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:56:51 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:56:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:56:51 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:56:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:56:51 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:56:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:56:51 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:56:51 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:57:00 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:57:00 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:57:01 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:57:01 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:57:01 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:57:01 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:57:01 INFO  [database_layer.close]: Connection closed
+2019-02-22 20:57:01 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 20:57:01 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 20:57:01 INFO  [database_layer.close]: Connection closed
+2019-02-22 21:12:26 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 21:12:26 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 21:12:27 INFO  [database_layer.close]: Connection closed
+2019-02-22 21:12:27 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 21:12:27 INFO  [database_layer.close]: Connection closed
+2019-02-22 21:12:27 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 21:12:27 INFO  [database_layer.close]: Connection closed
+2019-02-22 21:12:27 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Driver loaded
+2019-02-22 21:12:27 INFO  [database_layer.getConnection]: Connection esteblished
+2019-02-22 21:12:27 INFO  [database_layer.close]: Connection closed
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Driver loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Driver loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Driver loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Driver loaded
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-22 22:25:12 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Driver loaded
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-23 19:42:51 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-24 15:34:45 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 15:34:45 INFO  [database_layer.<init>]: Driver loaded
+2019-02-24 15:35:36 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 15:35:36 INFO  [database_layer.<init>]: Driver loaded
+2019-02-24 15:35:36 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-24 15:35:37 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-24 15:35:37 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-24 15:35:37 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-24 15:35:37 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-24 15:35:37 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-24 15:35:37 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 15:35:37 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 15:35:37 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 15:35:37 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 15:35:37 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 15:35:37 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 15:35:37 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 15:35:37 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 15:35:51 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 15:35:51 INFO  [database_layer.<init>]: Driver loaded
+2019-02-24 16:21:52 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 16:22:32 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 16:22:32 INFO  [database_layer.<init>]: Driver loaded
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-24 16:22:33 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-24 16:22:33 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:22:33 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:22:33 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:22:33 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:22:33 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:22:33 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:22:33 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:22:33 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:24:07 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-24 16:24:07 INFO  [database_layer.<init>]: Driver loaded
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-24 16:24:08 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-24 16:24:08 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-24 16:24:08 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:57 INFO  [database_layer.<init>]: Properties file loaded
+2019-02-26 20:59:57 INFO  [database_layer.<init>]: Driver loaded
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 0 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 1 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 2 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 3 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: Connection 4 esteblished
+2019-02-26 20:59:58 INFO  [database_layer.<init>]: DB pool of connections inited
+2019-02-26 20:59:58 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool
+2019-02-26 20:59:59 INFO  [database_layer.getConnection]: got connection from the pool
+2019-02-26 20:59:59 INFO  [database_layer.releaseConnection]: returned connection to the pool

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="Test_Local" transaction-type="RESOURCE_LOCAL">
+        <class>by.isysoi.model.entity.Bet</class>
+        <class>by.isysoi.model.entity.Client</class>
+        <class>by.isysoi.model.entity.Horse</class>
+        <class>by.isysoi.model.entity.Race</class>
+        <class>by.isysoi.model.entity.RaceInfo</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/horseraces?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false"/> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.user" value="test"/> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value=""/> <!-- DB Password -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / create-drop / update -->
+
+            <property name="hibernate.show_sql" value="false"/>
+            <!-- Show SQL in console -->
+
+            <property name="hibernate.format_sql" value="false"/>
+            <!-- Show SQL formatted -->
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="Test_Remote" transaction-type="RESOURCE_LOCAL">
+        <class>by.isysoi.model.entity.Bet</class>
+        <class>by.isysoi.model.entity.Client</class>
+        <class>by.isysoi.model.entity.Horse</class>
+        <class>by.isysoi.model.entity.Race</class>
+        <class>by.isysoi.model.entity.RaceInfo</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://remotemysql.com/SbuK58gBy2?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false"/> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.user" value="SbuK58gBy2"/> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="3rg1sQuuHK"/> <!-- DB Password -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / create-drop / update -->
+        </properties>
+    </persistence-unit>
+
+
+</persistence>
