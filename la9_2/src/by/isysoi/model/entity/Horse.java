@@ -9,24 +9,6 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@NamedQueries({
-        @NamedQuery(
-                name = "deleteHorses",
-                query = "delete from Horse"
-        ),
-        @NamedQuery(
-                name = "deleteHorse",
-                query = "delete from Horse h where h.id = :id"
-        ),
-        @NamedQuery(
-                name = "readHorses",
-                query = "select h from Horse h"
-        ),
-        @NamedQuery(
-                name = "readHorse",
-                query = "select h from Horse h where h.id = :id"
-        )
-})
 @Entity(name = "Horse")
 @Table(name = Horse.tableName)
 public class Horse {

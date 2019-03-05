@@ -11,32 +11,6 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@NamedQueries({
-        @NamedQuery(
-                name = "deleteRaces",
-                query = "delete from Race"
-        ),
-        @NamedQuery(
-                name = "deleteRace",
-                query = "delete from Race where id = :id"
-        ),
-        @NamedQuery(
-                name = "readRaces",
-                query = "select r from Race r"
-        ),
-        @NamedQuery(
-                name = "readRace",
-                query = "select r from Race r where r.id = :id"
-        ),
-        @NamedQuery(
-                name = "readRaceByDate",
-                query = "select r from Race r where r.raceDate = :raceDate"
-        ),
-        @NamedQuery(
-                name = "updateHorsePosition",
-                query = "update RaceInfo set position = :position where raceId = :raceId and horseId = :horseId"
-        ),
-})
 @Entity(name = "Race")
 @Table(name = Race.tableName)
 public class Race {

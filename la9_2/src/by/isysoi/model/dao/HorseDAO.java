@@ -1,11 +1,13 @@
 package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
-import by.isysoi.model.entity.Race;
+import by.isysoi.model.entity.Horse_;
+import by.isysoi.model.entity.Race_;
 import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -36,7 +38,11 @@ public class HorseDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            horses = entityManager.createNamedQuery("readHorses")
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
+            Root horseRoot = criteriaQuery.from(Horse.class);
+
+            horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to read horses", e);
@@ -61,7 +67,13 @@ public class HorseDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            horse = entityManager.createNamedQuery("readHorse", Horse.class)
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
+            Root rootHorse = criteriaQuery.from(Horse.class);
+            Predicate condition = criteriaBuilder.equal(rootHorse.get(Horse_.id), id);
+            criteriaQuery.where(condition);
+
+            horse = (Horse) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
             throw new DAOException("failed to read horse", e);
@@ -113,9 +125,14 @@ public class HorseDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
+            Root rootHorse = criteriaDelete.from(Horse.class);
+            Predicate condition = criteriaBuilder.equal(rootHorse.get(Horse_.id), id);
+            criteriaDelete.where(condition);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteHorse")
-                    .setParameter("id", id)
+            entityManager.createQuery(criteriaDelete)
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -141,8 +158,13 @@ public class HorseDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
+            Root horseRoot = criteriaDelete.from(Horse.class);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteHorses").executeUpdate();
+            entityManager.createQuery(criteriaDelete)
+                    .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
@@ -162,14 +184,21 @@ public class HorseDAO extends DAO {
      */
     public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         EntityManager entityManager = null;
-        List<Horse> horses = null;
+        List horses = null;
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            horses = entityManager.createNamedQuery("readRace", Race.class)
-                    .setParameter("id", raceId)
-                    .getSingleResult().horses;
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
+            Root rootHorse = criteriaQuery.from(Horse.class);
+            Join raceJoin = rootHorse.join(Horse_.races);
+            Predicate condition = criteriaBuilder.equal(raceJoin.get(Race_.id), raceId);
+            raceJoin.on(condition);
+
+
+            horses = entityManager.createQuery(criteriaQuery)
+                    .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to read horses in race", e);
         } finally {

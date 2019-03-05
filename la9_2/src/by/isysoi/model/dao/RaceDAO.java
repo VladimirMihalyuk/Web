@@ -2,10 +2,13 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Race;
 import by.isysoi.model.entity.RaceInfo;
+import by.isysoi.model.entity.RaceInfo_;
+import by.isysoi.model.entity.Race_;
 import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +41,11 @@ public class RaceDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            races = entityManager.createNamedQuery("readRaces")
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Race.class);
+            Root raceRoot = criteriaQuery.from(Race.class);
+
+            races = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to insert bet", e);
@@ -63,8 +70,13 @@ public class RaceDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            race = entityManager.createNamedQuery("readRace", Race.class)
-                    .setParameter("id", id)
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Race.class);
+            Root rootRace = criteriaQuery.from(Race.class);
+            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.id), id);
+            criteriaQuery.where(condition);
+
+            race = (Race) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
             throw new DAOException("failed to read race", e);
@@ -116,9 +128,14 @@ public class RaceDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
+            Root rootRace = criteriaDelete.from(Race.class);
+            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.id), id);
+            criteriaDelete.where(condition);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteRace")
-                    .setParameter("id", id)
+            entityManager.createQuery(criteriaDelete)
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -144,8 +161,13 @@ public class RaceDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
+            Root rootRace = criteriaDelete.from(Race.class);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteRaces").executeUpdate();
+            entityManager.createQuery(criteriaDelete)
+                    .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
@@ -175,10 +197,14 @@ public class RaceDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            races = entityManager.createNamedQuery("readRaceByDate")
-                    .setParameter("raceDate", cal.getTime())
-                    .getResultList();
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Race.class);
+            Root rootRace = criteriaQuery.from(Race.class);
+            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.raceDate), cal.getTime());
+            criteriaQuery.where(condition);
 
+            races = entityManager.createQuery(criteriaQuery)
+                    .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to read race by date", e);
         } finally {
@@ -237,11 +263,16 @@ public class RaceDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
+            Root rootRaceInfo = update.from(RaceInfo.class);
+            update.set(rootRaceInfo.get(RaceInfo_.position), position);
+            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
+                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
+            update.where(condition);
+
             transaction.begin();
-            entityManager.createNamedQuery("updateHorsePosition")
-                    .setParameter("horseId", horseId)
-                    .setParameter("raceId", raceId)
-                    .setParameter("position", position)
+            entityManager.createQuery(update)
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {

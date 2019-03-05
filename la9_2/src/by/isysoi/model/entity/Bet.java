@@ -12,26 +12,6 @@ import java.math.BigDecimal;
 
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
-@NamedQueries({
-        @NamedQuery(
-                name = "deleteBets",
-                query = "delete from Bet"),
-        @NamedQuery(
-                name = "deleteBet",
-                query = "delete from Bet where id = :id"),
-        @NamedQuery(
-                name = "readBets",
-                query = "select b from Bet b"),
-        @NamedQuery(
-                name = "readBet",
-                query = "select b from Bet b where b.id = :id"),
-        @NamedQuery(
-                name = "readWinners",
-                query = "select b from Client c " +
-                        "join c.bets b " +
-                        "join b.race r " +
-                        "where r.id = :raceId and r.id in (select ri.raceId from RaceInfo ri where ri.position = 1)")
-})
 public class Bet {
 
     public static final String tableName = "bet";

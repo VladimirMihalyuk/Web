@@ -1,11 +1,11 @@
 package by.isysoi.model.dao;
 
-import by.isysoi.model.entity.Bet;
-import by.isysoi.model.entity.Client;
+import by.isysoi.model.entity.*;
 import by.isysoi.model.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +38,11 @@ public class BetDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            bets = entityManager.createNamedQuery("readBets")
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Bet.class);
+            Root rootBet = criteriaQuery.from(Bet.class);
+
+            bets = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
             throw new DAOException("failed to insert bet", e);
@@ -62,8 +66,13 @@ public class BetDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            bet = entityManager.createNamedQuery("readBet", Bet.class)
-                    .setParameter("id", id)
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Bet.class);
+            Root rootBet = criteriaQuery.from(Bet.class);
+            Predicate condition = criteriaBuilder.equal(rootBet.get(Bet_.id), id);
+            criteriaQuery.where(condition);
+
+            bet = (Bet) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
             throw new DAOException("failed to insert bet", e);
@@ -115,9 +124,14 @@ public class BetDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
+            Root rootBet = criteriaDelete.from(Bet.class);
+            Predicate condition = criteriaBuilder.equal(rootBet.get(Bet_.id), id);
+            criteriaDelete.where(condition);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteBet")
-                    .setParameter("id", id)
+            entityManager.createQuery(criteriaDelete)
                     .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
@@ -143,8 +157,13 @@ public class BetDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
             transaction = entityManager.getTransaction();
 
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
+            Root rootBet = criteriaDelete.from(Bet.class);
+
             transaction.begin();
-            entityManager.createNamedQuery("deleteBets").executeUpdate();
+            entityManager.createQuery(criteriaDelete)
+                    .executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
@@ -170,17 +189,35 @@ public class BetDAO extends DAO {
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
 
-            List<Bet> bets = entityManager.createNamedQuery("readWinners", Bet.class)
-                    .setParameter("raceId", raceId)
-                    .getResultList();
-            for (Bet bet : bets) {
-                var client = bet.getClient();
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Client.class);
+            Root rootClient = criteriaQuery.from(Client.class);
+            Join betJoin = rootClient.join(Client_.bets);
+            Join raceJoin = betJoin.join(Bet_.race);
+
+            Subquery subquery = criteriaQuery.subquery(Integer.class);
+            Root rootRaceInfo = subquery.from(RaceInfo.class);
+
+            subquery.select(rootRaceInfo.get(RaceInfo_.raceId))
+                    .where(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1));
+
+            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(raceJoin.get(Race_.id), raceId),
+                    criteriaBuilder.in(raceJoin.get(Race_.id)).value(subquery));
+            raceJoin.on(condition);
+
+            List<Client> clients = entityManager.createQuery(criteriaQuery).getResultList();
+
+            for (Client client : clients) {
+                var bets = client.bets;
                 if (!clientsWithBet.containsKey(client)) {
                     clientsWithBet.put(client, new ArrayList<>());
                 }
-                clientsWithBet.get(client).add(bet);
+                for (Bet bet : bets) {
+                    if (clientsWithBet.get(client).contains(bet))
+                        continue;
+                    clientsWithBet.get(client).add(bet);
+                }
             }
-
         } catch (Exception e) {
             throw new DAOException("failed to read winners by race", e);
         } finally {

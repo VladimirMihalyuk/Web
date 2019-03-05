@@ -45,3 +45,58 @@ public class Main {
     }
 
 }
+
+/*
+------------printing horses from race with id = 1------------
+Horse:
+	id - 1
+	nikname - nik1
+Horse:
+	id - 3
+	nikname - nik3
+
+------------print winners from race 1------------
+Client:
+	id - 1
+	fio - TEST1
+Bet:
+	id - 1
+	amount - 12,00
+	horseId - 1
+	clientId - 1
+	raceId - 1
+Bet:
+	id - 2
+	amount - 2,00
+	horseId - 3
+	clientId - 1
+	raceId - 1
+Bet:
+	id - 3
+	amount - 6,00
+	horseId - 1
+	clientId - 1
+	raceId - 1
+Bet:
+	id - 5
+	amount - 21,00
+	horseId - 3
+	clientId - 1
+	raceId - 1
+
+------------print races 11-02-2019------------
+Race:
+	id - 1
+	distance - 23,40
+	date - 11-02-2019
+Race:
+	id - 3
+	distance - 53,50
+	date - 11-02-2019
+
+
+Process finished with exit code 0
+
+
+
+ */
