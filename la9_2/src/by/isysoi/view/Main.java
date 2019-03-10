@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 /**
@@ -31,6 +32,7 @@ public class Main {
             Utils.printMapWithList(winners, "print winners from race 1");
 
             controller.updateResultForRace(1, 1, 1);
+            Utils.printList(new ArrayList<>(), "updated horse 1 in race 1 to 1 position ");
 
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
             var races = controller.getRacesByDate(ft.parse("11-02-2019"));
@@ -45,58 +47,3 @@ public class Main {
     }
 
 }
-
-/*
-------------printing horses from race with id = 1------------
-Horse:
-	id - 1
-	nikname - nik1
-Horse:
-	id - 3
-	nikname - nik3
-
-------------print winners from race 1------------
-Client:
-	id - 1
-	fio - TEST1
-Bet:
-	id - 1
-	amount - 12,00
-	horseId - 1
-	clientId - 1
-	raceId - 1
-Bet:
-	id - 2
-	amount - 2,00
-	horseId - 3
-	clientId - 1
-	raceId - 1
-Bet:
-	id - 3
-	amount - 6,00
-	horseId - 1
-	clientId - 1
-	raceId - 1
-Bet:
-	id - 5
-	amount - 21,00
-	horseId - 3
-	clientId - 1
-	raceId - 1
-
-------------print races 11-02-2019------------
-Race:
-	id - 1
-	distance - 23,40
-	date - 11-02-2019
-Race:
-	id - 3
-	distance - 53,50
-	date - 11-02-2019
-
-
-Process finished with exit code 0
-
-
-
- */
