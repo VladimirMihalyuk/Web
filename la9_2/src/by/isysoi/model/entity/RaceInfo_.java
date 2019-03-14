@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public class RaceInfo_ {
 
     public static volatile SingularAttribute<RaceInfo, Integer> raceId;
-    public static volatile SingularAttribute<RaceInfo, String> horseId;
+    public static volatile SingularAttribute<RaceInfo, Integer> horseId;
     public static volatile SingularAttribute<RaceInfo, Integer> position;
 
 }

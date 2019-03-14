@@ -190,33 +190,33 @@ public class BetDAO extends DAO {
             entityManager = getEntityManagerFactory().createEntityManager();
 
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Client.class);
-            Root rootClient = criteriaQuery.from(Client.class);
-            Join betJoin = rootClient.join(Client_.bets);
-            Join raceJoin = betJoin.join(Bet_.race);
+            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
+            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
+            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
+            Join<Horse, Race> raceJoin = horseJoin.join(Horse_.races);
 
-            Subquery subquery = criteriaQuery.subquery(Integer.class);
-            Root rootRaceInfo = subquery.from(RaceInfo.class);
+            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
+            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
+            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
+                    .where(criteriaBuilder.and(
+                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
+                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
+                    );
 
-            subquery.select(rootRaceInfo.get(RaceInfo_.raceId))
-                    .where(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1));
+            Predicate condition = criteriaBuilder.and(
+                    criteriaBuilder.equal(raceJoin.get(Race_.id), raceId),
+                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
+            );
+            criteriaQuery.where(condition);
 
-            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(raceJoin.get(Race_.id), raceId),
-                    criteriaBuilder.in(raceJoin.get(Race_.id)).value(subquery));
-            raceJoin.on(condition);
+            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
 
-            List<Client> clients = entityManager.createQuery(criteriaQuery).getResultList();
-
-            for (Client client : clients) {
-                var bets = client.bets;
+            for (Bet bet : bets) {
+                var client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {
                     clientsWithBet.put(client, new ArrayList<>());
                 }
-                for (Bet bet : bets) {
-                    if (clientsWithBet.get(client).contains(bet))
-                        continue;
-                    clientsWithBet.get(client).add(bet);
-                }
+                clientsWithBet.get(client).add(bet);
             }
         } catch (Exception e) {
             throw new DAOException("failed to read winners by race", e);
