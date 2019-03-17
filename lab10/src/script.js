@@ -1,5 +1,7 @@
 const dom = (function () {
 
+    var formId = "";
+
     const winnersInRaceFrom = {
         raceId: {
             label: 'Номер забега',
@@ -7,6 +9,9 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите номер забега',
             name: 'raceId',
+            minValue: '1',
+            step: '1',
+            id: 'raceId-input',
         },
         submitButton: {
             type: 'submit',
@@ -28,6 +33,10 @@ const dom = (function () {
         raceIdInput.setAttribute('class', winnersInRaceFrom.raceId.class);
         raceIdInput.setAttribute('placeholder', winnersInRaceFrom.raceId.placeholder);
         raceIdInput.setAttribute('name', winnersInRaceFrom.raceId.name);
+        raceIdInput.setAttribute('min', winnersInRaceFrom.raceId.minValue);
+        raceIdInput.setAttribute('step', winnersInRaceFrom.raceId.step);
+        raceIdInput.setAttribute("id", winnersInRaceFrom.raceId.id);
+        raceIdInput.required = true;
         raceIdDiv.appendChild(raceIdInput);
 
         form.appendChild(raceIdDiv);
@@ -38,6 +47,7 @@ const dom = (function () {
         submit.value = winnersInRaceFrom.submitButton.value;
 
         form.appendChild(submit);
+        form.onSubmit = onSubmit();
     }
 
     const horsesInRaceFrom = {
@@ -47,6 +57,9 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите номер забега',
             name: 'raceId',
+            minValue: '1',
+            step: '1',
+            id: 'raceId-input',
         },
         submitButton: {
             type: 'submit',
@@ -68,6 +81,10 @@ const dom = (function () {
         raceIdInput.setAttribute('class', horsesInRaceFrom.raceId.class);
         raceIdInput.setAttribute('placeholder', horsesInRaceFrom.raceId.placeholder);
         raceIdInput.setAttribute('name', horsesInRaceFrom.raceId.name);
+        raceIdInput.setAttribute('min', horsesInRaceFrom.raceId.minValue);
+        raceIdInput.setAttribute('step', horsesInRaceFrom.raceId.step);
+        raceIdInput.setAttribute("id", horsesInRaceFrom.raceId.id);
+        raceIdInput.required = true;
         raceIdDiv.appendChild(raceIdInput);
 
         form.appendChild(raceIdDiv);
@@ -78,6 +95,7 @@ const dom = (function () {
         submit.value = horsesInRaceFrom.submitButton.value;
 
         form.appendChild(submit);
+        form.onSubmit = onSubmit();
     }
 
 
@@ -88,6 +106,7 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите дату забегов',
             name: 'date',
+            id: 'date-input',
         },
         submitButton: {
             type: 'submit',
@@ -104,12 +123,14 @@ const dom = (function () {
         dateLabel.innerHTML = racesByDateFrom.date.label;
         dateDiv.appendChild(dateLabel);
 
-        const raceIdInput = document.createElement('input');
-        raceIdInput.setAttribute('type', racesByDateFrom.date.type);
-        raceIdInput.setAttribute('class', racesByDateFrom.date.class);
-        raceIdInput.setAttribute('placeholder', racesByDateFrom.date.placeholder);
-        raceIdInput.setAttribute('name', racesByDateFrom.date.raceId);
-        dateDiv.appendChild(raceIdInput);
+        const dateInput = document.createElement('input');
+        dateInput.setAttribute('type', racesByDateFrom.date.type);
+        dateInput.setAttribute('class', racesByDateFrom.date.class);
+        dateInput.setAttribute('placeholder', racesByDateFrom.date.placeholder);
+        dateInput.setAttribute('name', racesByDateFrom.date.name);
+        dateInput.setAttribute("id", racesByDateFrom.date.id);
+        dateInput.required = true;
+        dateDiv.appendChild(dateInput);
 
         form.appendChild(dateDiv);
 
@@ -119,6 +140,7 @@ const dom = (function () {
         submit.value = racesByDateFrom.submitButton.value;
 
         form.appendChild(submit);
+        form.onSubmit = onSubmit();
     }
 
     const horsesResultFrom = {
@@ -128,6 +150,9 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите номер забега',
             name: 'raceId',
+            minValue: '1',
+            step: '1',
+            id: 'raceId-input',
         },
         horseId: {
             label: 'Номер лошади',
@@ -135,6 +160,9 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите номер лошади',
             name: 'horseId',
+            minValue: '1',
+            step: '1',
+            id: 'horseId-input',
         },
         position: {
             label: 'Место',
@@ -142,6 +170,10 @@ const dom = (function () {
             class: 'form-control',
             placeholder: 'Введите место лошади',
             name: 'positionNumber',
+            minValue: '1',
+            step: '1',
+            id: 'position-input',
+        //    think
         },
         submitButton: {
             type: 'submit',
@@ -163,6 +195,10 @@ const dom = (function () {
         raceIdInput.setAttribute('class', horsesResultFrom.raceId.class);
         raceIdInput.setAttribute('placeholder', horsesResultFrom.raceId.placeholder);
         raceIdInput.setAttribute('name', horsesResultFrom.raceId.name);
+        raceIdInput.setAttribute('min', horsesResultFrom.raceId.minValue);
+        raceIdInput.setAttribute('step', horsesResultFrom.raceId.step);
+        raceIdInput.setAttribute("id", horsesResultFrom.raceId.id);
+        raceIdInput.required = true;
         raceIdDiv.appendChild(raceIdInput);
 
         form.appendChild(raceIdDiv);
@@ -179,6 +215,10 @@ const dom = (function () {
         horseIdInput.setAttribute('class', horsesResultFrom.horseId.class);
         horseIdInput.setAttribute('placeholder', horsesResultFrom.horseId.placeholder);
         horseIdInput.setAttribute('name', horsesResultFrom.horseId.name);
+        horseIdInput.setAttribute('min', horsesResultFrom.raceId.minValue);
+        horseIdInput.setAttribute('step', horsesResultFrom.raceId.step);
+        horseIdInput.setAttribute("id", horsesResultFrom.horseId.id);
+        horseIdInput.required = true;
         horseIdDiv.appendChild(horseIdInput);
 
         form.appendChild(horseIdDiv);
@@ -195,6 +235,10 @@ const dom = (function () {
         positionInput.setAttribute('class', horsesResultFrom.position.class);
         positionInput.setAttribute('placeholder', horsesResultFrom.position.placeholder);
         positionInput.setAttribute('name', horsesResultFrom.position.name);
+        positionInput.setAttribute('min', horsesResultFrom.raceId.minValue);
+        positionInput.setAttribute('step', horsesResultFrom.raceId.step);
+        positionInput.setAttribute("id", horsesResultFrom.position.id);
+        positionInput.required = true;
         positionDiv.appendChild(positionInput);
 
         form.appendChild(positionDiv);
@@ -205,6 +249,7 @@ const dom = (function () {
         submit.value = horsesResultFrom.submitButton.value;
 
         form.appendChild(submit);
+        form.onSubmit = onSubmit();
     }
 
     function initPage(pageNumber) {
@@ -213,24 +258,32 @@ const dom = (function () {
         if (winnersInRaceForm != null) {
             buildWinnersFrom(winnersInRaceForm);
             console.log('winnersInRaceForm');
+            formId = 'winners-in-race-form';
+            return
         }
 
         const horsesInRaceForm = document.getElementById('horses-in-race-form');
         if (horsesInRaceForm != null) {
             buildHorsesInRaceFrom(horsesInRaceForm);
             console.log('horsesInRaceForm');
+            formId = 'horses-in-race-form';
+            return
         }
 
         const racesByDateForm = document.getElementById('races-by-date-form');
         if (racesByDateForm != null) {
             buildRacesByDateForm(racesByDateForm);
             console.log('racesByDateForm');
+            formId = 'races-by-date-form';
+            return
         }
 
         const horseResultForm = document.getElementById('update-horse-result-form');
         if (horseResultForm != null) {
             buildHorseResultForm(horseResultForm);
             console.log('horseResultForm');
+            formId = 'update-horse-result-form';
+            return
         }
 
     }
