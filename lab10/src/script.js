@@ -1,6 +1,6 @@
 const dom = (function () {
 
-    const winnesInRaceFrom = {
+    const winnersInRaceFrom = {
         raceId: {
             label: 'Номер забега',
             type: 'number',
@@ -14,6 +14,31 @@ const dom = (function () {
             value: 'Подтвердить'
         }
     };
+
+    function buildWinnersFrom(form) {
+        const raceIdDiv = document.createElement('div');
+        raceIdDiv.setAttribute('class', 'form-group');
+
+        const raceIdLabel = document.createElement('label');
+        raceIdLabel.innerHTML = winnersInRaceFrom.raceId.label;
+        raceIdDiv.appendChild(raceIdLabel);
+
+        const raceIdInput = document.createElement('input');
+        raceIdInput.setAttribute('type', winnersInRaceFrom.raceId.type);
+        raceIdInput.setAttribute('class', winnersInRaceFrom.raceId.class);
+        raceIdInput.setAttribute('placeholder', winnersInRaceFrom.raceId.placeholder);
+        raceIdInput.setAttribute('name', winnersInRaceFrom.raceId.name);
+        raceIdDiv.appendChild(raceIdInput);
+
+        form.appendChild(raceIdDiv);
+
+        const submit = document.createElement('input');
+        submit.setAttribute('type', winnersInRaceFrom.submitButton.type);
+        submit.setAttribute('class', winnersInRaceFrom.submitButton.class);
+        submit.value = winnersInRaceFrom.submitButton.value;
+
+        form.appendChild(submit);
+    }
 
     const horsesInRaceFrom = {
         raceId: {
@@ -30,6 +55,32 @@ const dom = (function () {
         }
     };
 
+    function buildHorsesInRaceFrom(form) {
+        const raceIdDiv = document.createElement('div');
+        raceIdDiv.setAttribute('class', 'form-group');
+
+        const raceIdLabel = document.createElement('label');
+        raceIdLabel.innerHTML = horsesInRaceFrom.raceId.label;
+        raceIdDiv.appendChild(raceIdLabel);
+
+        const raceIdInput = document.createElement('input');
+        raceIdInput.setAttribute('type', horsesInRaceFrom.raceId.type);
+        raceIdInput.setAttribute('class', horsesInRaceFrom.raceId.class);
+        raceIdInput.setAttribute('placeholder', horsesInRaceFrom.raceId.placeholder);
+        raceIdInput.setAttribute('name', horsesInRaceFrom.raceId.name);
+        raceIdDiv.appendChild(raceIdInput);
+
+        form.appendChild(raceIdDiv);
+
+        const submit = document.createElement('input');
+        submit.setAttribute('type', horsesInRaceFrom.submitButton.type);
+        submit.setAttribute('class', horsesInRaceFrom.submitButton.class);
+        submit.value = horsesInRaceFrom.submitButton.value;
+
+        form.appendChild(submit);
+    }
+
+
     const racesByDateFrom = {
         date: {
             label: 'Дата забегов',
@@ -44,6 +95,31 @@ const dom = (function () {
             value: 'Подтвердить'
         }
     };
+
+    function buildRacesByDateForm(form) {
+        const dateDiv = document.createElement('div');
+        dateDiv.setAttribute('class', 'form-group');
+
+        const dateLabel = document.createElement('label');
+        dateLabel.innerHTML = racesByDateFrom.date.label;
+        dateDiv.appendChild(dateLabel);
+
+        const raceIdInput = document.createElement('input');
+        raceIdInput.setAttribute('type', racesByDateFrom.date.type);
+        raceIdInput.setAttribute('class', racesByDateFrom.date.class);
+        raceIdInput.setAttribute('placeholder', racesByDateFrom.date.placeholder);
+        raceIdInput.setAttribute('name', racesByDateFrom.date.raceId);
+        dateDiv.appendChild(raceIdInput);
+
+        form.appendChild(dateDiv);
+
+        const submit = document.createElement('input');
+        submit.setAttribute('type', racesByDateFrom.submitButton.type);
+        submit.setAttribute('class', racesByDateFrom.submitButton.class);
+        submit.value = racesByDateFrom.submitButton.value;
+
+        form.appendChild(submit);
+    }
 
     const horsesResultFrom = {
         raceId: {
@@ -73,82 +149,6 @@ const dom = (function () {
             value: 'Подтвердить'
         }
     };
-
-    function buildWinnesFrom(form) {
-        const raceIdDiv = document.createElement('div');
-        raceIdDiv.setAttribute('class', 'form-group');
-
-        const raceIdLabel = document.createElement('label');
-        raceIdLabel.innerHTML = winnesInRaceFrom.raceId.label;
-        raceIdDiv.appendChild(raceIdLabel);
-
-        const raceIdInput = document.createElement('input');
-        raceIdInput.setAttribute('type', winnesInRaceFrom.raceId.type);
-        raceIdInput.setAttribute('class', winnesInRaceFrom.raceId.class);
-        raceIdInput.setAttribute('placeholder', winnesInRaceFrom.raceId.placeholder);
-        raceIdInput.setAttribute('name', winnesInRaceFrom.raceId.name);
-        raceIdDiv.appendChild(raceIdInput);
-
-        form.appendChild(raceIdDiv);
-
-        const submit = document.createElement('input');
-        submit.setAttribute('type', winnesInRaceFrom.submitButton.type);
-        submit.setAttribute('class', winnesInRaceFrom.submitButton.class);
-        submit.value = winnesInRaceFrom.submitButton.value;
-
-        form.appendChild(submit);
-    }
-
-
-    function buildHorsesInRaceFrom(form) {
-        const raceIdDiv = document.createElement('div');
-        raceIdDiv.setAttribute('class', 'form-group');
-
-        const raceIdLabel = document.createElement('label');
-        raceIdLabel.innerHTML = horsesInRaceFrom.raceId.label;
-        raceIdDiv.appendChild(raceIdLabel);
-
-        const raceIdInput = document.createElement('input');
-        raceIdInput.setAttribute('type', horsesInRaceFrom.raceId.type);
-        raceIdInput.setAttribute('class', horsesInRaceFrom.raceId.class);
-        raceIdInput.setAttribute('placeholder', horsesInRaceFrom.raceId.placeholder);
-        raceIdInput.setAttribute('name', horsesInRaceFrom.raceId.name);
-        raceIdDiv.appendChild(raceIdInput);
-
-        form.appendChild(raceIdDiv);
-
-        const submit = document.createElement('input');
-        submit.setAttribute('type', horsesInRaceFrom.submitButton.type);
-        submit.setAttribute('class', horsesInRaceFrom.submitButton.class);
-        submit.value = horsesInRaceFrom.submitButton.value;
-
-        form.appendChild(submit);
-    }
-
-    function buildRacesByDateForm(form) {
-        const dateDiv = document.createElement('div');
-        dateDiv.setAttribute('class', 'form-group');
-
-        const dateLabel = document.createElement('label');
-        dateLabel.innerHTML = racesByDateFrom.date.label;
-        dateDiv.appendChild(dateLabel);
-
-        const raceIdInput = document.createElement('input');
-        raceIdInput.setAttribute('type', racesByDateFrom.date.type);
-        raceIdInput.setAttribute('class', racesByDateFrom.date.class);
-        raceIdInput.setAttribute('placeholder', racesByDateFrom.date.placeholder);
-        raceIdInput.setAttribute('name', racesByDateFrom.date.raceId);
-        dateDiv.appendChild(raceIdInput);
-
-        form.appendChild(dateDiv);
-
-        const submit = document.createElement('input');
-        submit.setAttribute('type', racesByDateFrom.submitButton.type);
-        submit.setAttribute('class', racesByDateFrom.submitButton.class);
-        submit.value = racesByDateFrom.submitButton.value;
-
-        form.appendChild(submit);
-    }
 
     function buildHorseResultForm(form) {
         const raceIdDiv = document.createElement('div');
@@ -211,7 +211,7 @@ const dom = (function () {
 
         const winnersInRaceForm = document.getElementById('winners-in-race-form');
         if (winnersInRaceForm != null) {
-            buildWinnesFrom(winnersInRaceForm);
+            buildWinnersFrom(winnersInRaceForm);
             console.log('winnersInRaceForm');
         }
 
@@ -235,8 +235,13 @@ const dom = (function () {
 
     }
 
+    function onSubmit() {
+
+    }
+
     return {
         initPage,
+        onSubmit
     }
 
 }());
