@@ -1,7 +1,8 @@
 package by.isysoi.util;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * helper to print lists
@@ -49,9 +50,26 @@ public class Utils {
      * @param map   map of some values
      * @param title some text to printed before list
      */
-    public static <E, K> void printMapWithList(Map<E, List<K>> map, String title) {
+    public static <E, K> void printMapWithList(Map<E, Collection<K>> map, String title) {
         System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
-        for (Map.Entry<E, List<K>> element : map.entrySet()) {
+        for (Map.Entry<E, Collection<K>> element : map.entrySet()) {
+            System.out.println(element.getKey());
+            for (K valueElement : element.getValue()) {
+                System.out.println(valueElement);
+            }
+        }
+        System.out.println();
+    }
+
+    /**
+     * print map with set as value
+     *
+     * @param map   map of some values
+     * @param title some text to printed before list
+     */
+    public static <E, K> void printMapWithSet(Map<E, Set<K>> map, String title) {
+        System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
+        for (Map.Entry<E, Set<K>> element : map.entrySet()) {
             System.out.println(element.getKey());
             for (K valueElement : element.getValue()) {
                 System.out.println(valueElement);

@@ -6,10 +6,7 @@ import by.isysoi.model.exception.DAOException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * bet dao class
@@ -182,9 +179,9 @@ public class BetDAO extends DAO {
      * @return list of clients
      * @throws DAOException if query execution failed
      */
-    public Map<Client, List<Bet>> readWinnersByRace(int raceId) throws DAOException {
+    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
         EntityManager entityManager = null;
-        Map<Client, List<Bet>> clientsWithBet = new HashMap<>();
+        Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
             entityManager = getEntityManagerFactory().createEntityManager();
@@ -193,7 +190,6 @@ public class BetDAO extends DAO {
             CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
             Root<Bet> rootBet = criteriaQuery.from(Bet.class);
             Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
-            Join<Horse, Race> raceJoin = horseJoin.join(Horse_.races);
 
             Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
             Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
@@ -204,7 +200,7 @@ public class BetDAO extends DAO {
                     );
 
             Predicate condition = criteriaBuilder.and(
-                    criteriaBuilder.equal(raceJoin.get(Race_.id), raceId),
+                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
                     criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
             );
             criteriaQuery.where(condition);
@@ -214,7 +210,7 @@ public class BetDAO extends DAO {
             for (Bet bet : bets) {
                 var client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {
-                    clientsWithBet.put(client, new ArrayList<>());
+                    clientsWithBet.put(client, new HashSet<>());
                 }
                 clientsWithBet.get(client).add(bet);
             }

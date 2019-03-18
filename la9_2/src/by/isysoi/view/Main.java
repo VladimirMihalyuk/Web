@@ -29,7 +29,7 @@ public class Main {
             Utils.printList(horses, "printing horses from race with id = 1");
 
             var winners = controller.getWinnersByRaceId(1);
-            Utils.printMapWithList(winners, "print winners from race 1");
+            Utils.printMapWithSet(winners, "print winners from race 1");
 
             controller.updateResultForRace(1, 1, 1);
             Utils.printList(new ArrayList<>(), "updated horse 1 in race 1 to 1 position ");
