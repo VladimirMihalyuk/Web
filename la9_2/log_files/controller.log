@@ -136,3 +136,56 @@
 2019-03-05 23:05:58 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
 2019-03-05 23:05:59 INFO  [controller_layer.updateResultForRace]: update race result
 2019-03-05 23:06:00 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:48:27 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:48:28 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:48:28 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:48:28 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:52:26 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:52:26 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:52:27 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:52:27 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:53:27 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:53:43 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:53:43 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:53:43 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:53:43 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:54:28 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:54:29 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:54:29 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:54:29 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:54:45 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:54:45 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:54:45 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:54:45 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:55:11 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:55:11 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:55:11 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:55:12 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:55:33 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:55:50 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:55:51 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:55:51 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:55:51 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:57:41 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:57:42 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:57:42 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:57:42 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 17:58:24 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:58:59 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:59:12 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 17:59:12 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 17:59:12 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 17:59:12 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 18:08:03 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 18:08:51 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 18:08:51 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 18:08:51 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 18:08:52 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 18:11:40 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 18:11:40 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 18:11:40 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 18:11:41 INFO  [controller_layer.getRacesByDate]: read races by date
+2019-03-18 18:23:12 INFO  [controller_layer.getHorsesByRaceId]: read horses by race
+2019-03-18 18:23:12 INFO  [controller_layer.getWinnersByRaceId]: read winners by race
+2019-03-18 18:23:12 INFO  [controller_layer.updateResultForRace]: update race result
+2019-03-18 18:23:13 INFO  [controller_layer.getRacesByDate]: read races by date

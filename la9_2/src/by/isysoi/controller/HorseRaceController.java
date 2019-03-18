@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * controller
@@ -71,8 +72,8 @@ public class HorseRaceController {
      * @return map client and bets
      * @throws HorseRaceControllerException if DAO got some exception
      */
-    public Map<Client, List<Bet>> getWinnersByRaceId(int raceId) throws HorseRaceControllerException {
-        Map<Client, List<Bet>> clientsAndBets;
+    public Map<Client, Set<Bet>> getWinnersByRaceId(int raceId) throws HorseRaceControllerException {
+        Map<Client, Set<Bet>> clientsAndBets;
         try {
             BetDAO raceDAO = new BetDAO();
             clientsAndBets = raceDAO.readWinnersByRace(raceId);
