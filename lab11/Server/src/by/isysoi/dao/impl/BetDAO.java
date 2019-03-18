@@ -35,7 +35,7 @@ public class BetDAO implements BetDAOInterface {
         factory = emf;
         logger.info("BetDAO created ");
     }
-    
+
     /**
      * read bets
      *

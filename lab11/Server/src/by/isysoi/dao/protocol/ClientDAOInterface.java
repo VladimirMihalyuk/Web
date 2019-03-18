@@ -12,7 +12,7 @@ public interface ClientDAOInterface {
      * @return list of clients
      * @throws DAOException if query execution failed
      */
-    public List<Client> readClients() throws DAOException;
+    List<Client> readClients() throws DAOException;
 
     /**
      * read client by id
@@ -21,7 +21,7 @@ public interface ClientDAOInterface {
      * @return client
      * @throws DAOException if query execution failed
      */
-    public Client readClientById(int id) throws DAOException ;
+    Client readClientById(int id) throws DAOException;
 
     /**
      * insert client
@@ -29,7 +29,7 @@ public interface ClientDAOInterface {
      * @param client client object
      * @throws DAOException if query execution failed
      */
-    public void insertClient(Client client) throws DAOException;
+    void insertClient(Client client) throws DAOException;
 
     /**
      * delete client
@@ -37,13 +37,13 @@ public interface ClientDAOInterface {
      * @param id id of client to delete
      * @throws DAOException if query execution failed
      */
-    public void deleteClient(int id) throws DAOException ;
+    void deleteClient(int id) throws DAOException;
 
     /**
      * delete clients
      *
      * @throws DAOException if query execution failed
      */
-    public void deleteClients() throws DAOException ;
+    void deleteClients() throws DAOException;
 
 }

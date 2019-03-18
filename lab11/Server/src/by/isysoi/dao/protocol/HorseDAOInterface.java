@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface HorseDAOInterface {
 
-    public List<Horse> readHorses() throws DAOException;
+    List<Horse> readHorses() throws DAOException;
 
     /**
      * read horse by id
@@ -21,7 +21,7 @@ public interface HorseDAOInterface {
      * @return horse
      * @throws DAOException if query execution failed
      */
-    public Horse readHorseById(int id) throws DAOException;
+    Horse readHorseById(int id) throws DAOException;
 
     /**
      * insert horse
@@ -29,7 +29,7 @@ public interface HorseDAOInterface {
      * @param horse horse object
      * @throws DAOException if query execution failed
      */
-    public void insertHorse(Horse horse) throws DAOException;
+    void insertHorse(Horse horse) throws DAOException;
 
     /**
      * delete horse
@@ -37,14 +37,14 @@ public interface HorseDAOInterface {
      * @param id id of horse
      * @throws DAOException if query execution failed
      */
-    public void deleteHorse(int id) throws DAOException;
+    void deleteHorse(int id) throws DAOException;
 
     /**
      * delete Horses
      *
      * @throws DAOException if query execution failed
      */
-    public void deleteHorses() throws DAOException;
+    void deleteHorses() throws DAOException;
 
     /**
      * read horses in race
@@ -52,6 +52,6 @@ public interface HorseDAOInterface {
      * @param raceId id of race
      * @throws DAOException if query execution failed
      */
-    public List<Horse> readHorcesInRace(int raceId) throws DAOException;
+    List<Horse> readHorcesInRace(int raceId) throws DAOException;
 
 }
