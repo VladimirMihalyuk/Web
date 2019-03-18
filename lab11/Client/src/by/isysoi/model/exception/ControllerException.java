@@ -1,4 +1,4 @@
-package by.isysoi.exception;
+package by.isysoi.model.exception;
 
 /**
  * controller exepton
@@ -6,14 +6,14 @@ package by.isysoi.exception;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-public class HorseRaceControllerException extends Exception {
+public class ControllerException extends Exception {
 
     /**
      * Constructor with specified string
      *
      * @param message string
      */
-    public HorseRaceControllerException(String message) {
+    public ControllerException(String message) {
         super(message);
     }
 
@@ -23,7 +23,7 @@ public class HorseRaceControllerException extends Exception {
      * @param message string
      * @param e       error covered
      */
-    public HorseRaceControllerException(String message, Throwable e) {
+    public ControllerException(String message, Throwable e) {
         super(message, e);
     }
 
