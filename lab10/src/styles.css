@@ -32,3 +32,6 @@ header a {
     color: #007bff;
 }
 
+h1, a, p {
+    margin: 15px;
+}
