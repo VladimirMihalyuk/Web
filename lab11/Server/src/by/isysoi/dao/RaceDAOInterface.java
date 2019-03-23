@@ -1,11 +1,13 @@
-package by.isysoi.dao.protocol;
+package by.isysoi.dao;
 
 import by.isysoi.entity.Race;
 import by.isysoi.exception.DAOException;
 
+import javax.ejb.Remote;
 import java.util.Date;
 import java.util.List;
 
+@Remote
 public interface RaceDAOInterface {
 
     /**

@@ -3,9 +3,12 @@ package by.isysoi.model.dao;
 import by.isysoi.model.entity.Race;
 import by.isysoi.model.exception.DAOException;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import java.util.Date;
 import java.util.List;
 
+@Local
 public interface RaceDAOInterface {
 
     /**

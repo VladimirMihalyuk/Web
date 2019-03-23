@@ -5,6 +5,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="Test_Local" />
           <factory-entry name="simpleFactory" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -23,5 +24,6 @@
     <orderEntry type="library" name="org.hibernate:hibernate-core:5.4.1.Final" level="project" />
     <orderEntry type="library" name="org.apache.logging.log4j:log4j-core:2.11.2" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:8.0.15" level="project" />
+    <orderEntry type="library" name="javax:javaee-api:6.0" level="project" />
   </component>
 </module>

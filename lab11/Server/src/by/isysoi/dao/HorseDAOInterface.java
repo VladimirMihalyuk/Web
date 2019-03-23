@@ -1,4 +1,4 @@
-package by.isysoi.dao.protocol;
+package by.isysoi.dao;
 
 import by.isysoi.entity.Horse;
 import by.isysoi.exception.DAOException;
@@ -6,10 +6,10 @@ import by.isysoi.exception.DAOException;
 import javax.ejb.Remote;
 import java.util.List;
 
-@Remote
 /*
  * Data Access Interface provide access to Answer class
  */
+@Remote
 public interface HorseDAOInterface {
 
     List<Horse> readHorses() throws DAOException;

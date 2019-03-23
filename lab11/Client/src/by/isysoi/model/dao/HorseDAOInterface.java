@@ -3,10 +3,11 @@ package by.isysoi.model.dao;
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.exception.DAOException;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 
-@Remote
+@Local
 /*
  * Data Access Interface provide access to Answer class
  */

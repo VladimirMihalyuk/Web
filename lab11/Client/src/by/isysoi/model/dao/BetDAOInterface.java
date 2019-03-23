@@ -4,10 +4,13 @@ import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.exception.DAOException;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Local
 public interface BetDAOInterface {
 
     /**

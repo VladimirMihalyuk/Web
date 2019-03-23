@@ -1,6 +1,6 @@
 package by.isysoi.dao.impl;
 
-import by.isysoi.dao.protocol.RaceDAOInterface;
+import by.isysoi.dao.RaceDAOInterface;
 import by.isysoi.entity.Race;
 import by.isysoi.entity.RaceInfo;
 import by.isysoi.entity.RaceInfo_;
@@ -25,12 +25,12 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless
+@Stateless(name="RaceDAO")
 public class RaceDAO implements RaceDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "Test_Local")
     private EntityManagerFactory factory;
 
     /**

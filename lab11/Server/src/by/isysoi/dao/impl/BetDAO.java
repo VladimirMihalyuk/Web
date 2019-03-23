@@ -1,6 +1,6 @@
 package by.isysoi.dao.impl;
 
-import by.isysoi.dao.protocol.BetDAOInterface;
+import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.entity.*;
 import by.isysoi.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
@@ -20,12 +20,12 @@ import java.util.*;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless
+@Stateless(name="BetDAO")
 public class BetDAO implements BetDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "Test_Local")
     private EntityManagerFactory factory;
 
     /**

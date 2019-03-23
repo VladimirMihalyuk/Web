@@ -1,6 +1,6 @@
 package by.isysoi.dao.impl;
 
-import by.isysoi.dao.protocol.ClientDAOInterface;
+import by.isysoi.dao.ClientDAOInterface;
 import by.isysoi.entity.Client;
 import by.isysoi.entity.Client_;
 import by.isysoi.exception.DAOException;
@@ -21,12 +21,12 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless
+@Stateless(name="ClientDAO")
 public class ClientDAO implements ClientDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "Test_Local")
     private EntityManagerFactory factory;
 
     /**

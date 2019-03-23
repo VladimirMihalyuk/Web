@@ -1,13 +1,15 @@
-package by.isysoi.dao.protocol;
+package by.isysoi.dao;
 
 import by.isysoi.entity.Bet;
 import by.isysoi.entity.Client;
 import by.isysoi.exception.DAOException;
 
+import javax.ejb.Remote;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Remote
 public interface BetDAOInterface {
 
     /**

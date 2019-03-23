@@ -1,6 +1,6 @@
 package by.isysoi.dao.impl;
 
-import by.isysoi.dao.protocol.HorseDAOInterface;
+import by.isysoi.dao.HorseDAOInterface;
 import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race_;
@@ -22,12 +22,12 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless
+@Stateless(name="HorseDAO")
 public class HorseDAO implements HorseDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "Test_Local")
     private EntityManagerFactory factory;
 
     /**

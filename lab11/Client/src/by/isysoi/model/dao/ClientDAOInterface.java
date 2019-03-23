@@ -3,8 +3,11 @@ package by.isysoi.model.dao;
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.exception.DAOException;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import java.util.List;
 
+@Local
 public interface ClientDAOInterface {
     /**
      * read clients

@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="lab11:server.war">
+  <artifact type="exploded-ejb" name="lab11:server.war">
     <output-path>$PROJECT_DIR$/out/artifacts/lab11_server_war</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
