@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Entity(name = "Client")
 @Table(name = Client.tableName)
-public class Client {
+public class Client implements Serializable {
 
     public static final String tableName = "client";
     private static final String fioColumnName = "fio";

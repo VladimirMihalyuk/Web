@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Entity(name = "Race")
 @Table(name = Race.tableName)
-public class Race {
+public class Race implements Serializable {
 
     public static final String tableName = "race";
     public static final String idColumnName = "id";

@@ -8,7 +8,7 @@ import javax.ejb.Remote;
 import java.util.Date;
 import java.util.List;
 
-@Local
+@Remote
 public interface RaceDAOInterface {
 
     /**

@@ -1,6 +1,7 @@
 package by.isysoi.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
-public class Bet {
+public class Bet implements Serializable {
 
     public static final String tableName = "bet";
     public static final String horseColumnName = "horse_id";

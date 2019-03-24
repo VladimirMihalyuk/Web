@@ -7,7 +7,7 @@ import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 
-@Local
+@Remote
 /*
  * Data Access Interface provide access to Answer class
  */

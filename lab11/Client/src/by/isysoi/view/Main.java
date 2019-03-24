@@ -15,12 +15,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
+import javax.xml.crypto.Data;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Main
@@ -33,16 +31,16 @@ public class Main {
     @EJB(beanName = "HorseDAO")
     static HorseDAOInterface horseDAO;
 
-    @EJB(beanName = "RaceDAO")
+    @EJB
     static RaceDAOInterface raceDAO;
 
-    @EJB(beanName = "ClientDAO")
+    @EJB
     static ClientDAOInterface clientDAO;
 
-    @EJB(beanName = "BetDAO")
+    @EJB
     static BetDAOInterface betDAO;
 
-    private static Logger logger = LogManager.getLogger();
+    //private static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         Controller controller = new Controller(horseDAO,
@@ -51,23 +49,24 @@ public class Main {
                 betDAO);
         try {
 
-            List<Horse> horses = controller.getHorsesByRaceId(1);
-            Utils.printList(horses, "printing horses from race with id = 1");
+//            List<Horse> horses = controller.getHorsesByRaceId(1);
+//            Utils.printList(horses, "printing horses from race with id = 1");
 
-            Map<Client, Set<Bet>> winners = controller.getWinnersByRaceId(1);
-            Utils.printMapWithSet(winners, "print winners from race 1");
-
-            controller.updateResultForRace(1, 1, 1);
-            Utils.printList(new ArrayList<>(), "updated horse 1 in race 1 to 1 position ");
-
+//            Map<Client, Set<Bet>> winners = controller.getWinnersByRaceId(1);
+//            Utils.printMapWithSet(winners, "print winners from race 1");
+//
+//            controller.updateResultForRace(1, 1, 1);
+//            Utils.printList(new ArrayList<>(), "updated horse 1 in race 1 to 1 position ");
+//
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
-            List<Race> races = controller.getRacesByDate(ft.parse("11-02-2019"));
+            Date date = ft.parse("11-02-2019");
+            List<Race> races = controller.getRacesByDate(date);
             Utils.printList(races, "print races 11-02-2019");
 
 //            controller.addHorceToRace(2, 1);
 
         } catch (ParseException | ControllerException e) {
-            logger.error(e.getMessage(), e);
+            //logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }

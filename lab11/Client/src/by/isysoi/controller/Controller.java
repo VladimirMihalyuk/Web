@@ -26,7 +26,7 @@ import java.util.Set;
  */
 public class Controller {
 
-    private Logger logger = LogManager.getLogger("controller_layer");
+    //private Logger logger = LogManager.getLogger("controller_layer");
 
     private HorseDAOInterface horseDAO;
     private RaceDAOInterface raceDAO;
@@ -54,7 +54,7 @@ public class Controller {
         List<Horse> horses;
         try {
             horses = horseDAO.readHorcesInRace(raceId);
-            logger.info("read horses by race");
+            //logger.info("read horses by race");
         } catch (DAOException e) {
             throw new ControllerException("Failed to get horses by race id", e);
         }
@@ -72,7 +72,7 @@ public class Controller {
         List<Race> races;
         try {
             races = raceDAO.readRacesByDate(date);
-            logger.info("read races by date");
+            //logger.info("read races by date");
         } catch (DAOException e) {
             throw new ControllerException("Failed to get races by date", e);
         }
@@ -90,7 +90,7 @@ public class Controller {
         Map<Client, Set<Bet>> clientsAndBets;
         try {
             clientsAndBets = betDAO.readWinnersByRace(raceId);
-            logger.info("read winners by race");
+            //logger.info("read winners by race");
         } catch (DAOException e) {
             throw new ControllerException("Failed to get winners", e);
         }
@@ -108,7 +108,7 @@ public class Controller {
     public void updateResultForRace(int raceId, int horseId, int position) throws ControllerException {
         try {
             raceDAO.setHoresPositionInRace(horseId, raceId, position);
-            logger.info("update race result");
+            //logger.info("update race result");
         } catch (DAOException e) {
             throw new ControllerException("Failed to update race result", e);
         }
@@ -124,7 +124,7 @@ public class Controller {
     public void addHorceToRace(int raceId, int horseId) throws ControllerException {
         try {
             raceDAO.addHorseToRace(horseId, raceId);
-            logger.info("added horse tp race");
+            //logger.info("added horse tp race");
         } catch (DAOException e) {
             throw new ControllerException("Failed add horse", e);
         }
