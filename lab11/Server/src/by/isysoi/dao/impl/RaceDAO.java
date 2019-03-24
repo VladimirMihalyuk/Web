@@ -25,7 +25,7 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless(name="RaceDAO")
+@Stateless
 public class RaceDAO implements RaceDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -39,6 +39,9 @@ public class RaceDAO implements RaceDAOInterface {
     public RaceDAO(EntityManagerFactory emf) {
         factory = emf;
         logger.info("RaceDAO created ");
+    }
+
+    public RaceDAO() {
     }
 
     /**
@@ -138,19 +141,19 @@ public class RaceDAO implements RaceDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
-            Root rootRace = criteriaDelete.from(Race.class);
-            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.id), id);
-            criteriaDelete.where(condition);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
+//            Root rootRace = criteriaDelete.from(Race.class);
+//            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.id), id);
+//            criteriaDelete.where(condition);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
@@ -171,17 +174,17 @@ public class RaceDAO implements RaceDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
-            Root rootRace = criteriaDelete.from(Race.class);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Race.class);
+//            Root rootRace = criteriaDelete.from(Race.class);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
@@ -237,7 +240,7 @@ public class RaceDAO implements RaceDAOInterface {
     public void addHorseToRace(int horseId, int raceId) throws DAOException {
         EntityManager entityManager = null;
         EntityTransaction transaction = null;
-        var raceInfo = new RaceInfo();
+        RaceInfo raceInfo = new RaceInfo();
 
         raceInfo.setHorseId(horseId);
         raceInfo.setRaceId(raceId);
@@ -273,21 +276,21 @@ public class RaceDAO implements RaceDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
-            Root rootRaceInfo = update.from(RaceInfo.class);
-            update.set(rootRaceInfo.get(RaceInfo_.position), position);
-            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
-                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
-            update.where(condition);
-
-            transaction.begin();
-            entityManager.createQuery(update)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
+//            Root rootRaceInfo = update.from(RaceInfo.class);
+//            update.set(rootRaceInfo.get(RaceInfo_.position), position);
+//            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
+//                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
+//            update.where(condition);
+//
+//            transaction.begin();
+//            entityManager.createQuery(update)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();

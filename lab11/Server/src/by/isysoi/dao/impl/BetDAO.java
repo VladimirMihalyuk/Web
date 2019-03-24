@@ -20,7 +20,7 @@ import java.util.*;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless(name="BetDAO")
+@Stateless
 public class BetDAO implements BetDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -34,6 +34,9 @@ public class BetDAO implements BetDAOInterface {
     public BetDAO(EntityManagerFactory emf) {
         factory = emf;
         logger.info("BetDAO created ");
+    }
+
+    public BetDAO() {
     }
 
     /**
@@ -131,19 +134,19 @@ public class BetDAO implements BetDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
-            Root rootBet = criteriaDelete.from(Bet.class);
-            Predicate condition = criteriaBuilder.equal(rootBet.get(Bet_.id), id);
-            criteriaDelete.where(condition);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
+//            Root rootBet = criteriaDelete.from(Bet.class);
+//            Predicate condition = criteriaBuilder.equal(rootBet.get(Bet_.id), id);
+//            criteriaDelete.where(condition);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
@@ -164,17 +167,17 @@ public class BetDAO implements BetDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
-            Root rootBet = criteriaDelete.from(Bet.class);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
+//            Root rootBet = criteriaDelete.from(Bet.class);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
@@ -221,7 +224,7 @@ public class BetDAO implements BetDAOInterface {
             List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
 
             for (Bet bet : bets) {
-                var client = bet.getClient();
+                Client client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {
                     clientsWithBet.put(client, new HashSet<>());
                 }

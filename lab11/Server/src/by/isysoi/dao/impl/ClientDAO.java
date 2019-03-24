@@ -21,7 +21,7 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Stateless(name="ClientDAO")
+@Stateless
 public class ClientDAO implements ClientDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -35,6 +35,9 @@ public class ClientDAO implements ClientDAOInterface {
     public ClientDAO(EntityManagerFactory emf) {
         factory = emf;
         logger.info("ClientDAO created ");
+    }
+
+    public ClientDAO() {
     }
 
     /**
@@ -134,19 +137,19 @@ public class ClientDAO implements ClientDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
-            Root rootClient = criteriaDelete.from(Client.class);
-            Predicate condition = criteriaBuilder.equal(rootClient.get(Client_.id), id);
-            criteriaDelete.where(condition);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
+//            Root rootClient = criteriaDelete.from(Client.class);
+//            Predicate condition = criteriaBuilder.equal(rootClient.get(Client_.id), id);
+//            criteriaDelete.where(condition);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
@@ -167,17 +170,17 @@ public class ClientDAO implements ClientDAOInterface {
         EntityTransaction transaction = null;
 
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
-            Root rootClient = criteriaDelete.from(Client.class);
-
-            transaction.begin();
-            entityManager.createQuery(criteriaDelete)
-                    .executeUpdate();
-            transaction.commit();
+//            entityManager = factory.createEntityManager();
+//            transaction = entityManager.getTransaction();
+//
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Client.class);
+//            Root rootClient = criteriaDelete.from(Client.class);
+//
+//            transaction.begin();
+//            entityManager.createQuery(criteriaDelete)
+//                    .executeUpdate();
+//            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();
