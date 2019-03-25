@@ -7,39 +7,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cd5ef29-ef30-4fe2-a128-1827706d65bb" name="Default Changelist" comment="lab11: finished server maybe?">
-      <change afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/.idea/libraries/GlassFish_4_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/dao/BetDAOInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/dao/ClientDAOInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/dao/HorseDAOInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/dao/RaceDAOInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/entities/Bet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/entities/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/entities/Horse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/entities/Race.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/entities/RaceInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/exception/ControllerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/model/exception/DAOException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/util/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testClient/src/view/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/artifacts/Client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/artifacts/Client_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/libraries/javax_ejb_ejb_api_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/libraries/org_hibernate_hibernate_core_5_4_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/dao/BetDAOInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/dao/ClientDAOInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/dao/HorseDAOInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/dao/RaceDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/BetDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/BetDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/ClientDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/ClientDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/HorseDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/HorseDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/RaceDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/RaceDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Bet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Horse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Horse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Race.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/BetDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/ClientDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/HorseDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/dao/RaceDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/entity/Bet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Horse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/entity/Horse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/entity/Race.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/entity/RaceInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/entity/RaceInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/exception/ControllerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/model/exception/DAOException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/by/isysoi/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/by/isysoi/view/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/isysoi/exception/DAOException.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,55 +60,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Horse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/log4j2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state relative-caret-position="-46">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+            <state relative-caret-position="251">
+              <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="35" />
+            <state relative-caret-position="301">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/by/isysoi/exception/DAOException.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="197">
+              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -142,11 +104,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+            <state relative-caret-position="250">
+              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -155,7 +126,40 @@
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1632">
+              <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,6 +169,20 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>entityManager = factory.createEntityManager();</find>
+      <find>throws DAOException</find>
+      <find>throws DAOException</find>
+      <find>transaction.commit();</find>
+      <find>* @throws DAOException if query execution failed</find>
+      <find>ca</find>
+      <find>throw new DAOException(</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>logger.error(</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -172,17 +190,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/META-INF/ejb-jar.xml" />
-        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java" />
-        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java" />
-        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java" />
-        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java" />
         <option value="$PROJECT_DIR$/src/by/isysoi/entity/Client.java" />
         <option value="$PROJECT_DIR$/src/by/isysoi/entity/Horse.java" />
         <option value="$PROJECT_DIR$/src/by/isysoi/entity/Race.java" />
         <option value="$PROJECT_DIR$/src/by/isysoi/entity/Bet.java" />
         <option value="$PROJECT_DIR$/src/META-INF/ejb-jar.xml" />
-        <option value="$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java" />
         <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java" />
+        <option value="$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java" />
       </list>
     </option>
   </component>
@@ -221,6 +242,13 @@
               <item name="Server" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="testServer_ejb_exploded" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Server" type="b2602c69:ProjectViewProjectNode" />
@@ -269,22 +297,14 @@
               <item name="Server" type="b2602c69:ProjectViewProjectNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="by" type="462c0819:PsiDirectoryNode" />
-              <item name="isysoi" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,7 +314,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553446718447" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553544039641" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -407,6 +427,8 @@
       <updated>1553414432220</updated>
       <workItem from="1553414436038" duration="9493000" />
       <workItem from="1553446773412" duration="3951000" />
+      <workItem from="1553457817891" duration="595000" />
+      <workItem from="1553541429352" duration="2465000" />
     </task>
     <task id="LOCAL-00001" summary="lab11: finished server maybe?">
       <created>1553446953500</created>
@@ -419,7 +441,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13444000" />
+    <option name="totallyTimeSpent" value="16504000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -431,10 +453,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="984" y="0" width="943" height="1087" extended-state="1" />
+    <frame x="984" y="0" width="943" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37599093" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39411098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -446,7 +468,7 @@
       <window_info anchor="bottom" id="Application Servers" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="3" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32917964" />
       <window_info anchor="bottom" id="Java Enterprise" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="5" />
       <window_info anchor="bottom" id="Version Control" order="6" />
@@ -457,7 +479,7 @@
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32917964" />
-      <window_info anchor="bottom" id="Run" order="14" weight="0.32809225" />
+      <window_info anchor="bottom" id="Run" order="14" visible="true" weight="0.3301887" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -488,10 +510,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/ejb-jar.xml" />
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Horse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/exception/DAOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/RaceInfo_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/RaceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        <state relative-caret-position="251">
+          <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -505,24 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/ClientDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/ejb-jar.xml" />
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -530,99 +659,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/RaceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Horse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/BetDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/ClientDAOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/exception/DAOException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -645,7 +681,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>EJB (testServer)|EJB</last-edited>
+          <last-edited>EJB</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -680,11 +716,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>JPA|testServer</last-edited>
+          <last-edited>Server</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

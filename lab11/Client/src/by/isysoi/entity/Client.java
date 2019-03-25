@@ -1,6 +1,5 @@
-package by.isysoi.model.entity;
+package by.isysoi.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,27 +9,16 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-
-@Entity(name = "Client")
-@Table(name = Client.tableName)
 public class Client implements Serializable {
 
-    public static final String tableName = "client";
-    private static final String fioColumnName = "fio";
-    @OneToMany(mappedBy = "client",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
     public List<Bet> bets;
     /**
      * id of client
      */
-    @Id
-    @GeneratedValue
     private int id;
     /**
      * FIO of client
      */
-    @Column(name = Client.fioColumnName)
     private String FIO;
 
     public int getId() {

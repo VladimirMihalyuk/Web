@@ -1,6 +1,5 @@
-package by.isysoi.model.entity;
+package by.isysoi.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -10,21 +9,11 @@ import java.math.BigDecimal;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-
-@Entity(name = "Bet")
-@Table(name = Bet.tableName)
 public class Bet implements Serializable {
-
-    public static final String tableName = "bet";
-    public static final String horseColumnName = "horse_id";
-    public static final String clientColumnName = "client_id";
-    public static final String raceColumnName = "race_id";
 
     /**
      * id of bet
      */
-    @Id
-    @GeneratedValue
     private int id;
 
     /**
@@ -35,22 +24,16 @@ public class Bet implements Serializable {
     /**
      * id of race
      */
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = raceColumnName)
     private Race race;
 
     /**
      * id of horse
      */
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = horseColumnName)
     private Horse horse;
 
     /**
      * id of client
      */
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = clientColumnName)
     private Client client;
 
     public int getId() {
@@ -73,24 +56,24 @@ public class Bet implements Serializable {
         return race;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setRace(Race _race) {
+        race = _race;
     }
 
     public Horse getHorse() {
         return horse;
     }
 
-    public void setHorse(Horse horse) {
-        this.horse = horse;
+    public void setHorse(Horse _horse) {
+        horse = _horse;
     }
 
     public Client getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(Client _client) {
+        client = _client;
     }
 
     @Override

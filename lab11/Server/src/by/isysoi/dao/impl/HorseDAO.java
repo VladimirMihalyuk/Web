@@ -3,8 +3,8 @@ package by.isysoi.dao.impl;
 import by.isysoi.dao.HorseDAOInterface;
 import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
+import by.isysoi.entity.Race;
 import by.isysoi.entity.Race_;
-import by.isysoi.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,13 +28,13 @@ public class HorseDAO implements HorseDAOInterface {
     protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
-    private EntityManagerFactory factory;
+    private EntityManager entityManager;
 
     /**
      * DAO constructor
      */
     public HorseDAO(EntityManagerFactory emf) {
-        factory = emf;
+        entityManager = emf.createEntityManager();
         logger.info("HorseDAO created ");
     }
 
@@ -46,15 +46,12 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses
      *
      * @return list of horses
-     * @throws DAOException if query execution failed
+
      */
-    public List<Horse> readHorses() throws DAOException {
-        EntityManager entityManager = null;
+    public List<Horse> readHorses(){
         List horses = null;
 
         try {
-            entityManager = factory.createEntityManager();
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
             Root horseRoot = criteriaQuery.from(Horse.class);
@@ -62,10 +59,7 @@ public class HorseDAO implements HorseDAOInterface {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            throw new DAOException("failed to read horses", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to read horses", e);
         }
         return horses;
     }
@@ -75,15 +69,13 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param id id of horse
      * @return horse
-     * @throws DAOException if query execution failed
+
      */
-    public Horse readHorseById(int id) throws DAOException {
-        EntityManager entityManager = null;
+    public Horse readHorseById(int id){
         Horse horse = null;
 
         try {
-            entityManager = factory.createEntityManager();
-
+            
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
             Root rootHorse = criteriaQuery.from(Horse.class);
@@ -93,10 +85,7 @@ public class HorseDAO implements HorseDAOInterface {
             horse = (Horse) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new DAOException("failed to read horse", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to read horse", e);
         }
         return horse;
     }
@@ -105,91 +94,13 @@ public class HorseDAO implements HorseDAOInterface {
      * insert horse
      *
      * @param horse horse object
-     * @throws DAOException if query execution failed
+
      */
-    public void insertHorse(Horse horse) throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
+    public void insertHorse(Horse horse){
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            transaction.begin();
             entityManager.persist(horse);
-            transaction.commit();
         } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to insert horse", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
-        }
-    }
-
-    /**
-     * delete horse
-     *
-     * @param id id of horse
-     * @throws DAOException if query execution failed
-     */
-    public void deleteHorse(int id) throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
-        try {
-//            entityManager = factory.createEntityManager();
-//            transaction = entityManager.getTransaction();
-//
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
-//            Root rootHorse = criteriaDelete.from(Horse.class);
-//            Predicate condition = criteriaBuilder.equal(rootHorse.get(Horse_.id), id);
-//            criteriaDelete.where(condition);
-//
-//            transaction.begin();
-//            entityManager.createQuery(criteriaDelete)
-//                    .executeUpdate();
-//            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to delete horse", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
-        }
-    }
-
-    /**
-     * delete Horses
-     *
-     * @throws DAOException if query execution failed
-     */
-    public void deleteHorses() throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
-        try {
-//            entityManager = factory.createEntityManager();
-//            transaction = entityManager.getTransaction();
-//
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
-//            Root horseRoot = criteriaDelete.from(Horse.class);
-//
-//            transaction.begin();
-//            entityManager.createQuery(criteriaDelete)
-//                    .executeUpdate();
-//            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to delete horses", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to insert horse", e);
         }
     }
 
@@ -197,30 +108,23 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses in race
      *
      * @param raceId id of race
-     * @throws DAOException if query execution failed
+
      */
-    public List<Horse> readHorcesInRace(int raceId) throws DAOException {
-        EntityManager entityManager = null;
+    public List<Horse> readHorcesInRace(int raceId){
         List horses = null;
 
         try {
-//            entityManager = factory.createEntityManager();
-//
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
-//            Root rootHorse = criteriaQuery.from(Horse.class);
-//            Join raceJoin = rootHorse.join(Horse_.races);
-//            Predicate condition = criteriaBuilder.equal(raceJoin.get(Race_.id), raceId);
-//            raceJoin.on(condition);
-//
-//
-//            horses = entityManager.createQuery(criteriaQuery)
-//                    .getResultList();
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
+            Root rootHorse = criteriaQuery.from(Horse.class);
+            Join<Horse, Race> raceJoin = rootHorse.join(Horse_.races);
+            Predicate condition = criteriaBuilder.equal(raceJoin.get(Race_.id), raceId);
+            criteriaQuery.where(condition);
+
+            horses = entityManager.createQuery(criteriaQuery)
+                    .getResultList();
         } catch (Exception e) {
-            throw new DAOException("failed to read horses in race", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to read horses in race", e);
         }
         return horses;
     }

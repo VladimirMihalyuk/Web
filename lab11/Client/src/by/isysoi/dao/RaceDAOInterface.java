@@ -1,6 +1,6 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.Race;
+import by.isysoi.entity.*;
 
 import javax.ejb.Remote;
 import java.util.Date;

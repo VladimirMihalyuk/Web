@@ -1,17 +1,7 @@
 package by.isysoi.controller;
 
-import by.isysoi.model.dao.BetDAOInterface;
-import by.isysoi.model.dao.ClientDAOInterface;
-import by.isysoi.model.dao.HorseDAOInterface;
-import by.isysoi.model.dao.RaceDAOInterface;
-import by.isysoi.model.entity.Bet;
-import by.isysoi.model.entity.Client;
-import by.isysoi.model.entity.Horse;
-import by.isysoi.model.entity.Race;
-import by.isysoi.model.exception.ControllerException;
-import by.isysoi.model.exception.DAOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import by.isysoi.entity.*;
+import by.isysoi.dao.*;
 
 import java.util.Date;
 import java.util.List;
@@ -33,14 +23,14 @@ public class Controller {
     private ClientDAOInterface clientDAO;
     private BetDAOInterface betDAO;
 
-    public Controller(HorseDAOInterface horseDAO,
-                      RaceDAOInterface raceDAO,
-                      ClientDAOInterface clientDAO,
-                      BetDAOInterface betDAO) {
-        this.horseDAO = horseDAO;
-        this.raceDAO = raceDAO;
-        this.clientDAO = clientDAO;
-        this.betDAO = betDAO;
+    public Controller(HorseDAOInterface _horseDAO,
+                      RaceDAOInterface _raceDAO,
+                      ClientDAOInterface _clientDAO,
+                      BetDAOInterface _betDAO) {
+        horseDAO = _horseDAO;
+        raceDAO = _raceDAO;
+        clientDAO = _clientDAO;
+        betDAO = _betDAO;
     }
 
     /**
@@ -48,16 +38,10 @@ public class Controller {
      *
      * @param raceId id of race
      * @return list of horses
-     * @throws ControllerException if DAO got some exception
      */
-    public List<Horse> getHorsesByRaceId(int raceId) throws ControllerException {
+    public List<Horse> getHorsesByRaceId(int raceId) {
         List<Horse> horses;
-        try {
-            horses = horseDAO.readHorcesInRace(raceId);
-            //logger.info("read horses by race");
-        } catch (DAOException e) {
-            throw new ControllerException("Failed to get horses by race id", e);
-        }
+        horses = horseDAO.readHorcesInRace(raceId);
         return horses;
     }
 
@@ -66,16 +50,10 @@ public class Controller {
      *
      * @param date some date
      * @return list of races on specific date
-     * @throws ControllerException if DAO got some exception
      */
-    public List<Race> getRacesByDate(Date date) throws ControllerException {
+    public List<Race> getRacesByDate(Date date) {
         List<Race> races;
-        try {
-            races = raceDAO.readRacesByDate(date);
-            //logger.info("read races by date");
-        } catch (DAOException e) {
-            throw new ControllerException("Failed to get races by date", e);
-        }
+        races = raceDAO.readRacesByDate(date);
         return races;
     }
 
@@ -84,16 +62,10 @@ public class Controller {
      *
      * @param raceId id of race
      * @return map client and bets
-     * @throws ControllerException if DAO got some exception
      */
-    public Map<Client, Set<Bet>> getWinnersByRaceId(int raceId) throws ControllerException {
+    public Map<Client, Set<Bet>> getWinnersByRaceId(int raceId) {
         Map<Client, Set<Bet>> clientsAndBets;
-        try {
-            clientsAndBets = betDAO.readWinnersByRace(raceId);
-            //logger.info("read winners by race");
-        } catch (DAOException e) {
-            throw new ControllerException("Failed to get winners", e);
-        }
+        clientsAndBets = betDAO.readWinnersByRace(raceId);
         return clientsAndBets;
     }
 
@@ -103,15 +75,9 @@ public class Controller {
      * @param raceId   id of race
      * @param horseId  horse id
      * @param position horse position of race to set
-     * @throws ControllerException if DAO got some exception
      */
-    public void updateResultForRace(int raceId, int horseId, int position) throws ControllerException {
-        try {
-            raceDAO.setHoresPositionInRace(horseId, raceId, position);
-            //logger.info("update race result");
-        } catch (DAOException e) {
-            throw new ControllerException("Failed to update race result", e);
-        }
+    public void updateResultForRace(int raceId, int horseId, int position) {
+        raceDAO.setHoresPositionInRace(horseId, raceId, position);
     }
 
     /**
@@ -119,15 +85,9 @@ public class Controller {
      *
      * @param raceId  race id
      * @param horseId horse id
-     * @throws ControllerException if DAO got some exception
      */
-    public void addHorceToRace(int raceId, int horseId) throws ControllerException {
-        try {
-            raceDAO.addHorseToRace(horseId, raceId);
-            //logger.info("added horse tp race");
-        } catch (DAOException e) {
-            throw new ControllerException("Failed add horse", e);
-        }
+    public void addHorceToRace(int raceId, int horseId) {
+        raceDAO.addHorseToRace(horseId, raceId);
     }
 
 }

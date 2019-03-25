@@ -2,14 +2,12 @@ package by.isysoi.dao.impl;
 
 import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.entity.*;
-import by.isysoi.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.*;
@@ -26,13 +24,13 @@ public class BetDAO implements BetDAOInterface {
     protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
-    private EntityManagerFactory factory;
+    private EntityManager entityManager;
 
     /**
      * DAO constructor
      */
     public BetDAO(EntityManagerFactory emf) {
-        factory = emf;
+        entityManager = emf.createEntityManager();
         logger.info("BetDAO created ");
     }
 
@@ -44,13 +42,9 @@ public class BetDAO implements BetDAOInterface {
      *
      * @return bets
      */
-    public List<Bet> readBet() throws DAOException {
-        EntityManager entityManager = null;
+    public List<Bet> readBet() {
         List bets = null;
-
         try {
-            entityManager = factory.createEntityManager();
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Bet.class);
             Root rootBet = criteriaQuery.from(Bet.class);
@@ -58,10 +52,7 @@ public class BetDAO implements BetDAOInterface {
             bets = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            throw new DAOException("failed to insert bet", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to insert bet", e);
         }
         return bets;
     }
@@ -72,13 +63,9 @@ public class BetDAO implements BetDAOInterface {
      * @param id bet id
      * @return bet
      */
-    public Bet readBetById(int id) throws DAOException {
-        EntityManager entityManager = null;
+    public Bet readBetById(int id) {
         Bet bet = null;
-
         try {
-            entityManager = factory.createEntityManager();
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Bet.class);
             Root rootBet = criteriaQuery.from(Bet.class);
@@ -88,10 +75,7 @@ public class BetDAO implements BetDAOInterface {
             bet = (Bet) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new DAOException("failed to insert bet", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to insert bet", e);
         }
         return bet;
     }
@@ -100,91 +84,12 @@ public class BetDAO implements BetDAOInterface {
      * insety clients
      *
      * @param bet bet object
-     * @throws DAOException if query execution failed
      */
-    public void insertBet(Bet bet) throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
+    public void insertBet(Bet bet) {
         try {
-            entityManager = factory.createEntityManager();
-            transaction = entityManager.getTransaction();
-
-            transaction.begin();
             entityManager.persist(bet);
-            transaction.commit();
         } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to insert bet", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
-        }
-    }
-
-    /**
-     * delete clients
-     *
-     * @param id id of bet
-     * @throws DAOException if query execution failed
-     */
-    public void deleteBet(int id) throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
-        try {
-//            entityManager = factory.createEntityManager();
-//            transaction = entityManager.getTransaction();
-//
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
-//            Root rootBet = criteriaDelete.from(Bet.class);
-//            Predicate condition = criteriaBuilder.equal(rootBet.get(Bet_.id), id);
-//            criteriaDelete.where(condition);
-//
-//            transaction.begin();
-//            entityManager.createQuery(criteriaDelete)
-//                    .executeUpdate();
-//            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to delete bet", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
-        }
-    }
-
-    /**
-     * delete clients
-     *
-     * @throws DAOException if query execution failed
-     */
-    public void deleteBets() throws DAOException {
-        EntityManager entityManager = null;
-        EntityTransaction transaction = null;
-
-        try {
-//            entityManager = factory.createEntityManager();
-//            transaction = entityManager.getTransaction();
-//
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Bet.class);
-//            Root rootBet = criteriaDelete.from(Bet.class);
-//
-//            transaction.begin();
-//            entityManager.createQuery(criteriaDelete)
-//                    .executeUpdate();
-//            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null && transaction.isActive())
-                transaction.rollback();
-            throw new DAOException("failed to delete bets", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to insert bet", e);
         }
     }
 
@@ -193,15 +98,11 @@ public class BetDAO implements BetDAOInterface {
      *
      * @param raceId id of race
      * @return list of clients
-     * @throws DAOException if query execution failed
      */
-    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
-        EntityManager entityManager = null;
+    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
-            entityManager = factory.createEntityManager();
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
             Root<Bet> rootBet = criteriaQuery.from(Bet.class);
@@ -231,10 +132,7 @@ public class BetDAO implements BetDAOInterface {
                 clientsWithBet.get(client).add(bet);
             }
         } catch (Exception e) {
-            throw new DAOException("failed to read winners by race", e);
-        } finally {
-            if (entityManager != null && entityManager.isOpen())
-                entityManager.close();
+            logger.error("failed to read winners by race", e);
         }
         return clientsWithBet;
     }

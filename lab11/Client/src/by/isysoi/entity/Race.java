@@ -1,6 +1,5 @@
-package by.isysoi.model.entity;
+package by.isysoi.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,30 +11,15 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@Entity(name = "Race")
-@Table(name = Race.tableName)
 public class Race implements Serializable {
 
-    public static final String tableName = "race";
-    public static final String idColumnName = "id";
-    private static final String dateColumnName = "race_date";
-    @ManyToMany(cascade = {CascadeType.ALL},
-            fetch = FetchType.EAGER)
-    @JoinTable(
-            name = RaceInfo.tableName,
-            joinColumns = @JoinColumn(name = RaceInfo.raceColumnName),
-            inverseJoinColumns = {@JoinColumn(name = RaceInfo.horseColumnName)}
-    )
     public List<Horse> horses;
-    @OneToMany(mappedBy = "race",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+
     public List<Bet> bets;
+
     /**
      * id of race
      */
-    @Id
-    @GeneratedValue
     private int id;
     /**
      * distance of race
@@ -45,7 +29,6 @@ public class Race implements Serializable {
     /**
      * date of race
      */
-    @Column(name = Race.dateColumnName)
     private Date raceDate;
 
     public Date getRaceDate() {

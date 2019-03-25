@@ -1,6 +1,6 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.Client;
+import by.isysoi.entity.*;
 
 import javax.ejb.Remote;
 import java.util.List;
