@@ -16,7 +16,7 @@
         <Root level="debug">
             <Appender-ref ref="MainFile" level="trace"/>
         </Root>
-        <Logger name="" level="debug" additivity="false">
+        <Logger name="dao_layer" level="debug" additivity="false">
             <Appender-ref ref="DatabaseLayerFile" level="trace"/>
         </Logger>
     </Loggers>

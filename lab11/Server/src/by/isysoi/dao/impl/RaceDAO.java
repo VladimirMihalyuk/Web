@@ -158,17 +158,17 @@ public class RaceDAO implements RaceDAOInterface {
      */
     public void setHoresPositionInRace(int horseId, int raceId, int position) {
         try {
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
-//            Root rootRaceInfo = update.from(RaceInfo.class);
-//            update.set(rootRaceInfo.get(RaceInfo_.position), position);
-//            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
-//                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
-//            update.where(condition);
-//
-//
-//            entityManager.createQuery(update)
-//                    .executeUpdate();
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
+            Root rootRaceInfo = update.from(RaceInfo.class);
+            update.set(rootRaceInfo.get(RaceInfo_.position), position);
+            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
+                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
+            update.where(condition);
+
+
+            entityManager.createQuery(update)
+                    .executeUpdate();
 
         } catch (Exception e) {
             logger.error("failed to update position of horse", e);
