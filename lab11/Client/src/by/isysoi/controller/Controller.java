@@ -1,7 +1,13 @@
 package by.isysoi.controller;
 
-import by.isysoi.entity.*;
-import by.isysoi.dao.*;
+import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.dao.ClientDAOInterface;
+import by.isysoi.dao.HorseDAOInterface;
+import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.entity.Bet;
+import by.isysoi.entity.Client;
+import by.isysoi.entity.Horse;
+import by.isysoi.entity.Race;
 
 import java.util.Date;
 import java.util.List;
@@ -15,8 +21,6 @@ import java.util.Set;
  * @version 1.0.0
  */
 public class Controller {
-
-    //private Logger logger = LogManager.getLogger("controller_layer");
 
     private HorseDAOInterface horseDAO;
     private RaceDAOInterface raceDAO;

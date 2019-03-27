@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name = Horse.tableName)
 public class Horse implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     public static final String tableName = "horse";
     public static final String idColumnName = "id";
     @ManyToMany(mappedBy = "horses",

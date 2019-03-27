@@ -15,6 +15,8 @@ import java.util.List;
 @Table(name = Client.tableName)
 public class Client implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     public static final String tableName = "client";
     private static final String fioColumnName = "fio";
     @OneToMany(mappedBy = "client",

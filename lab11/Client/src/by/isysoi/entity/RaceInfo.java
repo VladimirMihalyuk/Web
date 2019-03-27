@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class RaceInfo implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     private int raceId;
 
     private int horseId;

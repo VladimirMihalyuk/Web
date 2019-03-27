@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class Client implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     public List<Bet> bets;
     /**
      * id of client

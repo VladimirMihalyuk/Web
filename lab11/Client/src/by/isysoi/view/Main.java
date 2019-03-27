@@ -1,8 +1,14 @@
 package by.isysoi.view;
 
 import by.isysoi.controller.Controller;
-import by.isysoi.entity.*;
-import by.isysoi.dao.*;
+import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.dao.ClientDAOInterface;
+import by.isysoi.dao.HorseDAOInterface;
+import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.entity.Bet;
+import by.isysoi.entity.Client;
+import by.isysoi.entity.Horse;
+import by.isysoi.entity.Race;
 import by.isysoi.util.Utils;
 
 import javax.ejb.EJB;
@@ -18,19 +24,17 @@ import java.util.*;
  */
 public class Main {
 
-    @EJB(beanName = "HorseDAO")
-    static HorseDAOInterface horseDAO;
+    @EJB
+    private static HorseDAOInterface horseDAO;
 
     @EJB
-    static RaceDAOInterface raceDAO;
+    private static RaceDAOInterface raceDAO;
 
     @EJB
-    static ClientDAOInterface clientDAO;
+    private static ClientDAOInterface clientDAO;
 
     @EJB
-    static BetDAOInterface betDAO;
-
-    //private static Logger logger = LogManager.getLogger();
+    private static BetDAOInterface betDAO;
 
     public static void main(String[] args) {
         Controller controller = new Controller(horseDAO,
@@ -53,10 +57,9 @@ public class Main {
             List<Race> races = controller.getRacesByDate(date);
             Utils.printList(races, "print races 11-02-2019");
 
-            controller.addHorceToRace(2, 1);
+            //controller.addHorceToRace(2, 1);
 
         } catch (ParseException e) {
-//            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }

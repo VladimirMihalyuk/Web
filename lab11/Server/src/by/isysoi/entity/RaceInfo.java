@@ -10,6 +10,8 @@ import java.io.Serializable;
 @Table(name = RaceInfo.tableName)
 public class RaceInfo implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     public static final String tableName = "race_info";
     public static final String raceColumnName = "race_id";
     public static final String horseColumnName = "horse_id";

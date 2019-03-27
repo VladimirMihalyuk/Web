@@ -11,6 +11,8 @@ import java.math.BigDecimal;
  */
 public class Bet implements Serializable {
 
+    private static final long serialVersionUID = 1;
+
     /**
      * id of bet
      */
