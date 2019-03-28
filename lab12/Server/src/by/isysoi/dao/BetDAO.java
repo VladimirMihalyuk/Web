@@ -43,7 +43,7 @@ public class BetDAO {
      *
      * @return bets
      */
-    @WebMethod()
+    @WebMethod
     public List<Bet> readBet() {
         List bets = null;
         try {
@@ -65,7 +65,7 @@ public class BetDAO {
      * @param id bet id
      * @return bet
      */
-    @WebMethod()
+    @WebMethod
     public Bet readBetById(int id) {
         Bet bet = null;
         try {
@@ -88,7 +88,7 @@ public class BetDAO {
      *
      * @param bet bet object
      */
-    @WebMethod()
+    @WebMethod
     public void insertBet(Bet bet) {
         try {
             entityManager.persist(bet);
@@ -103,7 +103,7 @@ public class BetDAO {
      * @param raceId id of race
      * @return list of clients
      */
-    @WebMethod()
+    @WebMethod
     //public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
     public Set<Client> readWinnersByRace(int raceId) {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();

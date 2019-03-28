@@ -47,7 +47,7 @@ public class HorseDAO  {
      *
      * @return list of horses
      */
-    @WebMethod()
+    @WebMethod
     public List<Horse> readHorses() {
         List horses = null;
 
@@ -70,7 +70,7 @@ public class HorseDAO  {
      * @param id id of horse
      * @return horse
      */
-    @WebMethod()
+    @WebMethod
     public Horse readHorseById(int id) {
         Horse horse = null;
 
@@ -95,7 +95,7 @@ public class HorseDAO  {
      *
      * @param horse horse object
      */
-    @WebMethod()
+    @WebMethod
     public void insertHorse(Horse horse) {
         try {
             entityManager.persist(horse);
@@ -109,7 +109,7 @@ public class HorseDAO  {
      *
      * @param raceId id of race
      */
-    @WebMethod()
+    @WebMethod
     public List<Horse> readHorcesInRace(int raceId) {
         List horses = null;
 

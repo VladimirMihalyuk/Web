@@ -48,7 +48,7 @@ public class ClientDAO {
      *
      * @return list of clients
      */
-    @WebMethod()
+    @WebMethod
     public List<Client> readClients() {
         List clients = null;
 
@@ -71,7 +71,7 @@ public class ClientDAO {
      * @param id client id
      * @return client
      */
-    @WebMethod()
+    @WebMethod
     public Client readClientById(int id) {
         Client client = null;
 
@@ -95,7 +95,7 @@ public class ClientDAO {
      *
      * @param client client object
      */
-    @WebMethod()
+    @WebMethod
     public void insertClient(Client client) {
         try {
             entityManager.persist(client);
