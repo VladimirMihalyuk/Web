@@ -7,6 +7,7 @@ import by.isysoi.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@WebService
+@WebService()
 public class HorseDAO  {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -46,7 +47,7 @@ public class HorseDAO  {
      *
      * @return list of horses
      */
-    @WebMethod
+    @WebMethod()
     public List<Horse> readHorses() {
         List horses = null;
 
@@ -69,7 +70,7 @@ public class HorseDAO  {
      * @param id id of horse
      * @return horse
      */
-    @WebMethod
+    @WebMethod()
     public Horse readHorseById(int id) {
         Horse horse = null;
 
@@ -94,7 +95,7 @@ public class HorseDAO  {
      *
      * @param horse horse object
      */
-    @WebMethod
+    @WebMethod()
     public void insertHorse(Horse horse) {
         try {
             entityManager.persist(horse);
@@ -108,7 +109,7 @@ public class HorseDAO  {
      *
      * @param raceId id of race
      */
-    @WebMethod
+    @WebMethod()
     public List<Horse> readHorcesInRace(int raceId) {
         List horses = null;
 

@@ -5,6 +5,7 @@ import by.isysoi.entity.Client_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -22,7 +23,8 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@WebService
+
+@WebService()
 public class ClientDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -46,7 +48,7 @@ public class ClientDAO {
      *
      * @return list of clients
      */
-    @WebMethod
+    @WebMethod()
     public List<Client> readClients() {
         List clients = null;
 
@@ -69,7 +71,7 @@ public class ClientDAO {
      * @param id client id
      * @return client
      */
-    @WebMethod
+    @WebMethod()
     public Client readClientById(int id) {
         Client client = null;
 
@@ -93,7 +95,7 @@ public class ClientDAO {
      *
      * @param client client object
      */
-    @WebMethod
+    @WebMethod()
     public void insertClient(Client client) {
         try {
             entityManager.persist(client);
