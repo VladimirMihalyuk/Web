@@ -27,7 +27,7 @@ import java.util.List;
 @WebService()
 public class ClientDAO {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+    //protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -37,7 +37,7 @@ public class ClientDAO {
      */
     public ClientDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("ClientDAO created ");
+        //logger.info("ClientDAO created ");
     }
 
     public ClientDAO() {
@@ -60,7 +60,7 @@ public class ClientDAO {
             clients = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read clients", e);
+            //logger.error("failed to read clients", e);
         }
         return clients;
     }
@@ -85,7 +85,7 @@ public class ClientDAO {
             client = (Client) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to read client", e);
+            //logger.error("failed to read client", e);
         }
         return client;
     }
@@ -100,7 +100,7 @@ public class ClientDAO {
         try {
             entityManager.persist(client);
         } catch (Exception e) {
-            logger.error("failed to insert client", e);
+            //logger.error("failed to insert client", e);
         }
     }
 

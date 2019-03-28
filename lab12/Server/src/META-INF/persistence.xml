@@ -1,10 +1,6 @@
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             version="1.0"
-             xmlns="http://java.sun.com/xml/ns/persistence"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="Test_Local" transaction-type="JTA">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/horseraces</jta-data-source>
     </persistence-unit>
 </persistence>
