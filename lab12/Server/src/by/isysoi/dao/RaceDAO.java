@@ -7,7 +7,6 @@ import by.isysoi.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -24,10 +23,10 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@WebService()
+@WebService
 public class RaceDAO {
 
-    //protected Logger logger = LogManager.getLogger("dao_layer");
+    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -37,7 +36,7 @@ public class RaceDAO {
      */
     public RaceDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        //logger.info("RaceDAO created ");
+        logger.info("RaceDAO created ");
     }
 
     public RaceDAO() {
@@ -60,7 +59,7 @@ public class RaceDAO {
             races = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            //logger.error("failed to insert bet", e);
+            logger.error("failed to insert bet", e);
         }
         return races;
     }
@@ -86,7 +85,7 @@ public class RaceDAO {
             race = (Race) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            //logger.error("failed to read race", e);
+            logger.error("failed to read race", e);
         }
         return race;
     }
@@ -101,7 +100,7 @@ public class RaceDAO {
         try {
             entityManager.persist(race);
         } catch (Exception e) {
-            //logger.error("failed to insert race", e);
+            logger.error("failed to insert race", e);
         }
     }
 
@@ -129,7 +128,7 @@ public class RaceDAO {
             races = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            //logger.error("failed to read race by date", e);
+            logger.error("failed to read race by date", e);
         }
         return races;
     }
@@ -151,7 +150,7 @@ public class RaceDAO {
         try {
             entityManager.persist(raceInfo);
         } catch (Exception e) {
-            //logger.error("failed to add horse to race", e);
+            logger.error("failed to add horse to race", e);
         }
     }
 
@@ -178,7 +177,7 @@ public class RaceDAO {
                     .executeUpdate();
 
         } catch (Exception e) {
-            //logger.error("failed to update position of horse", e);
+            logger.error("failed to update position of horse", e);
         }
     }
 

@@ -7,7 +7,6 @@ import by.isysoi.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -23,9 +22,9 @@ import java.util.List;
  * @version 1.0.0
  */
 @WebService()
-public class HorseDAO  {
+public class HorseDAO {
 
-    //protected Logger logger = LogManager.getLogger("dao_layer");
+    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -35,7 +34,7 @@ public class HorseDAO  {
      */
     public HorseDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        //logger.info("HorseDAO created ");
+        logger.info("HorseDAO created ");
     }
 
     public HorseDAO() {
@@ -59,7 +58,7 @@ public class HorseDAO  {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            //logger.error("failed to read horses", e);
+            logger.error("failed to read horses", e);
         }
         return horses;
     }
@@ -85,7 +84,7 @@ public class HorseDAO  {
             horse = (Horse) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            //logger.error("failed to read horse", e);
+            logger.error("failed to read horse", e);
         }
         return horse;
     }
@@ -100,7 +99,7 @@ public class HorseDAO  {
         try {
             entityManager.persist(horse);
         } catch (Exception e) {
-            //logger.error("failed to insert horse", e);
+            logger.error("failed to insert horse", e);
         }
     }
 
@@ -124,7 +123,7 @@ public class HorseDAO  {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            //logger.error("failed to read horses in race", e);
+            logger.error("failed to read horses in race", e);
         }
         return horses;
     }
