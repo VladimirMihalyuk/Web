@@ -1,7 +1,10 @@
 package by.isysoi.entity;
 
+import by.isysoi.xml.adapter.IntAdapter;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -11,6 +14,7 @@ import java.math.BigDecimal;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
@@ -26,6 +30,7 @@ public class Bet implements Serializable {
      */
     @XmlAttribute
     @XmlID
+    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
     @Id
     @GeneratedValue
     private int id;
@@ -41,6 +46,7 @@ public class Bet implements Serializable {
     @XmlIDREF
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = raceColumnName)
+    @XmlElement
     private Race race;
 
     /**
@@ -49,6 +55,7 @@ public class Bet implements Serializable {
     @XmlIDREF
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = horseColumnName)
+    @XmlElement
     private Horse horse;
 
     /**
@@ -57,6 +64,7 @@ public class Bet implements Serializable {
     @XmlIDREF
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = clientColumnName)
+    @XmlElement
     private Client client;
 
     public int getId() {

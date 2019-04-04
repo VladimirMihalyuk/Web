@@ -1,5 +1,7 @@
 package by.isysoi.entity;
 
+import by.isysoi.xml.adapter.IntAdapter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -20,15 +23,17 @@ public class RaceInfo implements Serializable {
     public static final String horseColumnName = "horse_id";
     private static final long serialVersionUID = 1;
 
-    @XmlAttribute
-    @XmlID
+    @XmlAttribute(name = "raceId")
     @Id
+    @XmlID
+    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
     @Column(name = RaceInfo.raceColumnName)
     private int raceId;
 
-    @XmlAttribute
-    @XmlID
+    @XmlAttribute(name = "horseId")
     @Id
+    @XmlID
+    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
     @Column(name = RaceInfo.horseColumnName)
     private int horseId;
 

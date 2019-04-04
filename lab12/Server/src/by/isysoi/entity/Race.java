@@ -1,7 +1,10 @@
 package by.isysoi.entity;
 
+import by.isysoi.xml.adapter.IntAdapter;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +16,7 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "Race")
 @Table(name = Race.tableName)
@@ -31,12 +35,14 @@ public class Race implements Serializable {
             joinColumns = @JoinColumn(name = RaceInfo.raceColumnName),
             inverseJoinColumns = {@JoinColumn(name = RaceInfo.horseColumnName)}
     )
+    @XmlElement(name="horse")
     public List<Horse> horses;
 
     @XmlIDREF
     @OneToMany(mappedBy = "race",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
+    @XmlElement(name="bet")
     public List<Bet> bets;
 
     /**
@@ -46,6 +52,7 @@ public class Race implements Serializable {
     @XmlID
     @Id
     @GeneratedValue
+    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
     private int id;
     /**
      * distance of race
@@ -68,6 +75,11 @@ public class Race implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    @XmlID
+    public String getReferenceId() {
+        return String.valueOf(id);
     }
 
     public void setId(int id) {
