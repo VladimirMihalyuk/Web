@@ -12,9 +12,6 @@ import java.util.Set;
  */
 public class Utils {
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-
     /**
      * print list of Genetic object
      *
@@ -22,7 +19,7 @@ public class Utils {
      * @param title some text to printed before list
      */
     public static <T extends Iterable<E>, E> void printList(T list, String title) {
-        System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
+        System.out.println("------------" + title + "------------");
         for (E element : list) {
             System.out.println(element);
         }
@@ -36,7 +33,7 @@ public class Utils {
      * @param title some text to printed before list
      */
     public static <T extends Iterable<Map.Entry<E, K>>, E, K> void printListOfTuples(T list, String title) {
-        System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
+        System.out.println("------------" + title + "------------");
         for (Map.Entry<E, K> element : list) {
             System.out.println(element.getKey());
             System.out.println(element.getValue());
@@ -51,7 +48,7 @@ public class Utils {
      * @param title some text to printed before list
      */
     public static <E, K> void printMapWithList(Map<E, Collection<K>> map, String title) {
-        System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
+        System.out.println("------------" + title + "------------");
         for (Map.Entry<E, Collection<K>> element : map.entrySet()) {
             System.out.println(element.getKey());
             for (K valueElement : element.getValue()) {
@@ -68,7 +65,7 @@ public class Utils {
      * @param title some text to printed before list
      */
     public static <E, K> void printMapWithSet(Map<E, Set<K>> map, String title) {
-        System.out.println(ANSI_GREEN + "------------" + title + "------------" + ANSI_RESET);
+        System.out.println("------------" + title + "------------");
         for (Map.Entry<E, Set<K>> element : map.entrySet()) {
             System.out.println(element.getKey());
             for (K valueElement : element.getValue()) {
