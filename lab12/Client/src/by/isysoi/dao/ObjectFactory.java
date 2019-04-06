@@ -1,4 +1,3 @@
-
 package by.isysoi.dao;
 
 import javax.xml.bind.JAXBElement;
@@ -9,18 +8,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the by.isysoi.dao package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the by.isysoi.dao package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -47,14 +45,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.isysoi.dao
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link AddHorseToRace }
-     * 
      */
     public AddHorseToRace createAddHorseToRace() {
         return new AddHorseToRace();
@@ -62,7 +58,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AddHorseToRaceResponse }
-     * 
      */
     public AddHorseToRaceResponse createAddHorseToRaceResponse() {
         return new AddHorseToRaceResponse();
@@ -70,7 +65,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Bet }
-     * 
      */
     public Bet createBet() {
         return new Bet();
@@ -78,7 +72,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Client }
-     * 
      */
     public Client createClient() {
         return new Client();
@@ -86,7 +79,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Horse }
-     * 
      */
     public Horse createHorse() {
         return new Horse();
@@ -94,7 +86,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InsertRace }
-     * 
      */
     public InsertRace createInsertRace() {
         return new InsertRace();
@@ -102,7 +93,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InsertRaceResponse }
-     * 
      */
     public InsertRaceResponse createInsertRaceResponse() {
         return new InsertRaceResponse();
@@ -110,7 +100,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Race }
-     * 
      */
     public Race createRace() {
         return new Race();
@@ -118,7 +107,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRaceById }
-     * 
      */
     public ReadRaceById createReadRaceById() {
         return new ReadRaceById();
@@ -126,7 +114,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRaceByIdResponse }
-     * 
      */
     public ReadRaceByIdResponse createReadRaceByIdResponse() {
         return new ReadRaceByIdResponse();
@@ -134,7 +121,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRaces }
-     * 
      */
     public ReadRaces createReadRaces() {
         return new ReadRaces();
@@ -142,7 +128,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRacesByDate }
-     * 
      */
     public ReadRacesByDate createReadRacesByDate() {
         return new ReadRacesByDate();
@@ -150,7 +135,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRacesByDateResponse }
-     * 
      */
     public ReadRacesByDateResponse createReadRacesByDateResponse() {
         return new ReadRacesByDateResponse();
@@ -158,7 +142,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ReadRacesResponse }
-     * 
      */
     public ReadRacesResponse createReadRacesResponse() {
         return new ReadRacesResponse();
@@ -166,7 +149,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SetHoresPositionInRace }
-     * 
      */
     public SetHoresPositionInRace createSetHoresPositionInRace() {
         return new SetHoresPositionInRace();
@@ -174,7 +156,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SetHoresPositionInRaceResponse }
-     * 
      */
     public SetHoresPositionInRaceResponse createSetHoresPositionInRaceResponse() {
         return new SetHoresPositionInRaceResponse();
@@ -182,7 +163,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddHorseToRace }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "addHorseToRace")
     public JAXBElement<AddHorseToRace> createAddHorseToRace(AddHorseToRace value) {
@@ -191,7 +171,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddHorseToRaceResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "addHorseToRaceResponse")
     public JAXBElement<AddHorseToRaceResponse> createAddHorseToRaceResponse(AddHorseToRaceResponse value) {
@@ -200,7 +179,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Bet }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "bet")
     public JAXBElement<Bet> createBet(Bet value) {
@@ -209,7 +187,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "client")
     public JAXBElement<Client> createClient(Client value) {
@@ -218,7 +195,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Horse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "horse")
     public JAXBElement<Horse> createHorse(Horse value) {
@@ -227,7 +203,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link InsertRace }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "insertRace")
     public JAXBElement<InsertRace> createInsertRace(InsertRace value) {
@@ -236,7 +211,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link InsertRaceResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "insertRaceResponse")
     public JAXBElement<InsertRaceResponse> createInsertRaceResponse(InsertRaceResponse value) {
@@ -245,7 +219,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Race }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "race")
     public JAXBElement<Race> createRace(Race value) {
@@ -254,7 +227,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRaceById }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRaceById")
     public JAXBElement<ReadRaceById> createReadRaceById(ReadRaceById value) {
@@ -263,7 +235,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRaceByIdResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRaceByIdResponse")
     public JAXBElement<ReadRaceByIdResponse> createReadRaceByIdResponse(ReadRaceByIdResponse value) {
@@ -272,7 +243,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRaces }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRaces")
     public JAXBElement<ReadRaces> createReadRaces(ReadRaces value) {
@@ -281,7 +251,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRacesByDate }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRacesByDate")
     public JAXBElement<ReadRacesByDate> createReadRacesByDate(ReadRacesByDate value) {
@@ -290,7 +259,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRacesByDateResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRacesByDateResponse")
     public JAXBElement<ReadRacesByDateResponse> createReadRacesByDateResponse(ReadRacesByDateResponse value) {
@@ -299,7 +267,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadRacesResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "readRacesResponse")
     public JAXBElement<ReadRacesResponse> createReadRacesResponse(ReadRacesResponse value) {
@@ -308,7 +275,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SetHoresPositionInRace }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "setHoresPositionInRace")
     public JAXBElement<SetHoresPositionInRace> createSetHoresPositionInRace(SetHoresPositionInRace value) {
@@ -317,7 +283,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SetHoresPositionInRaceResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://dao.isysoi.by/", name = "setHoresPositionInRaceResponse")
     public JAXBElement<SetHoresPositionInRaceResponse> createSetHoresPositionInRaceResponse(SetHoresPositionInRaceResponse value) {
@@ -326,7 +291,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "horse", scope = Race.class)
     @XmlIDREF
@@ -336,7 +300,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "bet", scope = Race.class)
     @XmlIDREF
@@ -346,7 +309,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "race", scope = Horse.class)
     @XmlIDREF
@@ -356,7 +318,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "bet", scope = Horse.class)
     @XmlIDREF
@@ -366,7 +327,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "bet", scope = Client.class)
     @XmlIDREF

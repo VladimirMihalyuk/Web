@@ -1,4 +1,3 @@
-
 package by.isysoi.dao;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for readRaceByIdResponse complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="readRaceByIdResponse"&gt;
  *   &lt;complexContent&gt;
@@ -23,12 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "readRaceByIdResponse", propOrder = {
-    "_return"
+        "_return"
 })
 public class ReadRaceByIdResponse {
 
@@ -37,11 +34,9 @@ public class ReadRaceByIdResponse {
 
     /**
      * Gets the value of the return property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Race }
-     *     
+     *
+     * @return possible object is
+     * {@link Race }
      */
     public Race getReturn() {
         return _return;
@@ -49,11 +44,9 @@ public class ReadRaceByIdResponse {
 
     /**
      * Sets the value of the return property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Race }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Race }
      */
     public void setReturn(Race value) {
         this._return = value;

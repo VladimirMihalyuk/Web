@@ -1,4 +1,3 @@
-
 package by.isysoi.dao;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -10,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for readRacesByDate complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="readRacesByDate"&gt;
  *   &lt;complexContent&gt;
@@ -24,12 +23,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "readRacesByDate", propOrder = {
-    "arg0"
+        "arg0"
 })
 public class ReadRacesByDate {
 
@@ -38,11 +35,9 @@ public class ReadRacesByDate {
 
     /**
      * Gets the value of the arg0 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getArg0() {
         return arg0;
@@ -50,11 +45,9 @@ public class ReadRacesByDate {
 
     /**
      * Sets the value of the arg0 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setArg0(XMLGregorianCalendar value) {
         this.arg0 = value;

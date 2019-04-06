@@ -1,4 +1,3 @@
-
 package by.isysoi.dao;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for addHorseToRace complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="addHorseToRace"&gt;
  *   &lt;complexContent&gt;
@@ -23,13 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "addHorseToRace", propOrder = {
-    "arg0",
-    "arg1"
+        "arg0",
+        "arg1"
 })
 public class AddHorseToRace {
 
@@ -38,7 +35,6 @@ public class AddHorseToRace {
 
     /**
      * Gets the value of the arg0 property.
-     * 
      */
     public int getArg0() {
         return arg0;
@@ -46,7 +42,6 @@ public class AddHorseToRace {
 
     /**
      * Sets the value of the arg0 property.
-     * 
      */
     public void setArg0(int value) {
         this.arg0 = value;
@@ -54,7 +49,6 @@ public class AddHorseToRace {
 
     /**
      * Gets the value of the arg1 property.
-     * 
      */
     public int getArg1() {
         return arg1;
@@ -62,7 +56,6 @@ public class AddHorseToRace {
 
     /**
      * Sets the value of the arg1 property.
-     * 
      */
     public void setArg1(int value) {
         this.arg1 = value;

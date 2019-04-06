@@ -1,17 +1,15 @@
 package by.isysoi.view;
 
 import by.isysoi.controller.Controller;
-import by.isysoi.dao.BetDAOService;
-import by.isysoi.dao.ClientDAOService;
-import by.isysoi.dao.HorseDAOService;
-import by.isysoi.dao.RaceDAOService;
 import by.isysoi.dao.*;
 import by.isysoi.util.Utils;
 
 import javax.xml.ws.WebServiceRef;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Main

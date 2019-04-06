@@ -4,8 +4,9 @@ import by.isysoi.dao.*;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.*;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * controller
@@ -53,7 +54,7 @@ public class Controller {
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(date);
         try {
-            races = raceDAO.readRacesByDate( DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+            races = raceDAO.readRacesByDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
 
