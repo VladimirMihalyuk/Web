@@ -9,10 +9,12 @@ import org.apache.logging.log4j.Logger;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
+import javax.transaction.UserTransaction;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -98,7 +100,10 @@ public class RaceDAO {
     @WebMethod
     public void insertRace(Race race) {
         try {
+            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
             entityManager.persist(race);
+            transaction.commit();
         } catch (Exception e) {
             logger.error("failed to insert race", e);
         }
@@ -148,7 +153,10 @@ public class RaceDAO {
         raceInfo.setPosition(null);
 
         try {
+            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
             entityManager.persist(raceInfo);
+            transaction.commit();
         } catch (Exception e) {
             logger.error("failed to add horse to race", e);
         }
@@ -173,9 +181,11 @@ public class RaceDAO {
             update.where(condition);
 
 
+            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
             entityManager.createQuery(update)
                     .executeUpdate();
-
+            transaction.commit();
         } catch (Exception e) {
             logger.error("failed to update position of horse", e);
         }

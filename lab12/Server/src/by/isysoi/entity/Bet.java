@@ -18,6 +18,12 @@ import java.math.BigDecimal;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
+@NamedQueries(
+        @NamedQuery(name = "readWinningBets",
+                query = "select b from Bet b " +
+                        "join b.horse h " +
+                        "where b.race.id = :raceId and h.id in (select ri.horseId from RaceInfo ri where ri.position = 1)")
+)
 public class Bet implements Serializable {
 
     public static final String tableName = "bet";
@@ -30,7 +36,7 @@ public class Bet implements Serializable {
      */
     @XmlAttribute
     @XmlID
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     @Id
     @GeneratedValue
     private int id;

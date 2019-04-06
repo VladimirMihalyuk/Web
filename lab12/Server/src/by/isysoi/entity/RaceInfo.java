@@ -26,14 +26,14 @@ public class RaceInfo implements Serializable {
     @XmlAttribute(name = "raceId")
     @Id
     @XmlID
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     @Column(name = RaceInfo.raceColumnName)
     private int raceId;
 
     @XmlAttribute(name = "horseId")
     @Id
     @XmlID
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     @Column(name = RaceInfo.horseColumnName)
     private int horseId;
 

@@ -3,11 +3,10 @@ package by.isysoi.entity;
 import by.isysoi.xml.adapter.IntAdapter;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import java.io.Serializable;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * class that represent client entity
@@ -29,14 +28,14 @@ public class Client implements Serializable {
     @OneToMany(mappedBy = "client",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
-    @XmlElement(name="bet")
+    @XmlElement(name = "bet")
     public List<Bet> bets;
     /**
      * id of client
      */
     @XmlAttribute
     @XmlID
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     @Id
     @GeneratedValue
     private int id;

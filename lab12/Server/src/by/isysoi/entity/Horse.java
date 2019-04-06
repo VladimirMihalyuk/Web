@@ -27,12 +27,12 @@ public class Horse implements Serializable {
     @XmlIDREF
     @ManyToMany(mappedBy = "horses",
             fetch = FetchType.EAGER)
-    @XmlElement(name="race")
+    @XmlElement(name = "race")
     public List<Race> races;
 
     @XmlIDREF
     @OneToMany(mappedBy = "horse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @XmlElement(name="bet")
+    @XmlElement(name = "bet")
     public List<Bet> bets;
 
     /**
@@ -40,7 +40,7 @@ public class Horse implements Serializable {
      */
     @XmlAttribute
     @XmlID
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     @Id
     @GeneratedValue
     private int id;

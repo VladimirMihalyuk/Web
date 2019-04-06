@@ -1,15 +1,22 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.*;
+import by.isysoi.entity.Bet;
+import by.isysoi.entity.Bet_;
+import by.isysoi.entity.Client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.transaction.UserTransaction;
 import java.util.*;
 
 /**
@@ -90,7 +97,10 @@ public class BetDAO {
     @WebMethod
     public void insertBet(Bet bet) {
         try {
+            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
             entityManager.persist(bet);
+            transaction.commit();
         } catch (Exception e) {
             logger.error("failed to insert bet", e);
         }
@@ -108,26 +118,30 @@ public class BetDAO {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
-            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
-            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
+//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
+//            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
+//            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
+//
+//            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
+//            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
+//            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
+//                    .where(criteriaBuilder.and(
+//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
+//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
+//                    );
+//
+//            Predicate condition = criteriaBuilder.and(
+//                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
+//                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
+//            );
+//            criteriaQuery.where(condition);
 
-            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
-            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
-            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
-                    .where(criteriaBuilder.and(
-                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
-                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
-                    );
+//            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
 
-            Predicate condition = criteriaBuilder.and(
-                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
-                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
-            );
-            criteriaQuery.where(condition);
-
-            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
+            List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
+                    .setParameter("raceId", raceId)
+                    .getResultList();
 
             for (Bet bet : bets) {
                 Client client = bet.getClient();

@@ -4,6 +4,8 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="WebServicesPlugin">
+    <context>Server_lab12_war_exploded</context>
+    <context>Test_Local</context>
     <context />
     <context>Server_lab12_war_exploded</context>
     <context>о</context>

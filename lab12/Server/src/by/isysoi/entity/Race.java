@@ -35,14 +35,14 @@ public class Race implements Serializable {
             joinColumns = @JoinColumn(name = RaceInfo.raceColumnName),
             inverseJoinColumns = {@JoinColumn(name = RaceInfo.horseColumnName)}
     )
-    @XmlElement(name="horse")
+    @XmlElement(name = "horse")
     public List<Horse> horses;
 
     @XmlIDREF
     @OneToMany(mappedBy = "race",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    @XmlElement(name="bet")
+    @XmlElement(name = "bet")
     public List<Bet> bets;
 
     /**
@@ -52,7 +52,7 @@ public class Race implements Serializable {
     @XmlID
     @Id
     @GeneratedValue
-    @XmlJavaTypeAdapter(type=int.class, value=IntAdapter.class)
+    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
     private int id;
     /**
      * distance of race
@@ -77,13 +77,13 @@ public class Race implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @XmlID
     public String getReferenceId() {
         return String.valueOf(id);
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getDistance() {

@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
 
-  <xs:element name="bet" type="bet"/>
+    <xs:element name="bet" type="bet"/>
 
-  <xs:element name="client" type="client"/>
+    <xs:element name="client" type="client"/>
 
-  <xs:element name="horse" type="horse"/>
+    <xs:element name="horse" type="horse"/>
 
-  <xs:element name="race" type="race"/>
+    <xs:element name="race" type="race"/>
 
-  <xs:complexType name="race">
-    <xs:sequence>
-      <xs:element ref="horse" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="distance" type="xs:double"/>
-      <xs:element name="raceDate" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="referenceId" type="xs:ID" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:ID"/>
-  </xs:complexType>
+    <xs:complexType name="race">
+        <xs:sequence>
+            <xs:element ref="horse" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="distance" type="xs:double"/>
+            <xs:element name="raceDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="referenceId" type="xs:ID" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
 
-  <xs:complexType name="horse">
-    <xs:sequence>
-      <xs:element ref="race" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="nikname" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:ID"/>
-  </xs:complexType>
+    <xs:complexType name="horse">
+        <xs:sequence>
+            <xs:element ref="race" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="nikname" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
 
-  <xs:complexType name="bet">
-    <xs:sequence>
-      <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
-      <xs:element ref="race" minOccurs="0"/>
-      <xs:element ref="horse" minOccurs="0"/>
-      <xs:element ref="client" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:ID"/>
-  </xs:complexType>
+    <xs:complexType name="bet">
+        <xs:sequence>
+            <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+            <xs:element ref="race" minOccurs="0"/>
+            <xs:element ref="horse" minOccurs="0"/>
+            <xs:element ref="client" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
 
-  <xs:complexType name="client">
-    <xs:sequence>
-      <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="FIO" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:ID"/>
-  </xs:complexType>
+    <xs:complexType name="client">
+        <xs:sequence>
+            <xs:element ref="bet" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="FIO" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
 </xs:schema>
 
