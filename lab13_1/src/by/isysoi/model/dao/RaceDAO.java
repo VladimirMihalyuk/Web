@@ -7,8 +7,6 @@ import by.isysoi.model.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,7 +23,6 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@WebService
 public class RaceDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -49,7 +46,7 @@ public class RaceDAO {
      *
      * @return list of races
      */
-    @WebMethod
+
     public List<Race> readRaces() {
         List races = null;
 
@@ -72,7 +69,7 @@ public class RaceDAO {
      * @param id id of race
      * @return race
      */
-    @WebMethod
+
     public Race readRaceById(int id) {
         Race race = null;
 
@@ -97,7 +94,7 @@ public class RaceDAO {
      *
      * @param race race object
      */
-    @WebMethod
+
     public void insertRace(Race race) {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
@@ -115,7 +112,7 @@ public class RaceDAO {
      * @param date date of race to select
      * @return list of races
      */
-    @WebMethod
+
     public List<Race> readRacesByDate(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -144,7 +141,7 @@ public class RaceDAO {
      * @param horseId id of horse
      * @param raceId  id of race
      */
-    @WebMethod
+
     public void addHorseToRace(int horseId, int raceId) {
         RaceInfo raceInfo = new RaceInfo();
 
@@ -169,7 +166,7 @@ public class RaceDAO {
      * @param raceId   id of race
      * @param position position of horse
      */
-    @WebMethod
+
     public void setHoresPositionInRace(int horseId, int raceId, int position) {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

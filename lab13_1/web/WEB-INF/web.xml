@@ -3,25 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <listener>
-        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
-    </listener>
+    <display-name>Lab Web 13</display-name>
     <servlet>
-        <description>JAX-WS endpoint</description>
-        <display-name>WSServlet</display-name>
-        <servlet-name>WSServlet</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <display-name>MainServlet</display-name>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>by.isysoi.controller.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>WSServlet</servlet-name>
-        <url-pattern>/services/*</url-pattern>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
     <welcome-file-list>
-
-        <welcome-file>/</welcome-file>
-
+        <welcome-file>/view/home.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

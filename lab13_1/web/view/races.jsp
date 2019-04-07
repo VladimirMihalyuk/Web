@@ -1,18 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Веб програмирование</title>
-    <link href="styles.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/view/styles.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
 
-<h1>Вывести список лошадей заданного забега.</h1>
+<h1>Вывести список забегов на указанную дату.</h1>
 
 <div class="page-form">
-    <form id="horses-in-race-form">
+    <form id="races-by-date-form" action="MainServlet">
     </form>
 </div>
 
@@ -21,21 +23,23 @@
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">nickname</th>
+            <th scope="col">distance</th>
+            <th scope="col">date</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th scope="col">1</th>
-            <th scope="col">test</th>
+            <th scope="col">12.2</th>
+            <th scope="col">12.02.2019</th>
         </tr>
         </tbody>
     </table>
 </div>
 
-<a href="home.jsp"> На главную</a>
+<a href="${pageContext.request.contextPath}?command=home"> На главную</a>
 
-<script src="script.js"></script>
+<script src="${pageContext.request.contextPath}/view/script.js"></script>
 
 </body>
 </html>

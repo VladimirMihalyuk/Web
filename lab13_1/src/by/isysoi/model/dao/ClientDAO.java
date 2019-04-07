@@ -5,7 +5,6 @@ import by.isysoi.model.entity.Client_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
@@ -25,7 +24,7 @@ import java.util.List;
  * @version 1.0.0
  */
 
-@WebService()
+
 public class ClientDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -49,7 +48,7 @@ public class ClientDAO {
      *
      * @return list of clients
      */
-    @WebMethod
+
     public List<Client> readClients() {
         List clients = null;
 
@@ -72,7 +71,7 @@ public class ClientDAO {
      * @param id client id
      * @return client
      */
-    @WebMethod
+
     public Client readClientById(int id) {
         Client client = null;
 
@@ -96,7 +95,7 @@ public class ClientDAO {
      *
      * @param client client object
      */
-    @WebMethod
+
     public void insertClient(Client client) {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");

@@ -1,18 +1,15 @@
 package by.isysoi.controller.command;
 
-import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-public class HomeCommand implements Command {
+public class RacesByDateCommand implements Command {
 
-    final String urlPattern = "home";
+    final String urlPattern = "racesByDate";
 
     @Override
     public String getPattern() {
@@ -22,7 +19,8 @@ public class HomeCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/home.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/races.jsp");
         dispatcher.forward(request, response);
     }
+
 }

@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Веб програмирование</title>
-    <link href="styles.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/view/styles.css" rel="stylesheet" type="text/css">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
@@ -16,16 +18,17 @@
 </p>
 <ul>
     <li>
-        <a href="winners.jsp"> Вывести список выигравших клиентов забега.</a>
+        <a href="${pageContext.request.contextPath}?command=winnersByRace"> Вывести список выигравших клиентов
+            забега.</a>
     </li>
     <li>
-        <a href="horses.jsp">Вывести список лошадей заданного забега.</a>
+        <a href="${pageContext.request.contextPath}?command=horsesInRace">Вывести список лошадей заданного забега.</a>
     </li>
     <li>
-        <a href="races.jsp">Вывести список забегов на указанную дату.</a>
+        <a href="${pageContext.request.contextPath}?command=racesByDate">Вывести список забегов на указанную дату.</a>
     </li>
     <li>
-        <a href="result.jsp">Зафиксировать состав и результаты забега.</a>
+        <a href="${pageContext.request.contextPath}?command=saveResult">Зафиксировать состав и результаты забега.</a>
     </li>
 </ul>
 </body>

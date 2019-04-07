@@ -6,8 +6,6 @@ import by.isysoi.model.entity.Client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,7 +23,6 @@ import java.util.*;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@WebService()
 public class BetDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
@@ -49,7 +46,7 @@ public class BetDAO {
      *
      * @return bets
      */
-    @WebMethod
+
     public List<Bet> readBet() {
         List bets = null;
         try {
@@ -71,7 +68,7 @@ public class BetDAO {
      * @param id bet id
      * @return bet
      */
-    @WebMethod
+
     public Bet readBetById(int id) {
         Bet bet = null;
         try {
@@ -94,7 +91,7 @@ public class BetDAO {
      *
      * @param bet bet object
      */
-    @WebMethod
+
     public void insertBet(Bet bet) {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
@@ -112,7 +109,7 @@ public class BetDAO {
      * @param raceId id of race
      * @return list of clients
      */
-    @WebMethod
+
     //public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
     public Set<Client> readWinnersByRace(int raceId) {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
