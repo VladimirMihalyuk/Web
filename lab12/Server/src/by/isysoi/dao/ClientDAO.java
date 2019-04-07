@@ -5,6 +5,7 @@ import by.isysoi.entity.Client_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -15,6 +16,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.List;
 
@@ -29,6 +31,9 @@ import java.util.List;
 public class ClientDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
+
+    @Resource
+    UserTransaction transaction;
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -99,11 +104,18 @@ public class ClientDAO {
     @WebMethod
     public void insertClient(Client client) {
         try {
-            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
+
             entityManager.persist(client);
+
             transaction.commit();
         } catch (Exception e) {
+            try {
+                transaction.rollback();
+            } catch (SystemException e1) {
+                logger.error("transaction rollback failed", e);
+            }
             logger.error("failed to insert client", e);
         }
     }
