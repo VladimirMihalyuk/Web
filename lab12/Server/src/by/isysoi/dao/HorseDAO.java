@@ -7,6 +7,7 @@ import by.isysoi.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.List;
 
@@ -27,6 +29,9 @@ import java.util.List;
 public class HorseDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
+
+    @Resource
+    UserTransaction transaction;
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -99,11 +104,18 @@ public class HorseDAO {
     @WebMethod
     public void insertHorse(Horse horse) {
         try {
-            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
+
             entityManager.persist(horse);
+
             transaction.commit();
         } catch (Exception e) {
+            try {
+                transaction.rollback();
+            } catch (SystemException e1) {
+                logger.error("transaction rollback failed", e);
+            }
             logger.error("failed to insert horse", e);
         }
     }

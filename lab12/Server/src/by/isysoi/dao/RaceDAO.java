@@ -7,6 +7,7 @@ import by.isysoi.entity.Race_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +31,9 @@ import java.util.List;
 public class RaceDAO {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
+
+    @Resource
+    UserTransaction transaction;
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -100,11 +105,18 @@ public class RaceDAO {
     @WebMethod
     public void insertRace(Race race) {
         try {
-            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
+
             entityManager.persist(race);
+
             transaction.commit();
         } catch (Exception e) {
+            try {
+                transaction.rollback();
+            } catch (SystemException e1) {
+                logger.error("transaction rollback failed", e);
+            }
             logger.error("failed to insert race", e);
         }
     }
@@ -153,11 +165,18 @@ public class RaceDAO {
         raceInfo.setPosition(null);
 
         try {
-            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
+
             entityManager.persist(raceInfo);
+
             transaction.commit();
         } catch (Exception e) {
+            try {
+                transaction.rollback();
+            } catch (SystemException e1) {
+                logger.error("transaction rollback failed", e);
+            }
             logger.error("failed to add horse to race", e);
         }
     }
@@ -172,6 +191,9 @@ public class RaceDAO {
     @WebMethod
     public void setHoresPositionInRace(int horseId, int raceId, int position) {
         try {
+            transaction.begin();
+            entityManager.joinTransaction();
+
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
             Root rootRaceInfo = update.from(RaceInfo.class);
@@ -180,13 +202,16 @@ public class RaceDAO {
                     criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), horseId));
             update.where(condition);
 
-
-            UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-            transaction.begin();
             entityManager.createQuery(update)
                     .executeUpdate();
+
             transaction.commit();
         } catch (Exception e) {
+            try {
+                transaction.rollback();
+            } catch (SystemException e1) {
+                logger.error("transaction rollback failed", e);
+            }
             logger.error("failed to update position of horse", e);
         }
     }
