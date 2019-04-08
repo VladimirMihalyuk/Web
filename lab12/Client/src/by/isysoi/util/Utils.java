@@ -81,6 +81,11 @@ public class Utils {
         System.out.println();
     }
 
+    /**
+     * print horse info
+     *
+     * @param horse horse object
+     */
     public static void printHorse(Horse horse) {
         String output = String.format("Horse:" +
                         "\n\tid - %s" +
@@ -90,6 +95,11 @@ public class Utils {
 
     }
 
+    /**
+     * print race info
+     *
+     * @param race race object
+     */
     public static void printRace(Race race) {
         String output = String.format("Race:" +
                         "\n\tid - %s" +
@@ -99,6 +109,11 @@ public class Utils {
         System.out.println(output);
     }
 
+    /**
+     * print client info
+     *
+     * @param client client object
+     */
     public static void printClient(Client client) {
         String output = String.format("Client:" +
                         "\n\tid - %s" +
@@ -107,6 +122,11 @@ public class Utils {
         System.out.println(output);
     }
 
+    /**
+     * print bet info
+     *
+     * @param bet bet object
+     */
     public static void printBet(Bet bet) {
         String output = String.format("Bet:" +
                         "\n\tid - %ы" +
@@ -118,6 +138,11 @@ public class Utils {
         System.out.println(output);
     }
 
+    /**
+     * print object if casted to horse or to client or to bet or to race
+     *
+     * @param object some object
+     */
     public static <T> void printObject(T object) {
         if (object instanceof Client) {
             printClient((Client) object);
