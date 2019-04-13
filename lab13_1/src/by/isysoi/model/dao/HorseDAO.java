@@ -99,6 +99,7 @@ public class HorseDAO {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
             entityManager.persist(horse);
             transaction.commit();
         } catch (Exception e) {

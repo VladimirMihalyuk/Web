@@ -99,6 +99,7 @@ public class ClientDAO {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
             entityManager.persist(client);
             transaction.commit();
         } catch (Exception e) {

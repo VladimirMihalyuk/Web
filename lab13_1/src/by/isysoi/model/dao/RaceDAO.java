@@ -99,6 +99,7 @@ public class RaceDAO {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
             entityManager.persist(race);
             transaction.commit();
         } catch (Exception e) {
@@ -152,6 +153,7 @@ public class RaceDAO {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
             entityManager.persist(raceInfo);
             transaction.commit();
         } catch (Exception e) {

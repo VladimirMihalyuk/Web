@@ -96,6 +96,7 @@ public class BetDAO {
         try {
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
             entityManager.persist(bet);
             transaction.commit();
         } catch (Exception e) {
