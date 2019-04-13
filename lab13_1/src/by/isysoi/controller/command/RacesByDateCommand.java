@@ -1,8 +1,6 @@
 package by.isysoi.controller.command;
 
-import by.isysoi.model.dao.HorseDAO;
 import by.isysoi.model.dao.RaceDAO;
-import by.isysoi.model.entity.Horse;
 import by.isysoi.model.entity.Race;
 
 import javax.persistence.Persistence;
@@ -12,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class RacesByDateCommand implements Command {
@@ -27,9 +27,18 @@ public class RacesByDateCommand implements Command {
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/races.jsp");
-        List<Race> list = null;
-        list = (new RaceDAO(Persistence.createEntityManagerFactory("Test_Local"))).readRaces();
-        request.setAttribute("racesByDateList", list);
+        String date = request.getParameter("date");
+        if (date != null) {
+            List<Race> list = null;
+            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                list = (new RaceDAO(Persistence.createEntityManagerFactory("Test_Local")))
+                        .readRacesByDate(ft.parse(date));
+                request.setAttribute("racesByDateList", list);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         dispatcher.forward(request, response);
     }
 

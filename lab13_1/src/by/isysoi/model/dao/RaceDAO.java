@@ -180,6 +180,8 @@ public class RaceDAO {
 
             UserTransaction transaction = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             transaction.begin();
+            entityManager.joinTransaction();
+
             entityManager.createQuery(update)
                     .executeUpdate();
             transaction.commit();

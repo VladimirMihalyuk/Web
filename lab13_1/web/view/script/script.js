@@ -95,18 +95,23 @@ const dom = (function () {
 
     function buildForm(form, type) {
         var array;
+        var commandValue;
         switch (type) {
             case 'winnersInRaceForm':
                 array = winnersInRaceFrom;
+                commandValue = 'winnersByRace';
                 break;
             case 'horsesInRaceForm':
                 array = horsesInRaceFrom;
+                commandValue = 'horsesInRace';
                 break;
             case 'racesByDateForm':
                 array = racesByDateFrom;
+                commandValue = 'racesByDate';
                 break;
             case 'horseResultForm':
                 array = horsesResultFrom;
+                commandValue = 'saveResult';
                 break;
         }
 
@@ -134,13 +139,19 @@ const dom = (function () {
                     form.appendChild(formDiv);
                     break;
                 case "submit":
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('name', 'command');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('id', 'command');
+                    hiddenInput.setAttribute('value', commandValue);
+                    form.appendChild(hiddenInput);
+
                     const submit = document.createElement('input');
                     submit.setAttribute('type', array[prop].type);
                     submit.setAttribute('class', array[prop].class);
                     submit.value = array[prop].value;
-
                     form.appendChild(submit);
-                    form.onSubmit = onSubmit();
+
                     break;
             }
         }
@@ -182,13 +193,8 @@ const dom = (function () {
 
     }
 
-    function onSubmit() {
-
-    }
-
     return {
         initPage,
-        onSubmit
     }
 
 }());

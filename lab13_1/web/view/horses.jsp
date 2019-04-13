@@ -15,8 +15,8 @@
 
 <h1>Вывести список лошадей заданного забега.</h1>
 
-<div class="page-form" action="MainServlet">
-    <form id="horses-in-race-form">
+<div class="page-form">
+    <form id="horses-in-race-form" action="${pageContext.request.contextPath}">
     </form>
 </div>
 
@@ -43,7 +43,7 @@
 
 <a href="${pageContext.request.contextPath}?command=home"> На главную</a>
 
-<script type="text/javascript" charset="utf-8">
+<script>
     <%@include file="script/script.js"%>
 </script>
 

@@ -7,22 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cd5ef29-ef30-4fe2-a128-1827706d65bb" name="Default Changelist" comment="lab11: finished server maybe?">
-      <change afterPath="$PROJECT_DIR$/../../lab13_1/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab13_1/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/artifacts/lab13_1_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/artifacts/lab13_1_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/MainServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/SaveResultCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/SaveResultCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/BetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/BetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/entity/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/entity/Bet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/RaceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/RaceDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/horses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/horses.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/races.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/races.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/script/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/style/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/script/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/winners.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/winners.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />

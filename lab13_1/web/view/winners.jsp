@@ -16,7 +16,7 @@
 <h1>Вывести список выигравших клиентов забега.</h1>
 
 <div class="page-form">
-    <form id="winners-in-race-form" action="MainServlet">
+    <form id="winners-in-race-form" action="${pageContext.request.contextPath}">
     </form>
 </div>
 
@@ -64,7 +64,7 @@
 
 <a href="${pageContext.request.contextPath}?command=home">На главную</a>
 
-<script type="text/javascript" charset="utf-8">
+<script>
     <%@include file="script/script.js"%>
 </script>
 

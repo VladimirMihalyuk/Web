@@ -16,7 +16,7 @@
 <h1>Вывести список забегов на указанную дату.</h1>
 
 <div class="page-form">
-    <form id="races-by-date-form" action="MainServlet">
+    <form id="races-by-date-form" action="${pageContext.request.contextPath}">
     </form>
 </div>
 
@@ -45,7 +45,7 @@
 
 <a href="${pageContext.request.contextPath}?command=home"> На главную</a>
 
-<script type="text/javascript" charset="utf-8">
+<script>
     <%@include file="script/script.js"%>
 </script>
 

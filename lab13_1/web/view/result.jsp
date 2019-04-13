@@ -15,13 +15,13 @@
 <h1>Зафиксировать состав и результаты забега.</h1>
 
 <div class="page-form">
-    <form id="update-horse-result-form" action="MainServlet">
+    <form id="update-horse-result-form" action="${pageContext.request.contextPath}" method="POST">>
     </form>
 </div>
 
 <a href="${pageContext.request.contextPath}?command=home"> На главную</a>
 
-<script type="text/javascript" charset="utf-8">
+<script>
     <%@include file="script/script.js"%>
 </script>
 
