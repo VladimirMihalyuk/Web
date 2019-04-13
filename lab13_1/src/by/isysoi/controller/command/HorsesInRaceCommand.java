@@ -24,7 +24,7 @@ public class HorsesInRaceCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/horses.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/horses.jsp");
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             List<Horse> list = null;

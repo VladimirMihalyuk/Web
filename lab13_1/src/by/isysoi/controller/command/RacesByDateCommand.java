@@ -26,7 +26,7 @@ public class RacesByDateCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/races.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/races.jsp");
         String date = request.getParameter("date");
         if (date != null) {
             List<Race> list = null;

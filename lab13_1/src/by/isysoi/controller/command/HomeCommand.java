@@ -19,7 +19,7 @@ public class HomeCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/home.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/home.jsp");
         dispatcher.forward(request, response);
     }
 }

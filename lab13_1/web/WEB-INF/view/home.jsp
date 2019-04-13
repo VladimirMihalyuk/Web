@@ -5,9 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Веб програмирование</title>
-    <style>
-        <%@include file="style/styles.css"%>
-    </style>
+    <link rel="stylesheet" href="style/styles.css">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
@@ -20,17 +18,20 @@
 </p>
 <ul>
     <li>
-        <a href="${pageContext.request.contextPath}?command=winnersByRace"> Вывести список выигравших клиентов
+        <a href="${pageContext.request.contextPath}/serv?command=winnersByRace"> Вывести список выигравших клиентов
             забега.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}?command=horsesInRace">Вывести список лошадей заданного забега.</a>
+        <a href="${pageContext.request.contextPath}/serv?command=horsesInRace">Вывести список лошадей заданного
+            забега.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}?command=racesByDate">Вывести список забегов на указанную дату.</a>
+        <a href="${pageContext.request.contextPath}/serv?command=racesByDate">Вывести список забегов на указанную
+            дату.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}?command=saveResult">Зафиксировать состав и результаты забега.</a>
+        <a href="${pageContext.request.contextPath}/serv?command=saveResult">Зафиксировать состав и результаты
+            забега.</a>
     </li>
 </ul>
 </body>

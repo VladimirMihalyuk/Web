@@ -26,7 +26,7 @@ public class WinnersByRaceCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/winners.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/winners.jsp");
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             Map<Client, Set<Bet>> map = null;

@@ -5,9 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Веб програмирование</title>
-    <style>
-        <%@include file="style/styles.css" %>
-    </style>
+    <link rel="stylesheet" href="style/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -16,7 +14,7 @@
 <h1>Вывести список выигравших клиентов забега.</h1>
 
 <div class="page-form">
-    <form id="winners-in-race-form" action="${pageContext.request.contextPath}">
+    <form id="winners-in-race-form" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 
@@ -62,11 +60,9 @@
     </div>
 </c:if>
 
-<a href="${pageContext.request.contextPath}?command=home">На главную</a>
+<a href="${pageContext.request.contextPath}/serv?command=home">На главную</a>
 
-<script>
-    <%@include file="script/script.js"%>
-</script>
+<script src="script/script.js"></script>
 
 </body>
 </html>

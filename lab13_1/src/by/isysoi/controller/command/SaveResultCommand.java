@@ -22,7 +22,7 @@ public class SaveResultCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/result.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/result.jsp");
         String raceId = request.getParameter("raceId");
         String horseId = request.getParameter("horseId");
         String positionNumber = request.getParameter("positionNumber");
