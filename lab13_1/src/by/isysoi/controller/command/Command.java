@@ -5,23 +5,22 @@
  */
 package by.isysoi.controller.command;
 
-import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
- *
  * @author Ilya Sysoi
  */
 public interface Command {
     String getPattern();
-    
-    void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ServletException, IOException ;
-   
+
+    void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ServletException, IOException;
+
     default void doPost(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-           throws ServletException, IOException{
-       doGet(request, response, servletContext);
-   }
+            throws ServletException, IOException {
+        doGet(request, response, servletContext);
+    }
 }
