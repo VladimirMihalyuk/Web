@@ -22,7 +22,7 @@ import java.math.BigDecimal;
         @NamedQuery(name = "readWinningBets",
                 query = "select b from Bet b " +
                         "join b.horse h " +
-                        "where b.race.id = :raceId and h.id in (select ri.horseId from RaceInfo ri where ri.position = 1)")
+                        "where b.race.id = :raceId and h.id in (select ri.horseId from RaceInfo ri where ri.position = 1 and ri.raceId = :raceId)")
 )
 public class Bet implements Serializable {
 

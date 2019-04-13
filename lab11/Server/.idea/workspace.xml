@@ -7,8 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cd5ef29-ef30-4fe2-a128-1827706d65bb" name="Default Changelist" comment="lab11: finished server maybe?">
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab13_1/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/artifacts/lab13_1_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/artifacts/lab13_1_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/BetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/BetDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/entity/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/entity/Bet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/horses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/horses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/races.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/races.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/script/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/style/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/winners.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/view/winners.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="2465">
               <caret line="160" selection-start-line="160" selection-end-line="160" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -88,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/misc/Unsafe.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="5236">
               <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
             </state>
           </provider>
@@ -106,7 +121,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
+            <state relative-caret-position="663">
               <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -118,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+            <state relative-caret-position="442">
+              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -127,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet_.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+            <state relative-caret-position="68">
+              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,7 +203,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="55" />
     <option name="width" value="943" />
     <option name="height" value="1087" />
@@ -275,8 +290,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -403,6 +418,7 @@
       <workItem from="1553457817891" duration="595000" />
       <workItem from="1553541429352" duration="5506000" />
       <workItem from="1553715490416" duration="4656000" />
+      <workItem from="1555158452620" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="lab11: finished server maybe?">
       <created>1553446953500</created>
@@ -429,7 +445,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24201000" />
+    <option name="totallyTimeSpent" value="24800000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -441,10 +457,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49740395" visible="true" weight="0.19625138" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49636552" visible="true" weight="0.19845645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -452,8 +468,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="EJB" order="8" sideWeight="0.5025961" side_tool="true" visible="true" weight="0.19625138" />
-      <window_info anchor="bottom" id="Database Console" weight="0.32917964" />
+      <window_info id="EJB" order="8" sideWeight="0.50363445" side_tool="true" visible="true" weight="0.19845645" />
       <window_info anchor="bottom" id="Application Servers" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -469,6 +484,7 @@
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32917964" />
       <window_info anchor="bottom" id="Run" order="14" weight="0.32917964" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.32917964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -503,16 +519,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out/artifacts/testServer_ejb_exploded/by/isysoi/dao/impl/BetDAO.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="46" column="45" lean-forward="true" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#6546#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/testServer_ejb_exploded/by/isysoi/dao/impl/BetDAO.class" />
     <entry file="file://$PROJECT_DIR$/src/META-INF/ejb-jar.xml" />
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/exception/DAOException.java" />
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/HorseDAOInterface.java">
@@ -587,20 +594,8 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0f02a08f-5df8-46bf-88d4-494c00eb18eb/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/horse_race">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/race_horse">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/horse_race" />
+    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/race_horse" />
     <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -657,16 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/client">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -702,10 +687,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet_.java">
+    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/race_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/RaceDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        <state relative-caret-position="2465">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -724,15 +716,8 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="5236">
           <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://0f02a08f-5df8-46bf-88d4-494c00eb18eb/schema/horseraces/table/race_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -743,17 +728,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race.java">
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        <state relative-caret-position="663">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet.java">
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Race.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        <state relative-caret-position="442">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/entity/Bet_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

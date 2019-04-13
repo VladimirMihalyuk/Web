@@ -84,7 +84,7 @@ const dom = (function () {
             minValue: '1',
             step: '1',
             id: 'position-input',
-        //    think
+            //    think
         },
         submitButton: {
             type: 'submit',
@@ -110,7 +110,7 @@ const dom = (function () {
                 break;
         }
 
-        for(const prop in array) {
+        for (const prop in array) {
             switch (array[prop].type) {
                 default:
                     const formDiv = document.createElement('div');
@@ -177,7 +177,7 @@ const dom = (function () {
             buildForm(horseResultForm, 'horseResultForm');
             console.log('horseResultForm');
             formId = 'update-horse-result-form';
-            return
+
         }
 
     }

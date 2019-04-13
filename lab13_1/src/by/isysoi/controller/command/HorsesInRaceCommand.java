@@ -1,11 +1,18 @@
 package by.isysoi.controller.command;
 
+import by.isysoi.model.dao.HorseDAO;
+import by.isysoi.model.entity.Horse;
+import by.isysoi.model.exception.DAOException;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class HorsesInRaceCommand implements Command {
 
@@ -20,6 +27,9 @@ public class HorsesInRaceCommand implements Command {
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/horses.jsp");
+        List<Horse> list = null;
+        list = (new HorseDAO(Persistence.createEntityManagerFactory("Test_Local"))).readHorses();
+        request.setAttribute("horseInRaceList", list);
         dispatcher.forward(request, response);
     }
 

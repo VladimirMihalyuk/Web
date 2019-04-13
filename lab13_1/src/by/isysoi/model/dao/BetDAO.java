@@ -110,32 +110,11 @@ public class BetDAO {
      * @return list of clients
      */
 
-    //public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
-    public Set<Client> readWinnersByRace(int raceId) {
+    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
+//    public Set<Client> readWinnersByRace(int raceId) {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
-//            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
-//            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
-//
-//            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
-//            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
-//            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
-//                    .where(criteriaBuilder.and(
-//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
-//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
-//                    );
-//
-//            Predicate condition = criteriaBuilder.and(
-//                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
-//                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
-//            );
-//            criteriaQuery.where(condition);
-
-//            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
-
             List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
                     .setParameter("raceId", raceId)
                     .getResultList();
@@ -150,7 +129,7 @@ public class BetDAO {
         } catch (Exception e) {
             logger.error("failed to read winners by race", e);
         }
-        return clientsWithBet.keySet();
+        return clientsWithBet;
     }
 
 
