@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="Server:EJB+WebService exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Server_EJB_WebService_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Server/ejb/EJB" />
+      <element id="module-output" name="Server" />
+      <element id="javaee-facet-resources" facet="Server/web/Web" />
+      <element id="jpa-descriptors" facet="Server/jpa/JPA" />
+    </root>
+  </artifact>
+</component>

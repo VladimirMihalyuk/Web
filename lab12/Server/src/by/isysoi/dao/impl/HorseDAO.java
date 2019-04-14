@@ -1,5 +1,6 @@
-package by.isysoi.dao;
+package by.isysoi.dao.impl;
 
+import by.isysoi.dao.HorseDAOInterface;
 import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race;
@@ -8,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -26,9 +28,10 @@ import java.util.List;
  * @version 1.0.0
  */
 @WebService()
-public class HorseDAO {
+@Stateless
+public class HorseDAO implements HorseDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @Resource
     UserTransaction transaction;
@@ -41,7 +44,7 @@ public class HorseDAO {
      */
     public HorseDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("HorseDAO created ");
+//        logger.info("HorseDAO created ");
     }
 
     public HorseDAO() {
@@ -65,7 +68,7 @@ public class HorseDAO {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read horses", e);
+            //logger.error("failed to read horses", e);
         }
         return horses;
     }
@@ -91,7 +94,7 @@ public class HorseDAO {
             horse = (Horse) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to read horse", e);
+            //logger.error("failed to read horse", e);
         }
         return horse;
     }
@@ -114,9 +117,9 @@ public class HorseDAO {
             try {
                 transaction.rollback();
             } catch (SystemException e1) {
-                logger.error("transaction rollback failed", e);
+                //logger.error("transaction rollback failed", e);
             }
-            logger.error("failed to insert horse", e);
+            //logger.error("failed to insert horse", e);
         }
     }
 
@@ -140,7 +143,7 @@ public class HorseDAO {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read horses in race", e);
+            //logger.error("failed to read horses in race", e);
         }
         return horses;
     }

@@ -1,5 +1,7 @@
-package by.isysoi.dao;
+package by.isysoi.dao.impl;
 
+import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.dao.RaceDAOInterface;
 import by.isysoi.entity.Bet;
 import by.isysoi.entity.Bet_;
 import by.isysoi.entity.Client;
@@ -7,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -28,9 +31,10 @@ import java.util.*;
  * @version 1.0.0
  */
 @WebService()
-public class BetDAO {
+@Stateless
+public class BetDAO implements BetDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @Resource
     UserTransaction transaction;
@@ -43,7 +47,7 @@ public class BetDAO {
      */
     public BetDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("BetDAO created ");
+//        logger.info("BetDAO created ");
     }
 
     public BetDAO() {
@@ -65,7 +69,7 @@ public class BetDAO {
             bets = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
         return bets;
     }
@@ -89,7 +93,7 @@ public class BetDAO {
             bet = (Bet) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
         return bet;
     }
@@ -112,9 +116,9 @@ public class BetDAO {
             try {
                 transaction.rollback();
             } catch (SystemException e1) {
-                logger.error("transaction rollback failed", e);
+                //logger.error("transaction rollback failed", e);
             }
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
     }
 
@@ -130,27 +134,6 @@ public class BetDAO {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
-//            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
-//            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
-//            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
-//
-//            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
-//            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
-//            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
-//                    .where(criteriaBuilder.and(
-//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
-//                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
-//                    );
-//
-//            Predicate condition = criteriaBuilder.and(
-//                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
-//                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
-//            );
-//            criteriaQuery.where(condition);
-
-//            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
-
             List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
                     .setParameter("raceId", raceId)
                     .getResultList();
@@ -163,7 +146,7 @@ public class BetDAO {
                 clientsWithBet.get(client).add(bet);
             }
         } catch (Exception e) {
-            logger.error("failed to read winners by race", e);
+            //logger.error("failed to read winners by race", e);
         }
         return clientsWithBet.keySet();
     }

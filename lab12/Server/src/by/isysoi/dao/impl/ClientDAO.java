@@ -1,11 +1,14 @@
-package by.isysoi.dao;
+package by.isysoi.dao.impl;
 
+import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.dao.ClientDAOInterface;
 import by.isysoi.entity.Client;
 import by.isysoi.entity.Client_;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.naming.InitialContext;
@@ -28,9 +31,10 @@ import java.util.List;
  */
 
 @WebService()
-public class ClientDAO {
+@Stateless
+public class ClientDAO  implements ClientDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @Resource
     UserTransaction transaction;
@@ -43,7 +47,7 @@ public class ClientDAO {
      */
     public ClientDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("ClientDAO created ");
+//        logger.info("ClientDAO created ");
     }
 
     public ClientDAO() {
@@ -66,7 +70,7 @@ public class ClientDAO {
             clients = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read clients", e);
+            //logger.error("failed to read clients", e);
         }
         return clients;
     }
@@ -91,7 +95,7 @@ public class ClientDAO {
             client = (Client) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to read client", e);
+            //logger.error("failed to read client", e);
         }
         return client;
     }
@@ -114,9 +118,9 @@ public class ClientDAO {
             try {
                 transaction.rollback();
             } catch (SystemException e1) {
-                logger.error("transaction rollback failed", e);
+                //logger.error("transaction rollback failed", e);
             }
-            logger.error("failed to insert client", e);
+            //logger.error("failed to insert client", e);
         }
     }
 
