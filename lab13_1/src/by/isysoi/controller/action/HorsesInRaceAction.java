@@ -1,8 +1,7 @@
-package by.isysoi.controller.command;
+package by.isysoi.controller.action;
 
-import by.isysoi.model.dao.BetDAO;
-import by.isysoi.model.entity.Bet;
-import by.isysoi.model.entity.Client;
+import by.isysoi.model.dao.HorseDAO;
+import by.isysoi.model.entity.Horse;
 
 import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
@@ -11,12 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
-public class WinnersByRaceCommand implements Command {
+public class HorsesInRaceAction implements Action {
 
-    final String urlPattern = "winnersByRace";
+    final String urlPattern = "horsesInRace";
 
     @Override
     public String getPattern() {
@@ -26,12 +24,13 @@ public class WinnersByRaceCommand implements Command {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/winners.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/horses.jsp");
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
-            Map<Client, Set<Bet>> map = null;
-            map = (new BetDAO(Persistence.createEntityManagerFactory("Test_Local"))).readWinnersByRace(Integer.valueOf(raceId));
-            request.setAttribute("winnersByRace", map);
+            List<Horse> list = null;
+            list = (new HorseDAO(Persistence.createEntityManagerFactory("Test_Local")))
+                    .readHorcesInRace(Integer.valueOf(raceId));
+            request.setAttribute("horseInRaceList", list);
         }
         dispatcher.forward(request, response);
     }

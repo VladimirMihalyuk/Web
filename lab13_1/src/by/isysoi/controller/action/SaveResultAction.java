@@ -1,4 +1,4 @@
-package by.isysoi.controller.command;
+package by.isysoi.controller.action;
 
 import by.isysoi.model.dao.RaceDAO;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SaveResultCommand implements Command {
+public class SaveResultAction implements Action {
 
     final String urlPattern = "saveResult";
 

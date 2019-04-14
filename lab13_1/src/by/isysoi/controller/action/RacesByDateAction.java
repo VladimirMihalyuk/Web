@@ -1,4 +1,4 @@
-package by.isysoi.controller.command;
+package by.isysoi.controller.action;
 
 import by.isysoi.model.dao.RaceDAO;
 import by.isysoi.model.entity.Race;
@@ -14,7 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class RacesByDateCommand implements Command {
+public class RacesByDateAction implements Action {
 
     final String urlPattern = "racesByDate";
 

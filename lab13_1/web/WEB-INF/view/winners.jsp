@@ -60,7 +60,7 @@
     </div>
 </c:if>
 
-<a href="${pageContext.request.contextPath}/serv?command=home">На главную</a>
+<a href="${pageContext.request.contextPath}/serv?action=home">На главную</a>
 
 <script src="script/script.js"></script>
 

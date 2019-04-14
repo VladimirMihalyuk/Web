@@ -1,4 +1,4 @@
-package by.isysoi.controller.command;
+package by.isysoi.controller.action;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class HomeCommand implements Command {
+public class HomeAction implements Action {
 
     final String urlPattern = "home";
 

@@ -18,19 +18,19 @@
 </p>
 <ul>
     <li>
-        <a href="${pageContext.request.contextPath}/serv?command=winnersByRace"> Вывести список выигравших клиентов
+        <a href="${pageContext.request.contextPath}/serv?action=winnersByRace"> Вывести список выигравших клиентов
             забега.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}/serv?command=horsesInRace">Вывести список лошадей заданного
+        <a href="${pageContext.request.contextPath}/serv?action=horsesInRace">Вывести список лошадей заданного
             забега.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}/serv?command=racesByDate">Вывести список забегов на указанную
+        <a href="${pageContext.request.contextPath}/serv?action=racesByDate">Вывести список забегов на указанную
             дату.</a>
     </li>
     <li>
-        <a href="${pageContext.request.contextPath}/serv?command=saveResult">Зафиксировать состав и результаты
+        <a href="${pageContext.request.contextPath}/serv?action=saveResult">Зафиксировать состав и результаты
             забега.</a>
     </li>
 </ul>

@@ -95,23 +95,23 @@ const dom = (function () {
 
     function buildForm(form, type) {
         var array;
-        var commandValue;
+        var actionValue;
         switch (type) {
             case 'winnersInRaceForm':
                 array = winnersInRaceFrom;
-                commandValue = 'winnersByRace';
+                actionValue = 'winnersByRace';
                 break;
             case 'horsesInRaceForm':
                 array = horsesInRaceFrom;
-                commandValue = 'horsesInRace';
+                actionValue = 'horsesInRace';
                 break;
             case 'racesByDateForm':
                 array = racesByDateFrom;
-                commandValue = 'racesByDate';
+                actionValue = 'racesByDate';
                 break;
             case 'horseResultForm':
                 array = horsesResultFrom;
-                commandValue = 'saveResult';
+                actionValue = 'saveResult';
                 break;
         }
 
@@ -140,10 +140,10 @@ const dom = (function () {
                     break;
                 case "submit":
                     const hiddenInput = document.createElement('input');
-                    hiddenInput.setAttribute('name', 'command');
+                    hiddenInput.setAttribute('name', 'action');
                     hiddenInput.setAttribute('type', 'hidden');
-                    hiddenInput.setAttribute('id', 'command');
-                    hiddenInput.setAttribute('value', commandValue);
+                    hiddenInput.setAttribute('id', 'action');
+                    hiddenInput.setAttribute('value', actionValue);
                     form.appendChild(hiddenInput);
 
                     const submit = document.createElement('input');

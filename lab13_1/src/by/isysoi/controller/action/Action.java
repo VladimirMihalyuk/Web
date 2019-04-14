@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package by.isysoi.controller.command;
+package by.isysoi.controller.action;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * @author Ilya Sysoi
  */
-public interface Command {
+public interface Action {
     String getPattern();
 
     void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ServletException, IOException;

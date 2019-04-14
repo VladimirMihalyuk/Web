@@ -12,22 +12,7 @@
       <change afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/ClientDAOInterface.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/HorseDAOInterface.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/model/dao/RaceDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HomeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HomeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/HorsesInRaceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/RacesByDateCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/SaveResultCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/SaveResultCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/src/by/isysoi/controller/command/WinnersByRaceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/view/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/horses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/view/horses.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/races.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/view/races.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/view/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/script/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/style/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/style/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab13_1/web/view/winners.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/web/WEB-INF/view/winners.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab13_1/lab13_1.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,6 +65,18 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/impl/HorseDAO.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="287">
               <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
             </state>
           </provider>
@@ -118,15 +115,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/misc/Unsafe.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5236">
-              <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -226,9 +214,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="width" value="943" />
-    <option name="height" value="1087" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -258,6 +247,13 @@
               <item name="Server" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Server_ejb_exploded" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Server" type="b2602c69:ProjectViewProjectNode" />
@@ -328,7 +324,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -440,7 +436,7 @@
       <workItem from="1553457817891" duration="595000" />
       <workItem from="1553541429352" duration="5506000" />
       <workItem from="1553715490416" duration="4656000" />
-      <workItem from="1555158452620" duration="1462000" />
+      <workItem from="1555158452620" duration="1621000" />
     </task>
     <task id="LOCAL-00001" summary="lab11: finished server maybe?">
       <created>1553446953500</created>
@@ -467,7 +463,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25663000" />
+    <option name="totallyTimeSpent" value="25822000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -479,10 +475,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49535602" visible="true" weight="0.19845645" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49614114" visible="true" weight="0.29126215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -490,7 +486,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="EJB" order="8" sideWeight="0.504644" side_tool="true" visible="true" weight="0.19845645" />
+      <window_info id="EJB" order="8" sideWeight="0.50385886" side_tool="true" visible="true" weight="0.29126215" />
       <window_info anchor="bottom" id="Application Servers" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -505,7 +501,7 @@
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32917964" />
-      <window_info active="true" anchor="bottom" id="Run" order="14" visible="true" weight="0.32917964" />
+      <window_info anchor="bottom" id="Run" order="14" weight="0.34950384" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.32917964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -513,7 +509,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.3296582" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.48381877" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
@@ -692,16 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5236">
@@ -782,8 +768,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/RaceDAOInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="287">
           <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/by/isysoi/dao/BetDAOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
