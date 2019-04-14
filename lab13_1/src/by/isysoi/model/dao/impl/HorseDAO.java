@@ -1,5 +1,6 @@
-package by.isysoi.model.dao;
+package by.isysoi.model.dao.impl;
 
+import by.isysoi.model.dao.HorseDAOInterface;
 import by.isysoi.model.entity.Horse;
 import by.isysoi.model.entity.Horse_;
 import by.isysoi.model.entity.Race;
@@ -22,7 +23,7 @@ import java.util.List;
  * @version 1.0.0
  */
 
-public class HorseDAO {
+public class HorseDAO implements HorseDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 

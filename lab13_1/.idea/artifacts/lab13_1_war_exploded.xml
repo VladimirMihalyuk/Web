@@ -14,6 +14,7 @@
           <element id="library" level="project" name="org.hibernate:hibernate-core:5.4.2.Final" />
           <element id="library" level="project" name="javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="javax.servlet:javax.servlet-api:3.0.1" />
+          <element id="library" level="project" name="javax.ejb:ejb-api:3.0" />
         </element>
       </element>
     </root>

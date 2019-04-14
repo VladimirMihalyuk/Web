@@ -1,9 +1,7 @@
 package by.isysoi.controller.action;
 
-import by.isysoi.model.dao.HorseDAO;
-import by.isysoi.model.entity.Horse;
+import by.isysoi.model.dao.HorseDAOInterface;
 
-import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -27,9 +25,8 @@ public class HorsesInRaceAction implements Action {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/horses.jsp");
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
-            List<Horse> list = null;
-            list = (new HorseDAO(Persistence.createEntityManagerFactory("Test_Local")))
-                    .readHorcesInRace(Integer.valueOf(raceId));
+            HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
+            List list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
             request.getSession().setAttribute("horseInRaceList", list);
         }
         dispatcher.forward(request, response);

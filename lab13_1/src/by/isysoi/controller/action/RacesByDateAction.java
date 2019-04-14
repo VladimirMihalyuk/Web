@@ -1,9 +1,7 @@
 package by.isysoi.controller.action;
 
-import by.isysoi.model.dao.RaceDAO;
-import by.isysoi.model.entity.Race;
+import by.isysoi.model.dao.RaceDAOInterface;
 
-import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -29,11 +27,10 @@ public class RacesByDateAction implements Action {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/races.jsp");
         String date = request.getParameter("date");
         if (date != null) {
-            List<Race> list = null;
             SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+            RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
             try {
-                list = (new RaceDAO(Persistence.createEntityManagerFactory("Test_Local")))
-                        .readRacesByDate(ft.parse(date));
+                List list = raceDAO.readRacesByDate(ft.parse(date));
                 request.getSession().setAttribute("racesByDateList", list);
             } catch (ParseException e) {
                 e.printStackTrace();

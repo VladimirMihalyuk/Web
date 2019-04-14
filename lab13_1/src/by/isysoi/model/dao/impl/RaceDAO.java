@@ -1,5 +1,6 @@
-package by.isysoi.model.dao;
+package by.isysoi.model.dao.impl;
 
+import by.isysoi.model.dao.RaceDAOInterface;
 import by.isysoi.model.entity.Race;
 import by.isysoi.model.entity.RaceInfo;
 import by.isysoi.model.entity.RaceInfo_;
@@ -23,7 +24,7 @@ import java.util.List;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-public class RaceDAO {
+public class RaceDAO implements RaceDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 

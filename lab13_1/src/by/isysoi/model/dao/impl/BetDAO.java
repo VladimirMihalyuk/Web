@@ -1,5 +1,6 @@
-package by.isysoi.model.dao;
+package by.isysoi.model.dao.impl;
 
+import by.isysoi.model.dao.BetDAOInterface;
 import by.isysoi.model.entity.Bet;
 import by.isysoi.model.entity.Bet_;
 import by.isysoi.model.entity.Client;
@@ -23,7 +24,7 @@ import java.util.*;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-public class BetDAO {
+public class BetDAO implements BetDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 

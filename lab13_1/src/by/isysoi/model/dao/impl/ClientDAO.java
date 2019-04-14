@@ -1,5 +1,6 @@
-package by.isysoi.model.dao;
+package by.isysoi.model.dao.impl;
 
+import by.isysoi.model.dao.ClientDAOInterface;
 import by.isysoi.model.entity.Client;
 import by.isysoi.model.entity.Client_;
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +25,7 @@ import java.util.List;
  */
 
 
-public class ClientDAO {
+public class ClientDAO implements ClientDAOInterface {
 
     protected Logger logger = LogManager.getLogger("dao_layer");
 
