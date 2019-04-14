@@ -30,7 +30,7 @@ public class HorsesInRaceAction implements Action {
             List<Horse> list = null;
             list = (new HorseDAO(Persistence.createEntityManagerFactory("Test_Local")))
                     .readHorcesInRace(Integer.valueOf(raceId));
-            request.setAttribute("horseInRaceList", list);
+            request.getSession().setAttribute("horseInRaceList", list);
         }
         dispatcher.forward(request, response);
     }

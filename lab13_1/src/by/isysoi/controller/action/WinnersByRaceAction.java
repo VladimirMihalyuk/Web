@@ -31,7 +31,7 @@ public class WinnersByRaceAction implements Action {
         if (raceId != null) {
             Map<Client, Set<Bet>> map = null;
             map = (new BetDAO(Persistence.createEntityManagerFactory("Test_Local"))).readWinnersByRace(Integer.valueOf(raceId));
-            request.setAttribute("winnersByRace", map);
+            request.getSession().setAttribute("winnersByRace", map);
         }
         dispatcher.forward(request, response);
     }

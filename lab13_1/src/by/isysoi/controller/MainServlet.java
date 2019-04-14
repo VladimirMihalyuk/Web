@@ -4,11 +4,9 @@ import by.isysoi.controller.action.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,9 +41,9 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
         String action = request.getParameter("action");
         if (action == null) {
+            startNewSessionAndSaveCookies(request, response);
             actions.get("home").doGet(request, response, this.getServletContext());
         } else if (actions.containsKey(action)) {
             actions.get(action).doGet(request, response, this.getServletContext());
@@ -61,6 +59,27 @@ public class MainServlet extends HttpServlet {
         } else if (actions.containsKey(action)) {
             actions.get(action).doPost(request, response, this.getServletContext());
         }
+    }
+
+
+    private void startNewSessionAndSaveCookies(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(true);
+        Cookie lastEnterTime = new Cookie("lastEnterTime", new Date().toString());
+        lastEnterTime.setComment("Информация о времени и дате последнего сеанса пользователя,");
+        Cookie usageCount = new Cookie("usageCount", "1");
+        usageCount.setComment("Информация о количестве посещений ресурса.");
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("usageCount")) {
+                int lastUsageCount = Integer.parseInt(cookie.getValue());
+                lastUsageCount += 1;
+                usageCount.setValue(Integer.toString(lastUsageCount));
+            }
+        }
+        response.addCookie(lastEnterTime);
+        response.addCookie(usageCount);
     }
 
 }

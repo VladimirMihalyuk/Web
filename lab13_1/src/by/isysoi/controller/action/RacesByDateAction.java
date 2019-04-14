@@ -34,7 +34,7 @@ public class RacesByDateAction implements Action {
             try {
                 list = (new RaceDAO(Persistence.createEntityManagerFactory("Test_Local")))
                         .readRacesByDate(ft.parse(date));
-                request.setAttribute("racesByDateList", list);
+                request.getSession().setAttribute("racesByDateList", list);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

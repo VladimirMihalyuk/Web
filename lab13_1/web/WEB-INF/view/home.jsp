@@ -16,6 +16,12 @@
     может участвовать в нескольких Забегах в один день. Администратор фиксирует
     список, состав и результаты Забегов на день.
 </p>
+<p>
+    Последний заход: ${cookie['lastEnterTime'].getValue()}
+<p>
+<p>
+    Количество посещений: ${cookie['usageCount'].getValue()}
+</p>
 <ul>
     <li>
         <a href="${pageContext.request.contextPath}/serv?action=winnersByRace"> Вывести список выигравших клиентов
