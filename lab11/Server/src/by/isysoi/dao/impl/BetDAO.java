@@ -21,7 +21,7 @@ import java.util.*;
 @Stateless
 public class BetDAO implements BetDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -31,7 +31,7 @@ public class BetDAO implements BetDAOInterface {
      */
     public BetDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("BetDAO created ");
+        //logger.info("BetDAO created ");
     }
 
     public BetDAO() {
@@ -52,7 +52,7 @@ public class BetDAO implements BetDAOInterface {
             bets = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
         return bets;
     }
@@ -75,7 +75,7 @@ public class BetDAO implements BetDAOInterface {
             bet = (Bet) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
         return bet;
     }
@@ -89,7 +89,7 @@ public class BetDAO implements BetDAOInterface {
         try {
             entityManager.persist(bet);
         } catch (Exception e) {
-            logger.error("failed to insert bet", e);
+            //logger.error("failed to insert bet", e);
         }
     }
 
@@ -132,7 +132,7 @@ public class BetDAO implements BetDAOInterface {
                 clientsWithBet.get(client).add(bet);
             }
         } catch (Exception e) {
-            logger.error("failed to read winners by race", e);
+            //logger.error("failed to read winners by race", e);
         }
         return clientsWithBet;
     }

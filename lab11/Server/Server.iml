@@ -11,7 +11,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="EclipseLink" />
+        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="Test_Local" />
         </datasource-mapping>
@@ -34,6 +34,6 @@
     <orderEntry type="library" name="org.apache.logging.log4j:log4j-core:2.11.2" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:8.0.15" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2 - CDI: Contexts and Dependency Injection" level="application_server_libraries" />
-    <orderEntry type="library" name="org.eclipse.persistence:org.eclipse.persistence.jpa:2.7.4" level="project" />
+    <orderEntry type="library" name="org.hibernate:hibernate-core:5.4.2.Final" level="project" />
   </component>
 </module>
