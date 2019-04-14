@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Home Action Interface
+ *
+ * @author Ilya Sysoi
+ */
 public class HomeAction implements Action {
 
     final String urlPattern = "home";

@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * SaveResult Action Interface
+ *
+ * @author Ilya Sysoi
+ */
 public class SaveResultAction implements Action {
 
     final String urlPattern = "saveResult";

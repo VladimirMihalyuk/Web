@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * Action Interface
+ *
  * @author Ilya Sysoi
  */
 public interface Action {

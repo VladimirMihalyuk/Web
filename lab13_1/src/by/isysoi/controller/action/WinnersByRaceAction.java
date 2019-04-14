@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * WinnersByRace Action Interface
+ *
+ * @author Ilya Sysoi
+ */
 public class WinnersByRaceAction implements Action {
 
     final String urlPattern = "winnersByRace";

@@ -12,6 +12,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+/**
+ * RacesByDate Action Interface
+ *
+ * @author Ilya Sysoi
+ */
 public class RacesByDateAction implements Action {
 
     final String urlPattern = "racesByDate";
