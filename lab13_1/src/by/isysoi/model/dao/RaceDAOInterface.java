@@ -2,11 +2,9 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Race;
 
-import javax.ejb.Remote;
 import java.util.Date;
 import java.util.List;
 
-@Remote
 public interface RaceDAOInterface {
 
     /**

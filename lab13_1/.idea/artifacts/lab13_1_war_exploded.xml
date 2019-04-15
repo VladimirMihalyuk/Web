@@ -2,16 +2,21 @@
   <artifact type="exploded-war" name="lab13_1:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/lab13_1_war_exploded</output-path>
     <root id="root">
+      <element id="javaee-facet-resources" facet="lab13_1/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="lab13_1" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="org.hibernate:hibernate-core:5.4.2.Final" />
+          <element id="library" level="project" name="JAX-WS-Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" />
+          <element id="library" level="project" name="mysql:mysql-connector-java:8.0.15" />
           <element id="library" level="project" name="org.apache.logging.log4j:log4j-core:2.11.2" />
+          <element id="library" level="project" name="org.hibernate:hibernate-core:5.4.2.Final" />
+          <element id="library" level="project" name="javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="javax.servlet:javax.servlet-api:3.0.1" />
+          <element id="library" level="project" name="javax.ejb:ejb-api:3.0" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="lab13_1/web/Web" />
     </root>
   </artifact>
 </component>

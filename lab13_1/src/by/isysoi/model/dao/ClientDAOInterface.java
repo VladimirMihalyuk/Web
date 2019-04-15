@@ -2,10 +2,8 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Client;
 
-import javax.ejb.Remote;
 import java.util.List;
 
-@Remote
 public interface ClientDAOInterface {
     /**
      * read clients

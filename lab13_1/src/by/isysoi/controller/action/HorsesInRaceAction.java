@@ -10,11 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * HorsesInRace Action Interface
- *
- * @author Ilya Sysoi
- */
 public class HorsesInRaceAction implements Action {
 
     final String urlPattern = "horsesInRace";

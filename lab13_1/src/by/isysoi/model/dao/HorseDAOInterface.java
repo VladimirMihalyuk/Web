@@ -2,13 +2,11 @@ package by.isysoi.model.dao;
 
 import by.isysoi.model.entity.Horse;
 
-import javax.ejb.Remote;
 import java.util.List;
 
 /*
  * Data Access Interface provide access to Answer class
  */
-@Remote
 public interface HorseDAOInterface {
 
     List<Horse> readHorses();
