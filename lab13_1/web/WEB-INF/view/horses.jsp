@@ -14,7 +14,7 @@
 <h1>Вывести список лошадей заданного забега.</h1>
 
 <div class="page-form">
-    <form id="horses-in-race-form" action="${pageContext.request.contextPath}">
+    <form id="horses-in-race-form" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 

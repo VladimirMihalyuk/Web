@@ -14,7 +14,7 @@
 <h1>Вывести список забегов на указанную дату.</h1>
 
 <div class="page-form">
-    <form id="races-by-date-form" action="${pageContext.request.contextPath}">
+    <form id="races-by-date-form" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 

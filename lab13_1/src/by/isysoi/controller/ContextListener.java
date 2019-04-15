@@ -1,11 +1,11 @@
 package by.isysoi.controller;
 
-import by.isysoi.model.dao.impl.BetDAO;
-import by.isysoi.model.dao.impl.ClientDAO;
-import by.isysoi.model.dao.impl.HorseDAO;
-import by.isysoi.model.dao.impl.RaceDAO;
+import by.isysoi.model.dao.BetDAOInterface;
+import by.isysoi.model.dao.ClientDAOInterface;
+import by.isysoi.model.dao.HorseDAOInterface;
+import by.isysoi.model.dao.RaceDAOInterface;
 
-import javax.persistence.Persistence;
+import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,26 +14,34 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class ContextListener implements ServletContextListener {
 
-//    @EJB
-//    private static HorseDAOInterface horseDAO;
-//
-//    @EJB
-//    private static RaceDAOInterface raceDAO;
-//
-//    @EJB
-//    private static ClientDAOInterface clientDAO;
-//
-//    @EJB
-//    private static BetDAOInterface betDAO;
+    @EJB
+    private static HorseDAOInterface horseDAO;
+
+    @EJB
+    private static RaceDAOInterface raceDAO;
+
+    @EJB
+    private static ClientDAOInterface clientDAO;
+
+    @EJB
+    private static BetDAOInterface betDAO;
+
+//    @PersistenceContext(unitName = "Test_Local")
+//    private EntityManager entityManager;
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext contex = servletContextEvent.getServletContext();
 
-        contex.setAttribute("horseDAO", new HorseDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("raceDAO", new RaceDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("clientDAO", new ClientDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("betDAO", new BetDAO(Persistence.createEntityManagerFactory("Test_Local")));
+//        contex.setAttribute("horseDAO", new HorseDAO(entityManager));
+//        contex.setAttribute("raceDAO", new RaceDAO(entityManager));
+//        contex.setAttribute("clientDAO", new ClientDAO(entityManager));
+//        contex.setAttribute("betDAO", new BetDAO(entityManager));
+
+        contex.setAttribute("horseDAO", horseDAO);
+        contex.setAttribute("raceDAO", raceDAO);
+        contex.setAttribute("clientDAO", clientDAO);
+        contex.setAttribute("betDAO", betDAO);
     }
 
     @Override

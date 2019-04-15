@@ -27,7 +27,7 @@ public class WinnersByRaceAction implements Action {
         if (raceId != null) {
             BetDAOInterface betDAO = (BetDAOInterface) servletContext.getAttribute("betDAO");
             Map map = betDAO.readWinnersByRace(Integer.valueOf(raceId));
-            request.getSession().setAttribute("winnersByRace", map);
+            request.setAttribute("winnersByRace", map);
         }
         dispatcher.forward(request, response);
     }
