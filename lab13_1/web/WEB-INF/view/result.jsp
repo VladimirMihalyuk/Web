@@ -13,7 +13,7 @@
 <h1>Зафиксировать состав и результаты забега.</h1>
 
 <div class="page-form">
-    <form id="update-horse-result-form" action="${pageContext.request.contextPath}" method="POST">
+    <form id="update-horse-result-form" action="${pageContext.request.contextPath}/serv" method="POST">
     </form>
 </div>
 

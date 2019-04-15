@@ -39,6 +39,11 @@ public class BetDAO implements BetDAOInterface {
         logger.info("BetDAO created ");
     }
 
+    public BetDAO(EntityManager em) {
+        entityManager = em;
+        logger.info("HorseDAO created ");
+    }
+
     public BetDAO() {
     }
 

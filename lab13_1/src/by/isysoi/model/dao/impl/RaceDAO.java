@@ -39,6 +39,11 @@ public class RaceDAO implements RaceDAOInterface {
         logger.info("RaceDAO created ");
     }
 
+    public RaceDAO(EntityManager em) {
+        entityManager = em;
+        logger.info("HorseDAO created ");
+    }
+
     public RaceDAO() {
     }
 

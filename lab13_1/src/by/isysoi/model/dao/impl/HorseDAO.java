@@ -38,6 +38,11 @@ public class HorseDAO implements HorseDAOInterface {
         logger.info("HorseDAO created ");
     }
 
+    public HorseDAO(EntityManager em) {
+        entityManager = em;
+        logger.info("HorseDAO created ");
+    }
+
     public HorseDAO() {
     }
 

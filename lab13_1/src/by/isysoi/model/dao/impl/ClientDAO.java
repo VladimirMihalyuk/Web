@@ -40,6 +40,11 @@ public class ClientDAO implements ClientDAOInterface {
         logger.info("ClientDAO created ");
     }
 
+    public ClientDAO(EntityManager em) {
+        entityManager = em;
+        logger.info("HorseDAO created ");
+    }
+
     public ClientDAO() {
     }
 

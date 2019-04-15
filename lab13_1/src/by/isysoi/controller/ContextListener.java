@@ -5,7 +5,9 @@ import by.isysoi.model.dao.impl.ClientDAO;
 import by.isysoi.model.dao.impl.HorseDAO;
 import by.isysoi.model.dao.impl.RaceDAO;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -26,14 +28,22 @@ public class ContextListener implements ServletContextListener {
 //    @EJB
 //    private static BetDAOInterface betDAO;
 
+    @PersistenceContext(unitName = "Test_Local")
+    private EntityManager entityManager;
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext contex = servletContextEvent.getServletContext();
 
-        contex.setAttribute("horseDAO", new HorseDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("raceDAO", new RaceDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("clientDAO", new ClientDAO(Persistence.createEntityManagerFactory("Test_Local")));
-        contex.setAttribute("betDAO", new BetDAO(Persistence.createEntityManagerFactory("Test_Local")));
+        contex.setAttribute("horseDAO", new HorseDAO(entityManager));
+        contex.setAttribute("raceDAO", new RaceDAO(entityManager));
+        contex.setAttribute("clientDAO", new ClientDAO(entityManager));
+        contex.setAttribute("betDAO", new BetDAO(entityManager));
+
+//        contex.setAttribute("horseDAO", horseDAO);
+//        contex.setAttribute("raceDAO", raceDAO);
+//        contex.setAttribute("clientDAO", clientDAO);
+//        contex.setAttribute("betDAO", betDAO);
     }
 
     @Override
