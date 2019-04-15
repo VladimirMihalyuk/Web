@@ -31,7 +31,7 @@ public class RacesByDateAction implements Action {
             RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
             try {
                 List list = raceDAO.readRacesByDate(ft.parse(date));
-                request.getSession().setAttribute("racesByDateList", list);
+                request.setAttribute("racesByDateList", list);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

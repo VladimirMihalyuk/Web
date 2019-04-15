@@ -27,7 +27,7 @@ public class HorsesInRaceAction implements Action {
         if (raceId != null) {
             HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
             List list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
-            request.getSession().setAttribute("horseInRaceList", list);
+            request.setAttribute("horseInRaceList", list);
         }
         dispatcher.forward(request, response);
     }
