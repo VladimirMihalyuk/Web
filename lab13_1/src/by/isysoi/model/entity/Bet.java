@@ -1,10 +1,5 @@
 package by.isysoi.model.entity;
 
-import by.isysoi.util.xml.adapter.IntAdapter;
-
-import javax.persistence.*;
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -14,31 +9,13 @@ import java.math.BigDecimal;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-@Entity(name = "Bet")
-@Table(name = Bet.tableName)
-@NamedQueries(
-        @NamedQuery(name = "readWinningBets",
-                query = "select b from Bet b " +
-                        "join b.horse h " +
-                        "where b.race.id = :raceId and h.id in (select ri.horseId from RaceInfo ri where ri.position = 1 and ri.raceId = :raceId)")
-)
 public class Bet implements Serializable {
 
-    public static final String tableName = "bet";
-    public static final String horseColumnName = "horse_id";
-    public static final String clientColumnName = "client_id";
-    public static final String raceColumnName = "race_id";
     private static final long serialVersionUID = 1;
+
     /**
      * id of bet
      */
-    @XmlAttribute
-    @XmlID
-    @XmlJavaTypeAdapter(type = int.class, value = IntAdapter.class)
-    @Id
-    @GeneratedValue
     private int id;
 
     /**
@@ -49,28 +26,16 @@ public class Bet implements Serializable {
     /**
      * id of race
      */
-    @XmlIDREF
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = raceColumnName)
-    @XmlElement
     private Race race;
 
     /**
      * id of horse
      */
-    @XmlIDREF
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = horseColumnName)
-    @XmlElement
     private Horse horse;
 
     /**
      * id of client
      */
-    @XmlIDREF
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = clientColumnName)
-    @XmlElement
     private Client client;
 
     public int getId() {
@@ -93,24 +58,24 @@ public class Bet implements Serializable {
         return race;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setRace(Race _race) {
+        race = _race;
     }
 
     public Horse getHorse() {
         return horse;
     }
 
-    public void setHorse(Horse horse) {
-        this.horse = horse;
+    public void setHorse(Horse _horse) {
+        horse = _horse;
     }
 
     public Client getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(Client _client) {
+        client = _client;
     }
 
     @Override
