@@ -1,5 +1,6 @@
 package by.isysoi.controller.action;
 
+import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.RaceDAOInterface;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +25,7 @@ public class RacesByDateAction implements Action {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/races.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
         String date = request.getParameter("date");
         if (date != null) {
             SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");

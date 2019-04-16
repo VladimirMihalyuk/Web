@@ -1,5 +1,7 @@
 package by.isysoi.controller.action;
 
+import by.isysoi.controller.NavigationConstants;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -19,7 +21,7 @@ public class HomeAction implements Action {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/home.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.homePage);
         dispatcher.forward(request, response);
     }
 }

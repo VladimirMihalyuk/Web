@@ -1,5 +1,6 @@
 package by.isysoi.controller.action;
 
+import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.HorseDAOInterface;
 
 import javax.servlet.RequestDispatcher;
@@ -22,7 +23,7 @@ public class HorsesInRaceAction implements Action {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/horses.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");

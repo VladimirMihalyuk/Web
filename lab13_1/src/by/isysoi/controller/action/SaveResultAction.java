@@ -1,5 +1,6 @@
 package by.isysoi.controller.action;
 
+import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.RaceDAOInterface;
 
 import javax.servlet.RequestDispatcher;
@@ -21,7 +22,7 @@ public class SaveResultAction implements Action {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/result.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
         String raceId = request.getParameter("raceId");
         String horseId = request.getParameter("horseId");
         String positionNumber = request.getParameter("positionNumber");

@@ -1,5 +1,6 @@
 package by.isysoi.controller.action;
 
+import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.BetDAOInterface;
 
 import javax.servlet.RequestDispatcher;
@@ -22,7 +23,7 @@ public class WinnersByRaceAction implements Action {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/WEB-INF/view/winners.jsp");
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.winnersPage);
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             BetDAOInterface betDAO = (BetDAOInterface) servletContext.getAttribute("betDAO");
