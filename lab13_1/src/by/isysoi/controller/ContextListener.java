@@ -1,9 +1,6 @@
 package by.isysoi.controller;
 
-import by.isysoi.model.dao.BetDAOInterface;
-import by.isysoi.model.dao.ClientDAOInterface;
-import by.isysoi.model.dao.HorseDAOInterface;
-import by.isysoi.model.dao.RaceDAOInterface;
+import by.isysoi.dao.*;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;

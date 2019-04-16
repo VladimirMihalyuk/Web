@@ -1,6 +1,6 @@
 package by.isysoi.controller.action;
 
-import by.isysoi.model.dao.HorseDAOInterface;
+import by.isysoi.dao.HorseDAOInterface;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

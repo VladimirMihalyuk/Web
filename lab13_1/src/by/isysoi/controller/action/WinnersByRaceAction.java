@@ -1,6 +1,6 @@
 package by.isysoi.controller.action;
 
-import by.isysoi.model.dao.BetDAOInterface;
+import by.isysoi.dao.BetDAOInterface;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
