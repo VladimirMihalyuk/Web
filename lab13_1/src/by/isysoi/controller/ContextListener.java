@@ -1,6 +1,9 @@
 package by.isysoi.controller;
 
-import by.isysoi.dao.*;
+import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.dao.ClientDAOInterface;
+import by.isysoi.dao.HorseDAOInterface;
+import by.isysoi.dao.RaceDAOInterface;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
@@ -11,16 +14,16 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class ContextListener implements ServletContextListener {
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.HorseDAOInterface")
     private static HorseDAOInterface horseDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.RaceDAOInterface")
     private static RaceDAOInterface raceDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.ClientDAOInterface")
     private static ClientDAOInterface clientDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.BetDAOInterface")
     private static BetDAOInterface betDAO;
 
 //    @PersistenceContext(unitName = "Test_Local")

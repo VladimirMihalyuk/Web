@@ -1,4 +1,4 @@
-package by.isysoi.model.exception;
+package by.isysoi.exception;
 
 /**
  * controller exepton

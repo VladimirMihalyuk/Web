@@ -70,12 +70,13 @@ public class MainServlet extends HttpServlet {
         usageCount.setComment("Информация о количестве посещений ресурса.");
 
         Cookie[] cookies = request.getCookies();
-
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("usageCount")) {
-                int lastUsageCount = Integer.parseInt(cookie.getValue());
-                lastUsageCount += 1;
-                usageCount.setValue(Integer.toString(lastUsageCount));
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("usageCount")) {
+                    int lastUsageCount = Integer.parseInt(cookie.getValue());
+                    lastUsageCount += 1;
+                    usageCount.setValue(Integer.toString(lastUsageCount));
+                }
             }
         }
         response.addCookie(lastEnterTime);
