@@ -2,6 +2,8 @@ package by.isysoi.controller.action;
 
 import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.exception.ActionException;
+import by.isysoi.exception.DAOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,8 +25,7 @@ public class RacesByDateAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
+            throws ActionException {
         String date = request.getParameter("date");
         if (date != null) {
             SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
@@ -33,10 +34,17 @@ public class RacesByDateAction implements Action {
                 List list = raceDAO.readRacesByDate(ft.parse(date));
                 request.setAttribute("racesByDateList", list);
             } catch (ParseException e) {
-                e.printStackTrace();
+                throw new ActionException("Failed to cast date to format \"yyyy-MM-dd\"", e);
+            } catch (DAOException e) {
+                throw new ActionException(String.format("Races by date %s not found due to exception", date), e);
             }
         }
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new ActionException("Failed page forwarding", e);
+        }
     }
 
 }

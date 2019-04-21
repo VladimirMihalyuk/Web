@@ -1,6 +1,7 @@
 package by.isysoi.dao;
 
 import by.isysoi.entity.Horse;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Remote;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @Remote
 public interface HorseDAOInterface {
 
-    List<Horse> readHorses();
+    List<Horse> readHorses() throws DAOException;
 
     /**
      * read horse by id
@@ -19,20 +20,20 @@ public interface HorseDAOInterface {
      * @param id id of horse
      * @return horse
      */
-    Horse readHorseById(int id);
+    Horse readHorseById(int id) throws DAOException;
 
     /**
      * insert horse
      *
      * @param horse horse object
      */
-    void insertHorse(Horse horse);
+    void insertHorse(Horse horse) throws DAOException;
 
     /**
      * read horses in race
      *
      * @param raceId id of race
      */
-    List<Horse> readHorcesInRace(int raceId);
+    List<Horse> readHorcesInRace(int raceId) throws DAOException;
 
 }

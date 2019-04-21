@@ -1,6 +1,7 @@
 package by.isysoi.controller.action;
 
 import by.isysoi.controller.NavigationConstants;
+import by.isysoi.exception.ActionException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -18,8 +19,12 @@ public class HomeAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
+            throws ActionException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.homePage);
-        dispatcher.forward(request, response);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new ActionException("Failed page forwarding", e);
+        }
     }
 }

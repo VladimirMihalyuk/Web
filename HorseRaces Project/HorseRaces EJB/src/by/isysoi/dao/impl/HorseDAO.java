@@ -5,6 +5,7 @@ import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race;
 import by.isysoi.entity.Race_;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,7 +23,7 @@ import java.util.List;
 @Stateless
 public class HorseDAO implements HorseDAOInterface {
 
-//    protected Logger logger = LogManager.getLogger("dao_layer");
+    //protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -44,7 +45,7 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @return list of horses
      */
-    public List<Horse> readHorses() {
+    public List<Horse> readHorses() throws DAOException {
         List horses = null;
 
         try {
@@ -56,6 +57,7 @@ public class HorseDAO implements HorseDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to read horses", e);
+            throw new DAOException("Failed to read horses", e);
         }
         return horses;
     }
@@ -66,7 +68,7 @@ public class HorseDAO implements HorseDAOInterface {
      * @param id id of horse
      * @return horse
      */
-    public Horse readHorseById(int id) {
+    public Horse readHorseById(int id) throws DAOException {
         Horse horse = null;
 
         try {
@@ -81,6 +83,7 @@ public class HorseDAO implements HorseDAOInterface {
                     .getSingleResult();
         } catch (Exception e) {
             //logger.error("failed to read horse", e);
+            throw new DAOException("Failed to read horse", e);
         }
         return horse;
     }
@@ -90,11 +93,12 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param horse horse object
      */
-    public void insertHorse(Horse horse) {
+    public void insertHorse(Horse horse) throws DAOException {
         try {
             entityManager.persist(horse);
         } catch (Exception e) {
             //logger.error("failed to insert horse", e);
+            throw new DAOException("Failed to insert horse", e);
         }
     }
 
@@ -103,7 +107,7 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param raceId id of race
      */
-    public List<Horse> readHorcesInRace(int raceId) {
+    public List<Horse> readHorcesInRace(int raceId) throws DAOException {
         List horses = null;
 
         try {
@@ -118,6 +122,7 @@ public class HorseDAO implements HorseDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to read horses in race", e);
+            throw new DAOException("Failed to read horses in race", e);
         }
         return horses;
     }

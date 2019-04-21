@@ -1,13 +1,19 @@
 package by.isysoi.dao.impl;
 
 import by.isysoi.dao.BetDAOInterface;
-import by.isysoi.entity.*;
+import by.isysoi.entity.Bet;
+import by.isysoi.entity.Bet_;
+import by.isysoi.entity.Client;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.*;
 
 /**
@@ -19,7 +25,7 @@ import java.util.*;
 @Stateless
 public class BetDAO implements BetDAOInterface {
 
-//    protected Logger logger = LogManager.getLogger("dao_layer");
+    //protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -40,7 +46,7 @@ public class BetDAO implements BetDAOInterface {
      *
      * @return bets
      */
-    public List<Bet> readBet() {
+    public List<Bet> readBet() throws DAOException {
         List bets = null;
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -51,6 +57,7 @@ public class BetDAO implements BetDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to insert bet", e);
+            throw new DAOException("Failed to read bets", e);
         }
         return bets;
     }
@@ -61,7 +68,7 @@ public class BetDAO implements BetDAOInterface {
      * @param id bet id
      * @return bet
      */
-    public Bet readBetById(int id) {
+    public Bet readBetById(int id) throws DAOException {
         Bet bet = null;
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -74,6 +81,7 @@ public class BetDAO implements BetDAOInterface {
                     .getSingleResult();
         } catch (Exception e) {
             //logger.error("failed to insert bet", e);
+            throw new DAOException("Failed to read bet by id", e);
         }
         return bet;
     }
@@ -83,11 +91,12 @@ public class BetDAO implements BetDAOInterface {
      *
      * @param bet bet object
      */
-    public void insertBet(Bet bet) {
+    public void insertBet(Bet bet) throws DAOException {
         try {
             entityManager.persist(bet);
         } catch (Exception e) {
             //logger.error("failed to insert bet", e);
+            throw new DAOException("Failed to insert bet", e);
         }
     }
 
@@ -97,30 +106,14 @@ public class BetDAO implements BetDAOInterface {
      * @param raceId id of race
      * @return list of clients
      */
-    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) {
+    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery<Bet> criteriaQuery = criteriaBuilder.createQuery(Bet.class);
-            Root<Bet> rootBet = criteriaQuery.from(Bet.class);
-            Join<Bet, Horse> horseJoin = rootBet.join(Bet_.horse);
 
-            Subquery<Integer> subquery = criteriaQuery.subquery(Integer.class);
-            Root<RaceInfo> rootRaceInfo = subquery.from(RaceInfo.class);
-            subquery.select(rootRaceInfo.get(RaceInfo_.horseId))
-                    .where(criteriaBuilder.and(
-                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.position), 1),
-                            criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId))
-                    );
-
-            Predicate condition = criteriaBuilder.and(
-                    criteriaBuilder.equal(rootBet.get(Bet_.race), raceId),
-                    criteriaBuilder.in(horseJoin.get(Horse_.id)).value(subquery)
-            );
-            criteriaQuery.where(condition);
-
-            List<Bet> bets = entityManager.createQuery(criteriaQuery).getResultList();
+            List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
+                    .setParameter("raceId", raceId)
+                    .getResultList();
 
             for (Bet bet : bets) {
                 Client client = bet.getClient();
@@ -131,6 +124,7 @@ public class BetDAO implements BetDAOInterface {
             }
         } catch (Exception e) {
             //logger.error("failed to read winners by race", e);
+            throw new DAOException("Failed to read winners", e);
         }
         return clientsWithBet;
     }

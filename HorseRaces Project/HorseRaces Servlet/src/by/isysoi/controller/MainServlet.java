@@ -1,7 +1,9 @@
 package by.isysoi.controller;
 
 import by.isysoi.controller.action.*;
+import by.isysoi.exception.ActionException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -44,9 +46,13 @@ public class MainServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
             startNewSessionAndSaveCookies(request, response);
-            actions.get("home").execute(request, response, this.getServletContext());
-        } else if (actions.containsKey(action)) {
-            actions.get(action).execute(request, response, this.getServletContext());
+        }
+        try {
+            actions.get(action == null ? "home" : action).execute(request, response, this.getServletContext());
+        } catch (ActionException e) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
+            request.setAttribute("errorMessage", e.getMessage());
+            dispatcher.forward(request, response);
         }
     }
 
@@ -55,9 +61,14 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            actions.get("home").execute(request, response, this.getServletContext());
-        } else if (actions.containsKey(action)) {
-            actions.get(action).execute(request, response, this.getServletContext());
+            startNewSessionAndSaveCookies(request, response);
+        }
+        try {
+            actions.get(action == null ? "home" : action).execute(request, response, this.getServletContext());
+        } catch (ActionException e) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
+            request.setAttribute("errorMessage", e.getMessage());
+            dispatcher.forward(request, response);
         }
     }
 
