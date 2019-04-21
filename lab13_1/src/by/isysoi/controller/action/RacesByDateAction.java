@@ -15,15 +15,14 @@ import java.util.List;
 
 public class RacesByDateAction implements Action {
 
-    final String urlPattern = "racesByDate";
 
     @Override
     public String getPattern() {
-        return urlPattern;
+        return "racesByDate";
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
+    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
         String date = request.getParameter("date");

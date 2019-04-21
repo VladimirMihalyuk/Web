@@ -11,15 +11,13 @@ import java.io.IOException;
 
 public class HomeAction implements Action {
 
-    final String urlPattern = "home";
-
     @Override
     public String getPattern() {
-        return urlPattern;
+        return "home";
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
+    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.homePage);
         dispatcher.forward(request, response);

@@ -1,13 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="war" name="HorseRaces_servelet">
-    <output-path>$USER_HOME$/Downloads/glassfish4/glassfish/domains/domain1/autodeploy/</output-path>
+    <output-path>$PROJECT_DIR$/../glassfish4/glassfish/domains/domain1/autodeploy/</output-path>
     <root id="archive" name="HorseRaces_servelet.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="lab13_1" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="HorseRaces_EJB_Client" />
+          <element id="library" level="project" name="HorseRaces_ejb_interface" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="lab13_1/web/Web" />

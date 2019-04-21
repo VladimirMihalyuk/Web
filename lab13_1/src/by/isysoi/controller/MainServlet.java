@@ -43,10 +43,10 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            startNewSessionAndSaveCookies(request, response);
-            actions.get("home").doGet(request, response, this.getServletContext());
+            //startNewSessionAndSaveCookies(request, response);
+            actions.get("home").execute(request, response, this.getServletContext());
         } else if (actions.containsKey(action)) {
-            actions.get(action).doGet(request, response, this.getServletContext());
+            actions.get(action).execute(request, response, this.getServletContext());
         }
     }
 
@@ -55,9 +55,9 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            actions.get("home").doGet(request, response, this.getServletContext());
+            actions.get("home").execute(request, response, this.getServletContext());
         } else if (actions.containsKey(action)) {
-            actions.get(action).doPost(request, response, this.getServletContext());
+            actions.get(action).execute(request, response, this.getServletContext());
         }
     }
 

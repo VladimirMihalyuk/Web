@@ -15,12 +15,9 @@ import java.io.IOException;
  * @author Ilya Sysoi
  */
 public interface Action {
+
     String getPattern();
 
-    void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ServletException, IOException;
+    void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ServletException, IOException;
 
-    default void doPost(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
-        doGet(request, response, servletContext);
-    }
 }

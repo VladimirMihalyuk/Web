@@ -12,15 +12,14 @@ import java.io.IOException;
 
 public class SaveResultAction implements Action {
 
-    final String urlPattern = "saveResult";
 
     @Override
     public String getPattern() {
-        return urlPattern;
+        return "saveResult";
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
+    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
         String raceId = request.getParameter("raceId");

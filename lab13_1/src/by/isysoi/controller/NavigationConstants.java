@@ -12,5 +12,4 @@ public class NavigationConstants {
 
     public static final String resultPage = "/WEB-INF/view/result.jsp";
 
-
 }

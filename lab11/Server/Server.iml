@@ -11,7 +11,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="Hibernate" />
+        <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
           <factory-entry name="Test_Local" />
         </datasource-mapping>
@@ -27,7 +27,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2 - EJB" level="application_server_libraries" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2" level="application_server_libraries" />
   </component>
 </module>
