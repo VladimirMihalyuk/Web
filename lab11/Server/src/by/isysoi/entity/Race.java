@@ -16,10 +16,9 @@ import java.util.List;
 @Table(name = Race.tableName)
 public class Race implements Serializable {
 
-    private static final long serialVersionUID = 1;
-
     public static final String tableName = "race";
     public static final String idColumnName = "id";
+    private static final long serialVersionUID = 1;
     private static final String dateColumnName = "race_date";
     @ManyToMany(cascade = {CascadeType.ALL},
             fetch = FetchType.EAGER)

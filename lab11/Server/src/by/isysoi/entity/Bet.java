@@ -15,13 +15,11 @@ import java.math.BigDecimal;
 @Table(name = Bet.tableName)
 public class Bet implements Serializable {
 
-    private static final long serialVersionUID = 1;
-
     public static final String tableName = "bet";
     public static final String horseColumnName = "horse_id";
     public static final String clientColumnName = "client_id";
     public static final String raceColumnName = "race_id";
-
+    private static final long serialVersionUID = 1;
     /**
      * id of bet
      */

@@ -3,14 +3,15 @@ package by.isysoi.dao.impl;
 import by.isysoi.dao.ClientDAOInterface;
 import by.isysoi.entity.Client;
 import by.isysoi.entity.Client_;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
 @Stateless
 public class ClientDAO implements ClientDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -32,7 +33,7 @@ public class ClientDAO implements ClientDAOInterface {
      */
     public ClientDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("ClientDAO created ");
+        //logger.info("ClientDAO created ");
     }
 
     public ClientDAO() {
@@ -54,7 +55,7 @@ public class ClientDAO implements ClientDAOInterface {
             clients = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read clients", e);
+            //logger.error("failed to read clients", e);
         }
         return clients;
     }
@@ -78,7 +79,7 @@ public class ClientDAO implements ClientDAOInterface {
             client = (Client) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to read client", e);
+            //logger.error("failed to read client", e);
         }
         return client;
     }
@@ -92,7 +93,7 @@ public class ClientDAO implements ClientDAOInterface {
         try {
             entityManager.persist(client);
         } catch (Exception e) {
-            logger.error("failed to insert client", e);
+            //logger.error("failed to insert client", e);
         }
     }
 

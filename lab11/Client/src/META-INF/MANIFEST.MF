@@ -1,6 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: javax.servlet.jar javax.servlet.jsp.jar javax.ejb.jar java
-  x.annotation.jar javax.jms.jar javax.persistence.jar javax.transacti
- o n.jar javax.resource.jar javax.servlet.jsp.jstl.jar
+Class-Path: HorseRaces_EJB_Client.jar
 Main-Class: by.isysoi.view.Main
 

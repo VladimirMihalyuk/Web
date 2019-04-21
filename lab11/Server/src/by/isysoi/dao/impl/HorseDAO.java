@@ -5,13 +5,10 @@ import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race;
 import by.isysoi.entity.Race_;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.List;
@@ -25,7 +22,7 @@ import java.util.List;
 @Stateless
 public class HorseDAO implements HorseDAOInterface {
 
-    protected Logger logger = LogManager.getLogger("dao_layer");
+//    protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -35,7 +32,7 @@ public class HorseDAO implements HorseDAOInterface {
      */
     public HorseDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
-        logger.info("HorseDAO created ");
+        //logger.info("HorseDAO created ");
     }
 
     public HorseDAO() {
@@ -46,9 +43,8 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses
      *
      * @return list of horses
-
      */
-    public List<Horse> readHorses(){
+    public List<Horse> readHorses() {
         List horses = null;
 
         try {
@@ -59,7 +55,7 @@ public class HorseDAO implements HorseDAOInterface {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read horses", e);
+            //logger.error("failed to read horses", e);
         }
         return horses;
     }
@@ -69,13 +65,12 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param id id of horse
      * @return horse
-
      */
-    public Horse readHorseById(int id){
+    public Horse readHorseById(int id) {
         Horse horse = null;
 
         try {
-            
+
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
             Root rootHorse = criteriaQuery.from(Horse.class);
@@ -85,7 +80,7 @@ public class HorseDAO implements HorseDAOInterface {
             horse = (Horse) entityManager.createQuery(criteriaQuery)
                     .getSingleResult();
         } catch (Exception e) {
-            logger.error("failed to read horse", e);
+            //logger.error("failed to read horse", e);
         }
         return horse;
     }
@@ -94,13 +89,12 @@ public class HorseDAO implements HorseDAOInterface {
      * insert horse
      *
      * @param horse horse object
-
      */
-    public void insertHorse(Horse horse){
+    public void insertHorse(Horse horse) {
         try {
             entityManager.persist(horse);
         } catch (Exception e) {
-            logger.error("failed to insert horse", e);
+            //logger.error("failed to insert horse", e);
         }
     }
 
@@ -108,9 +102,8 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses in race
      *
      * @param raceId id of race
-
      */
-    public List<Horse> readHorcesInRace(int raceId){
+    public List<Horse> readHorcesInRace(int raceId) {
         List horses = null;
 
         try {
@@ -124,7 +117,7 @@ public class HorseDAO implements HorseDAOInterface {
             horses = entityManager.createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            logger.error("failed to read horses in race", e);
+            //logger.error("failed to read horses in race", e);
         }
         return horses;
     }
