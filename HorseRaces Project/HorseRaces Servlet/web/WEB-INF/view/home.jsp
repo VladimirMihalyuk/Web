@@ -16,19 +16,6 @@
     может участвовать в нескольких Забегах в один день. Администратор фиксирует
     список, состав и результаты Забегов на день.
 </p>
-<p>
-    Последний заход: ${cookie['lastEnterTime'].getValue()}
-<p>
-<p>
-    Количество посещений: ${cookie['usageCount'].getValue()}
-</p>
-
-<p
-<c:if test="${sessionScope['user'].getTypeString() == 'guest'}">
-        style="color:red"
-</c:if>
->Пользователь: ${sessionScope['user'].getLogin()}<p>
-
 
 <ul>
     <li>
@@ -52,5 +39,25 @@
         </li>
     </c:if>
 </ul>
+
+<p>
+    Последний заход: ${cookie['lastEnterTime'].getValue()}
+<p>
+<p>
+    Количество посещений: ${cookie['usageCount'].getValue()}
+</p>
+
+<p
+<c:if test="${sessionScope['user'].getTypeString() == 'guest'}">
+        style="color:red"
+</c:if>
+>Пользователь: ${sessionScope['user'].getLogin()}<p>
+
+<div class="page-form">
+    <form id="logout-form" action="${pageContext.request.contextPath}/serv" method="POST">
+    </form>
+</div>
+
+<script src="script/script.js"></script>
 </body>
 </html>

@@ -100,6 +100,14 @@ const dom = (function () {
         }
     };
 
+    const logoutForm = {
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Выйти'
+        }
+    };
+
     const horsesResultFrom = {
         raceId: {
             label: 'Номер забега',
@@ -166,6 +174,10 @@ const dom = (function () {
             case 'guestForm':
                 array = guestForm;
                 actionValue = 'login';
+                break;
+            case 'logoutForm':
+                array = logoutForm;
+                actionValue = 'logout';
                 break;
         }
 
@@ -259,6 +271,14 @@ const dom = (function () {
             buildForm(guestForm, 'guestForm');
             console.log('guestForm');
             formId = 'as-guest-form';
+        }
+
+
+        const logoutForm = document.getElementById('logout-form');
+        if (logoutForm != null) {
+            buildForm(logoutForm, 'logoutForm');
+            console.log('logoutForm');
+            formId = 'logout-form';
         }
     }
 

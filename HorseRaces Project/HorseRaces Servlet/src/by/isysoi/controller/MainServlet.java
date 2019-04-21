@@ -34,6 +34,7 @@ public class MainServlet extends HttpServlet {
     public void init() {
         Action[] actions = {new HomeAction(),
                 new LoginAction(),
+                new LogoutAction(),
                 new WinnersByRaceAction(),
                 new SaveResultAction(),
                 new RacesByDateAction(),
