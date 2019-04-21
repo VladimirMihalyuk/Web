@@ -43,7 +43,7 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            //startNewSessionAndSaveCookies(request, response);
+            startNewSessionAndSaveCookies(request, response);
             actions.get("home").execute(request, response, this.getServletContext());
         } else if (actions.containsKey(action)) {
             actions.get(action).execute(request, response, this.getServletContext());
