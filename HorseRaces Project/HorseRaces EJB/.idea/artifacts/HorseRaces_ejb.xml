@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="HorseRaces:ejb">
+    <output-path>$PROJECT_DIR$/../../glassfish4/glassfish/domains/domain1/autodeploy/</output-path>
+    <root id="archive" name="HorseRaces_ejb.jar">
+      <element id="javaee-facet-resources" facet="HorseRaces EJB/ejb/EJB" />
+      <element id="module-output" name="HorseRaces EJB" />
+      <element id="jpa-descriptors" facet="HorseRaces EJB/jpa/JPA" />
+    </root>
+  </artifact>
+</component>
