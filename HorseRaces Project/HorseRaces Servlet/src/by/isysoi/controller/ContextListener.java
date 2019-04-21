@@ -1,9 +1,6 @@
 package by.isysoi.controller;
 
-import by.isysoi.dao.BetDAOInterface;
-import by.isysoi.dao.ClientDAOInterface;
-import by.isysoi.dao.HorseDAOInterface;
-import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.dao.*;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
@@ -30,6 +27,11 @@ public class ContextListener implements ServletContextListener {
     )
     private RaceDAOInterface raceDAO;
 
+    @EJB(
+            name = "by.isysoi.model.dao.UserDAOInterface"
+    )
+    private UserDAOInterface userDAO;
+
     public ContextListener() {
     }
 
@@ -39,6 +41,7 @@ public class ContextListener implements ServletContextListener {
         contex.setAttribute("raceDAO", this.raceDAO);
         contex.setAttribute("clientDAO", this.clientDAO);
         contex.setAttribute("betDAO", this.betDAO);
+        contex.setAttribute("userDAO", this.userDAO);
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {

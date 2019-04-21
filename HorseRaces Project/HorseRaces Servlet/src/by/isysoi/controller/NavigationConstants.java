@@ -14,4 +14,6 @@ public class NavigationConstants {
 
     public static final String errorPage = "/WEB-INF/view/error.jsp";
 
+    public static final String loginPage = "/WEB-INF/view/login.jsp";
+
 }

@@ -22,6 +22,9 @@
 <p>
     Количество посещений: ${cookie['usageCount'].getValue()}
 </p>
+<p>
+    Пользователь: ${sessionScope['user'].getLogin()}
+<p>
 <ul>
     <li>
         <a href="${pageContext.request.contextPath}/serv?action=winnersByRace"> Вывести список выигравших клиентов

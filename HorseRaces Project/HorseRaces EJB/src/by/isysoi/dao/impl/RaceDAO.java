@@ -33,12 +33,12 @@ public class RaceDAO implements RaceDAOInterface {
     /**
      * DAO constructor
      */
-    public RaceDAO(EntityManagerFactory emf) throws DAOException {
+    public RaceDAO(EntityManagerFactory emf) {
         entityManager = emf.createEntityManager();
         //logger.info("RaceDAO created ");
     }
 
-    public RaceDAO() throws DAOException {
+    public RaceDAO() {
     }
 
     /**

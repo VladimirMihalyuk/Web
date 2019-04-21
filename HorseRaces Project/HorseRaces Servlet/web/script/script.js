@@ -54,6 +54,30 @@ const dom = (function () {
         }
     };
 
+    const loginFrom = {
+        login: {
+            label: 'Логин',
+            type: 'text',
+            class: 'form-control',
+            placeholder: 'Введите логин',
+            name: 'login',
+            id: 'login-input',
+        },
+        password: {
+            label: 'Пароль',
+            type: 'password',
+            class: 'form-control',
+            placeholder: 'Введите пароль',
+            name: 'password',
+            id: 'password-input',
+        },
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Войти'
+        }
+    };
+
     const horsesResultFrom = {
         raceId: {
             label: 'Номер забега',
@@ -112,6 +136,10 @@ const dom = (function () {
             case 'horseResultForm':
                 array = horsesResultFrom;
                 actionValue = 'saveResult';
+                break;
+            case 'loginForm':
+                array = loginFrom;
+                actionValue = 'login';
                 break;
         }
 
@@ -191,6 +219,12 @@ const dom = (function () {
 
         }
 
+        const loginForm = document.getElementById('login-form');
+        if (loginForm != null) {
+            buildForm(loginForm, 'loginForm');
+            console.log('loginForm');
+            formId = 'login-form';
+        }
     }
 
     return {

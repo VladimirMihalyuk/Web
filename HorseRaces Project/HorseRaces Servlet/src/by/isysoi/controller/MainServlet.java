@@ -6,9 +6,10 @@ import by.isysoi.exception.ActionException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,7 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init() {
         Action[] actions = {new HomeAction(),
+                new LoginAction(),
                 new WinnersByRaceAction(),
                 new SaveResultAction(),
                 new RacesByDateAction(),
@@ -44,11 +46,8 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action == null) {
-            startNewSessionAndSaveCookies(request, response);
-        }
         try {
-            actions.get(action == null ? "home" : action).execute(request, response, this.getServletContext());
+            actions.get(action == null ? "login" : action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
             request.setAttribute("errorMessage", e.getMessage());
@@ -60,38 +59,13 @@ public class MainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action == null) {
-            startNewSessionAndSaveCookies(request, response);
-        }
         try {
-            actions.get(action == null ? "home" : action).execute(request, response, this.getServletContext());
+            actions.get(action == null ? "login" : action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
             request.setAttribute("errorMessage", e.getMessage());
             dispatcher.forward(request, response);
         }
-    }
-
-
-    private void startNewSessionAndSaveCookies(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession(true);
-        Cookie lastEnterTime = new Cookie("lastEnterTime", new Date().toString());
-        lastEnterTime.setComment("Информация о времени и дате последнего сеанса пользователя,");
-        Cookie usageCount = new Cookie("usageCount", "1");
-        usageCount.setComment("Информация о количестве посещений ресурса.");
-
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("usageCount")) {
-                    int lastUsageCount = Integer.parseInt(cookie.getValue());
-                    lastUsageCount += 1;
-                    usageCount.setValue(Integer.toString(lastUsageCount));
-                }
-            }
-        }
-        response.addCookie(lastEnterTime);
-        response.addCookie(usageCount);
     }
 
 }
