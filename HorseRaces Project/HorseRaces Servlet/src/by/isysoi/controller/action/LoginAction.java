@@ -25,24 +25,33 @@ public class LoginAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ActionException {
-        boolean isValid = false;
         User user = null;
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
         if (login != null && password != null) {
-            UserDAOInterface userDAO = (UserDAOInterface) servletContext.getAttribute("userDAO");
-            try {
-                isValid = userDAO.isUserValid(login, password);
-                user = userDAO.getUserInfo(login);
-                startNewSessionAndSaveCookies(request, response, user);
-            } catch (DAOException e) {
-                throw new ActionException("Failed to check user", e);
+            if (login.isEmpty() && password.isEmpty()) {
+                user = new User();
+                user.setType("guest");
+                user.setLogin("Гость");
+            } else {
+                UserDAOInterface userDAO = (UserDAOInterface) servletContext.getAttribute("userDAO");
+                try {
+                    user = userDAO.getUserInfo(login, password);
+                } catch (DAOException e) {
+                    throw new ActionException("Failed to check user", e);
+                }
             }
         }
 
-        RequestDispatcher dispatcher = servletContext
-                .getRequestDispatcher(isValid ? NavigationConstants.homePage : NavigationConstants.loginPage);
+        String forwardPage;
+        if (user != null) {
+            startNewSessionAndSaveCookies(request, response, user);
+            forwardPage = NavigationConstants.homePage;
+        } else {
+            forwardPage = NavigationConstants.loginPage;
+        }
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(forwardPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

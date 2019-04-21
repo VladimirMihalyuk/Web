@@ -16,6 +16,11 @@
     <form id="login-form" action="${pageContext.request.contextPath}/serv" method="POST">
     </form>
 </div>
+<div class="page-form">
+    <form id="as-guest-form" action="${pageContext.request.contextPath}/serv" method="POST">
+    </form>
+</div>
+
 
 <script src="script/script.js"></script>
 </body>

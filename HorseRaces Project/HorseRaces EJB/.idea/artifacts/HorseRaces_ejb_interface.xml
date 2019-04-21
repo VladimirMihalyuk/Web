@@ -2,23 +2,7 @@
   <artifact type="jar" name="HorseRaces_ejb_interface">
     <output-path>$PROJECT_DIR$/out/artifacts/HorseRaces_EJB_Client</output-path>
     <root id="archive" name="HorseRaces_ejb_interface.jar">
-      <element id="directory" name="by">
-        <element id="directory" name="isysoi">
-          <element id="directory" name="dao">
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/dao/BetDAOInterface.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/dao/ClientDAOInterface.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/dao/HorseDAOInterface.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/dao/RaceDAOInterface.class" />
-          </element>
-          <element id="directory" name="entity">
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/entity/Bet.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/entity/Client.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/entity/Race.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/entity/RaceInfo.class" />
-            <element id="file-copy" path="$PROJECT_DIR$/out/production/Server/by/isysoi/entity/Horse.class" />
-          </element>
-        </element>
-      </element>
+      <element id="module-output" name="HorseRaces EJB" />
     </root>
   </artifact>
 </component>

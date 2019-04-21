@@ -22,14 +22,15 @@
 <p>
     Количество посещений: ${cookie['usageCount'].getValue()}
 </p>
-<p>
-    Пользователь: ${sessionScope['user'].getLogin()}
-<p>
+
+<p
+<c:if test="${sessionScope['user'].getTypeString() == 'guest'}">
+        style="color:red"
+</c:if>
+>Пользователь: ${sessionScope['user'].getLogin()}<p>
+
+
 <ul>
-    <li>
-        <a href="${pageContext.request.contextPath}/serv?action=winnersByRace"> Вывести список выигравших клиентов
-            забега.</a>
-    </li>
     <li>
         <a href="${pageContext.request.contextPath}/serv?action=horsesInRace">Вывести список лошадей заданного
             забега.</a>
@@ -38,10 +39,18 @@
         <a href="${pageContext.request.contextPath}/serv?action=racesByDate">Вывести список забегов на указанную
             дату.</a>
     </li>
-    <li>
-        <a href="${pageContext.request.contextPath}/serv?action=saveResult">Зафиксировать состав и результаты
-            забега.</a>
-    </li>
+    <c:if test="${sessionScope['user'].getTypeString() == 'client' || sessionScope['user'].getTypeString() == 'admin'}">
+        <li>
+            <a href="${pageContext.request.contextPath}/serv?action=winnersByRace"> Вывести список выигравших клиентов
+                забега.</a>
+        </li>
+    </c:if>
+    <c:if test="${sessionScope['user'].getTypeString() == 'admin'}">
+        <li>
+            <a href="${pageContext.request.contextPath}/serv?action=saveResult">Зафиксировать состав и результаты
+                забега.</a>
+        </li>
+    </c:if>
 </ul>
 </body>
 </html>

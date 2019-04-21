@@ -11,17 +11,10 @@ import java.util.List;
 public interface UserDAOInterface {
 
     /**
-     * check for valid user
-     *
-     * @return true or false
-     */
-    boolean isUserValid(String login, String password) throws DAOException;
-
-    /**
      * get user info
      *
      * @return true or false
      */
-    User getUserInfo(String login) throws DAOException;
+    User getUserInfo(String login, String password) throws DAOException;
 
 }

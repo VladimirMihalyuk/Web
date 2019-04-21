@@ -1,6 +1,7 @@
 package by.isysoi.controller;
 
 import by.isysoi.controller.action.*;
+import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
 
 import javax.servlet.RequestDispatcher;
@@ -45,9 +46,10 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
+        User user = (User) request.getSession().getAttribute("user");
+        String action = validActionForUserAndCurrentAction(user, request.getParameter("action"));
         try {
-            actions.get(action == null ? "login" : action).execute(request, response, this.getServletContext());
+            actions.get(action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
             request.setAttribute("errorMessage", e.getMessage());
@@ -58,14 +60,21 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        try {
-            actions.get(action == null ? "login" : action).execute(request, response, this.getServletContext());
-        } catch (ActionException e) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
-            request.setAttribute("errorMessage", e.getMessage());
-            dispatcher.forward(request, response);
+        doGet(request, response);
+    }
+
+    private String validActionForUserAndCurrentAction(User user, String action) {
+        if (action == null) return "login";
+        if (user == null) return "login";
+        switch (user.getType()) {
+            case ADMIN:
+                return action;
+            case GUEST:
+                return action.equals("saveResult") || action.equals("winnersByRace") ? "home" : action;
+            case CLIENT:
+                return action.equals("saveResult") ? "home" : action;
         }
+        return "login";
     }
 
 }

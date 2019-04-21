@@ -78,6 +78,28 @@ const dom = (function () {
         }
     };
 
+    const guestForm = {
+        login: {
+            type: 'hidden',
+            class: 'form-control',
+            placeholder: 'Введите логин',
+            name: 'login',
+            id: 'login-input',
+        },
+        password: {
+            type: 'hidden',
+            class: 'form-control',
+            placeholder: 'Введите пароль',
+            name: 'password',
+            id: 'password-input',
+        },
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Войти как гость'
+        }
+    };
+
     const horsesResultFrom = {
         raceId: {
             label: 'Номер забега',
@@ -141,6 +163,10 @@ const dom = (function () {
                 array = loginFrom;
                 actionValue = 'login';
                 break;
+            case 'guestForm':
+                array = guestForm;
+                actionValue = 'login';
+                break;
         }
 
         for (const prop in array) {
@@ -149,9 +175,11 @@ const dom = (function () {
                     const formDiv = document.createElement('div');
                     formDiv.setAttribute('class', 'form-group');
 
-                    const label = document.createElement('label');
-                    label.innerHTML = array[prop].label;
-                    formDiv.appendChild(label);
+                    if (array[prop].label != null) {
+                        const label = document.createElement('label');
+                        label.innerHTML = array[prop].label;
+                        formDiv.appendChild(label);
+                    }
 
                     const input = document.createElement('input');
                     input.setAttribute('type', array[prop].type);
@@ -224,6 +252,13 @@ const dom = (function () {
             buildForm(loginForm, 'loginForm');
             console.log('loginForm');
             formId = 'login-form';
+        }
+
+        const guestForm = document.getElementById('as-guest-form');
+        if (guestForm != null) {
+            buildForm(guestForm, 'guestForm');
+            console.log('guestForm');
+            formId = 'as-guest-form';
         }
     }
 

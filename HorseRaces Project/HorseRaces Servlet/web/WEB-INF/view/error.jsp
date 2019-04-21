@@ -12,6 +12,13 @@
 <body>
 <h1>Произошла ошибка</h1>
 <p>${errorMessage}</p>
-<a href="${pageContext.request.contextPath}/serv?action=home"> На главную</a>
+<c:choose>
+    <c:when test="${empty sessionScope['user']}">
+        <a href="${pageContext.request.contextPath}/serv?action=login">На авторизацию</a>
+    </c:when>
+    <c:otherwise>
+        <a href="${pageContext.request.contextPath}/serv?action=home">На главную</a>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

@@ -12,12 +12,9 @@ import java.io.Serializable;
 @Entity(name = "User")
 @Table(name = User.tableName)
 @NamedQueries({
-        @NamedQuery(name = "checkUser",
+        @NamedQuery(name = "getUserInfo",
                 query = "select u from User u" +
-                        " where :login = u.login and :password = u.password"),
-        @NamedQuery(name = "getUser",
-                query = "select u from User u" +
-                        " where :login = u.login")
+                        " where :login = u.login and :password = u.password")
 })
 
 public class User implements Serializable {
@@ -76,7 +73,7 @@ public class User implements Serializable {
         return type;
     }
 
-    enum UserType {
+    public enum UserType {
         GUEST,
         CLIENT,
         ADMIN
