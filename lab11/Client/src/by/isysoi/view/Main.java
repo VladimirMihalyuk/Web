@@ -24,16 +24,16 @@ import java.util.*;
  */
 public class Main {
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.HorseDAOInterface")
     private static HorseDAOInterface horseDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.RaceDAOInterface")
     private static RaceDAOInterface raceDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.ClientDAOInterface")
     private static ClientDAOInterface clientDAO;
 
-    @EJB
+    @EJB(mappedName = "by.isysoi.dao.BetDAOInterface")
     private static BetDAOInterface betDAO;
 
     public static void main(String[] args) {

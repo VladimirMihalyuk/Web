@@ -2,11 +2,10 @@
   <artifact name="Client:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Client_jar</output-path>
     <root id="root">
-      <element id="library" level="project" name="Java EE 6-Java EE 6" />
       <element id="archive" name="Client.jar">
         <element id="module-output" name="Client" />
+        <element id="library" level="project" name="HorseRaces_EJB_Client" />
       </element>
-      <element id="javaee-facet-resources" facet="Client/ejb/EJB" />
     </root>
   </artifact>
 </component>

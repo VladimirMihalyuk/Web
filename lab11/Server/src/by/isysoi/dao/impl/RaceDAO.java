@@ -5,8 +5,6 @@ import by.isysoi.entity.Race;
 import by.isysoi.entity.RaceInfo;
 import by.isysoi.entity.RaceInfo_;
 import by.isysoi.entity.Race_;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -5,13 +5,10 @@ import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race;
 import by.isysoi.entity.Race_;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.List;
@@ -46,9 +43,8 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses
      *
      * @return list of horses
-
      */
-    public List<Horse> readHorses(){
+    public List<Horse> readHorses() {
         List horses = null;
 
         try {
@@ -69,13 +65,12 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param id id of horse
      * @return horse
-
      */
-    public Horse readHorseById(int id){
+    public Horse readHorseById(int id) {
         Horse horse = null;
 
         try {
-            
+
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Horse.class);
             Root rootHorse = criteriaQuery.from(Horse.class);
@@ -94,9 +89,8 @@ public class HorseDAO implements HorseDAOInterface {
      * insert horse
      *
      * @param horse horse object
-
      */
-    public void insertHorse(Horse horse){
+    public void insertHorse(Horse horse) {
         try {
             entityManager.persist(horse);
         } catch (Exception e) {
@@ -108,9 +102,8 @@ public class HorseDAO implements HorseDAOInterface {
      * read horses in race
      *
      * @param raceId id of race
-
      */
-    public List<Horse> readHorcesInRace(int raceId){
+    public List<Horse> readHorcesInRace(int raceId) {
         List horses = null;
 
         try {

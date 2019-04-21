@@ -2,8 +2,6 @@ package by.isysoi.dao.impl;
 
 import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.entity.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
