@@ -22,4 +22,9 @@
         <welcome-file>serv</welcome-file>
     </welcome-file-list>
 
+
+    <error-page>
+        <location>/WEB-INF/view/error.jsp</location>
+    </error-page>
+
 </web-app>

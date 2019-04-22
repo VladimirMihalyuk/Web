@@ -4,7 +4,6 @@ import by.isysoi.controller.action.*;
 import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,9 +51,8 @@ public class MainServlet extends HttpServlet {
         try {
             actions.get(action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(NavigationConstants.errorPage);
             request.setAttribute("errorMessage", e.getMessage());
-            dispatcher.forward(request, response);
+            response.sendError(500);
         }
     }
 
