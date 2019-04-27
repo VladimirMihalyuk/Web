@@ -78,6 +78,38 @@ const dom = (function () {
         }
     };
 
+    const registrationForm = {
+        login: {
+            label: 'Логин',
+            type: 'text',
+            class: 'form-control',
+            placeholder: 'Введите логин',
+            name: 'login',
+            id: 'login-input',
+        },
+        password: {
+            label: 'Пароль',
+            type: 'password',
+            class: 'form-control',
+            placeholder: 'Введите пароль',
+            name: 'password',
+            id: 'password-input',
+        },
+        repeatPassword: {
+            label: 'Повторите пароль',
+            type: 'password',
+            class: 'form-control',
+            placeholder: 'Повторите ввод пароля',
+            name: 'repeat-password',
+            id: 'password-input',
+        },
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Войти'
+        }
+    };
+
     const guestForm = {
         login: {
             type: 'hidden',
@@ -178,6 +210,10 @@ const dom = (function () {
             case 'logoutForm':
                 array = logoutForm;
                 actionValue = 'logout';
+                break;
+            case 'registrationForm':
+                array = registrationForm;
+                actionValue = 'registration';
                 break;
         }
 
@@ -280,6 +316,14 @@ const dom = (function () {
             console.log('logoutForm');
             formId = 'logout-form';
         }
+
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm != null) {
+            buildForm(registrationForm, 'registrationForm');
+            console.log('registrationForm');
+            formId = 'registration-form';
+        }
+
     }
 
     return {
