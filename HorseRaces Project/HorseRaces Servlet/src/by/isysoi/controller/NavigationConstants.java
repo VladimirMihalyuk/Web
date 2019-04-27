@@ -16,4 +16,6 @@ public class NavigationConstants {
 
     public static final String loginPage = "/WEB-INF/view/login.jsp";
 
+    public static final String registrationPage = "/WEB-INF/view/registration.jsp";
+
 }

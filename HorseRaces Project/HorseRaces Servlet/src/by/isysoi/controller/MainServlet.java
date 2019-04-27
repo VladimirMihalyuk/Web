@@ -7,6 +7,7 @@ import by.isysoi.controller.action.get.HorsesInRaceAction;
 import by.isysoi.controller.action.get.RacesByDateAction;
 import by.isysoi.controller.action.get.WinnersByRaceAction;
 import by.isysoi.controller.action.post.LoginAction;
+import by.isysoi.controller.action.post.RegistrationAction;
 import by.isysoi.controller.action.post.SaveResultAction;
 import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
@@ -29,24 +30,43 @@ import java.util.Map;
 public class MainServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private Map<String, Action> actions;
+    private Map<String, Action> getActions;
+    private Map<String, Action> postActions;
 
     public MainServlet() {
         super();
-        this.actions = new HashMap<>();
+        this.getActions = new HashMap<>();
+        this.postActions = new HashMap<>();
     }
 
     @Override
     public void init() {
-        Action[] actions = {new HomeAction(),
+        Action[] getActions = {
+                new HomeAction(),
                 new LoginAction(),
                 new LogoutAction(),
                 new WinnersByRaceAction(),
                 new SaveResultAction(),
                 new RacesByDateAction(),
-                new HorsesInRaceAction()};
-        for (Action c : actions) {
-            this.actions.put(c.getPattern(), c);
+                new HorsesInRaceAction(),
+                new RegistrationAction()
+        };
+        for (Action c : getActions) {
+            this.getActions.put(c.getPattern(), c);
+        }
+
+        Action[] postActions = {
+                new HomeAction(),
+                new LoginAction(),
+                new LogoutAction(),
+                new WinnersByRaceAction(),
+                new SaveResultAction(),
+                new RacesByDateAction(),
+                new HorsesInRaceAction(),
+                new RegistrationAction()
+        };
+        for (Action c : postActions) {
+            this.getActions.put(c.getPattern(), c);
         }
     }
 
@@ -56,7 +76,7 @@ public class MainServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         String action = validActionForUserAndCurrentAction(user, request.getParameter("action"));
         try {
-            actions.get(action).execute(request, response, this.getServletContext());
+            getActions.get(action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
             request.setAttribute("errorMessage", e.getMessage());
             response.sendError(500);
@@ -66,8 +86,16 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        User user = (User) request.getSession().getAttribute("user");
+        String action = validActionForUserAndCurrentAction(user, request.getParameter("action"));
+        try {
+            postActions.get(action).execute(request, response, this.getServletContext());
+        } catch (ActionException e) {
+            request.setAttribute("errorMessage", e.getMessage());
+            response.sendError(500);
+        }
     }
+
 
     private String validActionForUserAndCurrentAction(User user, String action) {
         if (action == null) return "login";
