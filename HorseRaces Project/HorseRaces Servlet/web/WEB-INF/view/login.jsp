@@ -21,8 +21,7 @@
     </form>
 </div>
 
-<a href="${pageContext.request.contextPath}/serv?action=registration">На рег</a>
-<%--<button class="btn btn-primary" onclick="${pageContext.request.contextPath}/serv?action=registration">Регистрация</button>--%>
+<a href="${pageContext.request.contextPath}/serv?action=registration" class="btn btn-primary">Регистрация</a>
 
 <script src="script/script.js"></script>
 </body>
