@@ -1,6 +1,7 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.post;
 
 import by.isysoi.controller.NavigationConstants;
+import by.isysoi.controller.action.Action;
 import by.isysoi.dao.RaceDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;

@@ -1,6 +1,13 @@
 package by.isysoi.controller;
 
-import by.isysoi.controller.action.*;
+import by.isysoi.controller.action.Action;
+import by.isysoi.controller.action.LogoutAction;
+import by.isysoi.controller.action.get.HomeAction;
+import by.isysoi.controller.action.get.HorsesInRaceAction;
+import by.isysoi.controller.action.get.RacesByDateAction;
+import by.isysoi.controller.action.get.WinnersByRaceAction;
+import by.isysoi.controller.action.post.LoginAction;
+import by.isysoi.controller.action.post.SaveResultAction;
 import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
 
