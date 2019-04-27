@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HorseRaces_ejb_interface">
+    <output-path>$PROJECT_DIR$/out/artifacts/HorseRaces_EJB_Client</output-path>
+    <root id="archive" name="HorseRaces_ejb_interface.jar">
+      <element id="module-output" name="HorseRaces EJB" />
+    </root>
+  </artifact>
+</component>

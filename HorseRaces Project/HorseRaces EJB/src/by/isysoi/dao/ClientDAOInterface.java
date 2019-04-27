@@ -1,6 +1,7 @@
 package by.isysoi.dao;
 
 import by.isysoi.entity.Client;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Remote;
 import java.util.List;
@@ -12,7 +13,7 @@ public interface ClientDAOInterface {
      *
      * @return list of clients
      */
-    List<Client> readClients();
+    List<Client> readClients() throws DAOException;
 
     /**
      * read client by id
@@ -20,13 +21,13 @@ public interface ClientDAOInterface {
      * @param id client id
      * @return client
      */
-    Client readClientById(int id);
+    Client readClientById(int id) throws DAOException;
 
     /**
      * insert client
      *
      * @param client client object
      */
-    void insertClient(Client client);
+    void insertClient(Client client) throws DAOException;
 
 }

@@ -3,6 +3,7 @@ package by.isysoi.dao.impl;
 import by.isysoi.dao.ClientDAOInterface;
 import by.isysoi.entity.Client;
 import by.isysoi.entity.Client_;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,7 +24,7 @@ import java.util.List;
 @Stateless
 public class ClientDAO implements ClientDAOInterface {
 
-//    protected Logger logger = LogManager.getLogger("dao_layer");
+    //protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -44,7 +45,7 @@ public class ClientDAO implements ClientDAOInterface {
      *
      * @return list of clients
      */
-    public List<Client> readClients() {
+    public List<Client> readClients() throws DAOException {
         List clients = null;
 
         try {
@@ -56,6 +57,7 @@ public class ClientDAO implements ClientDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to read clients", e);
+            throw new DAOException("Failed to read clients", e);
         }
         return clients;
     }
@@ -66,7 +68,7 @@ public class ClientDAO implements ClientDAOInterface {
      * @param id client id
      * @return client
      */
-    public Client readClientById(int id) {
+    public Client readClientById(int id) throws DAOException {
         Client client = null;
 
         try {
@@ -80,6 +82,7 @@ public class ClientDAO implements ClientDAOInterface {
                     .getSingleResult();
         } catch (Exception e) {
             //logger.error("failed to read client", e);
+            throw new DAOException("Failed to read client", e);
         }
         return client;
     }
@@ -89,11 +92,12 @@ public class ClientDAO implements ClientDAOInterface {
      *
      * @param client client object
      */
-    public void insertClient(Client client) {
+    public void insertClient(Client client) throws DAOException {
         try {
             entityManager.persist(client);
         } catch (Exception e) {
             //logger.error("failed to insert client", e);
+            throw new DAOException("Failed to insert client", e);
         }
     }
 

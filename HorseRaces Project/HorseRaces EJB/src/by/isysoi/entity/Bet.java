@@ -13,6 +13,10 @@ import java.math.BigDecimal;
 
 @Entity(name = "Bet")
 @Table(name = Bet.tableName)
+@NamedQuery(name = "readWinningBets",
+        query = "select b from Bet b " +
+                "join b.horse h " +
+                "where b.race.id = :raceId and h.id in (select ri.horseId from RaceInfo ri where ri.position = 1 and ri.raceId = :raceId)")
 public class Bet implements Serializable {
 
     public static final String tableName = "bet";

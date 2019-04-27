@@ -2,6 +2,8 @@ package by.isysoi.controller.action;
 
 import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.BetDAOInterface;
+import by.isysoi.exception.ActionException;
+import by.isysoi.exception.DAOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -20,15 +22,24 @@ public class WinnersByRaceAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.winnersPage);
+            throws ActionException {
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             BetDAOInterface betDAO = (BetDAOInterface) servletContext.getAttribute("betDAO");
-            Map map = betDAO.readWinnersByRace(Integer.valueOf(raceId));
+            Map map = null;
+            try {
+                map = betDAO.readWinnersByRace(Integer.valueOf(raceId));
+            } catch (DAOException e) {
+                throw new ActionException(String.format("Winners from race %s not found due to exception", raceId), e);
+            }
             request.setAttribute("winnersByRace", map);
         }
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.winnersPage);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new ActionException("Failed page forwarding", e);
+        }
     }
 
 }

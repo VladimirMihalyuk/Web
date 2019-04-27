@@ -2,6 +2,8 @@ package by.isysoi.controller.action;
 
 import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.HorseDAOInterface;
+import by.isysoi.exception.ActionException;
+import by.isysoi.exception.DAOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -20,15 +22,25 @@ public class HorsesInRaceAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);
+            throws ActionException {
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
             HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
-            List list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
+            List list = null;
+            try {
+                list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
+            } catch (DAOException e) {
+                throw new ActionException(String.format("Horses from race %s not found due to exception", raceId), e);
+            }
             request.setAttribute("horseInRaceList", list);
         }
-        dispatcher.forward(request, response);
+
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new ActionException("Failed page forwarding", e);
+        }
     }
 
 }

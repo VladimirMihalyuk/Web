@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class HomeAction implements Action {
+public class LogoutAction implements Action {
 
     @Override
     public String getPattern() {
-        return "home";
+        return "logout";
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ActionException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.homePage);
+    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ActionException {
+        request.getSession().setAttribute("user", null);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.loginPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

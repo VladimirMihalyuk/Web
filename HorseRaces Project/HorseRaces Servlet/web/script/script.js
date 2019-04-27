@@ -54,6 +54,60 @@ const dom = (function () {
         }
     };
 
+    const loginFrom = {
+        login: {
+            label: 'Логин',
+            type: 'text',
+            class: 'form-control',
+            placeholder: 'Введите логин',
+            name: 'login',
+            id: 'login-input',
+        },
+        password: {
+            label: 'Пароль',
+            type: 'password',
+            class: 'form-control',
+            placeholder: 'Введите пароль',
+            name: 'password',
+            id: 'password-input',
+        },
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Войти'
+        }
+    };
+
+    const guestForm = {
+        login: {
+            type: 'hidden',
+            class: 'form-control',
+            placeholder: 'Введите логин',
+            name: 'login',
+            id: 'login-input',
+        },
+        password: {
+            type: 'hidden',
+            class: 'form-control',
+            placeholder: 'Введите пароль',
+            name: 'password',
+            id: 'password-input',
+        },
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Войти как гость'
+        }
+    };
+
+    const logoutForm = {
+        submitButton: {
+            type: 'submit',
+            class: 'btn btn-primary',
+            value: 'Выйти'
+        }
+    };
+
     const horsesResultFrom = {
         raceId: {
             label: 'Номер забега',
@@ -113,6 +167,18 @@ const dom = (function () {
                 array = horsesResultFrom;
                 actionValue = 'saveResult';
                 break;
+            case 'loginForm':
+                array = loginFrom;
+                actionValue = 'login';
+                break;
+            case 'guestForm':
+                array = guestForm;
+                actionValue = 'login';
+                break;
+            case 'logoutForm':
+                array = logoutForm;
+                actionValue = 'logout';
+                break;
         }
 
         for (const prop in array) {
@@ -121,9 +187,11 @@ const dom = (function () {
                     const formDiv = document.createElement('div');
                     formDiv.setAttribute('class', 'form-group');
 
-                    const label = document.createElement('label');
-                    label.innerHTML = array[prop].label;
-                    formDiv.appendChild(label);
+                    if (array[prop].label != null) {
+                        const label = document.createElement('label');
+                        label.innerHTML = array[prop].label;
+                        formDiv.appendChild(label);
+                    }
 
                     const input = document.createElement('input');
                     input.setAttribute('type', array[prop].type);
@@ -191,6 +259,27 @@ const dom = (function () {
 
         }
 
+        const loginForm = document.getElementById('login-form');
+        if (loginForm != null) {
+            buildForm(loginForm, 'loginForm');
+            console.log('loginForm');
+            formId = 'login-form';
+        }
+
+        const guestForm = document.getElementById('as-guest-form');
+        if (guestForm != null) {
+            buildForm(guestForm, 'guestForm');
+            console.log('guestForm');
+            formId = 'as-guest-form';
+        }
+
+
+        const logoutForm = document.getElementById('logout-form');
+        if (logoutForm != null) {
+            buildForm(logoutForm, 'logoutForm');
+            console.log('logoutForm');
+            formId = 'logout-form';
+        }
     }
 
     return {

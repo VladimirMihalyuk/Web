@@ -2,6 +2,8 @@ package by.isysoi.controller.action;
 
 import by.isysoi.controller.NavigationConstants;
 import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.exception.ActionException;
+import by.isysoi.exception.DAOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -20,18 +22,26 @@ public class SaveResultAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
+            throws ActionException {
         String raceId = request.getParameter("raceId");
         String horseId = request.getParameter("horseId");
         String positionNumber = request.getParameter("positionNumber");
         if (raceId != null && positionNumber != null && horseId != null) {
             RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
-            raceDAO.setHoresPositionInRace(Integer.valueOf(horseId),
-                    Integer.valueOf(raceId),
-                    Integer.valueOf(positionNumber));
+            try {
+                raceDAO.setHoresPositionInRace(Integer.valueOf(horseId),
+                        Integer.valueOf(raceId),
+                        Integer.valueOf(positionNumber));
+            } catch (DAOException e) {
+                throw new ActionException(String.format("Failed to save result of horse %s in race %s with position %s due to exception", horseId, raceId, positionNumber), e);
+            }
         }
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new ActionException("Failed page forwarding", e);
+        }
     }
 
 }

@@ -5,6 +5,7 @@ import by.isysoi.entity.Race;
 import by.isysoi.entity.RaceInfo;
 import by.isysoi.entity.RaceInfo_;
 import by.isysoi.entity.Race_;
+import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,7 +25,7 @@ import java.util.List;
 @Stateless
 public class RaceDAO implements RaceDAOInterface {
 
-//    protected Logger logger = LogManager.getLogger("dao_layer");
+    //protected Logger logger = LogManager.getLogger("dao_layer");
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -45,7 +46,7 @@ public class RaceDAO implements RaceDAOInterface {
      *
      * @return list of races
      */
-    public List<Race> readRaces() {
+    public List<Race> readRaces() throws DAOException {
         List races = null;
 
         try {
@@ -57,6 +58,7 @@ public class RaceDAO implements RaceDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to insert bet", e);
+            throw new DAOException("Failed to insert bet", e);
         }
         return races;
     }
@@ -67,7 +69,7 @@ public class RaceDAO implements RaceDAOInterface {
      * @param id id of race
      * @return race
      */
-    public Race readRaceById(int id) {
+    public Race readRaceById(int id) throws DAOException {
         Race race = null;
 
         try {
@@ -82,6 +84,7 @@ public class RaceDAO implements RaceDAOInterface {
                     .getSingleResult();
         } catch (Exception e) {
             //logger.error("failed to read race", e);
+            throw new DAOException("Failed to read race", e);
         }
         return race;
     }
@@ -91,11 +94,12 @@ public class RaceDAO implements RaceDAOInterface {
      *
      * @param race race object
      */
-    public void insertRace(Race race) {
+    public void insertRace(Race race) throws DAOException {
         try {
             entityManager.persist(race);
         } catch (Exception e) {
             //logger.error("failed to insert race", e);
+            throw new DAOException("Failed to insert race", e);
         }
     }
 
@@ -105,7 +109,7 @@ public class RaceDAO implements RaceDAOInterface {
      * @param date date of race to select
      * @return list of races
      */
-    public List<Race> readRacesByDate(Date date) {
+    public List<Race> readRacesByDate(Date date) throws DAOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.HOUR_OF_DAY, 3);
@@ -123,6 +127,7 @@ public class RaceDAO implements RaceDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to read race by date", e);
+            throw new DAOException("Failed  to read race by date", e);
         }
         return races;
     }
@@ -133,7 +138,7 @@ public class RaceDAO implements RaceDAOInterface {
      * @param horseId id of horse
      * @param raceId  id of race
      */
-    public void addHorseToRace(int horseId, int raceId) {
+    public void addHorseToRace(int horseId, int raceId) throws DAOException {
         RaceInfo raceInfo = new RaceInfo();
 
         raceInfo.setHorseId(horseId);
@@ -144,6 +149,7 @@ public class RaceDAO implements RaceDAOInterface {
             entityManager.persist(raceInfo);
         } catch (Exception e) {
             //logger.error("failed to add horse to race", e);
+            throw new DAOException("Failed to add horse to race", e);
         }
     }
 
@@ -154,7 +160,7 @@ public class RaceDAO implements RaceDAOInterface {
      * @param raceId   id of race
      * @param position position of horse
      */
-    public void setHoresPositionInRace(int horseId, int raceId, int position) {
+    public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);
@@ -170,7 +176,9 @@ public class RaceDAO implements RaceDAOInterface {
 
         } catch (Exception e) {
             //logger.error("failed to update position of horse", e);
+            throw new DAOException("Failed to update position of horse", e);
         }
+        throw new DAOException("Failed to update position of horse");
     }
 
 }
