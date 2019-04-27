@@ -19,7 +19,7 @@
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>serv</welcome-file>
+        <welcome-file>/WEB-INF/view/info.jsp</welcome-file>
     </welcome-file-list>
 
 
