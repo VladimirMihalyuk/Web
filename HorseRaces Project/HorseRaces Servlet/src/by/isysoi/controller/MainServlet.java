@@ -6,7 +6,6 @@ import by.isysoi.controller.action.post.LoginPostAction;
 import by.isysoi.controller.action.post.LogoutAction;
 import by.isysoi.controller.action.post.RegistrationPostAction;
 import by.isysoi.controller.action.post.SaveResultPostAction;
-import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
 
 import javax.servlet.ServletException;
@@ -44,7 +43,8 @@ public class MainServlet extends HttpServlet {
                 new WinnersByRaceGetAction(),
                 new RacesByDateGetAction(),
                 new HorsesInRaceGetAction(),
-                new RegistrationGetAction()
+                new RegistrationGetAction(),
+                new SaveResultGetAction()
         };
         for (Action c : getActions) {
             this.getActions.put(c.getPattern(), c);
@@ -64,8 +64,7 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //User user = (User) request.getSession().getAttribute("user");
-        String action = request.getParameter("action");//validActionForUserAndCurrentAction(user, request.getParameter("action"));
+        String action = request.getParameter("action");
         try {
             getActions.get(action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
@@ -77,29 +76,13 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //User user = (User) request.getSession().getAttribute("user");
-        String action = request.getParameter("action");//validActionForUserAndCurrentAction(user, request.getParameter("action"));
+        String action = request.getParameter("action");
         try {
             postActions.get(action).execute(request, response, this.getServletContext());
         } catch (ActionException e) {
             request.setAttribute("errorMessage", e.getMessage());
             response.sendError(500);
         }
-    }
-
-
-    private String validActionForUserAndCurrentAction(User user, String action) {
-        if (action == null) return "login";
-        if (user == null) return "login";
-        switch (user.getType()) {
-            case ADMIN:
-                return action;
-            case GUEST:
-                return action.equals("saveResult") || action.equals("winnersByRace") ? "home" : action;
-            case CLIENT:
-                return action.equals("saveResult") ? "home" : action;
-        }
-        return "login";
     }
 
 }
