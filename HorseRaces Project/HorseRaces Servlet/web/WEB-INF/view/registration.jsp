@@ -17,7 +17,7 @@
     </form>
 </div>
 
-<a href="${pageContext.request.contextPath}/serv?action=login">На логин</a>
+<a href="${pageContext.request.contextPath}">На главную</a>
 
 <script src="script/script.js"></script>
 </body>

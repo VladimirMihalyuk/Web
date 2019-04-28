@@ -23,6 +23,8 @@
 
 <a href="${pageContext.request.contextPath}/serv?action=registration" class="btn btn-primary">Регистрация</a>
 
+<a href="${pageContext.request.contextPath}">На главную</a>
+
 <script src="script/script.js"></script>
 </body>
 </html>

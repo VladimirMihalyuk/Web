@@ -106,7 +106,7 @@ const dom = (function () {
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Войти'
+            value: 'Зарегистрироваться'
         }
     };
 
