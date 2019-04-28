@@ -21,7 +21,7 @@ public class LogoutAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ActionException {
         request.getSession().setAttribute("user", null);
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.loginPage);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.infoPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
