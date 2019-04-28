@@ -10,6 +10,12 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
+<h1>Варант 16, Сысой Илья</h1>
+<p>
+    Скачки. Клиент может делать Ставки на разных Лошадей Забега. Лошадь не
+    может участвовать в нескольких Забегах в один день. Администратор фиксирует
+    список, состав и результаты Забегов на день.
+</p>
 <ul>
     <li>
         <a href="${pageContext.request.contextPath}/serv?action=horsesInRace">Вывести список лошадей заданного

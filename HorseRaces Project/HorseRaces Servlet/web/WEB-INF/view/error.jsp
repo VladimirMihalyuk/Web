@@ -14,7 +14,7 @@
 <p>${errorMessage}</p>
 <c:choose>
     <c:when test="${empty sessionScope['user']}">
-        <a href="${pageContext.request.contextPath}/serv?action=login">На авторизацию</a>
+        <a href="${pageContext.request.contextPath}">На главную</a>
     </c:when>
     <c:otherwise>
         <a href="${pageContext.request.contextPath}/serv?action=home">На главную</a>
