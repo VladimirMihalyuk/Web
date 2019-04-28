@@ -2,7 +2,7 @@ package by.isysoi.controller.action.get;
 
 import by.isysoi.controller.NavigationConstants;
 import by.isysoi.controller.action.Action;
-import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;
 
@@ -12,35 +12,30 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Map;
 
-public class RacesByDateAction implements Action {
-
+public class WinnersByRaceGetAction implements Action {
 
     @Override
     public String getPattern() {
-        return "racesByDate";
+        return "winnersByRace";
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ActionException {
-        String date = request.getParameter("date");
-        if (date != null) {
-            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-            RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
+        String raceId = request.getParameter("raceId");
+        if (raceId != null) {
+            BetDAOInterface betDAO = (BetDAOInterface) servletContext.getAttribute("betDAO");
+            Map map = null;
             try {
-                List list = raceDAO.readRacesByDate(ft.parse(date));
-                request.setAttribute("racesByDateList", list);
-            } catch (ParseException e) {
-                throw new ActionException("Failed to cast date to format \"yyyy-MM-dd\"", e);
+                map = betDAO.readWinnersByRace(Integer.valueOf(raceId));
             } catch (DAOException e) {
-                throw new ActionException(String.format("Races by date %s not found due to exception", date), e);
+                throw new ActionException(String.format("Winners from race %s not found due to exception", raceId), e);
             }
+            request.setAttribute("winnersByRace", map);
         }
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.winnersPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

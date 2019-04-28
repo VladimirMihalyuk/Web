@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class HomeAction implements Action {
+public class RegistrationGetAction implements Action {
+
 
     @Override
     public String getPattern() {
-        return "home";
+        return "registration";
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
-            throws ActionException {
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.homePage);
+    public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ActionException {
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.registrationPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             throw new ActionException("Failed page forwarding", e);
         }
     }
+
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegistrationAction implements Action {
+public class RegistrationPostAction implements Action {
 
 
     @Override
@@ -30,7 +30,18 @@ public class RegistrationAction implements Action {
 
         RequestDispatcher dispatcher = null;
         if (login != null && password != null) {
-            //TODO: write logic here
+            user = new User();
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setType("client");
+
+            UserDAOInterface userDAO = (UserDAOInterface) servletContext.getAttribute("userDAO");
+            try {
+                userDAO.registerUser(user);
+            } catch (DAOException e) {
+                throw new ActionException(String.format("Failed to register user with login - %s", login), e);
+            }
+            dispatcher = servletContext.getRequestDispatcher(NavigationConstants.loginPage);
         } else {
             dispatcher = servletContext.getRequestDispatcher(NavigationConstants.registrationPage);
         }

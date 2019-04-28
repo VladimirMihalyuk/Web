@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 
-public class LoginAction implements Action {
+public class LoginPostAction implements Action {
 
     @Override
     public String getPattern() {
