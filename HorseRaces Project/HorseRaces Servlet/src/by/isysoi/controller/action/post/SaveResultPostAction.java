@@ -1,6 +1,7 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.post;
 
 import by.isysoi.controller.NavigationConstants;
+import by.isysoi.controller.action.Action;
 import by.isysoi.dao.RaceDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;
@@ -11,35 +12,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
-public class RacesByDateAction implements Action {
+public class SaveResultPostAction implements Action {
 
 
     @Override
     public String getPattern() {
-        return "racesByDate";
+        return "saveResult";
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ActionException {
-        String date = request.getParameter("date");
-        if (date != null) {
-            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        String raceId = request.getParameter("raceId");
+        String horseId = request.getParameter("horseId");
+        String positionNumber = request.getParameter("positionNumber");
+        if (raceId != null && positionNumber != null && horseId != null) {
             RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
             try {
-                List list = raceDAO.readRacesByDate(ft.parse(date));
-                request.setAttribute("racesByDateList", list);
-            } catch (ParseException e) {
-                throw new ActionException("Failed to cast date to format \"yyyy-MM-dd\"", e);
+                raceDAO.setHoresPositionInRace(Integer.valueOf(horseId),
+                        Integer.valueOf(raceId),
+                        Integer.valueOf(positionNumber));
             } catch (DAOException e) {
-                throw new ActionException(String.format("Races by date %s not found due to exception", date), e);
+                throw new ActionException(String.format("Failed to save result of horse %s in race %s with position %s due to exception", horseId, raceId, positionNumber), e);
             }
         }
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.racesPage);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

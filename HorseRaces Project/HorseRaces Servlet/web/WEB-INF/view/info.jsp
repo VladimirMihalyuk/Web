@@ -10,21 +10,14 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
-<h1>Авторизация</h1>
+<h1>Информация о системе</h1>
+<p>
+    Скачки. Клиент может делать Ставки на разных Лошадей Забега. Лошадь не может участвовать в нескольких Забегах в один
+    день. Администратор фиксирует список, состав и результаты Забегов на день.
+</p>
 
-<div class="page-form">
-    <form id="login-form" action="${pageContext.request.contextPath}/serv" method="POST">
-    </form>
-</div>
-<div class="page-form">
-    <form id="as-guest-form" action="${pageContext.request.contextPath}/serv" method="POST">
-    </form>
-</div>
-
+<a href="${pageContext.request.contextPath}/serv?action=login" class="btn btn-primary">Вход</a>
 <a href="${pageContext.request.contextPath}/serv?action=registration" class="btn btn-primary">Регистрация</a>
 
-<a href="${pageContext.request.contextPath}">На главную</a>
-
-<script src="script/script.js"></script>
 </body>
 </html>

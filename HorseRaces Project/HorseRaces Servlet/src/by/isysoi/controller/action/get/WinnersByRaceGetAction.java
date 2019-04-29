@@ -1,7 +1,8 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.get;
 
 import by.isysoi.controller.NavigationConstants;
-import by.isysoi.dao.HorseDAOInterface;
+import by.isysoi.controller.action.Action;
+import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;
 
@@ -11,13 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
-public class HorsesInRaceAction implements Action {
+public class WinnersByRaceGetAction implements Action {
 
     @Override
     public String getPattern() {
-        return "horsesInRace";
+        return "winnersByRace";
     }
 
     @Override
@@ -25,17 +26,16 @@ public class HorsesInRaceAction implements Action {
             throws ActionException {
         String raceId = request.getParameter("raceId");
         if (raceId != null) {
-            HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
-            List list = null;
+            BetDAOInterface betDAO = (BetDAOInterface) servletContext.getAttribute("betDAO");
+            Map map = null;
             try {
-                list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
+                map = betDAO.readWinnersByRace(Integer.valueOf(raceId));
             } catch (DAOException e) {
-                throw new ActionException(String.format("Horses from race %s not found due to exception", raceId), e);
+                throw new ActionException(String.format("Winners from race %s not found due to exception", raceId), e);
             }
-            request.setAttribute("horseInRaceList", list);
+            request.setAttribute("winnersByRace", map);
         }
-
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.winnersPage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

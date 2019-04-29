@@ -54,4 +54,18 @@ public class UserDAO implements UserDAOInterface {
         }
         return user;
     }
+
+    /**
+     * register user
+     *
+     * @param user user info to register
+     */
+    @Override
+    public void registerUser(User user) throws DAOException {
+        try {
+            entityManager.persist(user);
+        } catch (Exception e) {
+            throw new DAOException("Failed to register new user", e);
+        }
+    }
 }
