@@ -27,4 +27,17 @@
         <location>/WEB-INF/view/error.jsp</location>
     </error-page>
 
+    <filter-mapping>
+        <filter-name>UserSessionCheck</filter-name>
+        <url-pattern>/serv</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>PermissionFilter</filter-name>
+        <url-pattern>/serv</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RegistrationFormFilter</filter-name>
+        <url-pattern>/serv</url-pattern>
+    </filter-mapping>
+
 </web-app>
