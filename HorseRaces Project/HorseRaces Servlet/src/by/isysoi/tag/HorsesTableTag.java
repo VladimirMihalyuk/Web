@@ -33,6 +33,7 @@ public class HorsesTableTag extends SimpleTagSupport {
                         + "<tr>"
                         + "<th scope=\"col\">Id</th>"
                         + "<th scope=\"col\">nickname</th>"
+                        //+ (isAdmin ? "<th scope=\"col\">delete</th>" : "")
                         + "</tr >"
                         + "</thead >"
                         + "<tbody>";
@@ -41,6 +42,7 @@ public class HorsesTableTag extends SimpleTagSupport {
                     result += "<tr>"
                             + "<td scope=\"col\">" + h.getId() + "</td>"
                             + "<td scope=\"col\">" + h.getNikname() + "</td>"
+                           // + (isAdmin ? "<td scope=\"col\"><a href=\"${pageContext.request.contextPath}/serv?action=removeHorse&id="+ h.getId() +"\"> На главную</a></th>" : "")
                             + "</tr>";
                 }
 
