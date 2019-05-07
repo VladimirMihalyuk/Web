@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="mytag" uri="/WEB-INF/tld/tableList.tld"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,26 +19,7 @@
     </form>
 </div>
 
-<c:if test="${!empty horseInRaceList}">
-    <div class="page-table">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">nickname</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${horseInRaceList}" var="horse">
-                <tr>
-                    <td scope="col">${horse.getId()}</td>
-                    <td scope="col">${horse.getNikname()}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</c:if>
+<mytag:horsesTableTag/>
 
 <a href="${pageContext.request.contextPath}/serv?action=home"> На главную</a>
 
