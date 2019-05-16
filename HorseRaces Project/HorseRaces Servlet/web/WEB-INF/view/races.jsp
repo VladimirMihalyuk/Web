@@ -18,7 +18,7 @@
 <h1><fmt:message key="racesPage.title"/></h1>
 
 <div class="page-form">
-    <form id="races-by-date-form" action="${pageContext.request.contextPath}/serv">
+    <form id="races-by-date-form" lang="${userLocale.language}" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 

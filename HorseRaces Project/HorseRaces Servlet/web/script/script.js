@@ -286,6 +286,7 @@ const dom = (function (lang) {
                     input.setAttribute('min', array[prop].minValue);
                     input.setAttribute('step', array[prop].step);
                     input.setAttribute("id", array[prop].id);
+                    input.setAttribute('lang', lang === 'ru' ? 'ru' : 'en');
                     input.required = true;
                     formDiv.appendChild(input);
 

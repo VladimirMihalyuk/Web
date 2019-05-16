@@ -18,7 +18,7 @@
 <h1><fmt:message key="winnersPage.title"/></h1>
 
 <div class="page-form">
-    <form id="winners-in-race-form" action="${pageContext.request.contextPath}/serv">
+    <form id="winners-in-race-form" lang="${userLocale.language}" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 

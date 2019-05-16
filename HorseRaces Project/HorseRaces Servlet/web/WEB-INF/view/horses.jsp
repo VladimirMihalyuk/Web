@@ -19,7 +19,7 @@
 <h1><fmt:message key="horsesPage.title"/></h1>
 
 <div class="page-form">
-    <form id="horses-in-race-form" action="${pageContext.request.contextPath}/serv">
+    <form id="horses-in-race-form" lang="${userLocale.language}" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
 <mytag:horsesTableTag/>
