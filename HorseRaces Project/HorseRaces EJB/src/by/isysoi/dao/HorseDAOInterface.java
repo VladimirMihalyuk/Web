@@ -36,4 +36,11 @@ public interface HorseDAOInterface {
      */
     List<Horse> readHorcesInRace(int raceId) throws DAOException;
 
+    /**
+     * delete horse
+     *
+     * @param id id of horse
+     * @throws DAOException if query execution failed
+     */
+    public void deleteHorse(int id) throws DAOException;
 }

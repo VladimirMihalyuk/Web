@@ -18,8 +18,8 @@
     <form id="horses-in-race-form" action="${pageContext.request.contextPath}/serv">
     </form>
 </div>
-
 <mytag:horsesTableTag/>
+
 
 <a href="${pageContext.request.contextPath}/serv?action=home"> На главную</a>
 

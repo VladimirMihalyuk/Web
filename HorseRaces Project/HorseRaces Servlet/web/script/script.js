@@ -1,13 +1,63 @@
-const dom = (function () {
+const dom = (function (lang) {
+
+    let en = {
+        buttonSubmit: 'Accept',
+        raceNumber: 'Race number',
+        raceNumberPlaceholder: 'Enter race number',
+        racesDate: 'Race date',
+        racesDatePlaceholder: 'Enter race date',
+        login: 'Login',
+        loginPlaceholder: 'Enter login',
+        password: 'Password',
+        passwordPlaceholder: 'Enter password',
+        passwordRepeat: 'Repeat password',
+        passwordRepeatPlaceholder: 'Enter password again',
+        buttonRegistration: 'Register',
+        buttonLogout: 'Log out',
+        buttonLogin: 'Log in',
+        buttonLoginAsGuest: 'Login as guest',
+        horseNumber: 'Horse number',
+        horseNumberPlaceholder: 'Enter horse number',
+        horsePlace: 'Position',
+        horsePlacePlaceholder: 'Enter horse position',
+    };
+
+    let ru = {
+        buttonSubmit: 'Подтвердить',
+        raceNumber: 'Номер забега',
+        raceNumberPlaceholder: 'Введите номер забега',
+        racesDate: 'Дата забегов',
+        racesDatePlaceholder: 'Введите дату забегов',
+        login: 'Логин',
+        loginPlaceholder: 'Введите логин',
+        password: 'Пароль',
+        passwordPlaceholder: 'Введите пароль',
+        passwordRepeat: 'Повторите пароль',
+        passwordRepeatPlaceholder: 'Повторите ввод пароля',
+        buttonRegistration: 'Зарегистрироваться',
+        buttonLogout: 'Выйти',
+        buttonLogin: 'Войти',
+        buttonLoginAsGuest: 'Войти как гость',
+        horseNumber: 'Номер лошади',
+        horseNumberPlaceholder: 'Введите номер лошади',
+        horsePlace: 'Место',
+        horsePlacePlaceholder: 'Введите место лошади',
+    };
+
+    function getLocale(lang) {
+        return lang === 'ru' ? ru : en;
+    }
+
+    let locale = getLocale(lang);
 
     var formId = "";
 
     const winnersInRaceFrom = {
         raceId: {
-            label: 'Номер забега',
+            label: locale['raceNumber'],
             type: 'number',
             class: 'form-control',
-            placeholder: 'Введите номер забега',
+            placeholder: locale['raceNumberPlaceholder'],
             name: 'raceId',
             minValue: '1',
             step: '1',
@@ -16,16 +66,16 @@ const dom = (function () {
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Подтвердить'
+            value: locale['buttonSubmit']
         }
     };
 
     const horsesInRaceFrom = {
         raceId: {
-            label: 'Номер забега',
+            label: locale['raceNumber'],
             type: 'number',
             class: 'form-control',
-            placeholder: 'Введите номер забега',
+            placeholder: locale['raceNumberPlaceholder'],
             name: 'raceId',
             minValue: '1',
             step: '1',
@@ -34,79 +84,79 @@ const dom = (function () {
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Подтвердить'
+            value: locale['buttonSubmit']
         }
     };
 
     const racesByDateFrom = {
         date: {
-            label: 'Дата забегов',
+            label: locale['racesDate'],
             type: 'date',
             class: 'form-control',
-            placeholder: 'Введите дату забегов',
+            placeholder: locale['racesDatePlaceholder'],
             name: 'date',
             id: 'date-input',
         },
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Подтвердить'
+            value: locale['buttonSubmit']
         }
     };
 
     const loginFrom = {
         login: {
-            label: 'Логин',
+            label: locale['login'],
             type: 'text',
             class: 'form-control',
-            placeholder: 'Введите логин',
+            placeholder: locale['loginPlaceholder'],
             name: 'login',
             id: 'login-input',
         },
         password: {
-            label: 'Пароль',
+            label: locale['password'],
             type: 'password',
             class: 'form-control',
-            placeholder: 'Введите пароль',
+            placeholder: locale['passwordPlaceholder'],
             name: 'password',
             id: 'password-input',
         },
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Войти'
+            value: locale['buttonLogin']
         }
     };
 
     const registrationForm = {
         login: {
-            label: 'Логин',
+            label: locale['login'],
             type: 'text',
             class: 'form-control',
-            placeholder: 'Введите логин',
+            placeholder: locale['loginPlaceholder'],
             name: 'login',
             id: 'login-input',
         },
         password: {
-            label: 'Пароль',
+            label: locale['password'],
             type: 'password',
             class: 'form-control',
-            placeholder: 'Введите пароль',
+            placeholder: locale['passwordPlaceholder'],
             name: 'password',
             id: 'password-input',
         },
         repeatPassword: {
-            label: 'Повторите пароль',
+            label: locale['passwordRepeat'],
             type: 'password',
             class: 'form-control',
-            placeholder: 'Повторите ввод пароля',
+            placeholder: locale['passwordRepeatPlaceholder'],
             name: 'repeat-password',
             id: 'password-input',
         },
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Зарегистрироваться'
+            value: locale['buttonRegistration']
         }
     };
 
@@ -114,21 +164,21 @@ const dom = (function () {
         login: {
             type: 'hidden',
             class: 'form-control',
-            placeholder: 'Введите логин',
+            placeholder: locale['loginPlaceholder'],
             name: 'login',
             id: 'login-input',
         },
         password: {
             type: 'hidden',
             class: 'form-control',
-            placeholder: 'Введите пароль',
+            placeholder: locale['passwordPlaceholder'],
             name: 'password',
             id: 'password-input',
         },
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Войти как гость'
+            value: locale['buttonLoginAsGuest']
         }
     };
 
@@ -136,46 +186,45 @@ const dom = (function () {
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Выйти'
+            value: locale['buttonLogout']
         }
     };
 
     const horsesResultFrom = {
         raceId: {
-            label: 'Номер забега',
+            label: locale['raceNumber'],
             type: 'number',
             class: 'form-control',
-            placeholder: 'Введите номер забега',
+            placeholder: locale['raceNumberPlaceholder'],
             name: 'raceId',
             minValue: '1',
             step: '1',
             id: 'raceId-input',
         },
         horseId: {
-            label: 'Номер лошади',
+            label: locale['horseNumber'],
             type: 'number',
             class: 'form-control',
-            placeholder: 'Введите номер лошади',
+            placeholder: locale['horseNumberPlaceholder'],
             name: 'horseId',
             minValue: '1',
             step: '1',
             id: 'horseId-input',
         },
         position: {
-            label: 'Место',
+            label: locale['horsePlace'],
             type: 'number',
             class: 'form-control',
-            placeholder: 'Введите место лошади',
+            placeholder: locale['horsePlacePlaceholder'],
             name: 'positionNumber',
             minValue: '1',
             step: '1',
             id: 'position-input',
-            //    think
         },
         submitButton: {
             type: 'submit',
             class: 'btn btn-primary',
-            value: 'Подтвердить'
+            value: locale['buttonSubmit']
         }
     };
 

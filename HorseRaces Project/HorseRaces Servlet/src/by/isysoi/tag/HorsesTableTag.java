@@ -9,6 +9,8 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * custom tag to show horses list
@@ -17,8 +19,10 @@ import java.util.List;
  */
 public class HorsesTableTag extends SimpleTagSupport {
 
-    @Override
     public void doTag() throws JspException {
+        Locale loc = (Locale) getJspContext().getAttribute("userLocale", PageContext.SESSION_SCOPE);
+        ResourceBundle bundle = ResourceBundle.getBundle("by.isysoi.locale", loc, this.getClass().getClassLoader());
+
         User user = (User) getJspContext().getAttribute("user", PageContext.SESSION_SCOPE);
         boolean isAdmin = user != null && user.getType() == User.UserType.ADMIN;
         List<Horse> horseInRaceList = (List<Horse>) getJspContext().getAttribute("horseInRaceList", PageContext.REQUEST_SCOPE);
@@ -31,9 +35,9 @@ public class HorsesTableTag extends SimpleTagSupport {
                         + "<table class=\"table\">"
                         + "<thead>"
                         + "<tr>"
-                        + "<th scope=\"col\">Id</th>"
-                        + "<th scope=\"col\">nickname</th>"
-                        //+ (isAdmin ? "<th scope=\"col\">delete</th>" : "")
+                        + "<th scope=\"col\">" + bundle.getString("table.id") + "</th>"
+                        + "<th scope=\"col\">" + bundle.getString("table.nickname") + "</th>"
+                        + (isAdmin ? "<th scope=\"col\">" + bundle.getString("table.delete") + "</th>" : "")
                         + "</tr >"
                         + "</thead >"
                         + "<tbody>";
@@ -41,20 +45,28 @@ public class HorsesTableTag extends SimpleTagSupport {
                 for (Horse h : horseInRaceList) {
                     result += "<tr>"
                             + "<td scope=\"col\">" + h.getId() + "</td>"
-                            + "<td scope=\"col\">" + h.getNikname() + "</td>"
-                           // + (isAdmin ? "<td scope=\"col\"><a href=\"${pageContext.request.contextPath}/serv?action=removeHorse&id="+ h.getId() +"\"> На главную</a></th>" : "")
-                            + "</tr>";
+                            + "<td scope=\"col\">" + h.getNikname() + "</td>";
+                    if (isAdmin) {
+                        result += "<td>\n" +
+                                "<form method=\"POST\"\n" +
+                                "action=\"" + ((PageContext) getJspContext()).getServletContext().getContextPath() + "/serv?action=removeHorse\">\n" +
+                                "<input type=\"hidden\" name=\"horseId\" value=\"" + h.getId() + "\">\n" +
+                                "<button type=\"submit\" class=\"btn btn-primary\">" + bundle.getString("table.delete") + "</button>\n" +
+                                "</form>\n" +
+                                "</td>";
+                    }
+                    result += "</tr>";
                 }
 
                 result += "</tbody>"
                         + "</table>"
                         + "</div>";
             } else {
-                result += "<p>Ничего не найдено</p>";
+                result += "<p>" + bundle.getString("notFoundResults") + "</p>";
             }
 
             try {
-                JspWriter out = this.getJspContext().getOut();
+                JspWriter out = getJspContext().getOut();
                 out.write(result);
             } catch (IOException e) {
                 throw new JspException(e.getMessage());

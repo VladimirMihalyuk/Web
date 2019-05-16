@@ -10,6 +10,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
+<%@include file="header.jsp" %>
 <h1>Информация о системе</h1>
 <p>
     Скачки. Клиент может делать Ставки на разных Лошадей Забега. Лошадь не может участвовать в нескольких Забегах в один

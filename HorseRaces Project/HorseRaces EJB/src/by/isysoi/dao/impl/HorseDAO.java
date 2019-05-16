@@ -10,6 +10,7 @@ import by.isysoi.exception.DAOException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.List;
@@ -125,6 +126,27 @@ public class HorseDAO implements HorseDAOInterface {
             throw new DAOException("Failed to read horses in race", e);
         }
         return horses;
+    }
+
+    /**
+     * delete horse
+     *
+     * @param id id of horse
+     * @throws DAOException if query execution failed
+     */
+    public void deleteHorse(int id) throws DAOException {
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
+            Root rootHorse = criteriaDelete.from(Horse.class);
+            Predicate condition = criteriaBuilder.equal(rootHorse.get(Horse_.id), id);
+            criteriaDelete.where(condition);
+
+            entityManager.createQuery(criteriaDelete)
+                    .executeUpdate();
+        } catch (Exception e) {
+            throw new DAOException("failed to delete horse", e);
+        }
     }
 
 
