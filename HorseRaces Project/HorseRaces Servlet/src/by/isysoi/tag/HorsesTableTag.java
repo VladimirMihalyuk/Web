@@ -62,7 +62,7 @@ public class HorsesTableTag extends SimpleTagSupport {
                         + "</table>"
                         + "</div>";
             } else {
-                result += "<p>" + bundle.getString("notFoundResults") + "</p>";
+                result += "<p>" + bundle.getString("table.notFoundResults") + "</p>";
             }
 
             try {

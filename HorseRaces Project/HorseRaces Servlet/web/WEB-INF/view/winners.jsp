@@ -1,17 +1,21 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:requestEncoding value="UTF-8"/>
+<fmt:setLocale value="${userLocale}"/>
+<fmt:setBundle basename="by.isysoi.locale"/>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Веб програмирование</title>
+    <title><fmt:message key="app.title"/></title>
     <link rel="stylesheet" href="style/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
 
-<h1>Вывести список выигравших клиентов забега.</h1>
+<h1><fmt:message key="winnersPage.title"/></h1>
 
 <div class="page-form">
     <form id="winners-in-race-form" action="${pageContext.request.contextPath}/serv">
@@ -23,9 +27,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">Ставки</th>
+                <th scope="col"><fmt:message key="table.id"/></th>
+                <th scope="col"><fmt:message key="table.FIO"/></th>
+                <th scope="col"><fmt:message key="table.bet"/></th>
             </tr>
             </thead>
             <tbody>
@@ -37,9 +41,9 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Сумма</th>
-                                <th scope="col">Забег</th>
+                                <th scope="col"><fmt:message key="table.id"/></th>
+                                <th scope="col"><fmt:message key="table.amount"/></th>
+                                <th scope="col"><fmt:message key="table.race"/></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -60,7 +64,7 @@
     </div>
 </c:if>
 
-<a href="${pageContext.request.contextPath}/serv?action=home">На главную</a>
+<a href="${pageContext.request.contextPath}/serv?action=home"><fmt:message key="app.toHome"/></a>
 
 <script src="script/script.js"></script>
 
