@@ -1,4 +1,4 @@
-const dom = (function (lang) {
+const dom = function (lang) {
 
     let en = {
         buttonSubmit: 'Accept',
@@ -380,6 +380,4 @@ const dom = (function (lang) {
         initPage,
     }
 
-}());
-
-dom.initPage();
+};
