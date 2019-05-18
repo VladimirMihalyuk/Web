@@ -1,7 +1,8 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.get;
 
 import by.isysoi.controller.NavigationConstants;
-import by.isysoi.dao.RaceDAOInterface;
+import by.isysoi.controller.action.Action;
+import by.isysoi.dao.HorseDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;
 
@@ -11,32 +12,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-public class SaveResultAction implements Action {
-
+public class HorsesInRaceGetAction implements Action {
 
     @Override
     public String getPattern() {
-        return "saveResult";
+        return "horsesInRace";
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext)
             throws ActionException {
         String raceId = request.getParameter("raceId");
-        String horseId = request.getParameter("horseId");
-        String positionNumber = request.getParameter("positionNumber");
-        if (raceId != null && positionNumber != null && horseId != null) {
-            RaceDAOInterface raceDAO = (RaceDAOInterface) servletContext.getAttribute("raceDAO");
+        if (raceId != null) {
+            HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
+            List list = null;
             try {
-                raceDAO.setHoresPositionInRace(Integer.valueOf(horseId),
-                        Integer.valueOf(raceId),
-                        Integer.valueOf(positionNumber));
+                list = horseDAO.readHorcesInRace(Integer.valueOf(raceId));
             } catch (DAOException e) {
-                throw new ActionException(String.format("Failed to save result of horse %s in race %s with position %s due to exception", horseId, raceId, positionNumber), e);
+                throw new ActionException(String.format("Horses from race %s not found due to exception", raceId), e);
             }
+            request.setAttribute("horseInRaceList", list);
         }
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.resultPage);
+
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

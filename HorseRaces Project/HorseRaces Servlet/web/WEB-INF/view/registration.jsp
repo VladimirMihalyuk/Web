@@ -15,19 +15,12 @@
     <script src="script/script.js"></script>
 </head>
 <body>
-<h1><fmt:message key="loginPage.title"/></h1>
+<h1><fmt:message key="registrationPage.title"/></h1>
 
 <div class="page-form">
-    <form id="login-form" action="${pageContext.request.contextPath}/serv" method="POST">
+    <form id="registration-form" action="${pageContext.request.contextPath}/serv" method="POST">
     </form>
 </div>
-<div class="page-form">
-    <form id="as-guest-form" action="${pageContext.request.contextPath}/serv" method="POST">
-    </form>
-</div>
-
-<a href="${pageContext.request.contextPath}/serv?action=registration" class="btn btn-primary"><fmt:message
-        key="button.registration"/></a>
 
 <a href="${pageContext.request.contextPath}"><fmt:message key="app.toHome"/></a>
 

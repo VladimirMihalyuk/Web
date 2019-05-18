@@ -17,4 +17,6 @@ public interface UserDAOInterface {
      */
     User getUserInfo(String login, String password) throws DAOException;
 
+    void registerUser(User user) throws DAOException;
+
 }

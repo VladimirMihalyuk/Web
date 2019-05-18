@@ -1,6 +1,7 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.get;
 
 import by.isysoi.controller.NavigationConstants;
+import by.isysoi.controller.action.Action;
 import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.exception.ActionException;
 import by.isysoi.exception.DAOException;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-public class WinnersByRaceAction implements Action {
+public class WinnersByRaceGetAction implements Action {
 
     @Override
     public String getPattern() {

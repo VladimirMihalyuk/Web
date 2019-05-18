@@ -1,6 +1,7 @@
-package by.isysoi.controller.action;
+package by.isysoi.controller.action.post;
 
 import by.isysoi.controller.NavigationConstants;
+import by.isysoi.controller.action.Action;
 import by.isysoi.dao.UserDAOInterface;
 import by.isysoi.entity.User;
 import by.isysoi.exception.ActionException;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 
-public class LoginAction implements Action {
+public class LoginPostAction implements Action {
 
     @Override
     public String getPattern() {

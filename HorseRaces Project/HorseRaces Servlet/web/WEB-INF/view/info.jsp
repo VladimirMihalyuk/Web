@@ -12,28 +12,16 @@
     <link rel="stylesheet" href="style/styles.css">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-    <script src="script/script.js"></script>
 </head>
 <body>
-<h1><fmt:message key="loginPage.title"/></h1>
+<%@include file="header.jsp" %>
+<h1><fmt:message key="app.infoTitle"/></h1>
+<p><fmt:message key="app.info"/></p>
 
-<div class="page-form">
-    <form id="login-form" action="${pageContext.request.contextPath}/serv" method="POST">
-    </form>
-</div>
-<div class="page-form">
-    <form id="as-guest-form" action="${pageContext.request.contextPath}/serv" method="POST">
-    </form>
-</div>
-
+<a href="${pageContext.request.contextPath}/serv?action=login" class="btn btn-primary"><fmt:message
+        key="button.login"/></a>
 <a href="${pageContext.request.contextPath}/serv?action=registration" class="btn btn-primary"><fmt:message
         key="button.registration"/></a>
-
-<a href="${pageContext.request.contextPath}"><fmt:message key="app.toHome"/></a>
-
-<script>
-    dom("${userLocale.language}").initPage();
-</script>
 
 </body>
 </html>
