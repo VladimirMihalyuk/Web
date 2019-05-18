@@ -38,7 +38,9 @@
                 <tr>
                     <td scope="col">${race.getId()}</td>
                     <td scope="col">${race.getDistance()}</td>
-                    <td scope="col">${race.getRaceDate()}</td>
+                    <td scope="col"><fmt:formatDate pattern="dd-MM-yyyy"
+                                                    value="${race.getRaceDate()}"/>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
