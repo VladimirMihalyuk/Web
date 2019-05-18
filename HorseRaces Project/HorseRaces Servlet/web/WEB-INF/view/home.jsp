@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style/styles.css">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-    <script src="script/script.js"></script>
+    <script src="script/formsScript.js"></script>
 </head>
 <body>
 <h1><fmt:message key="app.author"/></h1>
@@ -36,6 +36,18 @@
         <li>
             <a href="${pageContext.request.contextPath}/serv?action=saveResult"><fmt:message
                     key="homePage.saveResult"/></a>
+        </li>
+    </c:if>
+    <c:if test="${sessionScope['user'].getTypeString() == 'client' || sessionScope['user'].getTypeString() == 'admin'}">
+        <li>
+            <a href="${pageContext.request.contextPath}/serv?action=chat">
+                <c:if test="${sessionScope['user'].getTypeString() == 'admin'}">
+                    <fmt:message key="chatPage.openFromAdmin"/>
+                </c:if>
+                <c:if test="${sessionScope['user'].getTypeString() == 'client'}">
+                    <fmt:message key="chatPage.openFromClient"/>
+                </c:if>
+            </a>
         </li>
     </c:if>
 </ul>

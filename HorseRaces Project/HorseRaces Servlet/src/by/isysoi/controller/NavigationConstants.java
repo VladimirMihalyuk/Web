@@ -20,4 +20,6 @@ public class NavigationConstants {
 
     public static final String infoPage = "/WEB-INF/view/info.jsp";
 
+    public static final String chatPage = "/WEB-INF/view/chat.jsp";
+
 }

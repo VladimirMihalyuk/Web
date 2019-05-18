@@ -42,7 +42,8 @@ public class MainServlet extends HttpServlet {
                 new RacesByDateGetAction(),
                 new HorsesInRaceGetAction(),
                 new RegistrationGetAction(),
-                new SaveResultGetAction()
+                new SaveResultGetAction(),
+                new ChatGetAction()
         };
         for (Action c : getActions) {
             this.getActions.put(c.getPattern(), c);
