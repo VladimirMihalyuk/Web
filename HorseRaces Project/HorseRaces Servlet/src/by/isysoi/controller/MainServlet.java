@@ -35,6 +35,7 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init() {
         Action[] getActions = {
+                new InfoPageGetAction(),
                 new HomeGetAction(),
                 new LoginGetAction(),
                 new WinnersByRaceGetAction(),
