@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.RaceDAOInterface;
 import by.isysoi.entity.Race;
 import by.isysoi.entity.RaceInfo;
 import by.isysoi.entity.RaceInfo_;
@@ -12,6 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
+import javax.ws.rs.*;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,8 @@ import java.util.List;
  * @version 1.0.0
  */
 @Stateless
-public class RaceDAO implements RaceDAOInterface {
+@Path("/race")
+public class RaceDAO {
 
     //protected Logger logger = LogManager.getLogger("dao_layer");
 
@@ -46,6 +49,9 @@ public class RaceDAO implements RaceDAOInterface {
      *
      * @return list of races
      */
+    @GET
+    @Path("all")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Race> readRaces() throws DAOException {
         List races = null;
 
@@ -58,7 +64,7 @@ public class RaceDAO implements RaceDAOInterface {
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to insert bet", e);
-            throw new DAOException("Failed to insert bet", e);
+            throw new DAOException("Failed to read races", e);
         }
         return races;
     }
@@ -69,7 +75,10 @@ public class RaceDAO implements RaceDAOInterface {
      * @param id id of race
      * @return race
      */
-    public Race readRaceById(int id) throws DAOException {
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Race readRaceById(@PathParam("id") int id) throws DAOException {
         Race race = null;
 
         try {
@@ -84,7 +93,7 @@ public class RaceDAO implements RaceDAOInterface {
                     .getSingleResult();
         } catch (Exception e) {
             //logger.error("failed to read race", e);
-            throw new DAOException("Failed to read race", e);
+            throw new DAOException("Failed to read race by id", e);
         }
         return race;
     }
@@ -94,6 +103,9 @@ public class RaceDAO implements RaceDAOInterface {
      *
      * @param race race object
      */
+    @POST
+    @Path("/new")
+    @Consumes(MediaType.APPLICATION_XML)
     public void insertRace(Race race) throws DAOException {
         try {
             entityManager.persist(race);
@@ -109,7 +121,10 @@ public class RaceDAO implements RaceDAOInterface {
      * @param date date of race to select
      * @return list of races
      */
-    public List<Race> readRacesByDate(Date date) throws DAOException {
+    @GET
+    @Path("byDate/{date}")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Race> readRacesByDate(@PathParam("date") Date date) throws DAOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.HOUR_OF_DAY, 3);
@@ -138,7 +153,9 @@ public class RaceDAO implements RaceDAOInterface {
      * @param horseId id of horse
      * @param raceId  id of race
      */
-    public void addHorseToRace(int horseId, int raceId) throws DAOException {
+    @POST
+    @Path("newHorse")
+    public void addHorseToRace(@QueryParam("horseId") int horseId, @QueryParam("raceId") int raceId) throws DAOException {
         RaceInfo raceInfo = new RaceInfo();
 
         raceInfo.setHorseId(horseId);
@@ -160,7 +177,9 @@ public class RaceDAO implements RaceDAOInterface {
      * @param raceId   id of race
      * @param position position of horse
      */
-    public void setHoresPositionInRace(int horseId, int raceId, int position) throws DAOException {
+    @POST
+    @Path("updatePosition")
+    public void setHoresPositionInRace(@QueryParam("horseId") int horseId, @QueryParam("raceId") int raceId, @QueryParam("position") int position) throws DAOException {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaUpdate update = criteriaBuilder.createCriteriaUpdate(RaceInfo.class);

@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.HorseDAOInterface;
 import by.isysoi.entity.Horse;
 import by.isysoi.entity.Horse_;
 import by.isysoi.entity.Race;
@@ -10,9 +9,11 @@ import by.isysoi.exception.DAOException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
+import javax.ws.rs.*;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -22,7 +23,8 @@ import java.util.List;
  * @version 1.0.0
  */
 @Stateless
-public class HorseDAO implements HorseDAOInterface {
+@Path("/horse")
+public class HorseDAO { //implements HorseDAOInterface {
 
     //protected Logger logger = LogManager.getLogger("dao_layer");
 
@@ -46,6 +48,9 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @return list of horses
      */
+    @GET
+    @Path("all")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Horse> readHorses() throws DAOException {
         List horses = null;
 
@@ -61,6 +66,7 @@ public class HorseDAO implements HorseDAOInterface {
             throw new DAOException("Failed to read horses", e);
         }
         return horses;
+        //WebApplicationException(Response.Status.NOT_FOUND);
     }
 
     /**
@@ -69,7 +75,10 @@ public class HorseDAO implements HorseDAOInterface {
      * @param id id of horse
      * @return horse
      */
-    public Horse readHorseById(int id) throws DAOException {
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Horse readHorseById(@PathParam("id") int id) throws DAOException {
         Horse horse = null;
 
         try {
@@ -94,6 +103,9 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param horse horse object
      */
+    @POST
+    @Path("/new")
+    @Consumes(MediaType.APPLICATION_XML)
     public void insertHorse(Horse horse) throws DAOException {
         try {
             entityManager.persist(horse);
@@ -108,7 +120,10 @@ public class HorseDAO implements HorseDAOInterface {
      *
      * @param raceId id of race
      */
-    public List<Horse> readHorcesInRace(int raceId) throws DAOException {
+    @GET
+    @Path("byRace/{raceId}")
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Horse> readHorcesInRace(@PathParam("raceId") int raceId) throws DAOException {
         List horses = null;
 
         try {
@@ -134,7 +149,9 @@ public class HorseDAO implements HorseDAOInterface {
      * @param id id of horse
      * @throws DAOException if query execution failed
      */
-    public void deleteHorse(int id) throws DAOException {
+    @DELETE
+    @Path("{id}")
+    public void deleteHorse(@PathParam("id") int id) throws DAOException {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);

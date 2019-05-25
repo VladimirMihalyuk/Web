@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.entity.Bet;
 import by.isysoi.entity.Bet_;
 import by.isysoi.entity.Client;
@@ -14,6 +13,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.*;
 
 /**
@@ -23,7 +24,8 @@ import java.util.*;
  * @version 1.0.0
  */
 @Stateless
-public class BetDAO implements BetDAOInterface {
+@Path("/bet")
+public class BetDAO {
 
     //protected Logger logger = LogManager.getLogger("dao_layer");
 
@@ -46,6 +48,9 @@ public class BetDAO implements BetDAOInterface {
      *
      * @return bets
      */
+    @GET
+    @Path("all")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Bet> readBet() throws DAOException {
         List bets = null;
         try {
@@ -68,7 +73,10 @@ public class BetDAO implements BetDAOInterface {
      * @param id bet id
      * @return bet
      */
-    public Bet readBetById(int id) throws DAOException {
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Bet readBetById(@PathParam("id") int id) throws DAOException {
         Bet bet = null;
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -91,6 +99,9 @@ public class BetDAO implements BetDAOInterface {
      *
      * @param bet bet object
      */
+    @POST
+    @Path("/new")
+    @Consumes(MediaType.APPLICATION_XML)
     public void insertBet(Bet bet) throws DAOException {
         try {
             entityManager.persist(bet);
@@ -106,7 +117,10 @@ public class BetDAO implements BetDAOInterface {
      * @param raceId id of race
      * @return list of clients
      */
-    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
+    @GET
+    @Path("winnersByRace/{raceId}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Map<Client, Set<Bet>> readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {

@@ -1,6 +1,7 @@
 package by.isysoi.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 
 /**
@@ -9,6 +10,8 @@ import java.io.Serializable;
  * @author Ilya Sysoi
  * @version 1.0.0
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "User")
 @Table(name = User.tableName)
 @NamedQueries({
@@ -24,6 +27,8 @@ public class User implements Serializable {
     /**
      * login of user
      */
+    @XmlAttribute
+    @XmlID
     @Id
     private String login;
     /**
