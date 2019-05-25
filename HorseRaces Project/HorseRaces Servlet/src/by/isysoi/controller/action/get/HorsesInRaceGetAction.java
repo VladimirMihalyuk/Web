@@ -34,6 +34,7 @@ public class HorsesInRaceGetAction implements Action {
                 throw new ActionException(String.format("Horses from race %s not found due to exception", raceId), e);
             }
             request.setAttribute("horseInRaceList", list);
+            request.setAttribute("raceId", raceId);
         }
 
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher(NavigationConstants.horsePage);

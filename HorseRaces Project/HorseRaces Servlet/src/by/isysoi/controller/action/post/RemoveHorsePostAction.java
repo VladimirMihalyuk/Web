@@ -23,11 +23,12 @@ public class RemoveHorsePostAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext) throws ActionException {
         String horseId = request.getParameter("horseId");
+        String raceId = request.getParameter("raceId");
 
         if (horseId != null) {
             HorseDAOInterface horseDAO = (HorseDAOInterface) servletContext.getAttribute("horseDAO");
             try {
-                horseDAO.deleteHorse(Integer.parseInt(horseId));
+                horseDAO.deleteHorse(Integer.parseInt(horseId), Integer.parseInt(raceId));
             } catch (DAOException e) {
                 throw new ActionException(String.format("Failed to remove horse %s due to exception", horseId), e);
             }

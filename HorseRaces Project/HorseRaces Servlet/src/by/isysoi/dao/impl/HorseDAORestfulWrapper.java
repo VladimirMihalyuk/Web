@@ -102,9 +102,10 @@ public class HorseDAORestfulWrapper implements HorseDAOInterface {
      * @param id id of horse
      * @throws DAOException if query execution failed
      */
-    public void deleteHorse(int id) throws DAOException {
+    public void deleteHorse(int id, int raceId) throws DAOException {
         try {
             target.path(String.valueOf(id))
+                    .queryParam("raceId", raceId)
                     .request()
                     .delete();
         } catch (Exception e) {

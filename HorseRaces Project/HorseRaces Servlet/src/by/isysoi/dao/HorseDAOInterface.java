@@ -38,5 +38,5 @@ public interface HorseDAOInterface {
      * @param id id of horse
      * @throws DAOException if query execution failed
      */
-    void deleteHorse(int id) throws DAOException;
+    void deleteHorse(int id, int raceId) throws DAOException;
 }

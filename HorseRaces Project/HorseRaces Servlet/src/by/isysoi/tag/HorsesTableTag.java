@@ -26,8 +26,9 @@ public class HorsesTableTag extends SimpleTagSupport {
         User user = (User) getJspContext().getAttribute("user", PageContext.SESSION_SCOPE);
         boolean isAdmin = user != null && user.getType() == User.UserType.ADMIN;
         List<Horse> horseInRaceList = (List<Horse>) getJspContext().getAttribute("horseInRaceList", PageContext.REQUEST_SCOPE);
+        String raceId = (String) getJspContext().getAttribute("raceId", PageContext.REQUEST_SCOPE);
 
-        if (horseInRaceList != null) {
+        if (horseInRaceList != null && raceId != null) {
             String result = "";
 
             if (!horseInRaceList.isEmpty()) {
@@ -51,6 +52,7 @@ public class HorsesTableTag extends SimpleTagSupport {
                                 "<form method=\"POST\"\n" +
                                 "action=\"" + ((PageContext) getJspContext()).getServletContext().getContextPath() + "/serv?action=removeHorse\">\n" +
                                 "<input type=\"hidden\" name=\"horseId\" value=\"" + h.getId() + "\">\n" +
+                                "<input type=\"hidden\" name=\"raceId\" value=\"" + raceId + "\">\n" +
                                 "<button type=\"submit\" class=\"btn btn-primary\">" + bundle.getString("table.delete") + "</button>\n" +
                                 "</form>\n" +
                                 "</td>";

@@ -1,9 +1,6 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.Horse;
-import by.isysoi.entity.Horse_;
-import by.isysoi.entity.Race;
-import by.isysoi.entity.Race_;
+import by.isysoi.entity.*;
 import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
@@ -151,18 +148,22 @@ public class HorseDAO { //implements HorseDAOInterface {
      */
     @DELETE
     @Path("{id}")
-    public void deleteHorse(@PathParam("id") int id) throws DAOException {
+    public void deleteHorse(@PathParam("id") int id, @QueryParam("raceId") int raceId) throws DAOException {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaDelete criteriaDelete = criteriaBuilder.createCriteriaDelete(Horse.class);
-            Root rootHorse = criteriaDelete.from(Horse.class);
-            Predicate condition = criteriaBuilder.equal(rootHorse.get(Horse_.id), id);
-            criteriaDelete.where(condition);
+            CriteriaDelete delete = criteriaBuilder.createCriteriaDelete(RaceInfo.class);
+            Root rootRaceInfo = delete.from(RaceInfo.class);
+            Predicate condition = criteriaBuilder.and(criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.raceId), raceId),
+                    criteriaBuilder.equal(rootRaceInfo.get(RaceInfo_.horseId), id));
+            delete.where(condition);
 
-            entityManager.createQuery(criteriaDelete)
+
+            entityManager.createQuery(delete)
                     .executeUpdate();
+
         } catch (Exception e) {
-            throw new DAOException("failed to delete horse", e);
+            //logger.error("failed to update position of horse", e);
+            throw new DAOException("Failed to delete horse from race", e);
         }
     }
 
