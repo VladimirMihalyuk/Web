@@ -76,7 +76,7 @@ public class ClientDAO {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Client readClientById(@PathParam("id")int id) throws DAOException {
+    public Client readClientById(@PathParam("id") int id) throws DAOException {
         Client client = null;
 
         try {

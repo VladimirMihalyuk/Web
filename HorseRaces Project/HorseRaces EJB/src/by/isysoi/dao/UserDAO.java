@@ -38,7 +38,7 @@ public class UserDAO {
     /**
      * get user info without password
      *
-     * @param login login of user
+     * @param login    login of user
      * @param password password of user
      */
     @GET
