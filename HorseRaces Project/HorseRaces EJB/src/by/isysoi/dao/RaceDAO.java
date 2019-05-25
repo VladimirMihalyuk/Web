@@ -1,9 +1,6 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.Race;
-import by.isysoi.entity.RaceInfo;
-import by.isysoi.entity.RaceInfo_;
-import by.isysoi.entity.Race_;
+import by.isysoi.entity.*;
 import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
@@ -14,9 +11,13 @@ import javax.persistence.criteria.*;
 import javax.ws.rs.Path;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * race dao class
@@ -118,13 +119,21 @@ public class RaceDAO {
     /**
      * read races by date
      *
-     * @param date date of race to select
-     * @return list of races
+     * @param stringDate date in format dd-MM-yyyy of race to select
+     * @return list of race
      */
     @GET
     @Path("byDate/{date}")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Race> readRacesByDate(@PathParam("date") Date date) throws DAOException {
+    public List<Race> readRacesByDate(@PathParam("date") String stringDate) throws DAOException {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = null;
+        try {
+            date = format.parse(stringDate);
+        } catch (ParseException e) {
+            throw new DAOException("Failed to parse date", e);
+        }
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.HOUR_OF_DAY, 3);
@@ -132,13 +141,8 @@ public class RaceDAO {
 
         try {
 
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(Race.class);
-            Root rootRace = criteriaQuery.from(Race.class);
-            Predicate condition = criteriaBuilder.equal(rootRace.get(Race_.raceDate), cal.getTime());
-            criteriaQuery.where(condition);
-
-            races = entityManager.createQuery(criteriaQuery)
+            races = entityManager.createNamedQuery("readRaceByDate", Race.class)
+                    .setParameter("raceDate", cal.getTime())
                     .getResultList();
         } catch (Exception e) {
             //logger.error("failed to read race by date", e);
@@ -177,7 +181,7 @@ public class RaceDAO {
      * @param raceId   id of race
      * @param position position of horse
      */
-    @POST
+    @PUT
     @Path("updatePosition")
     public void setHoresPositionInRace(@QueryParam("horseId") int horseId, @QueryParam("raceId") int raceId, @QueryParam("position") int position) throws DAOException {
         try {
@@ -197,7 +201,6 @@ public class RaceDAO {
             //logger.error("failed to update position of horse", e);
             throw new DAOException("Failed to update position of horse", e);
         }
-        throw new DAOException("Failed to update position of horse");
     }
 
 }

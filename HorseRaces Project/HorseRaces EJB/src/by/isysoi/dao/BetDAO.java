@@ -15,6 +15,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.*;
 
 /**
@@ -120,7 +121,7 @@ public class BetDAO {
     @GET
     @Path("winnersByRace/{raceId}")
     @Produces(MediaType.APPLICATION_XML)
-    public Map<Client, Set<Bet>> readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
+    public Map readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
 
         try {
@@ -128,7 +129,6 @@ public class BetDAO {
             List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
                     .setParameter("raceId", raceId)
                     .getResultList();
-
             for (Bet bet : bets) {
                 Client client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {

@@ -2,7 +2,12 @@
   <artifact type="jar" name="HorseRaces_ejb_interface">
     <output-path>$PROJECT_DIR$/out/artifacts/HorseRaces_EJB_Client</output-path>
     <root id="archive" name="HorseRaces_ejb_interface.jar">
-      <element id="module-output" name="HorseRaces EJB" />
+      <element id="dir-copy" path="$PROJECT_DIR$/out/production/HorseRaces EJB/by/isysoi/entity" />
+      <element id="dir-copy" path="$PROJECT_DIR$/out/production/HorseRaces EJB/by/isysoi/exception" />
+      <element id="dir-copy" path="$PROJECT_DIR$/out/production/HorseRaces EJB/by/isysoi/xml" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/production/HorseRaces EJB/META-INF/MANIFEST.MF" />
+      </element>
     </root>
   </artifact>
 </component>

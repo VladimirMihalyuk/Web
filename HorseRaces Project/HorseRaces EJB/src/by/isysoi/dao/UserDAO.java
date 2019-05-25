@@ -42,7 +42,6 @@ public class UserDAO {
      * @param password password of user
      */
     @GET
-    @Path("all")
     @Produces(MediaType.APPLICATION_XML)
     public User getUserInfo(@QueryParam("login") String login, @QueryParam("password") String password) throws DAOException {
         User user = null;

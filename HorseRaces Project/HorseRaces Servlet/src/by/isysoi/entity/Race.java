@@ -19,11 +19,7 @@ import java.util.List;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name = "Race")
-@Table(name = Race.tableName)
-@NamedQuery(
-        name = "readRaceByDate",
-        query = "select r from Race r where r.raceDate = :raceDate"
-)
+@Table(name = by.isysoi.entity.Race.tableName)
 public class Race implements Serializable {
 
     public static final String tableName = "race";
@@ -66,7 +62,7 @@ public class Race implements Serializable {
     /**
      * date of race
      */
-    @Column(name = Race.dateColumnName)
+    @Column(name = by.isysoi.entity.Race.dateColumnName)
     private Date raceDate;
 
     public Date getRaceDate() {

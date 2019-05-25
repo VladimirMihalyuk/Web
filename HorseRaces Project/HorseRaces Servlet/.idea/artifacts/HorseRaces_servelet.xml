@@ -6,9 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="HorseRaces Servlet" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="HorseRaces_ejb_interface" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
       <element id="javaee-facet-resources" facet="HorseRaces Servlet/web/Web" />
       <element id="directory" name="META-INF">
