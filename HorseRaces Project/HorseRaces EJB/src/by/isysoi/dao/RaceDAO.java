@@ -202,5 +202,4 @@ public class RaceDAO {
             throw new DAOException("Failed to update position of horse", e);
         }
     }
-
 }
