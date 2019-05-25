@@ -30,7 +30,6 @@
             <tr>
                 <th scope="col"><fmt:message key="table.id"/></th>
                 <th scope="col"><fmt:message key="table.FIO"/></th>
-                <th scope="col"><fmt:message key="table.bet"/></th>
             </tr>
             </thead>
             <tbody>
@@ -38,26 +37,6 @@
                 <tr>
                     <td scope="col">${clientAndBets.getKey().getId()}</td>
                     <td scope="col">${clientAndBets.getKey().getFIO()}</td>
-                    <td>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col"><fmt:message key="table.id"/></th>
-                                <th scope="col"><fmt:message key="table.amount"/></th>
-                                <th scope="col"><fmt:message key="table.race"/></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${clientAndBets.getValue()}" var="bet">
-                                <tr>
-                                    <td scope="col">${bet.getId()}</td>
-                                    <td scope="col">${bet.getAmount()}</td>
-                                    <td scope="col">${bet.getRace().getId()}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </td>
                 </tr>
             </c:forEach>
             </tbody>

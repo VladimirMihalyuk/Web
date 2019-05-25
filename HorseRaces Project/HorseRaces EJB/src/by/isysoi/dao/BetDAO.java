@@ -121,8 +121,8 @@ public class BetDAO {
     @GET
     @Path("winnersByRace/{raceId}")
     @Produces(MediaType.APPLICATION_XML)
-    public Map readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
-        Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
+    public Set<Client> readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
+        Map<Client, List<Bet>> clientsWithBet = new HashMap<>();
 
         try {
 
@@ -132,7 +132,7 @@ public class BetDAO {
             for (Bet bet : bets) {
                 Client client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {
-                    clientsWithBet.put(client, new HashSet<>());
+                    clientsWithBet.put(client, new ArrayList<>());
                 }
                 clientsWithBet.get(client).add(bet);
             }
@@ -140,7 +140,7 @@ public class BetDAO {
             //logger.error("failed to read winners by race", e);
             throw new DAOException("Failed to read winners", e);
         }
-        return clientsWithBet;
+        return clientsWithBet.keySet();
     }
 
 

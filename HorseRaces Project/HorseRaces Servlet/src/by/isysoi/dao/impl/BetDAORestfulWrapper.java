@@ -87,14 +87,18 @@ public class BetDAORestfulWrapper implements BetDAOInterface {
      */
     public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
         Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
-        List<Bet> bets = null;
+        Set<Client> winners = null;
         try {
-            clientsWithBet = target.path("winnersByRace")
+            winners = target.path("winnersByRace")
                     .path(String.valueOf(raceId))
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<Map<Client, Set<Bet>>>() {});
+                    .get(new GenericType<Set<Client>>() {});
         } catch (Exception e) {
             throw new DAOException("Failed request to find all bets", e);
+        }
+
+        for (Client client: winners) {
+            clientsWithBet.put(client, new HashSet<>());
         }
 
         return clientsWithBet;
