@@ -38,7 +38,8 @@ public class HorseDAORestfulWrapper implements HorseDAOInterface {
         try {
             horses = target.path("all")
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Horse>>() {});
+                    .get(new GenericType<List<Horse>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all horses", e);
         }
@@ -89,7 +90,8 @@ public class HorseDAORestfulWrapper implements HorseDAOInterface {
             horses = target.path("byRace")
                     .path(String.valueOf(raceId))
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Horse>>() {});
+                    .get(new GenericType<List<Horse>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find horses in race with id - " + raceId, e);
         }

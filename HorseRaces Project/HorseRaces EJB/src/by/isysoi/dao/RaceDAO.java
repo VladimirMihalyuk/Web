@@ -1,6 +1,9 @@
 package by.isysoi.dao;
 
-import by.isysoi.entity.*;
+import by.isysoi.entity.Race;
+import by.isysoi.entity.RaceInfo;
+import by.isysoi.entity.RaceInfo_;
+import by.isysoi.entity.Race_;
 import by.isysoi.exception.DAOException;
 
 import javax.ejb.Stateless;
@@ -17,7 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * race dao class

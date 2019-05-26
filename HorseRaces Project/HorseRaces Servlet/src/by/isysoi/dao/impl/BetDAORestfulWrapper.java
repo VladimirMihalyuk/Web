@@ -39,7 +39,8 @@ public class BetDAORestfulWrapper implements BetDAOInterface {
         try {
             bets = target.path("all")
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Bet>>() {});
+                    .get(new GenericType<List<Bet>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all bets", e);
         }
@@ -92,12 +93,13 @@ public class BetDAORestfulWrapper implements BetDAOInterface {
             winners = target.path("winnersByRace")
                     .path(String.valueOf(raceId))
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<Set<Client>>() {});
+                    .get(new GenericType<Set<Client>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all bets", e);
         }
 
-        for (Client client: winners) {
+        for (Client client : winners) {
             clientsWithBet.put(client, new HashSet<>());
         }
 

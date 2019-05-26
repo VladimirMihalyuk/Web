@@ -41,7 +41,8 @@ public class RaceDAORestfulWrapper implements RaceDAOInterface {
         try {
             races = target.path("all")
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Race>>() {});
+                    .get(new GenericType<List<Race>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all races", e);
         }
@@ -96,7 +97,8 @@ public class RaceDAORestfulWrapper implements RaceDAOInterface {
             races = target.path("byDate")
                     .path(dateString)
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Race>>() {});
+                    .get(new GenericType<List<Race>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all races", e);
         }

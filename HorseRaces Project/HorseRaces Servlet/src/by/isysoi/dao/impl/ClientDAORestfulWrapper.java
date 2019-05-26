@@ -38,7 +38,8 @@ public class ClientDAORestfulWrapper implements ClientDAOInterface {
         try {
             clients = target.path("all")
                     .request(MediaType.APPLICATION_XML)
-                    .get(new GenericType<List<Client>>() {});
+                    .get(new GenericType<List<Client>>() {
+                    });
         } catch (Exception e) {
             throw new DAOException("Failed request to find all clients", e);
         }
