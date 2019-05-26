@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.BetDAOInterface;
 import by.isysoi.entity.Bet;
 import by.isysoi.entity.Bet_;
 import by.isysoi.entity.Client;
@@ -14,6 +13,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.*;
 
 /**
@@ -23,7 +24,8 @@ import java.util.*;
  * @version 1.0.0
  */
 @Stateless
-public class BetDAO implements BetDAOInterface {
+@Path("/bet")
+public class BetDAO {
 
     //protected Logger logger = LogManager.getLogger("dao_layer");
 
@@ -46,6 +48,9 @@ public class BetDAO implements BetDAOInterface {
      *
      * @return bets
      */
+    @GET
+    @Path("all")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Bet> readBet() throws DAOException {
         List bets = null;
         try {
@@ -68,7 +73,10 @@ public class BetDAO implements BetDAOInterface {
      * @param id bet id
      * @return bet
      */
-    public Bet readBetById(int id) throws DAOException {
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Bet readBetById(@PathParam("id") int id) throws DAOException {
         Bet bet = null;
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -91,6 +99,9 @@ public class BetDAO implements BetDAOInterface {
      *
      * @param bet bet object
      */
+    @POST
+    @Path("/new")
+    @Consumes(MediaType.APPLICATION_XML)
     public void insertBet(Bet bet) throws DAOException {
         try {
             entityManager.persist(bet);
@@ -106,19 +117,21 @@ public class BetDAO implements BetDAOInterface {
      * @param raceId id of race
      * @return list of clients
      */
-    public Map<Client, Set<Bet>> readWinnersByRace(int raceId) throws DAOException {
-        Map<Client, Set<Bet>> clientsWithBet = new HashMap<>();
+    @GET
+    @Path("winnersByRace/{raceId}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Set<Client> readWinnersByRace(@PathParam("raceId") int raceId) throws DAOException {
+        Map<Client, List<Bet>> clientsWithBet = new HashMap<>();
 
         try {
 
             List<Bet> bets = entityManager.createNamedQuery("readWinningBets", Bet.class)
                     .setParameter("raceId", raceId)
                     .getResultList();
-
             for (Bet bet : bets) {
                 Client client = bet.getClient();
                 if (!clientsWithBet.containsKey(client)) {
-                    clientsWithBet.put(client, new HashSet<>());
+                    clientsWithBet.put(client, new ArrayList<>());
                 }
                 clientsWithBet.get(client).add(bet);
             }
@@ -126,7 +139,7 @@ public class BetDAO implements BetDAOInterface {
             //logger.error("failed to read winners by race", e);
             throw new DAOException("Failed to read winners", e);
         }
-        return clientsWithBet;
+        return clientsWithBet.keySet();
     }
 
 

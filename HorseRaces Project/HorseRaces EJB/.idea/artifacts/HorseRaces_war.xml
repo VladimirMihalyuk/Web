@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HorseRaces:war">
+    <output-path>$PROJECT_DIR$/../../glassfish4/glassfish/domains/domain1/autodeploy/</output-path>
+    <root id="archive" name="HorseRaces_war.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HorseRaces EJB" />
+          <element id="jpa-descriptors" facet="HorseRaces EJB/jpa/JPA" />
+        </element>
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="HorseRaces EJB/ejb/EJB" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

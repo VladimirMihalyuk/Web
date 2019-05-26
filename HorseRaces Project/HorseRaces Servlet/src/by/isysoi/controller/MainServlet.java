@@ -2,10 +2,7 @@ package by.isysoi.controller;
 
 import by.isysoi.controller.action.Action;
 import by.isysoi.controller.action.get.*;
-import by.isysoi.controller.action.post.LoginPostAction;
-import by.isysoi.controller.action.post.LogoutAction;
-import by.isysoi.controller.action.post.RegistrationPostAction;
-import by.isysoi.controller.action.post.SaveResultPostAction;
+import by.isysoi.controller.action.post.*;
 import by.isysoi.exception.ActionException;
 
 import javax.servlet.ServletException;
@@ -38,13 +35,15 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init() {
         Action[] getActions = {
+                new InfoPageGetAction(),
                 new HomeGetAction(),
                 new LoginGetAction(),
                 new WinnersByRaceGetAction(),
                 new RacesByDateGetAction(),
                 new HorsesInRaceGetAction(),
                 new RegistrationGetAction(),
-                new SaveResultGetAction()
+                new SaveResultGetAction(),
+                new ChatGetAction()
         };
         for (Action c : getActions) {
             this.getActions.put(c.getPattern(), c);
@@ -54,7 +53,8 @@ public class MainServlet extends HttpServlet {
                 new LoginPostAction(),
                 new LogoutAction(),
                 new SaveResultPostAction(),
-                new RegistrationPostAction()
+                new RegistrationPostAction(),
+                new RemoveHorsePostAction()
         };
         for (Action c : postActions) {
             this.postActions.put(c.getPattern(), c);

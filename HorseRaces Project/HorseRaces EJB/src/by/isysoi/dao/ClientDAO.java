@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.ClientDAOInterface;
 import by.isysoi.entity.Client;
 import by.isysoi.entity.Client_;
 import by.isysoi.exception.DAOException;
@@ -13,6 +12,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -22,7 +23,8 @@ import java.util.List;
  * @version 1.0.0
  */
 @Stateless
-public class ClientDAO implements ClientDAOInterface {
+@Path("/client")
+public class ClientDAO {
 
     //protected Logger logger = LogManager.getLogger("dao_layer");
 
@@ -45,6 +47,9 @@ public class ClientDAO implements ClientDAOInterface {
      *
      * @return list of clients
      */
+    @GET
+    @Path("all")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Client> readClients() throws DAOException {
         List clients = null;
 
@@ -68,7 +73,10 @@ public class ClientDAO implements ClientDAOInterface {
      * @param id client id
      * @return client
      */
-    public Client readClientById(int id) throws DAOException {
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Client readClientById(@PathParam("id") int id) throws DAOException {
         Client client = null;
 
         try {
@@ -92,6 +100,9 @@ public class ClientDAO implements ClientDAOInterface {
      *
      * @param client client object
      */
+    @POST
+    @Path("/new")
+    @Consumes(MediaType.APPLICATION_XML)
     public void insertClient(Client client) throws DAOException {
         try {
             entityManager.persist(client);

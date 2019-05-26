@@ -1,6 +1,5 @@
-package by.isysoi.dao.impl;
+package by.isysoi.dao;
 
-import by.isysoi.dao.UserDAOInterface;
 import by.isysoi.entity.User;
 import by.isysoi.exception.DAOException;
 
@@ -9,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
  * user dao
@@ -17,7 +18,8 @@ import javax.persistence.PersistenceContext;
  * @version 1.0.0
  */
 @Stateless
-public class UserDAO implements UserDAOInterface {
+@Path("/user")
+public class UserDAO {
 
     @PersistenceContext(unitName = "Test_Local")
     private EntityManager entityManager;
@@ -36,10 +38,12 @@ public class UserDAO implements UserDAOInterface {
     /**
      * get user info without password
      *
-     * @param login login of user
+     * @param login    login of user
+     * @param password password of user
      */
-    @Override
-    public User getUserInfo(String login, String password) throws DAOException {
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public User getUserInfo(@QueryParam("login") String login, @QueryParam("password") String password) throws DAOException {
         User user = null;
         try {
             user = entityManager.createNamedQuery("getUserInfo", User.class)
@@ -60,7 +64,9 @@ public class UserDAO implements UserDAOInterface {
      *
      * @param user user info to register
      */
-    @Override
+    @POST
+    @Path("register")
+    @Consumes(MediaType.APPLICATION_XML)
     public void registerUser(User user) throws DAOException {
         try {
             entityManager.persist(user);

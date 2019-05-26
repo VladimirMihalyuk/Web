@@ -3,13 +3,9 @@ package by.isysoi.dao;
 import by.isysoi.entity.Horse;
 import by.isysoi.exception.DAOException;
 
-import javax.ejb.Remote;
 import java.util.List;
 
-/*
- * Data Access Interface provide access to Answer class
- */
-@Remote
+
 public interface HorseDAOInterface {
 
     List<Horse> readHorses() throws DAOException;
@@ -36,4 +32,11 @@ public interface HorseDAOInterface {
      */
     List<Horse> readHorcesInRace(int raceId) throws DAOException;
 
+    /**
+     * delete horse
+     *
+     * @param id id of horse
+     * @throws DAOException if query execution failed
+     */
+    void deleteHorse(int id, int raceId) throws DAOException;
 }
